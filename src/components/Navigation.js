@@ -58,7 +58,21 @@ const Navigation = () => {
             ></img>
           </button>
           {click2 === true ? (
-            <div className="navigation-item-post-form"></div>
+            <div className="navigation-item-post-form">
+              <div className="navigation-item-post-form-container">
+                <input
+                  className="navigation-item-post-form-content-input"
+                  placeholder="내용을 적어주세요"
+                ></input>
+                <div className="navigation-item-post-form-hashtag-wrap">
+                  <input
+                    className="navigation-item-post-form-hashtag-input"
+                    placeholder="전공 태그 (쉼표로 구분해주세요)"
+                  ></input>
+                  <button className="navigation-item-post-form-hashtag-add-button"></button>
+                </div>
+              </div>
+            </div>
           ) : (
             <div></div>
           )}
