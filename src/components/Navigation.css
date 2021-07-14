@@ -78,6 +78,17 @@
   height: 30px;
 }
 
+.navigation-item-post-form {
+  width: 510px;
+  height: 570px;
+  background-color: #534974;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 999;
+  border-radius: 5px;
+}
+
 .navigation-item-post,
 .navigation-item-menu {
   width: 50px;

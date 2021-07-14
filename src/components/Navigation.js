@@ -5,17 +5,27 @@ import PostImg from "../img/Post.png";
 import MenuImg from "../img/Menu.png";
 import SearchImg from "../img/Search.png";
 
-const Navigation = () => {
-  const useClick = (isClcik) => {
-    const [click, setClick] = useState(isClcik);
-    return { changeSearch: setClick, click };
-  };
+const useClick = (isClcik) => {
+  const [click, setClick] = useState(isClcik);
+  return { changeSearch: setClick, click };
+};
 
+const useClick2 = (isClick2) => {
+  const [click2, setClick2] = useState(isClick2);
+  return { changeSearch2: setClick2, click2 };
+};
+
+const Navigation = () => {
   const { changeSearch, click } = useClick(0, 1);
+  const { changeSearch2, click2 } = useClick2(0, 1);
 
   const searchOnClick = (isClcik) => {
     changeSearch(!isClcik);
     console.log(isClcik);
+  };
+
+  const postOnClick = (isClick2) => {
+    changeSearch2(!isClick2);
   };
 
   return (
@@ -47,7 +57,15 @@ const Navigation = () => {
               title="검색"
             ></img>
           </button>
-          <button className="navigation-item-post">
+          {click2 === true ? (
+            <div className="navigation-item-post-form"></div>
+          ) : (
+            <div></div>
+          )}
+          <button
+            className="navigation-item-post"
+            onClick={() => postOnClick(click2)}
+          >
             <img className="navigation-item-post-img" src={PostImg}></img>
           </button>
           <button className="navigation-item-menu">
