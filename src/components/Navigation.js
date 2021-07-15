@@ -1,9 +1,10 @@
-import "./Navigation.css";
+import "./Navigation.scss";
 import { useState } from "react";
-import WhiteLogo from "../img/WhiteLogo.png";
-import PostImg from "../img/Post.png";
-import MenuImg from "../img/Menu.png";
-import SearchImg from "../img/Search.png";
+import WhiteLogo from "../assets/img/WhiteLogo.png";
+import PostImg from "../assets//img/Post.png";
+import MenuImg from "../assets//img/Menu.png";
+import SearchImg from "../assets//img/Search.png";
+import PostExitImg from "../assets/img/PostExit.svg";
 
 const useClick = (isClcik) => {
   const [click, setClick] = useState(isClcik);
@@ -29,54 +30,89 @@ const Navigation = () => {
   };
 
   return (
-    <section id="Navigation">
-      <div className="navigation-container">
-        <div className="navigation-item-container">
-          <div className="navigation-item-logo">
-            <img
-              className="navigation-item-logo-img"
-              src={WhiteLogo}
-              alt="Logo"
-            ></img>
+    <>
+      <section id="Navigation">
+        <div className="navigation-container">
+          <div className="navigation-item-container">
+            <div className="navigation-item-logo">
+              <img
+                className="navigation-item-logo-img"
+                src={WhiteLogo}
+                alt="Logo"
+              ></img>
+            </div>
+
+            {click === true ? (
+              <input className="navigation-item-searchbar"></input>
+            ) : null}
+            <button
+              className={
+                "navigation-item-search-" + (click === true ? "on" : "off")
+              }
+              onClick={() => searchOnClick(click)}
+            >
+              <img
+                className="navigation-item-search-img"
+                src={SearchImg}
+                alt="검색"
+                title="검색"
+              ></img>
+            </button>
+
+            <button
+              className="navigation-item-post"
+              onClick={() => postOnClick(click2)}
+            >
+              <img className="navigation-item-post-img" src={PostImg} />
+            </button>
+            <button className="navigation-item-menu">
+              <img className="navigation-item-menu-img" src={MenuImg} />
+            </button>
+            <button className="navigation-item-user">
+              <img className="navigation-item-user-img" />
+            </button>
           </div>
-          {click === true ? (
-            <input className="navigation-item-searchbar"></input>
-          ) : (
-            <div></div>
-          )}
-          <button
-            className={
-              "navigation-item-search-" + (click === true ? "on" : "off")
-            }
-            onClick={() => searchOnClick(click)}
-          >
-            <img
-              className="navigation-item-search-img"
-              src={SearchImg}
-              alt="검색"
-              title="검색"
-            ></img>
-          </button>
-          {click2 === true ? (
-            <div className="navigation-item-post-form"></div>
-          ) : (
-            <div></div>
-          )}
-          <button
-            className="navigation-item-post"
-            onClick={() => postOnClick(click2)}
-          >
-            <img className="navigation-item-post-img" src={PostImg}></img>
-          </button>
-          <button className="navigation-item-menu">
-            <img className="navigation-item-menu-img" src={MenuImg}></img>
-          </button>
-          <button className="navigation-item-user">
-            <img className="navigation-item-user-img"></img>
-          </button>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {click2 === true ? (
+        <div className="nav-item-post-form-wrap">
+          <div className="navigation-item-post-form">
+            <div className="navigation-item-post-form-container">
+              <div className="navigation-item-post-form-headerWrap">
+                <div className="navigation-item-post-form-title">
+                  질문을 마음껏 작성해주세요 :)
+                </div>
+                <button
+                  className="navigation-item-post-form-exit"
+                  onClick={() => postOnClick(click2)}
+                >
+                  <img src={PostExitImg} title="취소" />
+                </button>
+              </div>
+              <input
+                className="navigation-item-post-form-content-input"
+                placeholder="내용을 적어주세요"
+              ></input>
+              <div className="navigation-item-post-form-hashtag-wrap">
+                <input
+                  className="navigation-item-post-form-hashtag-input"
+                  placeholder="전공 태그 (쉼표로 구분해주세요)"
+                ></input>
+                <button className="navigation-item-post-form-hashtag-add-button">
+                  +
+                </button>
+              </div>
+              <div className="navigation-item-post-form-footerWrap">
+                <button className="navigation-item-post-form-footerWrap-Btn">
+                  게시
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 };
 
