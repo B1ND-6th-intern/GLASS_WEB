@@ -1,10 +1,10 @@
 import "./Navigation.scss";
 import { useState } from "react";
-import WhiteLogo from "../assets/img/WhiteLogo.png";
-import PostImg from "../assets//img/Post.png";
-import MenuImg from "../assets//img/Menu.png";
-import SearchImg from "../assets//img/Search.png";
-import PostExitImg from "../assets/img/PostExit.svg";
+import WhiteLogo from "../../assets/img/WhiteLogo.png";
+import PostImg from "../../assets/img/Post.png";
+import MenuImg from "../../assets/img/Menu.png";
+import SearchImg from "../../assets/img/Search.png";
+import PostExitImg from "../../assets/img/PostExit.svg";
 
 const useClick = (isClcik) => {
   const [click, setClick] = useState(isClcik);
