@@ -1,6 +1,6 @@
 import "./App.css";
 import { HashRouter, Route } from "react-router-dom";
-import Navigation from "./components/Nav/Navigation";
+import Navigation from "./page/Nav/Navigation";
 import Contentcontainer from "./page/Main/MainPage";
 
 function App() {

@@ -1,10 +1,11 @@
 import "./Navigation.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import WhiteLogo from "../../assets/img/WhiteLogo.png";
 import PostImg from "../../assets/img/Post.png";
 import MenuImg from "../../assets/img/Menu.png";
 import SearchImg from "../../assets/img/Search.png";
 import PostExitImg from "../../assets/img/PostExit.svg";
+import Network from "../../components/Nav/NetWork";
 
 const useClick = (isClcik) => {
   const [click, setClick] = useState(isClcik);
@@ -16,7 +17,26 @@ const useClick2 = (isClick2) => {
   return { changeSearch2: setClick2, click2 };
 };
 
+const UseNetwork = (onChange) => {
+  const [status, setStatus] = useState(navigator.onLine);
+  const handleChange = () => {
+    if (typeof onChange === "function") {
+      onChange(navigator.onLine);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("online", handleChange);
+    window.addEventListener("offline", handleChange);
+    return () => {
+      window.removeEventListener("online", handleChange);
+      window.removeEventListener("offline", handleChange);
+    };
+  }, []);
+  return status;
+};
+
 const Navigation = () => {
+  const onLine = UseNetwork();
   const { changeSearch, click } = useClick(0, 1);
   const { changeSearch2, click2 } = useClick2(0, 1);
 
@@ -70,6 +90,7 @@ const Navigation = () => {
             </button>
             <button className="navigation-item-user">
               <img className="navigation-item-user-img" />
+              {onLine ? <Network /> : null}
             </button>
           </div>
         </div>
