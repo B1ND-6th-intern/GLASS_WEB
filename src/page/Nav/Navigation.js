@@ -36,7 +36,11 @@ const UseNetwork = (onChange) => {
 };
 
 const Navigation = () => {
-  const onLine = UseNetwork();
+  const handleNetworkChange = (online) => {
+    console.log(online ? "온라인" : "오프라인");
+  };
+  const onLine = UseNetwork(handleNetworkChange);
+  console.log(onLine);
   const { changeSearch, click } = useClick(0, 1);
   const { changeSearch2, click2 } = useClick2(0, 1);
 
