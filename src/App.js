@@ -6,8 +6,8 @@ import Contentcontainer from "./page/Main/MainPage";
 function App() {
   return (
     <HashRouter>
-      <Navigation />
-      <Contentcontainer />
+      <Navigation path="/" />
+      <Contentcontainer path="/" />
     </HashRouter>
   );
 }
