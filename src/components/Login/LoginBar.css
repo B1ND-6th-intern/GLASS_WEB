@@ -1,0 +1,8 @@
+.loginbar-container {
+  width: 570px;
+  height: 650px;
+  background-color: #fbfbfb;
+  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
