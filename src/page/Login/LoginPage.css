@@ -1,0 +1,22 @@
+.Login-container {
+  width: 100vw;
+  height: 100vh;
+  background: url("../../assets//img/BlackLogo.png");
+  background-size: 250px;
+  background-color: #402597;
+  background-repeat: space;
+}
+
+.Login-background-img1 {
+  width: 300px;
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+}
+
+.Login-background-img2 {
+  width: 300px;
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+}
