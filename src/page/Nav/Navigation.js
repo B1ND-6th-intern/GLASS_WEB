@@ -142,7 +142,11 @@ const Navigation = () => {
                   placeholder="전공 태그 (쉼표로 구분해주세요)"
                 ></input>
                 <button className="navigation-item-post-form-hashtag-add-button">
-                  +
+                  <img
+                    className="navigation-item-post-form-hashtag-add-button-img"
+                    src={PostImg}
+                    title="해쉬태그 추가"
+                  />
                 </button>
               </div>
               <div className="navigation-item-post-form-footerWrap">
