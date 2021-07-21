@@ -69,6 +69,7 @@ option {
 }
 
 .signpbar-id-input-check:active {
+  transition: 1s;
   background-color: var(--main_color);
   color: white;
 }
