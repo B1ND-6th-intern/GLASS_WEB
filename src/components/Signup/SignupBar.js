@@ -1,4 +1,5 @@
 import "./SignupBar.css";
+import Logo1 from "../../assets/img/SignupPageBackGroundImg1.svg";
 
 const Numbers = () => {
   const numbers = [];
@@ -13,8 +14,14 @@ const Numbers = () => {
 const SignupBar = () => {
   return (
     <div className="signupbar-container">
-      <div className="signupbar-title">회원가입</div>
-      <input className="signupbar-id-input" placeholder="아이디" />
+      <div className="signupbar-title">
+        회원가입
+        <img src={Logo1} className="signupbar-img1" />
+      </div>
+      <div className="signupbar-id-wrap">
+        <input className="signupbar-id-input" placeholder="아이디" />
+        <button className="signpbar-id-input-check">확인</button>
+      </div>
       <div className="signupbar-pw-wrap">
         <input
           type="password"

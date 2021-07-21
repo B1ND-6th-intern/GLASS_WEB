@@ -3,7 +3,7 @@
   height: 100vh;
   background: url("../../assets//img/BlackLogo.png");
   background-size: 250px;
-  background-color: #402597;
+  background-color: var(--main_color);
   background-repeat: space;
   display: flex;
   align-items: center;
