@@ -1,0 +1,11 @@
+.signup-container {
+  width: 100vw;
+  height: 100vh;
+  background: url("../../assets//img/BlackLogo.png");
+  background-size: 250px;
+  background-color: #402597;
+  background-repeat: space;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
