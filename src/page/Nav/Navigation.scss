@@ -47,7 +47,7 @@
   border-radius: 50px;
   background-color: white;
   outline: none;
-  border: 5px solid #4e007e;
+  border: 3px solid #4e007e;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,7 +64,7 @@
   border-radius: 50px;
   background-color: white;
   outline: none;
-  border: 5px solid #4e007e;
+  border: 3px solid #4e007e;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,6 +84,7 @@
   height: 100%;
   background-color: rgba(238, 238, 238, 0.9);
   overflow: hidden;
+  top: 0px;
 }
 .navigation-item-post-form {
   position: absolute;
@@ -159,11 +160,20 @@
 }
 
 .navigation-item-post-form-hashtag-add-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-left: auto;
   width: 10%;
   height: 100%;
   // margin: 0px auto;
 }
+
+.navigation-item-post-form-hashtag-add-button-img {
+  width: 30px;
+  height: 30px;
+}
+
 .navigation-item-post-form-footerWrap {
   width: 100%;
 }

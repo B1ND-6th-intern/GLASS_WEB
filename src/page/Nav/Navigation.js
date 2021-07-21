@@ -53,6 +53,23 @@ const Navigation = () => {
     changeSearch2(!isClick2);
   };
 
+  {
+    useEffect(() => {
+      if (click2 === true) {
+        document.body.style.cssText = `
+        position : fixed;
+        top : -${window.scrollY}px
+        overflow-y : scroll;
+        width : 100%`;
+        return () => {
+          const scrollY = document.body.style.top;
+          document.body.style.cssText = "";
+          window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+        };
+      }
+    }, [click2]);
+  }
+
   return (
     <>
       <section id="Navigation">
@@ -125,7 +142,11 @@ const Navigation = () => {
                   placeholder="전공 태그 (쉼표로 구분해주세요)"
                 ></input>
                 <button className="navigation-item-post-form-hashtag-add-button">
-                  +
+                  <img
+                    className="navigation-item-post-form-hashtag-add-button-img"
+                    src={PostImg}
+                    title="해쉬태그 추가"
+                  />
                 </button>
               </div>
               <div className="navigation-item-post-form-footerWrap">
