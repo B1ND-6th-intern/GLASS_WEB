@@ -17,7 +17,7 @@ const useInputId = (initial) => {
   const onChange = (event) => {
     let id = event.target.value;
     setId(id);
-    console.log("ID : " + id);
+    // console.log("ID : " + id);
   };
   return { id, onChange };
 };
@@ -27,7 +27,7 @@ const useInputPw = (initial) => {
   const onChange = (event) => {
     let pw = event.target.value;
     setPw(pw);
-    console.log("PW : " + pw);
+    // console.log("PW : " + pw);
   };
   return { pw, onChange };
 };
@@ -38,14 +38,14 @@ const useInputChkPw = (initial) => {
   const onChange = (event) => {
     let CheckPw = event.target.value;
     setCheckPw(CheckPw);
-    console.log("Check PW : " + CheckPw);
+    // console.log("Check PW : " + CheckPw);
   };
 
   return { CheckPw, onChange };
 };
 
-let isTrue = true;
 const SignupBar = () => {
+  const [isTrue, SetIstrue] = useState(true);
   const inputId = useInputId(" ");
   const inputPw = useInputPw(" ");
   //   console.log(inputPw);
@@ -53,11 +53,11 @@ const SignupBar = () => {
   //   console.log(inputCheckPw);
   useEffect(() => {
     if (inputPw.pw === inputCheckPw.CheckPw) {
-      isTrue = true;
+      SetIstrue(true);
     } else {
-      isTrue = false;
+      SetIstrue(false);
     }
-    console.log(isTrue);
+    // console.log(isTrue);
     return isTrue;
   }, [inputPw.pw, inputCheckPw.CheckPw]);
 
@@ -90,9 +90,13 @@ const SignupBar = () => {
             {...inputCheckPw}
           />
           {isTrue ? (
-            <p>비밀번호가 일치합니다.</p>
+            <p className="signupbar-pw-input-check-alert">
+              비밀번호가 일치합니다.
+            </p>
           ) : (
-            <p>비밀번호가 일치하지 않습니다.</p>
+            <p className="signupbar-pw-input-check-alert">
+              비밀번호가 일치하지 않습니다.
+            </p>
           )}
         </div>
       </div>
