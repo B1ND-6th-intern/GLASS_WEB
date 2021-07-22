@@ -31,6 +31,7 @@ select,
   height: 50px;
   margin: 10px auto;
   box-sizing: border-box;
+  display: flex;
 }
 
 input,
@@ -60,7 +61,7 @@ option {
   cursor: pointer;
   width: 13%;
   height: 100%;
-  float: right;
+  margin-left: auto;
   border: 1px solid grey;
   border-radius: 5px;
   background-color: white;
@@ -75,14 +76,20 @@ option {
 }
 
 .signupbar-pw-input,
-.signupbar-pw-input-check {
+.signupbar-pw-input-check-wrap {
   width: 49%;
   margin: 0px 0px;
   padding: 0px;
 }
 
+.signupbar-pw-input-check-wrap {
+  margin-left: auto;
+}
+
 .signupbar-pw-input-check {
+  width: 100%;
   float: right;
+  margin: 0px;
 }
 
 .signupbar-confirm-btn {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./SignupBar.css";
 import Logo1 from "../../assets/img/SignupPageBackGroundImg1.svg";
 
@@ -17,6 +17,7 @@ const useInputId = (initial) => {
   const onChange = (event) => {
     let id = event.target.value;
     setId(id);
+    console.log("ID : " + id);
   };
   return { id, onChange };
 };
@@ -26,34 +27,40 @@ const useInputPw = (initial) => {
   const onChange = (event) => {
     let pw = event.target.value;
     setPw(pw);
+    console.log("PW : " + pw);
   };
   return { pw, onChange };
 };
 
-const useInputChkPw = (chkValue, initial, validator) => {
+const useInputChkPw = (initial) => {
   const [CheckPw, setCheckPw] = useState(initial);
-  const [error, setError] = useState(" ");
+
   const onChange = (event) => {
     let CheckPw = event.target.value;
     setCheckPw(CheckPw);
+    console.log("Check PW : " + CheckPw);
   };
-  let willUpdate = true;
-  if (typeof validator === "function") {
-    willUpdate = validator(chkValue, CheckPw);
-  }
-  if (willUpdate) {
-    setError("비밀번호가 일치합니다.");
-  } else {
-    setError("비밀번호가 일치하지 않습니다.");
-  }
-  return { CheckPw, onChange, error };
-};
-const pwTrue = (value, checkValue) => value == checkValue;
 
+  return { CheckPw, onChange };
+};
+
+let isTrue = true;
 const SignupBar = () => {
   const inputId = useInputId(" ");
   const inputPw = useInputPw(" ");
-  //   const inputCheckPw = useInputChkPw(" ", pwTrue);
+  //   console.log(inputPw);
+  const inputCheckPw = useInputChkPw(" ");
+  //   console.log(inputCheckPw);
+  useEffect(() => {
+    if (inputPw.pw === inputCheckPw.CheckPw) {
+      isTrue = true;
+    } else {
+      isTrue = false;
+    }
+    console.log(isTrue);
+    return isTrue;
+  }, [inputPw.pw, inputCheckPw.CheckPw]);
+
   return (
     <div className="signupbar-container">
       <div className="signupbar-title">
@@ -75,12 +82,19 @@ const SignupBar = () => {
           placeholder="비밀번호"
           {...inputPw}
         />
-        <input
-          type="password"
-          className="signupbar-pw-input-check"
-          placeholder="비밀번호 확인"
-          //   {...inputCheckPw}
-        />
+        <div className="signupbar-pw-input-check-wrap">
+          <input
+            type="password"
+            className="signupbar-pw-input-check"
+            placeholder="비밀번호 확인"
+            {...inputCheckPw}
+          />
+          {isTrue ? (
+            <p>비밀번호가 일치합니다.</p>
+          ) : (
+            <p>비밀번호가 일치하지 않습니다.</p>
+          )}
+        </div>
       </div>
       <select className="signupbar-grades-select" placeholder="학년">
         <option className="signupbar-grade-select">1학년</option>
