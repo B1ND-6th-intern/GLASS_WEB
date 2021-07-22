@@ -1,0 +1,113 @@
+.signupbar-container {
+  width: 490px;
+  height: 630px;
+  background-color: #fbfbfb;
+  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  flex-direction: column;
+  display: flex;
+}
+
+.signupbar-title {
+  font-size: 40px;
+  font-weight: 300;
+  margin: 20px;
+  display: flex;
+}
+
+.signupbar-img1 {
+  width: 100px;
+  position: relative;
+  top: 45%;
+  left: 38%;
+}
+
+input,
+select,
+.signupbar-pw-wrap,
+.signupbar-id-wrap {
+  width: 90%;
+  height: 50px;
+  margin: 10px auto;
+  box-sizing: border-box;
+  display: flex;
+}
+
+input,
+select {
+  border: 1px solid grey;
+  outline: none;
+  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+option {
+  border: 1px solid var(--main_color);
+  border-radius: 5px;
+}
+.signupbar-id-input,
+.signpbar-id-input-check {
+  margin: 0px 0px;
+}
+
+.signupbar-id-input {
+  width: 85%;
+  padding: 0px;
+}
+
+.signpbar-id-input-check {
+  cursor: pointer;
+  width: 13%;
+  height: 100%;
+  margin-left: auto;
+  border: 1px solid grey;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+}
+
+.signpbar-id-input-check:active {
+  transition: 1s;
+  background-color: var(--main_color);
+  color: white;
+}
+
+.signupbar-pw-input,
+.signupbar-pw-input-check-wrap {
+  width: 49%;
+  margin: 0px 0px;
+  padding: 0px;
+}
+
+.signupbar-pw-input-check-wrap {
+  margin-left: auto;
+}
+
+.signupbar-pw-input-check {
+  width: 100%;
+  float: right;
+  margin: 0px;
+}
+
+.signupbar-pw-input-check-alert {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.signupbar-confirm-btn {
+  width: 180px;
+  height: 50px;
+  margin: 0px auto;
+  margin-top: auto;
+  margin-bottom: 30px;
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: 5px;
+  font-size: 20px;
+  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
