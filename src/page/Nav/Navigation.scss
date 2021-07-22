@@ -148,15 +148,18 @@
 
 .navigation-item-post-form-hashtag-wrap {
   margin: 15px;
+  height: 45px;
   width: 100%;
   align-items: center;
   display: flex;
+  box-sizing: border-box;
 }
 
 .navigation-item-post-form-hashtag-input {
   width: 85%;
-  height: 35px;
-  // margin: 0px auto;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
 }
 
 .navigation-item-post-form-hashtag-add-button {
