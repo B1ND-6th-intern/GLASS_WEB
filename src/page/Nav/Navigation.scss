@@ -267,6 +267,17 @@
     0 1px 3px -1px rgba(0, 0, 0, 0.3);
 }
 
+.navigation-item-user-form-exit {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background: none;
+  outline: none;
+  border: none;
+  position: absolute;
+  left: 90%;
+}
+
 .navigation-item-user-form-profileImg {
   width: 130px;
   height: 130px;
@@ -295,6 +306,7 @@
 
 .navigation-item-user-form-info-title {
   font-size: 30px;
+  margin-top: 5px;
 }
 
 .navigation-item-user-form-info-class {
@@ -310,13 +322,47 @@
   display: flex;
 }
 
-.navigation-item-user-form-info-class-text {
+.navigation-item-user-form-info-class-text,
+.navigation-item-user-form-info-mail-text {
   margin: 0px 2px;
+}
+
+.navigation-item-user-form-info-line {
+  width: 92%;
+  margin: 0px auto;
 }
 
 .navigation-item-user-form-footerWrap {
   height: 45%;
   padding-top: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation-item-user-form-btn-wrap {
+  margin-top: auto;
+  display: flex;
+}
+
+.navigation-item-user-form-passwordChange,
+.navigation-item-user-form-logOut,
+.navigation-item-user-form-modifyProfile {
+  height: 35px;
+  margin: 0px 10px;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.navigation-item-user-form-passwordChange {
+  margin-left: auto;
+}
+
+.navigation-item-user-form-modifyProfile {
+}
+
+.navigation-item-user-form-logOut {
+  margin-right: auto;
 }
 
 .navigation-item-user {
