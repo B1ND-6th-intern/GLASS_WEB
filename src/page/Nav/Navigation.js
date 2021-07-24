@@ -17,6 +17,11 @@ const useClick2 = (isClick2) => {
   return { changeSearch2: setClick2, click2 };
 };
 
+const useClick3 = (isClcik) => {
+  const [click3, setClick3] = useState(isClcik);
+  return { changeSearch3: setClick3, click3 };
+};
+
 const UseNetwork = (onChange) => {
   const [status, setStatus] = useState(navigator.onLine);
   const handleChange = () => {
@@ -43,6 +48,7 @@ const Navigation = () => {
   console.log(onLine);
   const { changeSearch, click } = useClick(0, 1);
   const { changeSearch2, click2 } = useClick2(0, 1);
+  const { changeSearch3, click3 } = useClick3(0, 1);
 
   const searchOnClick = (isClcik) => {
     changeSearch(!isClcik);
@@ -51,6 +57,10 @@ const Navigation = () => {
 
   const postOnClick = (isClick2) => {
     changeSearch2(!isClick2);
+  };
+
+  const userOnClick = (isclick3) => {
+    changeSearch3(!isclick3);
   };
 
   {
@@ -68,6 +78,23 @@ const Navigation = () => {
         };
       }
     }, [click2]);
+  }
+
+  {
+    useEffect(() => {
+      if (click3 === true) {
+        document.body.style.cssText = `
+        position : fixed;
+        top : -${window.scrollY}px
+        overflow-y : scroll;
+        width : 100%`;
+        return () => {
+          const scrollY = document.body.style.top;
+          document.body.style.cssText = "";
+          window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+        };
+      }
+    }, [click3]);
   }
 
   return (
@@ -109,7 +136,10 @@ const Navigation = () => {
             <button className="navigation-item-menu">
               <img className="navigation-item-menu-img" src={MenuImg} />
             </button>
-            <button className="navigation-item-user">
+            <button
+              className="navigation-item-user"
+              onClick={() => userOnClick(click3)}
+            >
               <img className="navigation-item-user-img" />
               {onLine ? <Network /> : null}
             </button>
@@ -153,6 +183,67 @@ const Navigation = () => {
                 <button className="navigation-item-post-form-footerWrap-Btn">
                   게시
                 </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
+      {click3 === true ? (
+        <div className="nav-item-user-form-wrap">
+          <div className="navigation-item-user-form">
+            <div className="navigation-item-user-form-headerWrap">
+              <button
+                className="navigation-item-user-form-exit"
+                onClick={() => userOnClick(click3)}
+              >
+                <img src={PostExitImg} title="취소" />
+              </button>
+              <img className="navigation-item-user-form-profileImg" />
+              <div className="navigation-item-user-form-name">Name</div>
+            </div>
+            <div className="navigation-item-user-form-contentWrap">
+              <div className="navigation-item-user-form-middleWrap">
+                <div className="navigation-item-user-form-info-title">
+                  계정정보
+                </div>
+                <div className="navigation-item-user-form-info-class">
+                  <p className="navigation-item-user-form-info-class-title">
+                    학급정보
+                  </p>
+                  <div className="navigation-item-user-form-info-class-wrap">
+                    <p className="navigation-item-user-form-info-class-text">
+                      1학년
+                    </p>
+                    <p className="navigation-item-user-form-info-class-text">
+                      1반
+                    </p>
+                    <p className="navigation-item-user-form-info-class-text">
+                      1번
+                    </p>
+                  </div>
+                </div>
+                <div className="navigation-item-user-form-info-mail">
+                  <p className="navigation-item-user-form-info-mail-title">
+                    메일
+                  </p>
+                  <p className="navigation-item-user-form-info-mail-text">
+                    ldh165163@gmail.com
+                  </p>
+                </div>
+              </div>
+              <hr className="navigation-item-user-form-info-line" />
+              <div className="navigation-item-user-form-footerWrap">
+                <div className="navigation-item-user-form-btn-wrap">
+                  <button className="navigation-item-user-form-passwordChange">
+                    비밀번호 변경
+                  </button>
+                  <button className="navigation-item-user-form-modifyProfile">
+                    프로필 수정
+                  </button>
+                  <button className="navigation-item-user-form-logOut">
+                    로그아웃
+                  </button>
+                </div>
               </div>
             </div>
           </div>
