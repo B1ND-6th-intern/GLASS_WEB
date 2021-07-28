@@ -7,21 +7,6 @@ import SearchImg from "../../assets/img/Search.png";
 import PostExitImg from "../../assets/img/PostExit.svg";
 import Network from "../../components/Nav/NetWork";
 
-const useClick = (isClcik) => {
-  const [click, setClick] = useState(isClcik);
-  return { changeSearch: setClick, click };
-};
-
-const useClick2 = (isClick2) => {
-  const [click2, setClick2] = useState(isClick2);
-  return { changeSearch2: setClick2, click2 };
-};
-
-const useClick3 = (isClcik) => {
-  const [click3, setClick3] = useState(isClcik);
-  return { changeSearch3: setClick3, click3 };
-};
-
 const UseNetwork = (onChange) => {
   const [status, setStatus] = useState(navigator.onLine);
   const handleChange = () => {
@@ -41,28 +26,19 @@ const UseNetwork = (onChange) => {
 };
 
 const Navigation = () => {
+  const [click, setClick] = useState(false);
+  const [click2, setClick2] = useState(false);
+  const [click3, setClick3] = useState(false);
+
+  const toggleClick = () => setClick((prev) => !prev);
+  const toggleClick2 = () => setClick2((prev) => !prev);
+  const toggleClick3 = () => setClick3((prev) => !prev);
+
   const handleNetworkChange = (online) => {
     console.log(online ? "온라인" : "오프라인");
   };
   const onLine = UseNetwork(handleNetworkChange);
   console.log(onLine);
-  const { changeSearch, click } = useClick(0, 1);
-  const { changeSearch2, click2 } = useClick2(0, 1);
-  const { changeSearch3, click3 } = useClick3(0, 1);
-
-  const searchOnClick = (isClcik) => {
-    changeSearch(!isClcik);
-    console.log(isClcik);
-  };
-
-  const postOnClick = (isClick2) => {
-    changeSearch2(!isClick2);
-  };
-
-  const userOnClick = (isclick3) => {
-    changeSearch3(!isclick3);
-  };
-
   {
     useEffect(() => {
       if (click2 === true) {
@@ -117,7 +93,7 @@ const Navigation = () => {
               className={
                 "navigation-item-search-" + (click === true ? "on" : "off")
               }
-              onClick={() => searchOnClick(click)}
+              onClick={toggleClick}
             >
               <img
                 className="navigation-item-search-img"
@@ -127,19 +103,13 @@ const Navigation = () => {
               ></img>
             </button>
 
-            <button
-              className="navigation-item-post"
-              onClick={() => postOnClick(click2)}
-            >
+            <button className="navigation-item-post" onClick={toggleClick2}>
               <img className="navigation-item-post-img" src={PostImg} />
             </button>
             <button className="navigation-item-menu">
               <img className="navigation-item-menu-img" src={MenuImg} />
             </button>
-            <button
-              className="navigation-item-user"
-              onClick={() => userOnClick(click3)}
-            >
+            <button className="navigation-item-user" onClick={toggleClick3}>
               <img className="navigation-item-user-img" />
               {onLine ? <Network /> : null}
             </button>
@@ -157,7 +127,7 @@ const Navigation = () => {
                 </div>
                 <button
                   className="navigation-item-post-form-exit"
-                  onClick={() => postOnClick(click2)}
+                  onClick={toggleClick2}
                 >
                   <img src={PostExitImg} title="취소" />
                 </button>
@@ -194,7 +164,7 @@ const Navigation = () => {
             <div className="navigation-item-user-form-headerWrap">
               <button
                 className="navigation-item-user-form-exit"
-                onClick={() => userOnClick(click3)}
+                onClick={toggleClick3}
               >
                 <img src={PostExitImg} title="취소" />
               </button>
