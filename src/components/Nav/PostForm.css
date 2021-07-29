@@ -1,0 +1,134 @@
+.nav-item-post-form-wrap {
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(238, 238, 238, 0.9);
+  overflow: hidden;
+  top: 0px;
+}
+.navigation-item-post-form {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 370px;
+  left: 790px;
+  display: inline-block;
+  width: 510px;
+  height: 570px;
+  background-color: #534974;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+}
+.navigation-item-post-form-container {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation-item-post-form-headerWrap {
+  display: flex;
+  width: 100%;
+}
+
+.navigation-item-post-form-title {
+  display: block;
+  color: #eeeeee;
+  font-size: 22px;
+  margin-bottom: 16px;
+  width: 100%;
+  float: right;
+  margin-right: auto;
+  align-items: center;
+  margin: 0px;
+}
+
+.navigation-item-post-form-exit {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.navigation-item-post-form-content-input {
+  width: 100%;
+  height: 65%;
+  font-size: 20px;
+  vertical-align: top;
+  box-sizing: border-box;
+  margin-top: 15px;
+}
+
+.navigation-item-post-form-hashtag-wrap {
+  margin: 15px;
+  height: 45px;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.navigation-item-post-form-hashtag-input {
+  width: 85%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.navigation-item-post-form-hashtag-add-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  width: 10%;
+  height: 100%;
+}
+
+.navigation-item-post-form-hashtag-add-button-img {
+  width: 30px;
+  height: 30px;
+}
+
+.navigation-item-post-form-footerWrap {
+  width: 100%;
+}
+
+.navigation-item-post-form-footerWrap-Btn {
+  width: 109px;
+  height: 49px;
+  float: right;
+  margin: 10.75px 0px;
+  margin-top: 15px;
+}
+
+.navigation-item-post,
+.navigation-item-menu {
+  width: 50px;
+  height: 50px;
+  background: none;
+  border: none;
+}
+
+.navigation-item-post-img,
+.navigation-item-menu-img {
+  width: 35px;
+  height: 35px;
+}
+
+.navigation-item-post {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  outline: none;
+}
