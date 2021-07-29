@@ -1,0 +1,153 @@
+.nav-item-user-form-wrap {
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(238, 238, 238, 0.9);
+  overflow: hidden;
+  top: 0px;
+}
+
+.navigation-item-user-form {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 370px;
+  left: 790px;
+  display: inline-block;
+  width: 510px;
+  height: 600px;
+  background-color: #fff;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+}
+
+.navigation-item-user-form-headerWrap,
+.navigation-item-user-form-middleWrap,
+.navigation-item-user-form-footerWrap {
+  padding: 20px;
+}
+
+.navigation-item-user-form-headerWrap {
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+}
+
+.navigation-item-user-form-exit {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background: none;
+  outline: none;
+  border: none;
+  position: absolute;
+  left: 90%;
+}
+
+.navigation-item-user-form-profileImg {
+  width: 130px;
+  height: 130px;
+  border: 1px solid gray;
+  border-radius: 200px;
+  margin: auto;
+}
+
+.navigation-item-user-form-name {
+  font-size: 40px;
+  margin: auto;
+}
+
+.navigation-item-user-form-contentWrap {
+  margin-top: 5px;
+  height: 62.5%;
+  background-color: #f6f6f6;
+  border-radius: 5px;
+}
+
+.navigation-item-user-form-middleWrap {
+  height: 50%;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.navigation-item-user-form-info-title {
+  font-size: 30px;
+  margin: 5px 0px;
+  font-weight: 300;
+}
+
+.navigation-item-user-form-info-class {
+}
+
+.navigation-item-user-form-info-class-title,
+.navigation-item-user-form-info-mail-title {
+  font-weight: bold;
+  color: #999999;
+  margin: 5px 0px;
+}
+.navigation-item-user-form-info-class-wrap {
+  display: flex;
+}
+
+.navigation-item-user-form-info-class-text,
+.navigation-item-user-form-info-mail-text {
+  margin: 0px 2px;
+}
+
+.navigation-item-user-form-info-line {
+  width: 92%;
+  margin: 0px auto;
+}
+
+.navigation-item-user-form-footerWrap {
+  height: 45%;
+  padding-top: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation-item-user-form-btn-wrap {
+  margin-top: auto;
+  display: flex;
+}
+
+.navigation-item-user-form-passwordChange,
+.navigation-item-user-form-logOut,
+.navigation-item-user-form-modifyProfile {
+  height: 35px;
+  margin: 0px 10px;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid gray;
+}
+
+.navigation-item-user-form-passwordChange {
+  margin-left: auto;
+}
+
+.navigation-item-user-form-modifyProfile {
+}
+
+.navigation-item-user-form-logOut {
+  margin-right: auto;
+}
+
+.navigation-item-user {
+  cursor: pointer;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  background: none;
+  outline: none;
+  border: 1px solid black;
+  margin-left: 20px;
+}
