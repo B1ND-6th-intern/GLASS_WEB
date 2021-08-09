@@ -1,13 +1,31 @@
 import PostExitImg from "../../assets/img/PostExit.svg";
 import PostImg from "../../assets/img/Post.png";
+import { useEffect } from "react";
 import "./PostForm.css";
 
-const PostForm = ({ isClick, toggleClick2 }) => {
+const PostForm = ({ postIsClick, toggleClick2 }) => {
+  {
+    useEffect(() => {
+      if (postIsClick === true) {
+        document.body.style.cssText = `
+        position : fixed;
+        top : -${window.scrollY}px
+        overflow-y : scroll;
+        width : 100%`;
+        return () => {
+          const scrollY = document.body.style.top;
+          document.body.style.cssText = "";
+          window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+        };
+      }
+    }, [postIsClick]);
+  }
+
   return (
     <>
-      {isClick ? (
+      {postIsClick ? (
         <div className="nav-item-post-form-wrap">
-          <div className="navigation-item-post-form">
+          <form className="navigation-item-post-form">
             <div className="navigation-item-post-form-container">
               <div className="navigation-item-post-form-headerWrap">
                 <div className="navigation-item-post-form-title">
@@ -43,7 +61,7 @@ const PostForm = ({ isClick, toggleClick2 }) => {
                 </button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       ) : null}
     </>

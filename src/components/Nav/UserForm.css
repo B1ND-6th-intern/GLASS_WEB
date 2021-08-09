@@ -81,8 +81,8 @@
   font-weight: 300;
 }
 
-.navigation-item-user-form-info-class {
-}
+/* .navigation-item-user-form-info-class {
+} */
 
 .navigation-item-user-form-info-class-title,
 .navigation-item-user-form-info-mail-title {
@@ -131,8 +131,8 @@
   margin-left: auto;
 }
 
-.navigation-item-user-form-modifyProfile {
-}
+/* .navigation-item-user-form-modifyProfile {
+} */
 
 .navigation-item-user-form-logOut {
   margin-right: auto;
