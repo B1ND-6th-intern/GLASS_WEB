@@ -1,12 +1,30 @@
+import { useEffect } from "react";
 import PostExitImg from "../../assets/img/PostExit.svg";
 import "./UserForm.css";
 
-const UserForm = ({ isClick2, toggleClick3 }) => {
+const UserForm = ({ userIsClcik, toggleClick3 }) => {
+  {
+    useEffect(() => {
+      if (userIsClcik === true) {
+        document.body.style.cssText = `
+        position : fixed;
+        top : -${window.scrollY}px
+        overflow-y : scroll;
+        width : 100%`;
+        return () => {
+          const scrollY = document.body.style.top;
+          document.body.style.cssText = "";
+          window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+        };
+      }
+    }, [userIsClcik]);
+  }
+
   return (
     <>
-      {isClick2 ? (
+      {userIsClcik ? (
         <div className="nav-item-user-form-wrap">
-          <div className="navigation-item-user-form">
+          <form className="navigation-item-user-form">
             <div className="navigation-item-user-form-headerWrap">
               <button
                 className="navigation-item-user-form-exit"
@@ -62,7 +80,7 @@ const UserForm = ({ isClick2, toggleClick3 }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       ) : null}
     </>

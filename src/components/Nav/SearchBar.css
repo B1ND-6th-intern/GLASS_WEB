@@ -1,0 +1,11 @@
+.navigation-item-searchbar {
+  width: 700px;
+  height: 45px;
+  margin-left: 362px;
+  position: absolute;
+  outline: none;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border: 1px solid black;
+  font-size: 16px;
+}
