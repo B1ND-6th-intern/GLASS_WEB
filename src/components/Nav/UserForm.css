@@ -62,6 +62,12 @@
   margin: auto;
 }
 
+.navigation-item-user-form-info-modify-name {
+  font-size: 40px;
+  width: 300px;
+  height: 40px;
+}
+
 .navigation-item-user-form-contentWrap {
   margin-top: 5px;
   height: 62.5%;
@@ -99,6 +105,13 @@
   margin: 0px 2px;
 }
 
+.navigation-item-user-form-info-modify-class,
+.navigation-item-user-form-info-modify-group,
+.navigation-item-user-form-info-modify-number {
+  width: 40px;
+  margin-right: 10px;
+}
+
 .navigation-item-user-form-info-line {
   width: 92%;
   margin: 0px auto;
@@ -125,6 +138,12 @@
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid gray;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 6px;
+  box-sizing: border-box;
 }
 
 .navigation-item-user-form-passwordChange {
