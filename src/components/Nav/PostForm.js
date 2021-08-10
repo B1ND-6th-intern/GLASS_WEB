@@ -2,8 +2,12 @@ import PostExitImg from "../../assets/img/PostExit.svg";
 import PostImg from "../../assets/img/Post.png";
 import { useEffect } from "react";
 import "./PostForm.css";
+import { useState } from "react";
 
-const PostForm = ({ postIsClick, toggleClick2 }) => {
+const PostForm = ({ postIsClick, togglePostClick }) => {
+  const [content, setContent] = useState("");
+  const [hashTag, setHashTag] = useState("");
+
   {
     useEffect(() => {
       if (postIsClick === true) {
@@ -21,11 +25,30 @@ const PostForm = ({ postIsClick, toggleClick2 }) => {
     }, [postIsClick]);
   }
 
+  const onSubmit = (event) => {
+    event.preventDefault();
+    setContent("");
+    setHashTag("");
+    togglePostClick();
+  };
+
+  const onChange = (event) => {
+    const {
+      target: { name, value },
+    } = event;
+
+    if (name === "content") {
+      setContent(value);
+    } else if (name === "hashtag") {
+      setHashTag(value);
+    }
+  };
+
   return (
     <>
       {postIsClick ? (
         <div className="nav-item-post-form-wrap">
-          <form className="navigation-item-post-form">
+          <form onSubmit={onSubmit} className="navigation-item-post-form">
             <div className="navigation-item-post-form-container">
               <div className="navigation-item-post-form-headerWrap">
                 <div className="navigation-item-post-form-title">
@@ -33,32 +56,40 @@ const PostForm = ({ postIsClick, toggleClick2 }) => {
                 </div>
                 <button
                   className="navigation-item-post-form-exit"
-                  onClick={toggleClick2}
+                  onClick={togglePostClick}
                 >
                   <img src={PostExitImg} title="취소" />
                 </button>
               </div>
               <input
+                name="content"
+                onChange={onChange}
+                value={content}
                 className="navigation-item-post-form-content-input"
                 placeholder="내용을 적어주세요"
-              ></input>
+              />
               <div className="navigation-item-post-form-hashtag-wrap">
                 <input
+                  name="hashtag"
+                  onChange={onChange}
+                  value={hashTag}
                   className="navigation-item-post-form-hashtag-input"
                   placeholder="전공 태그 (쉼표로 구분해주세요)"
-                ></input>
-                <button className="navigation-item-post-form-hashtag-add-button">
+                />
+                {/* <button className="navigation-item-post-form-hashtag-add-button">
                   <img
                     className="navigation-item-post-form-hashtag-add-button-img"
                     src={PostImg}
                     title="해쉬태그 추가"
                   />
-                </button>
+                </button> */}
               </div>
               <div className="navigation-item-post-form-footerWrap">
-                <button className="navigation-item-post-form-footerWrap-Btn">
-                  게시
-                </button>
+                <input
+                  type="submit"
+                  className="navigation-item-post-form-footerWrap-Btn"
+                  value="게시"
+                />
               </div>
             </div>
           </form>

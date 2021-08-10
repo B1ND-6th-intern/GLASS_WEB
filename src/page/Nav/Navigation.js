@@ -9,13 +9,11 @@ import UserForm from "../../components/Nav/UserForn";
 import SearchBar from "../../components/Nav/SearchBar";
 
 const Navigation = () => {
-  const [click, setClick] = useState(false);
-  const [click2, setClick2] = useState(false);
-  const [click3, setClick3] = useState(false);
+  const [postClick, setPostClick] = useState(false);
+  const [userClick, setUserClick] = useState(false);
 
-  const toggleClick = () => setClick((prev) => !prev);
-  const toggleClick2 = () => setClick2((prev) => !prev);
-  const toggleClick3 = () => setClick3((prev) => !prev);
+  const togglePostClick = () => setPostClick((prev) => !prev);
+  const toggleUserClick = () => setUserClick((prev) => !prev);
 
   return (
     <>
@@ -32,7 +30,7 @@ const Navigation = () => {
 
             <SearchBar />
 
-            <button className="navigation-item-post" onClick={toggleClick2}>
+            <button className="navigation-item-post" onClick={togglePostClick}>
               <img className="navigation-item-post-img" src={PostImg} />
             </button>
 
@@ -40,7 +38,7 @@ const Navigation = () => {
               <img className="navigation-item-menu-img" src={MenuImg} />
             </button>
 
-            <button className="navigation-item-user" onClick={toggleClick3}>
+            <button className="navigation-item-user" onClick={toggleUserClick}>
               <img className="navigation-item-user-img" />
               <Network />
             </button>
@@ -48,9 +46,9 @@ const Navigation = () => {
         </div>
       </section>
 
-      <PostForm postIsClick={click2} toggleClick2={toggleClick2} />
+      <PostForm postIsClick={postClick} togglePostClick={togglePostClick} />
 
-      <UserForm userIsClcik={click3} toggleClick3={toggleClick3} />
+      <UserForm userIsClcik={userClick} toggleUserClick={toggleUserClick} />
     </>
   );
 };
