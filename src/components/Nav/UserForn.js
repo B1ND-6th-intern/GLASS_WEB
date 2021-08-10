@@ -74,7 +74,7 @@ const UserForm = ({ userIsClcik, toggleUserClick }) => {
                     onChange={onChange}
                   />
                 ) : (
-                  name
+                  name || "이름없음"
                 )}
               </div>
             </div>
@@ -140,7 +140,7 @@ const UserForm = ({ userIsClcik, toggleUserClick }) => {
                     />
                   ) : (
                     <p className="navigation-item-user-form-info-mail-text">
-                      {mail}
+                      {mail || "메일 없음"}
                     </p>
                   )}
                 </div>
