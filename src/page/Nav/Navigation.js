@@ -3,11 +3,10 @@ import { useState } from "react";
 import WhiteLogo from "../../assets/img/WhiteLogo.png";
 import PostImg from "../../assets/img/Post.png";
 import MenuImg from "../../assets/img/Menu.png";
-import SearchImg from "../../assets/img/Search.png";
 import Network from "../../components/Nav/NetWork";
 import PostForm from "../../components/Nav/PostForm";
 import UserForm from "../../components/Nav/UserForn";
-import SearchForm from "../../components/Nav/SearchBar";
+import SearchBar from "../../components/Nav/SearchBar";
 
 const Navigation = () => {
   const [click, setClick] = useState(false);
@@ -31,20 +30,7 @@ const Navigation = () => {
               ></img>
             </div>
 
-            {click === true ? <SearchForm /> : null}
-            <button
-              className={
-                "navigation-item-search-" + (click === true ? "on" : "off")
-              }
-              onClick={toggleClick}
-            >
-              <img
-                className="navigation-item-search-img"
-                src={SearchImg}
-                alt="검색"
-                title="검색"
-              ></img>
-            </button>
+            <SearchBar />
 
             <button className="navigation-item-post" onClick={toggleClick2}>
               <img className="navigation-item-post-img" src={PostImg} />
