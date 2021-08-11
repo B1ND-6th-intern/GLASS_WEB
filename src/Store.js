@@ -1,34 +1,27 @@
+import { createReducer } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
+import { createAction } from "@reduxjs/toolkit";
 
-const UOn = "USERON";
-const UOff = "USEROFF";
+const userModifyOn = createAction("USERMODIFYON");
+const userModifyOff = createAction("USERMODIFYOFF");
 
-userOn = (state) => {
-  return {
-    type: UOn,
-    state,
-  };
+const formStateModifier = createReducer(false, {
+  [userModifyOn]: (state, action) => {
+    state = action.payload;
+    return !state;
+  },
+
+  [userModifyOff]: (state, action) => {
+    state = action.payload;
+    return !state;
+  },
+});
+
+const formStateStore = configureStore({ reducer: formStateModifier });
+
+export const actionCreators = {
+  userModifyOn,
+  userModifyOff,
 };
-
-userOff = (state) => {
-  return {
-    type: UOff,
-    state,
-  };
-};
-
-const formStateModifier = (state, action) => {
-  switch (action.type) {
-    case UOn:
-      state = action.state;
-      return !state;
-
-    case UOff:
-      state = action.state;
-      return !state;
-  }
-};
-
-const formStateStore = configureStore(formStateModifier);
 
 export default formStateStore;

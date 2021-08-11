@@ -17,9 +17,9 @@ const Navigation = () => {
 
   return (
     <>
-      <section id="Navigation">
+      <header id="Navigation">
         <div className="navigation-container">
-          <div className="navigation-item-container">
+          <nav className="navigation-item-container">
             <div className="navigation-item-logo">
               <img
                 className="navigation-item-logo-img"
@@ -42,9 +42,9 @@ const Navigation = () => {
               <img className="navigation-item-user-img" />
               <Network />
             </button>
-          </div>
+          </nav>
         </div>
-      </section>
+      </header>
 
       <PostForm postIsClick={postClick} togglePostClick={togglePostClick} />
 
