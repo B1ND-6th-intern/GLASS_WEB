@@ -11,6 +11,7 @@ const SignupBar = () => {
   const [number, setNumber] = useState(1);
   const [mail, setMail] = useState("");
   const [name, setName] = useState("");
+  const [isAgree, setIsAgree] = useState(false);
   const [isTrue, SetIstrue] = useState("");
 
   const Numbers = () => {
@@ -76,7 +77,10 @@ const SignupBar = () => {
     number: parseInt(number),
     mail: mail,
     name: name,
+    isAgree: isAgree,
   };
+
+  const agreeToggle = () => setIsAgree((prev) => !prev);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -184,6 +188,16 @@ const SignupBar = () => {
         value={name}
         onChange={onChange}
       />
+      <div id="signupBar-agreeBox-wrap">
+        <input
+          onClick={agreeToggle}
+          id="signupBar-agreeBox-input"
+          type="checkbox"
+        />
+        <h5 id="signupBar-agreeBox-text">
+          위 개인정보를 <strong>저장,수집,활용</strong> 하는것에 동의합니다
+        </h5>
+      </div>
       <input type="submit" className="signupBar-confirm-btn" value="회원가입" />
     </form>
   );
