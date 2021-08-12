@@ -2,120 +2,204 @@ import { useEffect, useState } from "react";
 import "./SignupBar.css";
 import Logo1 from "../../assets/img/SignupPageBackGroundImg1.svg";
 
-const Numbers = () => {
-  const numbers = [];
-  for (var i = 1; i <= 20; i++) {
-    numbers.push(
-      <option className="signupbar-number-select">{i + "번"}</option>
-    );
-  }
-  return numbers;
-};
-
-const useInputId = (initial) => {
-  const [id, setId] = useState(initial);
-  const onChange = (event) => {
-    let id = event.target.value;
-    setId(id);
-    // console.log("ID : " + id);
-  };
-  return { id, onChange };
-};
-
-const useInputPw = (initial) => {
-  const [pw, setPw] = useState(initial);
-  const onChange = (event) => {
-    let pw = event.target.value;
-    setPw(pw);
-    // console.log("PW : " + pw);
-  };
-  return { pw, onChange };
-};
-
-const useInputChkPw = (initial) => {
-  const [CheckPw, setCheckPw] = useState(initial);
-
-  const onChange = (event) => {
-    let CheckPw = event.target.value;
-    setCheckPw(CheckPw);
-    // console.log("Check PW : " + CheckPw);
-  };
-
-  return { CheckPw, onChange };
-};
-
 const SignupBar = () => {
-  const [isTrue, SetIstrue] = useState(true);
-  const inputId = useInputId(" ");
-  const inputPw = useInputPw(" ");
-  //   console.log(inputPw);
-  const inputCheckPw = useInputChkPw(" ");
-  //   console.log(inputCheckPw);
-  useEffect(() => {
-    if (inputPw.pw === inputCheckPw.CheckPw) {
-      SetIstrue(true);
-    } else {
-      SetIstrue(false);
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+  const [CheckPw, setCheckPw] = useState("");
+  const [grade, setGrade] = useState(1);
+  const [group, setGroup] = useState(1);
+  const [number, setNumber] = useState(1);
+  const [mail, setMail] = useState("");
+  const [name, setName] = useState("");
+  const [isAgree, setIsAgree] = useState(false);
+  const [isTrue, SetIstrue] = useState("");
+
+  const Numbers = () => {
+    const numbers = [];
+    for (var i = 1; i <= 20; i++) {
+      numbers.push(
+        <option value={i} className="signupBar-number-select">
+          {i + "번"}
+        </option>
+      );
     }
-    // console.log(isTrue);
-    return isTrue;
-  }, [inputPw.pw, inputCheckPw.CheckPw]);
+    return numbers;
+  };
+
+  useEffect(() => {
+    if (pw === CheckPw) {
+      SetIstrue("비밀번호가 일치합니다.");
+    }
+    if (CheckPw !== pw) {
+      SetIstrue("비밀번호가 일치 하지 않습니다.");
+    }
+    if (CheckPw === "" || pw === "") {
+      SetIstrue("비밀번호가 공백 상태 입니다.");
+    }
+  }, [pw, CheckPw]);
+
+  const onChange = (event) => {
+    const {
+      target: { value, name },
+    } = event;
+    if (name === "id") {
+      setId(value);
+    } else if (name === "pw") {
+      setPw(value);
+    } else if (name === "chkPw") {
+      setCheckPw(value);
+    } else if (name === "name") {
+      setName(value);
+    } else if (name === "mail") {
+      setMail(value);
+    }
+  };
+
+  const selectOnChange = (event) => {
+    const {
+      target: { value, name },
+    } = event;
+
+    if (name === "grade") {
+      setGrade(value);
+    } else if (name === "class") {
+      setGroup(value);
+    } else if (name === "number") {
+      setNumber(value);
+    }
+  };
+
+  const userData = {
+    id: id,
+    pw: pw,
+    grade: parseInt(grade),
+    class: parseInt(group),
+    number: parseInt(number),
+    mail: mail,
+    name: name,
+    isAgree: isAgree,
+  };
+
+  const agreeToggle = () => setIsAgree((prev) => !prev);
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    console.log({ userData });
+    setId("");
+    setPw("");
+    setCheckPw("");
+    setGrade(1);
+    setGroup(1);
+    setNumber(1);
+    setName("");
+  };
 
   return (
-    <div className="signupbar-container">
-      <div className="signupbar-title">
+    <form className="signupBar-container" onSubmit={onSubmit}>
+      <div className="signupBar-title">
         회원가입
-        <img src={Logo1} className="signupbar-img1" />
+        <img src={Logo1} className="signupBar-img1" />
       </div>
-      <div className="signupbar-id-wrap">
+      <div className="signupBar-id-wrap">
         <input
-          className="signupbar-id-input"
+          name="id"
+          type="text"
+          onChange={onChange}
+          className="signupBar-id-input"
           placeholder="아이디"
-          {...inputId}
+          value={id}
         />
         <button className="signpbar-id-input-check">확인</button>
       </div>
-      <div className="signupbar-pw-wrap">
+      <div className="signupBar-pw-wrap">
         <input
+          name="pw"
           type="password"
-          className="signupbar-pw-input"
+          onChange={onChange}
+          className="signupBar-pw-input"
           placeholder="비밀번호"
-          {...inputPw}
+          value={pw}
         />
-        <div className="signupbar-pw-input-check-wrap">
+        <div className="signupBar-pw-input-check-wrap">
           <input
+            name="chkPw"
+            onChange={onChange}
             type="password"
-            className="signupbar-pw-input-check"
+            className="signupBar-pw-input-check"
             placeholder="비밀번호 확인"
-            {...inputCheckPw}
+            value={CheckPw}
           />
-          {isTrue ? (
-            <p className="signupbar-pw-input-check-alert">
-              비밀번호가 일치합니다.
-            </p>
-          ) : (
-            <p className="signupbar-pw-input-check-alert">
-              비밀번호가 일치하지 않습니다.
-            </p>
-          )}
+          <p className="signupBar-pw-input-check-alert">{isTrue}</p>
         </div>
       </div>
-      <select className="signupbar-grades-select" placeholder="학년">
-        <option className="signupbar-grade-select">1학년</option>
-        <option className="signupbar-grade-select">2학년</option>
-        <option className="signupbar-grade-select">3학년</option>
-      </select>
-      <select className="signupbar-classes-select" placeholder="반">
-        <option className="signupbar-class-select">1반</option>
-        <option className="signupbar-class-select">2반</option>
-        <option className="signupbar-class-select">3반</option>
-      </select>
-      <select className="signupbar-numbers-select" placeholder="번호">
-        {Numbers()}
-      </select>
-      <input className="signupbar-name-input" placeholder="이름" />
-      <button className="signupbar-confirm-btn">회원가입</button>
-    </div>
+      <div id="signupBar-selects-wrap">
+        <select
+          name="grade"
+          className="signupBar-grades-select"
+          placeholder="학년"
+          onChange={selectOnChange}
+        >
+          <option value="1" className="signupBar-grade-select">
+            1학년
+          </option>
+          <option value="2" className="signupBar-grade-select">
+            2학년
+          </option>
+          <option value="3" className="signupBar-grade-select">
+            3학년
+          </option>
+        </select>
+        <select
+          name="class"
+          className="signupBar-classes-select"
+          placeholder="반"
+          onChange={selectOnChange}
+        >
+          <option value="1" className="signupBar-class-select">
+            1반
+          </option>
+          <option value="2" className="signupBar-class-select">
+            2반
+          </option>
+          <option value="3" className="signupBar-class-select">
+            3반
+          </option>
+        </select>
+        <select
+          name="number"
+          onChange={selectOnChange}
+          className="signupBar-numbers-select"
+          placeholder="번호"
+        >
+          {Numbers()}
+        </select>
+      </div>
+      <input
+        name="mail"
+        id="signupBar-mail-input"
+        placeholder="e-mail"
+        value={mail}
+        onChange={onChange}
+      />
+      <input
+        name="name"
+        className="signupBar-name-input"
+        placeholder="이름"
+        value={name}
+        onChange={onChange}
+      />
+      <div id="signupBar-agreeBox-wrap">
+        <input
+          onClick={agreeToggle}
+          id="signupBar-agreeBox-input"
+          type="checkbox"
+        />
+        <h5 id="signupBar-agreeBox-text">
+          위 개인정보를 <strong>저장,수집,활용</strong> 하는것에 동의합니다
+        </h5>
+      </div>
+      <input type="submit" className="signupBar-confirm-btn" value="회원가입" />
+    </form>
   );
 };
 

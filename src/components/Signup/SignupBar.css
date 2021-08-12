@@ -1,4 +1,4 @@
-.signupbar-container {
+.signupBar-container {
   width: 490px;
   height: 630px;
   background-color: #fbfbfb;
@@ -9,29 +9,21 @@
   display: flex;
 }
 
-.signupbar-title {
+.signupBar-title {
   font-size: 40px;
   font-weight: 300;
   margin: 20px;
   display: flex;
 }
 
-.signupbar-img1 {
+.signupBar-img1 {
   width: 100px;
   position: relative;
   top: 45%;
   left: 38%;
 }
 
-.signupbar-id-input,
-.signupbar-pw-input,
-.signupbar-pw-input-check,
-.signupbar-grades-select,
-.signupbar-classes-select,
-.signupbar-numbers-select,
-.signupbar-name-input,
-.signupbar-pw-wrap,
-.signupbar-id-wrap {
+:is(.signupBar-id-input, .signupBar-pw-input, .signupBar-pw-input-check, .signupBar-grades-select, .signupBar-classes-select, .signupBar-numbers-select, .signupBar-name-input, .signupBar-pw-wrap, .signupBar-id-wrap) {
   width: 90%;
   height: 50px;
   margin: 10px auto;
@@ -39,13 +31,7 @@
   display: flex;
 }
 
-.signupbar-id-input,
-.signupbar-pw-input,
-.signupbar-pw-input-check,
-.signupbar-grades-select,
-.signupbar-classes-select,
-.signupbar-numbers-select,
-.signupbar-name-input {
+:is(.signupBar-id-input, .signupBar-pw-input, .signupBar-pw-input-check, .signupBar-grades-select, .signupBar-classes-select, .signupBar-numbers-select, .signupBar-name-input) {
   border: 1px solid grey;
   outline: none;
   box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
@@ -53,16 +39,12 @@
   border-radius: 5px;
 }
 
-option {
-  border: 1px solid var(--main_color);
-  border-radius: 5px;
-}
-.signupbar-id-input,
+.signupBar-id-input,
 .signpbar-id-input-check {
   margin: 0px 0px;
 }
 
-.signupbar-id-input {
+.signupBar-id-input {
   width: 85%;
   padding: 0px;
 }
@@ -85,29 +67,75 @@ option {
   color: white;
 }
 
-.signupbar-pw-input,
-.signupbar-pw-input-check-wrap {
+:is(.signupBar-pw-input, .signupBar-pw-input-check-wrap) {
   width: 49%;
   margin: 0px 0px;
   padding: 0px;
 }
 
-.signupbar-pw-input-check-wrap {
+.signupBar-pw-input-check-wrap {
   margin-left: auto;
 }
 
-.signupbar-pw-input-check {
+.signupBar-pw-input-check {
   width: 100%;
   float: right;
   margin: 0px;
 }
 
-.signupbar-pw-input-check-alert {
+.signupBar-pw-input-check-alert {
   font-size: 12px;
   font-weight: 300;
 }
 
-.signupbar-confirm-btn {
+#signupBar-selects-wrap {
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+  gap: 0px 25px;
+}
+
+:is(.signupBar-grades-select, .signupBar-classes-select, .signupBar-numbers-select) {
+  width: 30%;
+  margin: 0px;
+}
+option {
+  border: 1px solid var(--main_color);
+  border-radius: 5px;
+}
+
+#signupBar-mail-input {
+  width: 90%;
+  height: 50px;
+  margin: 10px auto;
+  border: 1px solid grey;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  outline: none;
+  border-radius: 5px;
+}
+
+#signupBar-agreeBox-wrap {
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+  align-content: center;
+  justify-content: start;
+}
+
+#signupBar-agreeBox-input {
+  margin: 0px;
+  height: 16px;
+}
+
+#signupBar-agreeBox-text {
+  font-size: 12px;
+  margin: 0px;
+  font-weight: 300;
+}
+
+.signupBar-confirm-btn {
   width: 180px;
   height: 50px;
   margin: 0px auto;
