@@ -1,5 +1,6 @@
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import LoginPage from "./page/Login/LoginPage";
+import SignupPage from "./page/Signup/SignupPage";
 import MainPage from "./page/Main/MainPage";
 import Navigation from "./page/Nav/Navigation";
 
@@ -14,9 +15,14 @@ const AppRouter = ({ isLoggedIn }) => {
             <MainPage />
           </Route>
         ) : (
-          <Route exact path="/">
-            <LoginPage />
-          </Route>
+          <Router>
+            <Route exact path="/">
+              <LoginPage />
+            </Route>
+            <Route path="/signup">
+              <SignupPage />
+            </Route>
+          </Router>
         )}
       </Switch>
     </Router>

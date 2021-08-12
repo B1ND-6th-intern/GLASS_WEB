@@ -31,7 +31,7 @@
   width: 80px;
   position: relative;
   left: 52%;
-  top: 14%;
+  top: 10%;
 }
 
 .loginbar-id-input,
@@ -45,6 +45,15 @@
   box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
     0 1px 3px -1px rgba(0, 0, 0, 0.3);
   font-size: 15px;
+}
+
+#loginbar-signup-alert {
+  margin: 0px;
+  margin-bottom: 5px;
+  margin-left: 16.5px;
+  font-weight: 300;
+  text-decoration-line: underline;
+  cursor: pointer;
 }
 
 .loginbar-confirm-btn {
