@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import PostExitImg from "../../assets/img/PostExit.svg";
+import { connect } from "react-redux";
 import "./UserForm.css";
+import { actionCreators } from "../../Store";
 
-const UserForm = ({ userIsClcik, toggleUserClick }) => {
-  const [editing, setEditing] = useState(false);
+const UserForm = ({ userIsClcik, toggleUserClick, currentState, dispatch }) => {
   const [grade, setGrade] = useState("");
   const [group, setGroup] = useState("");
   const [number, setNumber] = useState("");
@@ -27,7 +28,14 @@ const UserForm = ({ userIsClcik, toggleUserClick }) => {
     }, [userIsClcik]);
   }
 
-  const editingToggle = () => setEditing((prev) => !prev);
+  const editingToggle = () => {
+    if (currentState) {
+      dispatch(actionCreators.userModifyOff(currentState));
+    } else if (!currentState) {
+      dispatch(actionCreators.userModifyOn(currentState));
+    }
+    // setEditing((prev) => !prev);
+  };
 
   const onChange = (event) => {
     const {
@@ -48,7 +56,7 @@ const UserForm = ({ userIsClcik, toggleUserClick }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setEditing();
+    editingToggle();
   };
 
   return (
@@ -65,7 +73,7 @@ const UserForm = ({ userIsClcik, toggleUserClick }) => {
               </button>
               <img className="navigation-item-user-form-profileImg" />
               <div className="navigation-item-user-form-name">
-                {editing ? (
+                {currentState ? (
                   <input
                     className="navigation-item-user-form-info-modify-name"
                     placeholder="이름"
@@ -88,7 +96,7 @@ const UserForm = ({ userIsClcik, toggleUserClick }) => {
                     학급정보
                   </p>
                   <div className="navigation-item-user-form-info-class-wrap">
-                    {editing ? (
+                    {currentState ? (
                       <>
                         <input
                           className="navigation-item-user-form-info-modify-class"
@@ -131,7 +139,7 @@ const UserForm = ({ userIsClcik, toggleUserClick }) => {
                   <p className="navigation-item-user-form-info-mail-title">
                     메일
                   </p>
-                  {editing ? (
+                  {currentState ? (
                     <input
                       placeholder="메일"
                       name="mail"
@@ -151,7 +159,7 @@ const UserForm = ({ userIsClcik, toggleUserClick }) => {
                   <button className="navigation-item-user-form-passwordChange">
                     비밀번호 변경
                   </button>
-                  {editing ? (
+                  {currentState ? (
                     <button
                       className="navigation-item-user-form-modifyProfile"
                       type="submit"
@@ -179,4 +187,12 @@ const UserForm = ({ userIsClcik, toggleUserClick }) => {
   );
 };
 
-export default UserForm;
+const getCurrentState = (state) => {
+  return { currentState: state };
+};
+
+const dispatchCurrentState = (dispatch) => {
+  return { dispatch };
+};
+
+export default connect(getCurrentState, dispatchCurrentState)(UserForm);
