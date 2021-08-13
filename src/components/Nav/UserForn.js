@@ -54,8 +54,17 @@ const UserForm = ({ userIsClcik, toggleUserClick, currentState, dispatch }) => {
     }
   };
 
+  const userModifyData = {
+    name: name,
+    grade: grade,
+    class: group,
+    number: number,
+    mail: mail,
+  };
+
   const onSubmit = (event) => {
     event.preventDefault();
+    console.log({ userModifyData });
     editingToggle();
   };
 

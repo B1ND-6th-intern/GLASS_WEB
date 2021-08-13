@@ -14,9 +14,14 @@ const SearchBar = () => {
     setKeyword(value);
   };
 
+  const searchData = {
+    keyword: keyword,
+  };
+
   const onSubmit = (event) => {
     if (!searchIsClick) {
       event.preventDefault();
+      setKeyword("");
     }
   };
 
