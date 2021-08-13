@@ -165,7 +165,10 @@ const UserForm = ({ userIsClcik, toggleUserClick, currentState, dispatch }) => {
               <hr className="navigation-item-user-form-info-line" />
               <div className="navigation-item-user-form-footerWrap">
                 <div className="navigation-item-user-form-btn-wrap">
-                  <button className="navigation-item-user-form-passwordChange">
+                  <button
+                    type="button"
+                    className="navigation-item-user-form-passwordChange"
+                  >
                     비밀번호 변경
                   </button>
                   {currentState ? (
@@ -183,7 +186,10 @@ const UserForm = ({ userIsClcik, toggleUserClick, currentState, dispatch }) => {
                       프로필 수정
                     </div>
                   )}
-                  <button className="navigation-item-user-form-logOut">
+                  <button
+                    type="button"
+                    className="navigation-item-user-form-logOut"
+                  >
                     로그아웃
                   </button>
                 </div>
