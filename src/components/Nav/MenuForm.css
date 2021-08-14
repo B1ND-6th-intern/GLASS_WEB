@@ -1,4 +1,4 @@
-#MenuForm-container {
+.MenuForm-container {
   width: 20%;
   height: 50%;
   background-color: #ffffff;
@@ -38,4 +38,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* darkmode */
+.dark-mode .MenuForm-container {
+  background-color: #201f1f !important;
+  border: 1px solid white;
 }

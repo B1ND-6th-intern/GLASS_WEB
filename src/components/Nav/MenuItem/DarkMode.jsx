@@ -1,23 +1,15 @@
-import { useEffect } from "react";
-import { useState } from "react";
 import DarkModeImg from "../../../assets/img/DarkMode.svg";
 import LightModeImg from "../../../assets/img/LightMode.svg";
 import "./DarkMode.css";
+import useDarkMode from "use-dark-mode";
 
 const DarkMode = () => {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    if (isDark) {
-    } else if (!isDark) {
-    }
-  }, [isDark]);
-
-  const modeToggleClick = () => setIsDark((prev) => !prev);
+  const currentMode = useDarkMode(localStorage.getItem("darkMode"));
+  const modeValue = currentMode.value;
 
   return (
-    <button id="darkMode-btn" type="button" onClick={modeToggleClick}>
-      <img src={isDark ? DarkModeImg : LightModeImg} />
+    <button id="darkMode-btn" type="button" onClick={currentMode.toggle}>
+      <img src={modeValue ? DarkModeImg : LightModeImg} />
     </button>
   );
 };

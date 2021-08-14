@@ -64,6 +64,7 @@
   vertical-align: top;
   box-sizing: border-box;
   margin-top: 15px;
+  border: none;
 }
 
 .navigation-item-post-form-hashtag-wrap {
@@ -80,6 +81,7 @@
   height: 100%;
   margin: 0px;
   padding: 0px;
+  border: none;
 }
 
 .navigation-item-post-form-hashtag-add-button {
@@ -106,4 +108,31 @@
   float: right;
   margin: 10.75px 0px;
   margin-top: 15px;
+  border: none;
+  cursor: pointer;
 }
+
+/* darkmode */
+.dark-mode .nav-item-post-form-wrap {
+  background-color: rgba(73, 73, 73, 0.9);
+}
+
+.dark-mode .navigation-item-post-form {
+  background-color: #433d58;
+}
+
+.dark-mode .navigation-item-post-form-content-input {
+  background-color: var(--sub-dark-color);
+  color: white;
+}
+
+.dark-mode .navigation-item-post-form-hashtag-input {
+  background-color: var(--sub-dark-color);
+  color: white;
+}
+.dark-mode .navigation-item-post-form-footerWrap-Btn {
+  background-color: var(--sub-dark-color);
+  color: white;
+}
+
+/* darkmode */

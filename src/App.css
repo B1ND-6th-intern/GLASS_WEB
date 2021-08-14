@@ -11,7 +11,8 @@ body {
 
 :root {
   --main_color: #402597;
-  --dark-color: #2a2a2a;
+  --dark-color: #1a1919;
+  --sub-dark-color: #201f1f;
 }
 
 .light-mode {
@@ -20,7 +21,7 @@ body {
   transition: background-color 0.3s ease;
 }
 .dark-mode {
-  background-color: #1a1919;
+  background-color: var(--dark-color);
   color: #999;
 }
 

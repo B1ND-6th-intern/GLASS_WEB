@@ -34,7 +34,6 @@ const UserForm = ({ userIsClcik, toggleUserClick, currentState, dispatch }) => {
     } else if (!currentState) {
       dispatch(actionCreators.userModifyOn(currentState));
     }
-    // setEditing((prev) => !prev);
   };
 
   const onChange = (event) => {
@@ -72,99 +71,79 @@ const UserForm = ({ userIsClcik, toggleUserClick, currentState, dispatch }) => {
     <>
       {userIsClcik ? (
         <div className="nav-item-user-form-wrap">
-          <form onSubmit={onSubmit} className="navigation-item-user-form">
-            <div className="navigation-item-user-form-headerWrap">
-              <button
-                className="navigation-item-user-form-exit"
-                onClick={toggleUserClick}
-              >
-                <img src={PostExitImg} title="취소" />
-              </button>
-              <img className="navigation-item-user-form-profileImg" />
-              <div className="navigation-item-user-form-name">
+          <form onSubmit={onSubmit} id="navigation-item-user-form">
+            <button
+              className="navigation-item-user-form-exit"
+              onClick={toggleUserClick}
+            >
+              <img src={PostExitImg} title="취소" />
+            </button>
+            <div id="navigation-item-user-form-headerWrap">
+              <p id="navagation-item-user-form-headerTitle">프로필</p>
+            </div>
+            <div id="navigation-item-user-form-contentWrap">
+              <div id="navigation-item-user-form-profileWrap">
+                <img className="navigation-item-user-form-profileImg" />
+                <div id="navigation-item-user-form-profileLine-wrap">
+                  <p id="navigation-item-user-form-profile-title">계정정보</p>
+                  <hr className="navigation-item-user-form-profileLine" />
+                </div>
+                <h5 id="navigation-item-user-form-profile-class-title">
+                  학급정보
+                </h5>
+                <div id="navigation-item-user-form-profile-classWrap">
+                  {currentState ? (
+                    <>
+                      <input
+                        className="navigation-item-user-form-info-modify-class"
+                        placeholder="학년"
+                        name="grade"
+                        value={grade}
+                        onChange={onChange}
+                      />
+                      <input
+                        className="navigation-item-user-form-info-modify-group"
+                        placeholder="학반"
+                        name="group"
+                        value={group}
+                        onChange={onChange}
+                      />
+                      <input
+                        className="navigation-item-user-form-info-modify-number"
+                        placeholder="번호"
+                        name="number"
+                        value={number}
+                        onChange={onChange}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <p className="navigation-item-user-form-info-class-text">
+                        {grade}학년
+                      </p>
+                      <p className="navigation-item-user-form-info-class-text">
+                        {group}반
+                      </p>
+                      <p className="navigation-item-user-form-info-class-text">
+                        {number}번
+                      </p>
+                    </>
+                  )}
+                </div>
+                <h5 id="navigation-item-user-form-profile-mail-title">메일</h5>
                 {currentState ? (
                   <input
-                    className="navigation-item-user-form-info-modify-name"
-                    placeholder="이름"
-                    name="name"
-                    value={name}
+                    placeholder="메일"
+                    name="mail"
+                    value={mail}
                     onChange={onChange}
                   />
                 ) : (
-                  name || "이름없음"
+                  <p className="navigation-item-user-form-info-mail-text">
+                    {mail || "메일 없음"}
+                  </p>
                 )}
-              </div>
-            </div>
-            <div className="navigation-item-user-form-contentWrap">
-              <div className="navigation-item-user-form-middleWrap">
-                <div className="navigation-item-user-form-info-title">
-                  계정정보
-                </div>
-                <div className="navigation-item-user-form-info-class">
-                  <p className="navigation-item-user-form-info-class-title">
-                    학급정보
-                  </p>
-                  <div className="navigation-item-user-form-info-class-wrap">
-                    {currentState ? (
-                      <>
-                        <input
-                          className="navigation-item-user-form-info-modify-class"
-                          placeholder="학년"
-                          name="grade"
-                          value={grade}
-                          onChange={onChange}
-                        />
-                        <input
-                          className="navigation-item-user-form-info-modify-group"
-                          placeholder="학반"
-                          name="group"
-                          value={group}
-                          onChange={onChange}
-                        />
-                        <input
-                          className="navigation-item-user-form-info-modify-number"
-                          placeholder="번호"
-                          name="number"
-                          value={number}
-                          onChange={onChange}
-                        />
-                      </>
-                    ) : (
-                      <>
-                        <p className="navigation-item-user-form-info-class-text">
-                          {grade}학년
-                        </p>
-                        <p className="navigation-item-user-form-info-class-text">
-                          {group}반
-                        </p>
-                        <p className="navigation-item-user-form-info-class-text">
-                          {number}번
-                        </p>
-                      </>
-                    )}
-                  </div>
-                </div>
-                <div className="navigation-item-user-form-info-mail">
-                  <p className="navigation-item-user-form-info-mail-title">
-                    메일
-                  </p>
-                  {currentState ? (
-                    <input
-                      placeholder="메일"
-                      name="mail"
-                      value={mail}
-                      onChange={onChange}
-                    />
-                  ) : (
-                    <p className="navigation-item-user-form-info-mail-text">
-                      {mail || "메일 없음"}
-                    </p>
-                  )}
-                </div>
-              </div>
-              <hr className="navigation-item-user-form-info-line" />
-              <div className="navigation-item-user-form-footerWrap">
-                <div className="navigation-item-user-form-btn-wrap">
+                <div id="navigation-item-user-form-profile-btnWrap">
                   <button
                     type="button"
                     className="navigation-item-user-form-passwordChange"
@@ -192,6 +171,24 @@ const UserForm = ({ userIsClcik, toggleUserClick, currentState, dispatch }) => {
                   >
                     로그아웃
                   </button>
+                </div>
+              </div>
+              <div id="navigation-item-user-form-postWrap">
+                {currentState ? (
+                  <input
+                    id="navigation-item-user-form-info-modify-name"
+                    placeholder="이름"
+                    name="name"
+                    value={name}
+                    onChange={onChange}
+                  />
+                ) : (
+                  name || <p id="navigation-item-user-form-name">이름없음</p>
+                )}
+                <p id="navigation-item-user-form-post-count">게시물 </p>
+                <div id="navigation-item-user-form-post-box">
+                  <div className="navigation-item-user-form-post"></div>
+                  <div className="navigation-item-user-form-post"></div>
                 </div>
               </div>
             </div>
