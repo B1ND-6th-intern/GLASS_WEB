@@ -7,14 +7,18 @@ import Network from "../../components/Nav/NetWork";
 import PostForm from "../../components/Nav/PostForm";
 import UserForm from "../../components/Nav/UserForn";
 import SearchBar from "../../components/Nav/SearchBar";
+import MenuForm from "../../components/Nav/MenuForm";
 
 const Navigation = () => {
   const [postClick, setPostClick] = useState(false);
   const [userClick, setUserClick] = useState(false);
+  const [menuClick, setMenuClick] = useState(false);
 
-  const togglePostClick = () => setPostClick((prev) => !prev);
-  const toggleUserClick = () => setUserClick((prev) => !prev);
-
+  const togglePostClick = () =>
+    setPostClick((prev) => !prev, setMenuClick(false));
+  const toggleUserClick = () =>
+    setUserClick((prev) => !prev, setMenuClick(false));
+  const toggleMenuClick = () => setMenuClick((prev) => !prev);
   return (
     <>
       <header id="Navigation">
@@ -34,7 +38,7 @@ const Navigation = () => {
               <img className="navigation-item-post-img" src={PostImg} />
             </button>
 
-            <button className="navigation-item-menu">
+            <button className="navigation-item-menu" onClick={toggleMenuClick}>
               <img className="navigation-item-menu-img" src={MenuImg} />
             </button>
 
@@ -47,6 +51,8 @@ const Navigation = () => {
       </header>
 
       <PostForm postIsClick={postClick} togglePostClick={togglePostClick} />
+
+      <MenuForm menuIsClcik={menuClick} />
 
       <UserForm userIsClcik={userClick} toggleUserClick={toggleUserClick} />
     </>
