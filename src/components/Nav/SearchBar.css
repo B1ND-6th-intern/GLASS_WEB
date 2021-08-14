@@ -14,6 +14,7 @@
   border-bottom-left-radius: 50px;
   border: 1px solid black;
   font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .navigation-item-search-off {
@@ -60,4 +61,20 @@
 .navigation-item-search-img {
   width: 30px;
   height: 30px;
+}
+
+/* darkmode */
+.dark-mode .navigation-item-searchbar {
+  background-color: var(--sub-dark-color);
+  color: white;
+}
+
+.dark-mode .navigation-item-search-off {
+  background-color: var(--sub-dark-color);
+  border: 1px solid white;
+}
+
+.dark-mode .navigation-item-search-on {
+  background-color: var(--sub-dark-color);
+  border: 1px solid white;
 }

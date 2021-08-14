@@ -25,13 +25,6 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
     }, [postIsClick]);
   }
 
-  const onSubmit = (event) => {
-    event.preventDefault();
-    setContent("");
-    setHashTag("");
-    togglePostClick();
-  };
-
   const onChange = (event) => {
     const {
       target: { name, value },
@@ -42,6 +35,21 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
     } else if (name === "hashtag") {
       setHashTag(value);
     }
+  };
+
+  var hashTagData = hashTag.split(",");
+
+  const postData = {
+    content: content,
+    hashTag: hashTagData,
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    console.log(postData);
+    setContent("");
+    setHashTag("");
+    togglePostClick();
   };
 
   return (

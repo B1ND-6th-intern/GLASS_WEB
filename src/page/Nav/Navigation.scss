@@ -61,3 +61,17 @@
   border-radius: 50px;
   outline: none;
 }
+
+.navigation-item-user {
+  cursor: pointer;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  background: none;
+  outline: none;
+  border: 1px solid black;
+  margin-left: 20px;
+}
