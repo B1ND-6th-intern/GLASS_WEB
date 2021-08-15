@@ -1,5 +1,4 @@
 import PostExitImg from "../../assets/img/PostExit.svg";
-import PostImg from "../../assets/img/Post.png";
 import { useEffect } from "react";
 import "./PostForm.css";
 import { useState } from "react";
@@ -69,7 +68,7 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
                   <img src={PostExitImg} title="취소" />
                 </button>
               </div>
-              <input
+              <textarea
                 name="content"
                 onChange={onChange}
                 value={content}

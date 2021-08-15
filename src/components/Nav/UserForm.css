@@ -21,12 +21,16 @@
   flex-direction: column;
   box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
     0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
 }
 
 #navigation-item-user-form-headerWrap {
   height: 110px;
   display: flex;
   border-bottom: 0.5px solid #c9c2c2;
+  background-color: var(--main_color);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   flex-direction: column;
   box-sizing: border-box;
   padding: 20px;
@@ -37,6 +41,7 @@
   margin: auto 0px;
   margin-left: 10px;
   font-weight: 300;
+  color: white;
 }
 
 .navigation-item-user-form-exit {
@@ -160,7 +165,7 @@
 }
 
 #navigation-item-user-form-post-box::-webkit-scrollbar-track {
-  background-color: white;
+  background: none;
 }
 
 .navigation-item-user-form-post {
@@ -230,15 +235,21 @@
   justify-content: center;
   padding: 0px 6px;
   box-sizing: border-box;
+  color: black;
 }
 
 /* darkmode */
 .dark-mode .nav-item-user-form-wrap {
-  background-color: rgba(73, 73, 73, 0.9);
+  background-color: var(--dark-opacity-color);
 }
 
 .dark-mode #navigation-item-user-form {
   background-color: var(--dark-color);
+}
+
+.dark-mode #navigation-item-user-form-headerWrap {
+  background-color: var(--dark-color);
+  border-bottom: 0.5px solid var(--sub-dark-color);
 }
 
 .dark-mode #navagation-item-user-form-headerTitle {
@@ -248,17 +259,45 @@
 .dark-mode #navigation-item-user-form-profile-class-title {
   color: whitesmoke;
 }
+
+.dark-mode .navigation-item-user-form-profileLine {
+  border: 0.5px solid var(--sub-dark-color);
+}
+
 .dark-mode #navigation-item-user-form-profile-mail-title {
   color: whitesmoke;
 }
+
+.dark-mode .navigation-item-user-form-passwordChange {
+  background-color: var(--sub-dark-color);
+  color: white;
+}
+
+.dark-mode .navigation-item-user-form-modifyProfile {
+  background-color: var(--sub-dark-color);
+  color: white;
+}
+
+.dark-mode .navigation-item-user-form-logOut {
+  background-color: var(--sub-dark-color);
+  color: white;
+}
+
 .dark-mode #navigation-item-user-form-name {
   color: whitesmoke;
 }
 
 .dark-mode #navigation-item-user-form-post-box {
-  background-color: var(--sub-dark-color);
+  background-color: var(--dark-color);
+  border: 1px solid var(--sub-dark-color);
 }
 
 .dark-mode .navigation-item-user-form-post {
-  background-color: var(--dark-color);
+  background-color: var(--dark-post-color);
 }
+
+.dark-mode #navigation-item-user-form-post-box::-webkit-scrollbar-thumb {
+  background-color: var(--sub-dark-color);
+}
+
+/* darkmode */
