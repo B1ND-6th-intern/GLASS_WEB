@@ -65,16 +65,14 @@
 
 /* darkmode */
 .dark-mode .navigation-item-searchbar {
-  background-color: var(--sub-dark-color);
-  color: white;
+  border: 1px solid var(--sub-dark-color);
 }
 
 .dark-mode .navigation-item-search-off {
-  background-color: var(--sub-dark-color);
-  border: 1px solid white;
+  border: 3px solid var(--sub-dark-color);
 }
 
 .dark-mode .navigation-item-search-on {
-  background-color: var(--sub-dark-color);
-  border: 1px solid white;
+  border: 3px solid var(--sub-dark-color);
 }
+/* darkmode */

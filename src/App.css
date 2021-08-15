@@ -11,8 +11,11 @@ body {
 
 :root {
   --main_color: #402597;
-  --dark-color: #1a1919;
-  --sub-dark-color: #201f1f;
+  --dark-color: #222222;
+  --sub-dark-color: #464646;
+  --dark-post-color: #c4c4c4;
+  --dark-border-color: #646464;
+  --dark-opacity-color: rgba(23, 23, 23, 0.9);
 }
 
 .light-mode {
@@ -23,6 +26,7 @@ body {
 .dark-mode {
   background-color: var(--dark-color);
   color: #999;
+  transition: background-color 0.3s ease;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap");

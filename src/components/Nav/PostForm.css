@@ -65,6 +65,21 @@
   box-sizing: border-box;
   margin-top: 15px;
   border: none;
+  overflow-y: scroll;
+  resize: none;
+}
+
+.navigation-item-post-form-content-input::-webkit-scrollbar {
+  width: 10px;
+}
+
+.navigation-item-post-form-content-input::-webkit-scrollbar-track {
+  background: none;
+}
+
+.navigation-item-post-form-content-input::-webkit-scrollbar-thumb {
+  background-color: var(--main_color);
+  border-radius: 20px;
 }
 
 .navigation-item-post-form-hashtag-wrap {
@@ -114,25 +129,29 @@
 
 /* darkmode */
 .dark-mode .nav-item-post-form-wrap {
-  background-color: rgba(73, 73, 73, 0.9);
+  background-color: var(--dark-opacity-color);
 }
 
 .dark-mode .navigation-item-post-form {
-  background-color: #433d58;
+  background-color: var(--sub-dark-color);
 }
 
 .dark-mode .navigation-item-post-form-content-input {
-  background-color: var(--sub-dark-color);
-  color: white;
+  background-color: var(--dark-post-color);
+  color: black;
+}
+
+.dark-mode .navigation-item-post-form-content-input::-webkit-scrollbar-thumb {
+  background-color: var(--dark-color);
 }
 
 .dark-mode .navigation-item-post-form-hashtag-input {
-  background-color: var(--sub-dark-color);
-  color: white;
+  background-color: var(--dark-post-color);
+  color: black;
 }
 .dark-mode .navigation-item-post-form-footerWrap-Btn {
-  background-color: var(--sub-dark-color);
-  color: white;
+  background-color: var(--dark-post-color);
+  color: black;
 }
 
 /* darkmode */

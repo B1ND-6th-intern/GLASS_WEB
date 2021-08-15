@@ -75,3 +75,10 @@
   border: 1px solid black;
   margin-left: 20px;
 }
+
+// darkmode
+
+.dark-mode .navigation-container {
+  background-color: var(--sub-dark-color);
+  border: 1px solid var(--border-dark-color);
+}
