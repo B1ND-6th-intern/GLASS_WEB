@@ -1,12 +1,8 @@
 import "./MenuForm.css";
 import DarkMode from "../Nav/MenuItem/DarkMode";
-import SerViceCenter from "./MenuItem/ServiceCenter";
 
-const MenuForm = ({ menuIsClcik }) => {
-  const MenuItems = [
-    { item: <DarkMode />, name: "다크모드" },
-    { item: <SerViceCenter />, name: "고객센터" },
-  ];
+const MenuForm = ({ menuIsClcik, toggleMenuClick }) => {
+  const MenuItems = [{ item: <DarkMode />, name: "다크모드" }];
   return (
     <>
       {menuIsClcik ? (

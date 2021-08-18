@@ -1,0 +1,13 @@
+#serviceCenter-form {
+  position: fixed;
+  min-width: 350px;
+  height: 70%;
+  border: 1px solid black;
+  bottom: 20px;
+  right: 10px;
+  z-index: 9997;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+/* darkmode */
