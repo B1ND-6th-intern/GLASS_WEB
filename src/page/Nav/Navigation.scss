@@ -127,11 +127,7 @@
 }
 
 .dark-mode #serviceCenter-btn {
+  background-color: var(--sub-dark-color);
   border: 3px solid var(--sub-dark-color);
   color: white;
-}
-
-.dark-mode #serviceCenter-btn:hover {
-  transition: 1s;
-  background-color: var(--sub-dark-color);
 }

@@ -8,8 +8,9 @@ import PostForm from "../../components/Nav/PostForm";
 import UserForm from "../../components/Nav/UserForn";
 import SearchBar from "../../components/Nav/SearchBar";
 import MenuForm from "../../components/Nav/MenuForm";
-import ServiceCenter from "../../components/Nav/ServiceCenter/ServiceCenter";
+import ServiceCenter from "../../components/Nav/ServiceCenter";
 import SerViceCenterImg from "../../assets/img/ServiceCenter.svg";
+import DarkMode from "../../components/Nav/DarkMode";
 
 const Navigation = () => {
   const [postClick, setPostClick] = useState(false);
@@ -18,7 +19,11 @@ const Navigation = () => {
   const [isServiceCenter, setIsServiceCenter] = useState(false);
 
   const togglePostClick = () =>
-    setPostClick((prev) => !prev, setMenuClick(false));
+    setPostClick(
+      (prev) => !prev,
+      setMenuClick(false),
+      setIsServiceCenter(false)
+    );
   const toggleUserClick = () =>
     setUserClick(
       (prev) => !prev,
@@ -66,6 +71,8 @@ const Navigation = () => {
           </nav>
         </div>
       </header>
+
+      <DarkMode isServiceCenter={isServiceCenter} />
 
       <ServiceCenter
         isServiceCenter={isServiceCenter}

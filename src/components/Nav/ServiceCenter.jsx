@@ -18,9 +18,19 @@ const SerViceCenter = ({ isServiceCenter, toggleSCClick }) => {
     <>
       {isServiceCenter ? (
         <form id="serviceCenter-form" onSubmit={onSubmit}>
-          <input type="text" onChange={onChange} value={questionValue} />
+          <div id="serviceCenter-headerWrap">
+            <button onClick={toggleSCClick}></button>
+          </div>
+          <div id="serviceCenter-middleWrap">
+            <textarea
+              id="serviceCenter-inputBox"
+              type="text"
+              onChange={onChange}
+              value={questionValue}
+            />
+          </div>
           <input type="submit" value="제출" />
-          <button onClick={toggleSCClick}></button>
+          <div id="serviceCenter-footerWrap"></div>
         </form>
       ) : null}
     </>
