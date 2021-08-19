@@ -1,14 +1,13 @@
 import "./MenuForm.css";
-import DarkMode from "../Nav/MenuItem/DarkMode";
 
-const MenuForm = ({ menuIsClcik }) => {
-  const MenuItems = [{ item: <DarkMode />, name: "다크모드" }];
+const MenuForm = ({ menuIsClcik, toggleMenuClick }) => {
+  const MenuItems = [];
   return (
     <>
       {menuIsClcik ? (
         <div className="MenuForm-container">
-          {MenuItems.map((item) => (
-            <div className="menuItem-item-wrap">
+          {MenuItems.map((item, index) => (
+            <div key={index} className="menuItem-item-wrap">
               <div className="menuItem-item">{item.item}</div>
               <h5 className="menuItem-name">{item.name}</h5>
             </div>

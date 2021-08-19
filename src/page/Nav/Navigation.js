@@ -8,17 +8,32 @@ import PostForm from "../../components/Nav/PostForm";
 import UserForm from "../../components/Nav/UserForn";
 import SearchBar from "../../components/Nav/SearchBar";
 import MenuForm from "../../components/Nav/MenuForm";
+import ServiceCenter from "../../components/Nav/ServiceCenter";
+import SerViceCenterImg from "../../assets/img/ServiceCenter.svg";
+import DarkMode from "../../components/Nav/DarkMode";
 
 const Navigation = () => {
   const [postClick, setPostClick] = useState(false);
   const [userClick, setUserClick] = useState(false);
   const [menuClick, setMenuClick] = useState(false);
+  const [isServiceCenter, setIsServiceCenter] = useState(false);
 
   const togglePostClick = () =>
-    setPostClick((prev) => !prev, setMenuClick(false));
+    setPostClick(
+      (prev) => !prev,
+      setMenuClick(false),
+      setIsServiceCenter(false)
+    );
   const toggleUserClick = () =>
-    setUserClick((prev) => !prev, setMenuClick(false));
+    setUserClick(
+      (prev) => !prev,
+      setMenuClick(false),
+      setIsServiceCenter(false)
+    );
   const toggleMenuClick = () => setMenuClick((prev) => !prev);
+  const toggleSCClick = () => {
+    setIsServiceCenter((prev) => !prev);
+  };
   return (
     <>
       <header id="Navigation">
@@ -46,13 +61,27 @@ const Navigation = () => {
               <img className="navigation-item-user-img" />
               <Network />
             </button>
+
+            {isServiceCenter ? null : (
+              <button id="serviceCenter-btn" onClick={toggleSCClick}>
+                <img id="serviceCenter-img" src={SerViceCenterImg} />
+                <p id="serviceCenter-text">고객센터</p>
+              </button>
+            )}
           </nav>
         </div>
       </header>
 
+      <DarkMode isServiceCenter={isServiceCenter} />
+
+      <ServiceCenter
+        isServiceCenter={isServiceCenter}
+        toggleSCClick={toggleSCClick}
+      />
+
       <PostForm postIsClick={postClick} togglePostClick={togglePostClick} />
 
-      <MenuForm menuIsClcik={menuClick} />
+      <MenuForm menuIsClcik={menuClick} toggleMenuClick={toggleMenuClick} />
 
       <UserForm userIsClcik={userClick} toggleUserClick={toggleUserClick} />
     </>
