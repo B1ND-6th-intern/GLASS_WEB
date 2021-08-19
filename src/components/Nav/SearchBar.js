@@ -3,8 +3,8 @@ import SearchImg from "../../assets/img/Search.png";
 import "./SearchBar.css";
 
 const SearchBar = () => {
-  const [searchIsClick, setSearchIsClick] = useState(false);
 
+  const [isSearchClick, setIsSearchClick] = useState(false)
   const [keyword, setKeyword] = useState("");
 
   const onChange = (event) => {
@@ -19,39 +19,18 @@ const SearchBar = () => {
   };
 
   const onSubmit = (event) => {
-    if (!searchIsClick) {
       event.preventDefault();
+      console.log("i submit")
       setKeyword("");
-    }
   };
 
-  const toggleClick = () => setSearchIsClick((prev) => !prev);
-
   return (
-    <form id="navigation-item-searchbar-form" onSubmit={onSubmit}>
-      {searchIsClick ? (
+    <form id="navigation-item-searchbar-wrap" onSubmit={onSubmit}>
         <input
           className="navigation-item-searchbar"
           value={keyword}
           onChange={onChange}
         />
-      ) : null}
-
-      <button
-        className={
-          "navigation-item-search-" + (searchIsClick === true ? "on" : "off")
-        }
-        type="submit"
-        value=""
-        onClick={toggleClick}
-      >
-        <img
-          className="navigation-item-search-img"
-          src={SearchImg}
-          alt="검색"
-          title="검색"
-        ></img>
-      </button>
     </form>
   );
 };

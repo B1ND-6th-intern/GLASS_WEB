@@ -1,8 +1,8 @@
 import "./Navigation.scss";
 import { useState } from "react";
-import WhiteLogo from "../../assets/img/WhiteLogo.png";
-import PostImg from "../../assets/img/Post.png";
-import MenuImg from "../../assets/img/Menu.png";
+import Logo from "../../assets/img/Logo.svg"
+import PostImg from "../../assets/img/Post.svg";
+import MenuImg from "../../assets/img/Menu.svg";
 import Network from "../../components/Nav/NetWork";
 import PostForm from "../../components/Nav/PostForm";
 import UserForm from "../../components/Nav/UserForn";
@@ -42,7 +42,7 @@ const Navigation = () => {
             <div className="navigation-item-logo">
               <img
                 className="navigation-item-logo-img"
-                src={WhiteLogo}
+                src={Logo}
                 alt="Logo"
               ></img>
             </div>
