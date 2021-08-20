@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./ServiceCenter.css";
+import ExitServiceCenter from "../../assets/img/ExitServiceCenter.svg";
 
 const SerViceCenter = ({ isServiceCenter, toggleSCClick }) => {
   const [questionValue, setQuestionValue] = useState("");
@@ -19,7 +20,14 @@ const SerViceCenter = ({ isServiceCenter, toggleSCClick }) => {
       {isServiceCenter ? (
         <form id="serviceCenter-form" onSubmit={onSubmit}>
           <div id="serviceCenter-headerWrap">
-            <button onClick={toggleSCClick}></button>
+            <button id="serviceCenter-prev-btn" onClick={toggleSCClick}>
+              <img id="serviceCenter-prev-btn-img" src={ExitServiceCenter} />
+            </button>
+            <p id="serviceCenter-title">
+              혹시 문제라도
+              <br />
+              생기셨나요?
+            </p>
           </div>
           <div id="serviceCenter-middleWrap">
             <textarea
@@ -27,10 +35,10 @@ const SerViceCenter = ({ isServiceCenter, toggleSCClick }) => {
               type="text"
               onChange={onChange}
               value={questionValue}
+              placeholder="건의 할 문의를 세세하게 적어주세요."
             />
+            <input id="serviceCenter-submitBtn" type="submit" value="제출" />
           </div>
-          <input type="submit" value="제출" />
-          <div id="serviceCenter-footerWrap"></div>
         </form>
       ) : null}
     </>

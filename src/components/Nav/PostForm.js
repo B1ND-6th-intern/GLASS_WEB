@@ -1,11 +1,13 @@
 import PostExitImg from "../../assets/img/PostExit.svg";
 import { useEffect } from "react";
 import "./PostForm.css";
+import ImgDelete from "../../assets/img/PostImgDelete.svg";
 import { useState } from "react";
 
 const PostForm = ({ postIsClick, togglePostClick }) => {
   const [content, setContent] = useState("");
   const [hashTag, setHashTag] = useState("");
+  const [attachment, setAttachment] = useState([]);
 
   {
     useEffect(() => {
@@ -41,6 +43,7 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
   const postData = {
     content: content,
     hashTag: hashTagData,
+    imgs: attachment,
   };
 
   const onSubmit = (event) => {
@@ -49,6 +52,40 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
     setContent("");
     setHashTag("");
     togglePostClick();
+    setAttachment([]);
+  };
+
+  const onFileChange = (event) => {
+    const {
+      target: { files },
+    } = event;
+
+    let file;
+    let filesLength = files.length > 10 ? 10 : files.length;
+
+    for (let i = 0; i < filesLength; i++) {
+      file = files[i];
+
+      let reader = new FileReader();
+      reader.onload = () => {
+        let fileURLs = { img: reader.result, id: i };
+        setAttachment((prevState) => [...prevState, fileURLs]);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const onDeleteImg = (event) => {
+    event.preventDefault();
+    const {
+      target: { name },
+    } = event;
+
+    setAttachment(
+      attachment.filter((data) => {
+        return data.id !== parseInt(name);
+      })
+    );
   };
 
   return (
@@ -68,13 +105,40 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
                   <img src={PostExitImg} title="취소" />
                 </button>
               </div>
-              <textarea
-                name="content"
-                onChange={onChange}
-                value={content}
-                className="navigation-item-post-form-content-input"
-                placeholder="내용을 적어주세요"
-              />
+              <div id="navigation-item-post-form-inputWrap">
+                <textarea
+                  name="content"
+                  onChange={onChange}
+                  value={content}
+                  className="navigation-item-post-form-content-input"
+                  placeholder="내용을 적어주세요"
+                />
+                <div id="navigation-item-post-form-preview-imgWrap">
+                  <>
+                    {attachment &&
+                      attachment.map((img, index) => {
+                        return (
+                          <div
+                            className="navigation-item-post-form-preview-box"
+                            key={index}
+                          >
+                            <img
+                              className="navigation-item-post-form-preview-img"
+                              src={img.img}
+                              alt="사진"
+                              key={index}
+                            ></img>
+                            <button
+                              name={img.id}
+                              className="navigation-item-post-form-delete-img-btn"
+                              onClick={onDeleteImg}
+                            />
+                          </div>
+                        );
+                      })}
+                  </>
+                </div>
+              </div>
               <div className="navigation-item-post-form-hashtag-wrap">
                 <input
                   name="hashtag"
@@ -97,6 +161,12 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
                   className="navigation-item-post-form-footerWrap-Btn"
                   value="게시"
                 />
+                <input
+                  type="file"
+                  accept="image/jpg,image/png,image/jpeg,image/gif"
+                  onChange={onFileChange}
+                  multiple
+                ></input>
               </div>
             </div>
           </form>

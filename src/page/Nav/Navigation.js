@@ -11,7 +11,6 @@ import MenuForm from "../../components/Nav/MenuForm";
 import ServiceCenter from "../../components/Nav/ServiceCenter";
 import SerViceCenterImg from "../../assets/img/ServiceCenter.svg";
 import DarkMode from "../../components/Nav/DarkMode";
-
 const Navigation = () => {
   const [postClick, setPostClick] = useState(false);
   const [userClick, setUserClick] = useState(false);
