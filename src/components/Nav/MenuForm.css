@@ -10,8 +10,7 @@
   flex-wrap: wrap;
   overflow-y: scroll;
   position: fixed;
-  margin-top: 10px;
-  right: 10px;
+  right: 285px;
   z-index: 9999;
   gap: 10px;
   display: flex;

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import SearchImg from "../../assets/img/Search.png";
+import ClearImg from "../../assets/img/PostExit.svg";
 import "./SearchBar.css";
 
 const SearchBar = () => {
-  const [searchIsClick, setSearchIsClick] = useState(false);
-
+  const [isSearchClick, setIsSearchClick] = useState(false);
   const [keyword, setKeyword] = useState("");
 
   const onChange = (event) => {
@@ -19,39 +19,33 @@ const SearchBar = () => {
   };
 
   const onSubmit = (event) => {
-    if (!searchIsClick) {
-      event.preventDefault();
-      setKeyword("");
-    }
+    event.preventDefault();
+    console.log("i submit");
+    setKeyword("");
   };
 
-  const toggleClick = () => setSearchIsClick((prev) => !prev);
+  const onClearKeyword = () => {
+    setKeyword("");
+  };
+
+  const searchToggleClick = () => setIsSearchClick((prev) => true);
 
   return (
-    <form id="navigation-item-searchbar-form" onSubmit={onSubmit}>
-      {searchIsClick ? (
-        <input
-          className="navigation-item-searchbar"
-          value={keyword}
-          onChange={onChange}
-        />
-      ) : null}
-
-      <button
+    <form id="navigation-item-searchBar-box" onSubmit={onSubmit}>
+      <input
         className={
-          "navigation-item-search-" + (searchIsClick === true ? "on" : "off")
+          "navigation-item-searchBar-" + `${isSearchClick ? "on" : "off"}`
         }
-        type="submit"
-        value=""
-        onClick={toggleClick}
-      >
-        <img
-          className="navigation-item-search-img"
-          src={SearchImg}
-          alt="검색"
-          title="검색"
-        ></img>
-      </button>
+        value={keyword}
+        onChange={onChange}
+        onClick={searchToggleClick}
+        placeholder={isSearchClick ? "" : "검색어를 입력해주세요"}
+      />
+      {isSearchClick ? (
+        <button id="navigation-item-searchBar-clearBtn">
+          <img id="navigation-item-searchBar-clearBtn-img" src={ClearImg} />
+        </button>
+      ) : null}
     </form>
   );
 };

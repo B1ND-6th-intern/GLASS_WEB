@@ -6,6 +6,7 @@
   background-color: rgba(238, 238, 238, 0.9);
   overflow: hidden;
   top: 0px;
+  z-index: 9999;
 }
 .navigation-item-post-form {
   position: absolute;
@@ -57,13 +58,19 @@
   border: none;
 }
 
+#navigation-item-post-form-inputWrap {
+  width: 510px;
+  height: 370px;
+  display: flex;
+  margin-top: 15px;
+}
+
 .navigation-item-post-form-content-input {
-  width: 100%;
-  height: 65%;
+  width: 395px;
+  height: 100%;
   font-size: 20px;
   vertical-align: top;
   box-sizing: border-box;
-  margin-top: 15px;
   border: none;
   overflow-y: scroll;
   resize: none;
@@ -80,6 +87,52 @@
 .navigation-item-post-form-content-input::-webkit-scrollbar-thumb {
   background-color: var(--main_color);
   border-radius: 20px;
+}
+
+#navigation-item-post-form-preview-imgWrap {
+  width: 106px;
+  height: 369px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  background-color: #786c9e;
+  overflow-y: scroll;
+  row-gap: 10px;
+}
+
+.navigation-item-post-form-preview-box {
+  width: 100%;
+  position: relative;
+  height: auto;
+  display: flex;
+}
+
+.navigation-item-post-form-preview-img {
+  width: 90%;
+  margin: 0px auto;
+}
+
+.navigation-item-post-form-delete-img-btn {
+  left: 50%;
+  transform: translate(-50%, 0%);
+  position: absolute;
+  width: 90%;
+  height: 100%;
+  padding: 0px;
+  border: 0px;
+  background: none;
+  background-position: center;
+}
+
+.navigation-item-post-form-delete-img-btn:hover {
+  cursor: pointer;
+  transition: 1s;
+  opacity: 60%;
+  background: url(../../assets/img/PostImgDelete.svg);
+  background-size: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
 }
 
 .navigation-item-post-form-hashtag-wrap {
