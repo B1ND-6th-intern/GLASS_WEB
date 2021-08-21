@@ -1,7 +1,7 @@
 import PostExitImg from "../../assets/img/PostExit.svg";
 import { useEffect } from "react";
 import "./PostForm.css";
-import ImgDelete from "../../assets/img/PostImgDelete.svg";
+import ImgAdd from "../../assets/img/PostImgAdd.svg";
 import { useState } from "react";
 
 const PostForm = ({ postIsClick, togglePostClick }) => {
@@ -154,6 +154,22 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
                     title="해쉬태그 추가"
                   />
                 </button> */}
+                <label
+                  id="navigation-item-post-form-img-input-label"
+                  for="navigation-item-post-form-img-input"
+                >
+                  <img
+                    id="navigation-item-post-form-img-input-label-img"
+                    src={ImgAdd}
+                  />
+                </label>
+                <input
+                  id="navigation-item-post-form-img-input"
+                  type="file"
+                  accept="image/jpg,image/png,image/jpeg,image/gif"
+                  onChange={onFileChange}
+                  multiple
+                />
               </div>
               <div className="navigation-item-post-form-footerWrap">
                 <input
@@ -161,12 +177,6 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
                   className="navigation-item-post-form-footerWrap-Btn"
                   value="게시"
                 />
-                <input
-                  type="file"
-                  accept="image/jpg,image/png,image/jpeg,image/gif"
-                  onChange={onFileChange}
-                  multiple
-                ></input>
               </div>
             </div>
           </form>

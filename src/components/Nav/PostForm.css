@@ -66,7 +66,7 @@
 }
 
 .navigation-item-post-form-content-input {
-  width: 395px;
+  width: 402px;
   height: 100%;
   font-size: 20px;
   vertical-align: top;
@@ -145,20 +145,30 @@
 }
 
 .navigation-item-post-form-hashtag-input {
-  width: 100%;
+  width: 88%;
   height: 100%;
   margin: 0px;
   padding: 0px;
   border: none;
 }
 
-.navigation-item-post-form-hashtag-add-button {
+#navigation-item-post-form-img-input-label {
+  width: 10%;
+  height: 100%;
+  margin-left: auto;
+  background-color: white;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto;
-  width: 10%;
-  height: 100%;
+}
+
+#navigation-item-post-form-img-input-label-img {
+  width: 50%;
+}
+
+#navigation-item-post-form-img-input {
+  display: none;
 }
 
 .navigation-item-post-form-hashtag-add-button-img {
