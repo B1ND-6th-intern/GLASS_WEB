@@ -9,22 +9,20 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
   const [hashTag, setHashTag] = useState("");
   const [attachment, setAttachment] = useState([]);
 
-  {
-    useEffect(() => {
-      if (postIsClick === true) {
-        document.body.style.cssText = `
+  useEffect(() => {
+    if (postIsClick === true) {
+      document.body.style.cssText = `
         position : fixed;
         top : -${window.scrollY}px
         overflow-y : scroll;
         width : 100%`;
-        return () => {
-          const scrollY = document.body.style.top;
-          document.body.style.cssText = "";
-          window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
-        };
-      }
-    }, [postIsClick]);
-  }
+      return () => {
+        const scrollY = document.body.style.top;
+        document.body.style.cssText = "";
+        window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+      };
+    }
+  }, [postIsClick]);
 
   const onChange = (event) => {
     const {
@@ -63,6 +61,9 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
     let file;
     let filesLength = files.length > 10 ? 10 : files.length;
 
+    if (files.length > 10) {
+      window.alert("사진은 최대 10장 업로드 할 수 있습니다");
+    }
     for (let i = 0; i < filesLength; i++) {
       file = files[i];
 

@@ -208,6 +208,10 @@
   background-color: var(--dark-color);
 }
 
+.dark-mode #navigation-item-post-form-preview-imgWrap {
+  background-color: var(--dark-post-color);
+}
+
 .dark-mode .navigation-item-post-form-hashtag-input {
   background-color: var(--dark-post-color);
   color: black;
