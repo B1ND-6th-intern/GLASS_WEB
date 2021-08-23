@@ -4,6 +4,7 @@ import Logo1 from "../../assets/img/SignupPageBackGroundImg1.svg";
 
 const SignupBar = () => {
   const [id, setId] = useState("");
+  const [isOverlap, setIsOverlap] = useState(false); //아이디 중복 여부
   const [pw, setPw] = useState("");
   const [CheckPw, setCheckPw] = useState("");
   const [grade, setGrade] = useState(1);
@@ -82,13 +83,22 @@ const SignupBar = () => {
     number: parseInt(number),
     mail: mail,
     name: name,
-    isAgree: isAgree,
+    isOverlap: isOverlap,
     isPass: isPass,
+    isAgree: isAgree,
   };
 
   const agreeToggle = () => setIsAgree((prev) => !prev);
 
   const certificationToggle = () => setIsCertification((prev) => (prev = true));
+
+  const overlepCheck = () => {
+    if (name !== null) {
+      setIsOverlap(true);
+    } else {
+      setIsOverlap(false);
+    }
+  };
 
   const validateEmail = (mail) => {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
@@ -135,7 +145,13 @@ const SignupBar = () => {
           placeholder="아이디"
           value={id}
         />
-        <button className="signpbar-id-input-check">확인</button>
+        <button
+          className="signpbar-id-input-check"
+          type="button"
+          onClick={overlepCheck}
+        >
+          확인
+        </button>
       </div>
       <div className="signupBar-pw-wrap">
         <input
