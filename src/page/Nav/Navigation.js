@@ -1,6 +1,6 @@
 import "./Navigation.scss";
 import { useState } from "react";
-import Logo from "../../assets/img/Logo.svg"
+import Logo from "../../assets/img/Logo.svg";
 import PostImg from "../../assets/img/Post.svg";
 import MenuImg from "../../assets/img/Menu.svg";
 import Network from "../../components/Nav/NetWork";
