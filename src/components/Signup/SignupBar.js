@@ -11,6 +11,9 @@ const SignupBar = () => {
   const [number, setNumber] = useState(1);
   const [mail, setMail] = useState("");
   const [name, setName] = useState("");
+  const [certification, setCertification] = useState("");
+  const [isCertification, setIsCertification] = useState(false);
+  const [isPass, setIsPass] = useState(false); // 인증여부
   const [isAgree, setIsAgree] = useState(false);
   const [isTrue, SetIstrue] = useState("");
 
@@ -26,18 +29,6 @@ const SignupBar = () => {
     return numbers;
   };
 
-  useEffect(() => {
-    if (pw === CheckPw) {
-      SetIstrue("비밀번호가 일치합니다.");
-    }
-    if (CheckPw !== pw) {
-      SetIstrue("비밀번호가 일치 하지 않습니다.");
-    }
-    if (CheckPw === "" || pw === "") {
-      SetIstrue("비밀번호가 공백 상태 입니다.");
-    }
-  }, [pw, CheckPw]);
-
   const onChange = (event) => {
     const {
       target: { value, name },
@@ -52,6 +43,8 @@ const SignupBar = () => {
       setName(value);
     } else if (name === "mail") {
       setMail(value);
+    } else if (name === "certification") {
+      setCertification(value);
     }
   };
 
@@ -70,28 +63,50 @@ const SignupBar = () => {
   };
 
   const userData = {
-    id: id,
-    pw: pw,
+    username: id,
+    password: pw,
+    password2: CheckPw,
     grade: parseInt(grade),
-    class: parseInt(group),
-    number: parseInt(number),
-    mail: mail,
+    classNumber: parseInt(group),
+    stuNumber: parseInt(number),
+    email: mail,
     name: name,
+    isPass: isPass,
     isAgree: isAgree,
   };
 
   const agreeToggle = () => setIsAgree((prev) => !prev);
 
+  const certificationToggle = () => setIsCertification((prev) => (prev = true));
+
+  const validateEmail = (mail) => {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return true;
+    }
+    alert("메일 형식을 확인해 주세요!");
+    setIsCertification(false);
+    setMail("");
+    return false;
+  };
+
   const onSubmit = (event) => {
-    event.preventDefault();
-    console.log({ userData });
-    setId("");
-    setPw("");
-    setCheckPw("");
-    setGrade(1);
-    setGroup(1);
-    setNumber(1);
-    setName("");
+    if (isCertification) {
+      event.preventDefault();
+      const certificationIsTrue = validateEmail(mail);
+      if (certificationIsTrue) {
+        console.log("인증 시작~");
+      }
+    } else if (!isCertification) {
+      event.preventDefault();
+      console.log({ userData });
+      setId("");
+      setPw("");
+      setCheckPw("");
+      setGrade(1);
+      setGroup(1);
+      setNumber(1);
+      setName("");
+    }
   };
 
   return (
@@ -109,7 +124,6 @@ const SignupBar = () => {
           placeholder="아이디"
           value={id}
         />
-        <button className="signpbar-id-input-check">확인</button>
       </div>
       <div className="signupBar-pw-wrap">
         <input
@@ -174,13 +188,22 @@ const SignupBar = () => {
           {Numbers()}
         </select>
       </div>
-      <input
-        name="mail"
-        id="signupBar-mail-input"
-        placeholder="e-mail"
-        value={mail}
-        onChange={onChange}
-      />
+      <div id="signupBar-mail-inputWrap">
+        <input
+          name={isCertification ? "certification" : "mail"}
+          id="signupBar-mail-input"
+          placeholder={isCertification ? "인증번호" : "e-mail"}
+          value={isCertification ? certification : mail}
+          onChange={onChange}
+        />
+        <button
+          id="signupBar-certification-input"
+          type="submit"
+          onClick={certificationToggle}
+        >
+          인증
+        </button>
+      </div>
       <input
         name="name"
         className="signupBar-name-input"

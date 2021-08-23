@@ -45,7 +45,7 @@
 }
 
 .signupBar-id-input {
-  width: 85%;
+  width: 100%;
   padding: 0px;
 }
 
@@ -79,13 +79,14 @@
 
 .signupBar-pw-input-check {
   width: 100%;
-  float: right;
+  margin-left: auto;
   margin: 0px;
 }
 
 .signupBar-pw-input-check-alert {
   font-size: 12px;
   font-weight: 300;
+  margin: 0px;
 }
 
 #signupBar-selects-wrap {
@@ -104,16 +105,35 @@ option {
   border-radius: 5px;
 }
 
-#signupBar-mail-input {
+#signupBar-mail-inputWrap {
   width: 90%;
   height: 50px;
   margin: 10px auto;
+  box-sizing: border-box;
+  display: flex;
+}
+
+#signupBar-mail-input {
+  width: 85%;
+  height: 100%;
   border: 1px solid grey;
   box-sizing: border-box;
   box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
     0 1px 3px -1px rgba(0, 0, 0, 0.3);
   outline: none;
   border-radius: 5px;
+}
+
+#signupBar-certification-input {
+  width: 13%;
+  height: 100%;
+  margin-left: auto;
+  border: 1px solid grey;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
 #signupBar-agreeBox-wrap {
