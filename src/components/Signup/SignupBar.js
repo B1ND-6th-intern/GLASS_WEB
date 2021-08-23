@@ -4,7 +4,6 @@ import Logo1 from "../../assets/img/SignupPageBackGroundImg1.svg";
 
 const SignupBar = () => {
   const [id, setId] = useState("");
-  const [isOverlap, setIsOverlap] = useState(false); //아이디 중복 여부
   const [pw, setPw] = useState("");
   const [CheckPw, setCheckPw] = useState("");
   const [grade, setGrade] = useState(1);
@@ -29,18 +28,6 @@ const SignupBar = () => {
     }
     return numbers;
   };
-
-  useEffect(() => {
-    if (pw === CheckPw) {
-      SetIstrue("비밀번호가 일치합니다.");
-    }
-    if (CheckPw !== pw) {
-      SetIstrue("비밀번호가 일치 하지 않습니다.");
-    }
-    if (CheckPw === "" || pw === "") {
-      SetIstrue("비밀번호가 공백 상태 입니다.");
-    }
-  }, [pw, CheckPw]);
 
   const onChange = (event) => {
     const {
@@ -76,14 +63,14 @@ const SignupBar = () => {
   };
 
   const userData = {
-    id: id,
-    pw: pw,
+    username: id,
+    password: pw,
+    password2: CheckPw,
     grade: parseInt(grade),
-    class: parseInt(group),
-    number: parseInt(number),
-    mail: mail,
+    classNumber: parseInt(group),
+    stuNumber: parseInt(number),
+    email: mail,
     name: name,
-    isOverlap: isOverlap,
     isPass: isPass,
     isAgree: isAgree,
   };
@@ -91,14 +78,6 @@ const SignupBar = () => {
   const agreeToggle = () => setIsAgree((prev) => !prev);
 
   const certificationToggle = () => setIsCertification((prev) => (prev = true));
-
-  const overlepCheck = () => {
-    if (name !== null) {
-      setIsOverlap(true);
-    } else {
-      setIsOverlap(false);
-    }
-  };
 
   const validateEmail = (mail) => {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
@@ -145,13 +124,6 @@ const SignupBar = () => {
           placeholder="아이디"
           value={id}
         />
-        <button
-          className="signpbar-id-input-check"
-          type="button"
-          onClick={overlepCheck}
-        >
-          확인
-        </button>
       </div>
       <div className="signupBar-pw-wrap">
         <input
