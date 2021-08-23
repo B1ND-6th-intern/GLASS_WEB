@@ -5,7 +5,6 @@ import MainPage from "./page/Main/MainPage";
 import Navigation from "./page/Nav/Navigation";
 
 const AppRouter = ({ isLoggedIn }) => {
-  console.log(isLoggedIn);
   return (
     <Router>
       {isLoggedIn && <Navigation />}
