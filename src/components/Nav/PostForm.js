@@ -157,7 +157,7 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
                 </button> */}
                 <label
                   id="navigation-item-post-form-img-input-label"
-                  for="navigation-item-post-form-img-input"
+                  htmlFor="navigation-item-post-form-img-input"
                 >
                   <img
                     id="navigation-item-post-form-img-input-label-img"
