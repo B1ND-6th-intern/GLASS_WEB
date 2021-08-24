@@ -23,6 +23,7 @@ const AppRouter = ({ isLoggedIn }) => {
             <Route path="/signup">
               <SignupPage />
             </Route>
+            <Route path="/certification"></Route>
           </Router>
         )}
       </Switch>
