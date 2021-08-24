@@ -4,7 +4,6 @@ import PostExitImg from "../../assets/img/PostExit.svg";
 import { connect } from "react-redux";
 import "./UserForm.css";
 import { actionCreators } from "../../Store";
-import changePasswordForm from "./ChangePasswordForm";
 import ChangePasswordForm from "./ChangePasswordForm";
 
 const UserForm = ({ userIsClcik, toggleUserClick, currentState, dispatch }) => {
