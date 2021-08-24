@@ -1,6 +1,7 @@
 import "./Navigation.scss";
 import { useState } from "react";
 import Logo from "../../assets/img/Logo.svg";
+import WhiteLogo from "../../assets/img/WhiteLogo.svg";
 import PostImg from "../../assets/img/Post.svg";
 import MenuImg from "../../assets/img/Menu.svg";
 import Network from "../../components/Nav/NetWork";
@@ -11,7 +12,10 @@ import MenuForm from "../../components/Nav/MenuForm";
 import ServiceCenter from "../../components/Nav/ServiceCenter";
 import SerViceCenterImg from "../../assets/img/ServiceCenter.svg";
 import DarkMode from "../../components/Nav/DarkMode";
-const Navigation = () => {
+import { connect } from "react-redux";
+import { actionCreators } from "../../Store";
+
+const Navigation = ({ currentState, dispatch }) => {
   const [postClick, setPostClick] = useState(false);
   const [userClick, setUserClick] = useState(false);
   const [menuClick, setMenuClick] = useState(false);
@@ -27,7 +31,8 @@ const Navigation = () => {
     setUserClick(
       (prev) => !prev,
       setMenuClick(false),
-      setIsServiceCenter(false)
+      setIsServiceCenter(false),
+      dispatch(actionCreators.userModifyOff(true))
     );
   const toggleMenuClick = () => setMenuClick((prev) => !prev);
   const toggleSCClick = () => {
@@ -42,6 +47,11 @@ const Navigation = () => {
               <img
                 className="navigation-item-logo-img"
                 src={Logo}
+                alt="Logo"
+              ></img>
+              <img
+                className="navigation-item-logo-whiteimg"
+                src={WhiteLogo}
                 alt="Logo"
               ></img>
             </div>
@@ -87,4 +97,12 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+const getCurrentState = (state) => {
+  return { currentState: state };
+};
+
+const dispatchCurrentState = (dispatch) => {
+  return { dispatch };
+};
+
+export default connect(getCurrentState, dispatchCurrentState)(Navigation);

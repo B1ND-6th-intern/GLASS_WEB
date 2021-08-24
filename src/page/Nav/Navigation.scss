@@ -23,6 +23,10 @@
 .navigation-item-logo-img {
   width: 70px;
 }
+.navigation-item-logo-whiteimg {
+  width: 70px;
+  display: none;
+}
 
 .navigation-item-post {
   cursor: pointer;
@@ -119,6 +123,14 @@
 .dark-mode .navigation-container {
   background-color: var(--sub-dark-color);
   border: 1px solid var(--border-dark-color);
+}
+
+.dark-mode .navigation-item-logo-img {
+  display: none;
+}
+
+.dark-mode .navigation-item-logo-whiteimg {
+  display: block;
 }
 
 .dark-mode #serviceCenter-btn {
