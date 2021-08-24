@@ -7,15 +7,12 @@ import Navigation from "./page/Nav/Navigation";
 const AppRouter = ({ isLoggedIn }) => {
   return (
     <Router>
-      {isLoggedIn && <Navigation />}
       <Switch>
         {isLoggedIn ? (
           <Router>
             <Route exact path="/">
+              {isLoggedIn && <Navigation />}
               <MainPage />
-            </Route>
-            <Route exact path="/servicecenter">
-              <div>고객센터</div>
             </Route>
           </Router>
         ) : (

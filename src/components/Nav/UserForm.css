@@ -237,6 +237,7 @@
   padding: 0px 6px;
   box-sizing: border-box;
   color: black;
+  word-break: keep-all;
 }
 
 /* darkmode */

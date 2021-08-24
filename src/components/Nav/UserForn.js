@@ -4,6 +4,8 @@ import PostExitImg from "../../assets/img/PostExit.svg";
 import { connect } from "react-redux";
 import "./UserForm.css";
 import { actionCreators } from "../../Store";
+import changePasswordForm from "./ChangePasswordForm";
+import ChangePasswordForm from "./ChangePasswordForm";
 
 const UserForm = ({ userIsClcik, toggleUserClick, currentState, dispatch }) => {
   const [grade, setGrade] = useState("");
@@ -11,22 +13,22 @@ const UserForm = ({ userIsClcik, toggleUserClick, currentState, dispatch }) => {
   const [number, setNumber] = useState("");
   const [mail, setMail] = useState("");
   const [name, setName] = useState("");
-  {
-    useEffect(() => {
-      if (userIsClcik === true) {
-        document.body.style.cssText = `
+  const [isPasswordChange, setIsPasswordChange] = useState(false);
+
+  useEffect(() => {
+    if (userIsClcik === true) {
+      document.body.style.cssText = `
         position : fixed;
         top : -${window.scrollY}px
         overflow-y : scroll;
         width : 100%`;
-        return () => {
-          const scrollY = document.body.style.top;
-          document.body.style.cssText = "";
-          window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
-        };
-      }
-    }, [userIsClcik]);
-  }
+      return () => {
+        const scrollY = document.body.style.top;
+        document.body.style.cssText = "";
+        window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+      };
+    }
+  }, [userIsClcik]);
 
   const editingToggle = () => {
     if (currentState) {
@@ -61,6 +63,9 @@ const UserForm = ({ userIsClcik, toggleUserClick, currentState, dispatch }) => {
     mail: mail,
   };
 
+  const togglePasswordChange = () => {
+    setIsPasswordChange((prev) => !prev, toggleUserClick());
+  };
   const onSubmit = (event) => {
     event.preventDefault();
     console.log({ userModifyData });
@@ -147,6 +152,7 @@ const UserForm = ({ userIsClcik, toggleUserClick, currentState, dispatch }) => {
                   <button
                     type="button"
                     className="navigation-item-user-form-passwordChange"
+                    onClick={togglePasswordChange}
                   >
                     비밀번호 변경
                   </button>
@@ -194,6 +200,9 @@ const UserForm = ({ userIsClcik, toggleUserClick, currentState, dispatch }) => {
             </div>
           </form>
         </div>
+      ) : null}
+      {isPasswordChange ? (
+        <ChangePasswordForm togglePasswordChange={togglePasswordChange} />
       ) : null}
     </>
   );
