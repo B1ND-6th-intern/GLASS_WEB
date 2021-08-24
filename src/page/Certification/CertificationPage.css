@@ -1,0 +1,11 @@
+#certification-container {
+  width: 100vw;
+  height: 100vh;
+  background: url("../../assets//img/LogoBackGround.svg");
+  background-size: cover;
+  background-color: var(--main_color);
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
