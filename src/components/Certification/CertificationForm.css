@@ -23,6 +23,13 @@
   margin: 0px auto;
   margin-top: 40px;
   font-size: 18px;
+  outline: none;
+}
+
+#certification-timer {
+  position: absolute;
+  top: 33.5%;
+  left: 57%;
 }
 
 #certificationForm-input-alert {
