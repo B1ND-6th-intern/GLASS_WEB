@@ -3,6 +3,7 @@ import LoginPage from "./page/Login/LoginPage";
 import SignupPage from "./page/Signup/SignupPage";
 import MainPage from "./page/Main/MainPage";
 import Navigation from "./page/Nav/Navigation";
+import CertificationPage from "./page/Certification/CertificationPage";
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
@@ -23,7 +24,9 @@ const AppRouter = ({ isLoggedIn }) => {
             <Route path="/signup">
               <SignupPage />
             </Route>
-            <Route path="/certification"></Route>
+            <Route path="/certification">
+              <CertificationPage />
+            </Route>
           </Router>
         )}
       </Switch>
