@@ -97,13 +97,17 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
             <div className="navigation-item-post-form-container">
               <div className="navigation-item-post-form-headerWrap">
                 <div className="navigation-item-post-form-title">
-                  질문을 마음껏 작성해주세요 :)
+                  게시물 추가
                 </div>
                 <button
                   className="navigation-item-post-form-exit"
                   onClick={togglePostClick}
                 >
-                  <img src={PostExitImg} title="취소" />
+                  <img
+                    id="navigation-item-post-form-exit-img"
+                    src={PostExitImg}
+                    title="취소"
+                  />
                 </button>
               </div>
               <div id="navigation-item-post-form-inputWrap">
@@ -146,7 +150,7 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
                   onChange={onChange}
                   value={hashTag}
                   className="navigation-item-post-form-hashtag-input"
-                  placeholder="전공 태그 (쉼표로 구분해주세요)"
+                  placeholder="추억 태그 (쉼표로 구분해주세요)"
                 />
                 {/* <button className="navigation-item-post-form-hashtag-add-button">
                   <img

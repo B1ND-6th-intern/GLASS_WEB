@@ -15,7 +15,7 @@ import DarkMode from "../../components/Nav/DarkMode";
 import { connect } from "react-redux";
 import { actionCreators } from "../../Store";
 
-const Navigation = ({ currentState, dispatch }) => {
+const Navigation = ({ dispatch, isLoggedIn }) => {
   const [postClick, setPostClick] = useState(false);
   const [userClick, setUserClick] = useState(false);
   const [menuClick, setMenuClick] = useState(false);
@@ -92,7 +92,11 @@ const Navigation = ({ currentState, dispatch }) => {
 
       <MenuForm menuIsClcik={menuClick} toggleMenuClick={toggleMenuClick} />
 
-      <UserForm userIsClcik={userClick} toggleUserClick={toggleUserClick} />
+      <UserForm
+        userIsClcik={userClick}
+        toggleUserClick={toggleUserClick}
+        isLoggedIn={isLoggedIn}
+      />
     </>
   );
 };

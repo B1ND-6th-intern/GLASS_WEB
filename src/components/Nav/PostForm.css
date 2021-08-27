@@ -16,7 +16,7 @@
   display: inline-block;
   width: 510px;
   height: 570px;
-  background-color: #534974;
+  background-color: white;
   border-radius: 5px;
   align-items: center;
   justify-content: center;
@@ -39,7 +39,7 @@
 
 .navigation-item-post-form-title {
   display: block;
-  color: #eeeeee;
+  color: black;
   font-size: 22px;
   margin-bottom: 16px;
   width: 100%;
@@ -53,27 +53,40 @@
   cursor: pointer;
   width: 30px;
   height: 30px;
-  background: none;
+  background-color: #f1f1f1;
   outline: none;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+}
+
+#navigation-item-post-form-exit-img {
+  width: 70%;
+}
+
+.navigation-item-post-form-exit:hover {
+  background-color: #e7e7e7;
 }
 
 #navigation-item-post-form-inputWrap {
-  width: 510px;
+  width: 100%;
   height: 370px;
   display: flex;
   margin-top: 15px;
 }
 
 .navigation-item-post-form-content-input {
-  width: 402px;
+  width: 78%;
   height: 100%;
   font-size: 20px;
   vertical-align: top;
   box-sizing: border-box;
-  border: none;
+  border: 1px solid var(--main-border-color);
   overflow-y: scroll;
   resize: none;
+  outline: none;
 }
 
 .navigation-item-post-form-content-input::-webkit-scrollbar {
@@ -90,16 +103,29 @@
 }
 
 #navigation-item-post-form-preview-imgWrap {
-  width: 106px;
+  width: 20%;
   height: 369px;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  background-color: #786c9e;
+  border: 1px solid var(--main-border-color);
+  background-color: white;
   overflow-y: scroll;
   row-gap: 10px;
+  margin-left: auto;
 }
 
+#navigation-item-post-form-preview-imgWrap::-webkit-scrollbar {
+  width: 10px;
+}
+
+#navigation-item-post-form-preview-imgWrap::-webkit-scrollbar-track {
+  background: none;
+}
+
+#navigation-item-post-form-preview-imgWrap::-webkit-scrollbar-thumb {
+  background: var(--main_color);
+  border-radius: 20px;
+}
 .navigation-item-post-form-preview-box {
   width: 100%;
   position: relative;
@@ -149,7 +175,8 @@
   height: 100%;
   margin: 0px;
   padding: 0px;
-  border: none;
+  border: 1px solid var(--main-border-color);
+  outline: none;
 }
 
 #navigation-item-post-form-img-input-label {
@@ -161,6 +188,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid var(--main-border-color);
 }
 
 #navigation-item-post-form-img-input-label-img {
@@ -187,7 +215,14 @@
   margin: 10.75px 0px;
   margin-top: 15px;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
+  background-color: var(--main_color);
+  color: white;
+}
+
+.navigation-item-post-form-footerWrap-Btn:hover {
+  background-color: #88acf0;
 }
 
 /* darkmode */

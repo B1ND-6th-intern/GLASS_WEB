@@ -6,7 +6,13 @@ import "./UserForm.css";
 import { actionCreators } from "../../Store";
 import ChangePasswordForm from "./ChangePasswordForm";
 
-const UserForm = ({ userIsClcik, toggleUserClick, currentState, dispatch }) => {
+const UserForm = ({
+  userIsClcik,
+  toggleUserClick,
+  currentState,
+  dispatch,
+  isLoggedIn,
+}) => {
   const [grade, setGrade] = useState("");
   const [group, setGroup] = useState("");
   const [number, setNumber] = useState("");
@@ -64,6 +70,14 @@ const UserForm = ({ userIsClcik, toggleUserClick, currentState, dispatch }) => {
 
   const togglePasswordChange = () => {
     setIsPasswordChange((prev) => !prev, toggleUserClick());
+  };
+
+  useEffect(() => {
+    console.log(isLoggedIn);
+  }, [isLoggedIn]);
+
+  const logOut = (state) => {
+    state = false;
   };
   const onSubmit = (event) => {
     event.preventDefault();
@@ -173,6 +187,7 @@ const UserForm = ({ userIsClcik, toggleUserClick, currentState, dispatch }) => {
                   <button
                     type="button"
                     className="navigation-item-user-form-logOut"
+                    onClick={logOut(isLoggedIn)}
                   >
                     로그아웃
                   </button>
