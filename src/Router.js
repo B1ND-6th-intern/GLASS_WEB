@@ -12,7 +12,7 @@ const AppRouter = ({ isLoggedIn }) => {
         {isLoggedIn ? (
           <Router>
             <Route exact path="/">
-              {isLoggedIn && <Navigation />}
+              {isLoggedIn && <Navigation isLoggedIn={isLoggedIn} />}
               <MainPage />
             </Route>
           </Router>

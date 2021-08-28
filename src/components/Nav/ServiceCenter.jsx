@@ -24,7 +24,7 @@ const SerViceCenter = ({ isServiceCenter, toggleSCClick }) => {
               <img id="serviceCenter-prev-btn-img" src={ExitServiceCenter} />
             </button>
             <p id="serviceCenter-title">
-              혹시 문제라도
+              혹시 문제가
               <br />
               생기셨나요?
             </p>

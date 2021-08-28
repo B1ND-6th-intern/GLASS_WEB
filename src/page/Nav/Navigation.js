@@ -15,7 +15,7 @@ import DarkMode from "../../components/Nav/DarkMode";
 import { connect } from "react-redux";
 import { actionCreators } from "../../Store";
 
-const Navigation = ({ currentState, dispatch }) => {
+const Navigation = ({ dispatch, isLoggedIn }) => {
   const [postClick, setPostClick] = useState(false);
   const [userClick, setUserClick] = useState(false);
   const [menuClick, setMenuClick] = useState(false);
@@ -43,18 +43,16 @@ const Navigation = ({ currentState, dispatch }) => {
       <header id="Navigation">
         <div className="navigation-container">
           <nav className="navigation-item-container">
-            <div className="navigation-item-logo">
-              <img
-                className="navigation-item-logo-img"
-                src={Logo}
-                alt="Logo"
-              ></img>
-              <img
-                className="navigation-item-logo-whiteimg"
-                src={WhiteLogo}
-                alt="Logo"
-              ></img>
-            </div>
+            <img
+              className="navigation-item-logo-img"
+              src={Logo}
+              alt="Logo"
+            ></img>
+            <img
+              className="navigation-item-logo-whiteimg"
+              src={WhiteLogo}
+              alt="Logo"
+            />
 
             <SearchBar />
 
@@ -92,7 +90,11 @@ const Navigation = ({ currentState, dispatch }) => {
 
       <MenuForm menuIsClcik={menuClick} toggleMenuClick={toggleMenuClick} />
 
-      <UserForm userIsClcik={userClick} toggleUserClick={toggleUserClick} />
+      <UserForm
+        userIsClcik={userClick}
+        toggleUserClick={toggleUserClick}
+        isLoggedIn={isLoggedIn}
+      />
     </>
   );
 };

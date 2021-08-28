@@ -2,12 +2,9 @@ import "./App.css";
 import AppRouter from "./Router";
 
 function App() {
-  const isUser = false;
+  // const isUser = false;
 
-  // const isUser = {
-  //   name: "dh",
-  // }; // <= 예시
-
+  let isUser = true;
   return <AppRouter isLoggedIn={Boolean(isUser)} />;
 }
 
