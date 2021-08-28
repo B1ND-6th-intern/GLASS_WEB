@@ -1,12 +1,39 @@
-.loginbar-container {
-  width: 390px;
-  height: 530px;
-  background-color: #fbfbfb;
+#loginBar-container {
+  width: 1240px;
+  height: 720px;
+  display: flex;
   box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
     0 1px 3px -1px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  flex-direction: column;
+}
+
+#loginBar-asideContainer {
+  width: 620px;
+  height: 720px;
+  background-color: var(--main_color);
+  border: 1px solid var(--main-border-color);
+  border-right: 0px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.loginbar-loginContainer {
+  width: 620px;
+  height: 720px;
+  background-color: white;
+  border: 1px solid var(--main-border-color);
+  border-left: 0px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#loginBar-inputWrap {
+  width: 440px;
+  height: 540px;
+  display: flex;
+  flex-direction: column;
 }
 
 .loginbar-title {
@@ -15,7 +42,19 @@
   margin: 20px;
 }
 
-.loginbar-img1 {
+.loginbar-id-input {
+  width: 90%;
+  margin: 10px auto;
+  height: 50px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid var(--main-border-color);
+  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  font-size: 15px;
+  padding: 1px 10px;
+}
+/* .loginbar-img1 {
   width: 100px;
   position: relative;
   top: 50%;
@@ -32,26 +71,33 @@
   position: relative;
   left: 52%;
   top: 10%;
+} */
+
+#loginBar-pwWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 10px;
 }
 
-:is(.loginbar-id-input, .loginbar-pw-input) {
+.loginbar-pw-input {
   width: 90%;
-  margin: 10px auto;
   height: 50px;
   border-radius: 5px;
   outline: none;
-  border: 1px solid grey;
+  border: 1px solid var(--main-border-color);
   box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
     0 1px 3px -1px rgba(0, 0, 0, 0.3);
   font-size: 15px;
+  padding: 1px 10px;
 }
 
 #loginbar-pwtype-btn {
   width: 40px;
   height: 40px;
   position: absolute;
-  top: 42%;
-  left: 57%;
+  right: 15px;
   background: none;
   border: none;
   cursor: pointer;
@@ -78,11 +124,10 @@
   margin: 0px auto;
   margin-top: auto;
   margin-bottom: 30px;
-  background-color: white;
-  border: 1px solid grey;
+  background-color: var(--main_color);
+  color: white;
+  border: 1px solid var(--main-border-color);
   border-radius: 5px;
-  font-size: 20px;
-  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
-    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  font-size: 15px;
   cursor: pointer;
 }
