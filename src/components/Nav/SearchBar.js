@@ -23,10 +23,6 @@ const SearchBar = () => {
     };
   }, []);
 
-  useEffect(() => {
-    console.log(isSearchClick);
-  }, [isSearchClick]);
-
   const onChange = (event) => {
     const {
       target: { value },

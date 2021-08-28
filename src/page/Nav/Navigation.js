@@ -43,18 +43,16 @@ const Navigation = ({ dispatch, isLoggedIn }) => {
       <header id="Navigation">
         <div className="navigation-container">
           <nav className="navigation-item-container">
-            <div className="navigation-item-logo">
-              <img
-                className="navigation-item-logo-img"
-                src={Logo}
-                alt="Logo"
-              ></img>
-              <img
-                className="navigation-item-logo-whiteimg"
-                src={WhiteLogo}
-                alt="Logo"
-              ></img>
-            </div>
+            <img
+              className="navigation-item-logo-img"
+              src={Logo}
+              alt="Logo"
+            ></img>
+            <img
+              className="navigation-item-logo-whiteimg"
+              src={WhiteLogo}
+              alt="Logo"
+            />
 
             <SearchBar />
 

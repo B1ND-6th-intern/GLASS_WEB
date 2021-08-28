@@ -79,6 +79,7 @@ const UserForm = ({
   const logOut = (state) => {
     state = false;
   };
+
   const onSubmit = (event) => {
     event.preventDefault();
     console.log({ userModifyData });
@@ -90,14 +91,18 @@ const UserForm = ({
       {userIsClcik ? (
         <div className="nav-item-user-form-wrap">
           <form onSubmit={onSubmit} id="navigation-item-user-form">
-            <button
-              className="navigation-item-user-form-exit"
-              onClick={toggleUserClick}
-            >
-              <img src={PostExitImg} title="취소" />
-            </button>
             <div id="navigation-item-user-form-headerWrap">
               <p id="navagation-item-user-form-headerTitle">프로필</p>
+              <button
+                className="navigation-item-user-form-exit"
+                onClick={toggleUserClick}
+              >
+                <img
+                  src={PostExitImg}
+                  title="취소"
+                  id="navigation-item-user-form-exit-img"
+                />
+              </button>
             </div>
             <div id="navigation-item-user-form-contentWrap">
               <div id="navigation-item-user-form-profileWrap">

@@ -32,7 +32,6 @@
   background-color: white;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  flex-direction: column;
   box-sizing: border-box;
   padding: 20px;
 }
@@ -52,11 +51,19 @@
   background: none;
   outline: none;
   border: none;
-  position: absolute;
   margin-top: 10px;
-  right: 10px;
+  margin-left: auto;
+  background-color: var(--main-exit-background-color);
+  border-radius: 50px;
 }
 
+.navigation-item-user-form-exit:hover {
+  background-color: var(--main-exit-hover-background-color);
+}
+
+#navigation-item-user-form-exit-img {
+  width: 70%;
+}
 #navigation-item-user-form-contentWrap {
   height: 520px;
   padding: 20px;

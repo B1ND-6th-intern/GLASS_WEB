@@ -12,6 +12,8 @@ body {
 :root {
   --main_color: #6495ed;
   --main-border-color: #dbdbdb;
+  --main-exit-background-color: #f1f1f1;
+  --main-exit-hover-background-color: #e7e7e7;
   --main-background-color: #fafafa;
   --dark-color: #222222;
   --sub-dark-color: #464646;
