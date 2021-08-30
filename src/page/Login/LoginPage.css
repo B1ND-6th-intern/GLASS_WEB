@@ -1,9 +1,8 @@
 .Login-container {
   width: 100vw;
   height: 100vh;
-  background: url("../../assets//img/LogoBackGround.svg");
   background-size: cover;
-  background-color: var(--main_color);
+  background-color: var(--main_background-color);
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
