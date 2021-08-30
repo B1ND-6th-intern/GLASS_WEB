@@ -1,12 +1,46 @@
-.signupBar-container {
-  width: 490px;
-  height: 630px;
-  background-color: #fbfbfb;
-  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+#signupBar-container {
+  width: 1240px;
+  height: 720px;
+  display: flex;
+  box-shadow: 0 2px 5px -1px rgba(108, 108, 146, 0.25),
     0 1px 3px -1px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation-name: signupFadeInUp;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes signupFadeInUp {
+  from {
+    transform: translate3d(350px, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.signupBar-input-container {
+  width: 620px;
+  height: 720px;
+  background-color: white;
+  border: 1px solid var(--main-border-color);
   flex-direction: column;
   display: flex;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: 0px;
+  align-items: center;
+  justify-content: center;
+}
+
+#signupBar-inputWrap {
+  width: 440px;
+  height: 540px;
+  display: flex;
+  flex-direction: column;
 }
 
 .signupBar-title {
@@ -156,4 +190,13 @@ option {
   box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
     0 1px 3px -1px rgba(0, 0, 0, 0.3);
   cursor: pointer;
+}
+
+#signupBar-asideContainer {
+  width: 620px;
+  height: 720px;
+  border: 1px solid var(--main-border-color);
+  border-left: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }

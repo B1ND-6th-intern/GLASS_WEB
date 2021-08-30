@@ -4,6 +4,21 @@
   display: flex;
   box-shadow: 0 2px 5px -1px rgba(108, 108, 146, 0.25),
     0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  align-items: center;
+  justify-content: center;
+  animation-name: loginFadeInUp;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes loginFadeInUp {
+  from {
+    transform: translate3d(-350px, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 }
 
 #loginBar-asideContainer {
@@ -38,7 +53,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
