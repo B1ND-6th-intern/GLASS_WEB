@@ -2,13 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import SeePwType from "../../assets/img/SeePwType.svg";
 import ClosePwType from "../../assets/img/ClosePwType.svg";
+import Logo from "../../assets/img/Logo.svg";
 import "./LoginBar.css";
 
 const LoginBar = () => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   const [pwType, setPwType] = useState(false);
-
   const onChange = (event) => {
     const {
       target: { value, name },
@@ -37,7 +37,10 @@ const LoginBar = () => {
 
   return (
     <div id="loginBar-container">
-      <div id="loginBar-asideContainer"></div>
+      <div id="loginBar-asideContainer">
+        <img id="loginBar-logo" src={Logo} />
+        <p id="loginBar-logo-title">매일매일을 투명하게.</p>
+      </div>
       <form onSubmit={onSubmit} className="loginbar-loginContainer">
         <div id="loginBar-inputWrap">
           <div className="loginbar-title">로그인</div>
@@ -71,7 +74,7 @@ const LoginBar = () => {
             </button>
           </div>
 
-          <Link to="/signup">
+          <Link to="/signup" id="loginBar-sinpup-LinkWrap">
             <h5 id="loginbar-signup-alert">계정이 없으신가요?</h5>
           </Link>
 

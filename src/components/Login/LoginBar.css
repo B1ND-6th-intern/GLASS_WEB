@@ -2,18 +2,31 @@
   width: 1240px;
   height: 720px;
   display: flex;
-  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+  box-shadow: 0 2px 5px -1px rgba(108, 108, 146, 0.25),
     0 1px 3px -1px rgba(0, 0, 0, 0.3);
 }
 
 #loginBar-asideContainer {
   width: 620px;
   height: 720px;
-  background-color: var(--main_color);
+  /* background-color: var(--main_color); */
   border: 1px solid var(--main-border-color);
   border-right: 0px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+}
+
+#loginBar-logo {
+  width: 250px;
+  margin-top: 70px;
+  margin-left: 50px;
+}
+
+#loginBar-logo-title {
+  font-size: 20px;
+  font-weight: 300;
+  margin: 0px;
+  margin-left: 50px;
 }
 
 .loginbar-loginContainer {
@@ -29,6 +42,13 @@
   border-bottom-right-radius: 5px;
 }
 
+.loginbar-title {
+  font-size: 40px;
+  font-weight: 300;
+  margin: 20px 0px;
+  margin-left: 11px;
+}
+
 #loginBar-inputWrap {
   width: 440px;
   height: 540px;
@@ -36,13 +56,8 @@
   flex-direction: column;
 }
 
-.loginbar-title {
-  font-size: 40px;
-  font-weight: 300;
-  margin: 20px;
-}
-
 .loginbar-id-input {
+  transition: 1s;
   width: 90%;
   margin: 10px auto;
   height: 50px;
@@ -53,6 +68,12 @@
     0 1px 3px -1px rgba(0, 0, 0, 0.3);
   font-size: 15px;
   padding: 1px 10px;
+}
+
+.loginbar-id-input:active {
+  transition: 1s;
+  height: 70px;
+  border: 3px solid var(--main_color);
 }
 /* .loginbar-img1 {
   width: 100px;
@@ -91,6 +112,7 @@
     0 1px 3px -1px rgba(0, 0, 0, 0.3);
   font-size: 15px;
   padding: 1px 10px;
+  transition: 1s;
 }
 
 #loginbar-pwtype-btn {
@@ -109,10 +131,15 @@
 #loginbar-pwtype-btn-img {
   width: 30px;
 }
+
+#loginBar-sinpup-LinkWrap {
+  width: 130px;
+}
+
 #loginbar-signup-alert {
   margin: 0px;
   margin-bottom: 5px;
-  margin-left: 16.5px;
+  margin-left: 11px;
   font-weight: 300;
   text-decoration-line: underline;
   cursor: pointer;
