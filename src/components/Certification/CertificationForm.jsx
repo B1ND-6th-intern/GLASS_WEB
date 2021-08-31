@@ -49,10 +49,9 @@ const CertificationForm = () => {
     }
   }, [second]);
 
-  const reSendCounter = (event) => {
-    if (reSendId.current.contains(event.target)) {
+  const reSendCounter = () => {
+    if (reSendId.current) {
       reSendCount.current -= 1;
-      console.log(reSendId);
       if (reSendCount.current === 0) {
         setIsPossibleSend(false);
       }

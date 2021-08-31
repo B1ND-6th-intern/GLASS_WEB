@@ -210,7 +210,7 @@ const SignupBar = () => {
           />
         </div>
       </form>
-      <div id="signupBar-asideContainer">dssds</div>
+      <div id="signupBar-asideContainer"></div>
     </div>
   );
 };
