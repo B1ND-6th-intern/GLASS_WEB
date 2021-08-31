@@ -4,7 +4,6 @@ import Logo1 from "../../assets/img/SignupPageBackGroundImg1.svg";
 import { useHistory } from "react-router-dom";
 
 const SignupBar = () => {
-  const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   const [CheckPw, setCheckPw] = useState("");
   const [grade, setGrade] = useState(1);
@@ -31,9 +30,7 @@ const SignupBar = () => {
     const {
       target: { value, name },
     } = event;
-    if (name === "id") {
-      setId(value);
-    } else if (name === "pw") {
+    if (name === "pw") {
       setPw(value);
     } else if (name === "chkPw") {
       setCheckPw(value);
@@ -59,7 +56,6 @@ const SignupBar = () => {
   };
 
   const userData = {
-    username: id,
     password: pw,
     password2: CheckPw,
     grade: parseInt(grade),
@@ -91,7 +87,6 @@ const SignupBar = () => {
       console.log("인증 시작~");
       history.push("/certification");
     }
-    setId("");
     setPw("");
     setCheckPw("");
     setGrade(1);
@@ -105,14 +100,13 @@ const SignupBar = () => {
       <form className="signupBar-input-container" onSubmit={onSubmit}>
         <div id="signupBar-inputWrap">
           <div className="signupBar-title">회원가입</div>
-          <div className="signupBar-id-wrap">
+          <div id="signupBar-mail-inputWrap">
             <input
-              name="id"
-              type="text"
+              name="mail"
+              id="signupBar-mail-input"
+              placeholder="e-mail"
+              value={mail}
               onChange={onChange}
-              className="signupBar-id-input"
-              placeholder="아이디"
-              value={id}
             />
           </div>
           <div className="signupBar-pw-wrap">
@@ -176,15 +170,6 @@ const SignupBar = () => {
             >
               {Numbers()}
             </select>
-          </div>
-          <div id="signupBar-mail-inputWrap">
-            <input
-              name="mail"
-              id="signupBar-mail-input"
-              placeholder="e-mail"
-              value={mail}
-              onChange={onChange}
-            />
           </div>
           <input
             name="name"
