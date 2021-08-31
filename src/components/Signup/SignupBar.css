@@ -71,16 +71,15 @@
   box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
     0 1px 3px -1px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
+  padding-left: 10px;
 }
 
 .signupBar-id-input,
-.signpbar-id-input-check {
+.signpbar-id-input-check,
+.signupBar-pw-input {
   margin: 0px 0px;
-}
-
-.signupBar-id-input {
   width: 100%;
-  padding: 0px;
+  padding-left: 10px;
 }
 
 .signpbar-id-input-check {
@@ -104,7 +103,6 @@
 :is(.signupBar-pw-input, .signupBar-pw-input-check-wrap) {
   width: 49%;
   margin: 0px 0px;
-  padding: 0px;
 }
 
 .signupBar-pw-input-check-wrap {
@@ -156,6 +154,7 @@ option {
     0 1px 3px -1px rgba(0, 0, 0, 0.3);
   outline: none;
   border-radius: 5px;
+  padding-left: 10px;
 }
 
 #signupBar-agreeBox-wrap {
