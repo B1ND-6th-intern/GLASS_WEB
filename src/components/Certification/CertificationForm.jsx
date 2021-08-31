@@ -49,29 +49,17 @@ const CertificationForm = () => {
     }
   }, [second]);
 
-  const reSendCounter = () => {
-    if (reSendId.current) {
-      reSendCount.current -= 1;
-      if (reSendCount.current === 0) {
-        setIsPossibleSend(false);
-      }
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("click", reSendCounter);
-    return () => {
-      window.addEventListener("click", reSendCounter);
-    };
-  }, []);
-
   const reSend = () => {
     if (isPossibleReSend) {
       time.current = 299;
       setAlert(
         `인증번호가 발송 되었습니다. 가입하신 메일을 확인해주세요 (재전송 기회 : ${reSendCount.current}회)`
       );
-    } else {
+      reSendCount.current -= 1;
+      if (reSendCount.current <= 0) {
+        setIsPossibleSend(false);
+      }
+    } else if (!isPossibleReSend) {
       reSendId.current.disabled = true;
       window.alert("재전송 기회 5번을 초과하셨습니다. 내일 다시 시도해주세요.");
       setAlert("재전송 기회 5번을 초과하셨습니다. 내일 다시 시도해주세요.");
@@ -87,14 +75,16 @@ const CertificationForm = () => {
   return (
     <form id="certification-form" onSubmit={onSubmit}>
       <h1 id="certificationForm-title">인증</h1>
-      <input
-        name="certification"
-        id="certificationForm-input"
-        value={number}
-        onChange={onChange}
-        required
-      />
-      <div id="certification-timer">{`${minute} : ${second}`}</div>
+      <div id="certification-inputWrap">
+        <input
+          name="certification"
+          id="certificationForm-input"
+          value={number}
+          onChange={onChange}
+          required
+        />
+        <div id="certification-timer">{`${minute} : ${second}`}</div>
+      </div>
       <button
         id="certificationForm-reSendBtn"
         type="button"

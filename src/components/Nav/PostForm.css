@@ -171,12 +171,13 @@
 }
 
 .navigation-item-post-form-hashtag-input {
-  width: 88%;
+  width: 85%;
   height: 100%;
   margin: 0px;
   padding: 0px;
   border: 1px solid var(--main-border-color);
   outline: none;
+  padding-left: 10px;
 }
 
 #navigation-item-post-form-img-input-label {
