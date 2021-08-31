@@ -3,7 +3,7 @@ import SignupBar from "../../components/Signup/SignupBar";
 
 const SignupPage = () => {
   return (
-    <section id="sign">
+    <section id="signup">
       <div className="signup-container">
         <SignupBar />
       </div>
