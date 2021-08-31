@@ -14,7 +14,7 @@
 
 @keyframes signupFadeInUp {
   from {
-    transform: translate3d(350px, 0, 0);
+    transform: translate3d(324px, 0, 0);
   }
   to {
     transform: translate3d(0, 0, 0);

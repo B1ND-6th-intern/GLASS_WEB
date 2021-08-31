@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import SearchImg from "../../assets/img/Search.png";
 import ClearImg from "../../assets/img/PostExit.svg";
 import "./SearchBar.css";
 
