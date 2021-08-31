@@ -1,12 +1,12 @@
 #serviceCenter-form {
   position: fixed;
-  width: 400px;
+  width: 380px;
   height: 640px;
   border: 1px solid var(--main-border-color);
   bottom: 20px;
   right: 10px;
   z-index: 9998;
-  border-radius: 40px;
+  border-radius: 10px;
   box-sizing: border-box;
   box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
     0 1px 3px -1px rgba(0, 0, 0, 0.3);
@@ -36,10 +36,10 @@
 }
 
 #serviceCenter-headerWrap {
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   background-color: var(--main_color);
-  height: 60%;
+  height: 30%;
   display: flex;
   flex-direction: column;
 }
@@ -79,7 +79,7 @@
 }
 
 #serviceCenter-middleWrap {
-  height: 40%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   border-bottom-left-radius: 40px;
@@ -88,24 +88,25 @@
 
 #serviceCenter-inputBox {
   position: absolute;
-  width: 330px;
-  height: 300px;
-  top: 24%;
+  width: 340px;
+  height: 350px;
+  top: 23%;
   resize: none;
   left: 50%;
   transform: translate(-50%, 0%);
   border: 1px solid var(--main-border-color);
   box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
     0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }
 
 #serviceCenter-submitBtn {
   margin: 0px auto;
   border-radius: 30px;
   margin-top: auto;
-  margin-bottom: 10px;
-  width: 240px;
-  height: 60px;
+  margin-bottom: 25px;
+  width: 170px;
+  height: 50px;
   background: var(--main_color);
   color: white;
   font-weight: bold;
