@@ -6,7 +6,7 @@ import Logo from "../../assets/img/Logo.svg";
 import "./LoginBar.css";
 
 const LoginBar = () => {
-  const [id, setId] = useState("");
+  const [mail, setMail] = useState("");
   const [pw, setPw] = useState("");
   const [pwType, setPwType] = useState(false);
   const onChange = (event) => {
@@ -14,22 +14,34 @@ const LoginBar = () => {
       target: { value, name },
     } = event;
 
-    if (name === "id") {
-      setId(value);
+    if (name === "mail") {
+      setMail(value);
     } else if (name === "pw") {
       setPw(value);
     }
   };
 
   const loginUserData = {
-    id: id,
+    mail: mail,
     pw: pw,
+  };
+
+  const validateEmail = (mail) => {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return true;
+    }
+    alert("메일 형식을 확인해 주세요!");
+    setMail("");
+    return false;
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(loginUserData);
-    setId("");
+    const loginIsTrue = validateEmail(mail);
+    if (loginIsTrue) {
+      console.log(loginUserData);
+    }
+    setMail("");
     setPw("");
   };
 
@@ -45,11 +57,11 @@ const LoginBar = () => {
         <div id="loginBar-inputWrap">
           <div className="loginbar-title">로그인</div>
           <input
-            name="id"
-            className="loginbar-id-input"
-            placeholder="아이디"
+            name="mail"
+            className="loginbar-mail-input"
+            placeholder="메일"
             onChange={onChange}
-            value={id}
+            value={mail}
           />
 
           <div id="loginBar-pwWrap">
