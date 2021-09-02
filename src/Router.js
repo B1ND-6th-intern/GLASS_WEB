@@ -5,6 +5,7 @@ import MainPage from "./page/Main/MainPage";
 import Navigation from "./page/Nav/Navigation";
 import CertificationPage from "./page/Certification/CertificationPage";
 import ErrorPage from "./page/ErrorPage/ErrorPage";
+import Footer from "./page/Footer/Footer";
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
@@ -34,6 +35,7 @@ const AppRouter = ({ isLoggedIn }) => {
           </Router>
         )}
       </Switch>
+      <Footer />
     </Router>
   );
 };
