@@ -1,12 +1,3 @@
-#error-container {
-  width: 80%;
-  height: auto;
-  padding: 40px;
-  margin: 0px auto;
-  display: flex;
-  flex-direction: column;
-}
-
 #error-mainMessage {
   font-size: 30px;
   margin: 0px;

@@ -2,3 +2,12 @@
   margin-top: 70px;
   display: flex;
 }
+
+#error-container {
+  width: 80%;
+  height: auto;
+  padding: 40px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+}
