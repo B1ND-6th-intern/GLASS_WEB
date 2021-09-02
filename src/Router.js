@@ -4,6 +4,7 @@ import SignupPage from "./page/Signup/SignupPage";
 import MainPage from "./page/Main/MainPage";
 import Navigation from "./page/Nav/Navigation";
 import CertificationPage from "./page/Certification/CertificationPage";
+import ErrorPage from "./page/ErrorPage/ErrorPage";
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
@@ -11,9 +12,12 @@ const AppRouter = ({ isLoggedIn }) => {
       <Switch>
         {isLoggedIn ? (
           <Router>
+            {isLoggedIn && <Navigation isLoggedIn={isLoggedIn} />}
             <Route exact path="/">
-              {isLoggedIn && <Navigation isLoggedIn={isLoggedIn} />}
               <MainPage />
+            </Route>
+            <Route path="/404">
+              <ErrorPage />
             </Route>
           </Router>
         ) : (
