@@ -17,9 +17,6 @@ const AppRouter = ({ isLoggedIn }) => {
             <Route exact path="/">
               <MainPage />
             </Route>
-            <Route path="/404">
-              <ErrorPage />
-            </Route>
           </Router>
         ) : (
           <Router>
@@ -35,6 +32,9 @@ const AppRouter = ({ isLoggedIn }) => {
           </Router>
         )}
       </Switch>
+      <Route path="/404">
+        <ErrorPage />
+      </Route>
       <Footer />
     </Router>
   );
