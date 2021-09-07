@@ -1,18 +1,18 @@
-import { useState } from "react";
 import "./SignupBar.css";
-import Logo1 from "../../assets/img/SignupPageBackGroundImg1.svg";
-import { useHistory } from "react-router-dom";
+import useSignup from "../../Hooks/useSignup";
 
 const SignupBar = () => {
-  const [pw, setPw] = useState("");
-  const [CheckPw, setCheckPw] = useState("");
-  const [grade, setGrade] = useState(1);
-  const [group, setGroup] = useState(1);
-  const [number, setNumber] = useState(1);
-  const [mail, setMail] = useState("");
-  const [name, setName] = useState("");
-  const [isAgree, setIsAgree] = useState(false);
-  const history = useHistory();
+  const {
+    onChange,
+    selectOnChange,
+    userData,
+    mail,
+    name,
+    pw,
+    CheckPw,
+    agreeToggle,
+    onSubmit,
+  } = useSignup();
 
   const Numbers = () => {
     const numbers = [];
@@ -24,75 +24,6 @@ const SignupBar = () => {
       );
     }
     return numbers;
-  };
-
-  const onChange = (event) => {
-    const {
-      target: { value, name },
-    } = event;
-    if (name === "pw") {
-      setPw(value);
-    } else if (name === "chkPw") {
-      setCheckPw(value);
-    } else if (name === "name") {
-      setName(value);
-    } else if (name === "mail") {
-      setMail(value);
-    }
-  };
-
-  const selectOnChange = (event) => {
-    const {
-      target: { value, name },
-    } = event;
-
-    if (name === "grade") {
-      setGrade(value);
-    } else if (name === "class") {
-      setGroup(value);
-    } else if (name === "number") {
-      setNumber(value);
-    }
-  };
-
-  const userData = {
-    password: pw,
-    password2: CheckPw,
-    grade: parseInt(grade),
-    classNumber: parseInt(group),
-    stuNumber: parseInt(number),
-    email: mail,
-    name: name,
-    isAgree: isAgree,
-  };
-
-  const agreeToggle = () => setIsAgree((prev) => !prev);
-
-  const validateEmail = (mail) => {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
-      return true;
-    }
-    alert("메일 형식을 확인해 주세요!");
-    setMail("");
-    return false;
-  };
-
-  const pass = true;
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-    const certificationIsTrue = validateEmail(mail);
-    if (certificationIsTrue && pass) {
-      console.log({ userData });
-      console.log("인증 시작~");
-      history.push("/certification");
-    }
-    setPw("");
-    setCheckPw("");
-    setGrade(1);
-    setGroup(1);
-    setNumber(1);
-    setName("");
   };
 
   return (
