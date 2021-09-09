@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import "./UserForm.css";
 import { actionCreators } from "../../Store";
 import ChangePasswordForm from "./ChangePasswordForm";
+import useLogin from "../../Hooks/useLogin";
 
 const UserForm = ({
   userIsClcik,
@@ -13,12 +14,14 @@ const UserForm = ({
   dispatch,
   isLoggedIn,
 }) => {
-  const [grade, setGrade] = useState("");
-  const [group, setGroup] = useState("");
-  const [number, setNumber] = useState("");
-  const [mail, setMail] = useState("");
-  const [name, setName] = useState("");
+  const { grade, group, mail, name, number, onChange, userModifyData } =
+    useLogin();
+
   const [isPasswordChange, setIsPasswordChange] = useState(false);
+
+  const togglePasswordChange = () => {
+    setIsPasswordChange((prev) => !prev, toggleUserClick());
+  };
 
   useEffect(() => {
     if (userIsClcik === true) {
@@ -41,35 +44,6 @@ const UserForm = ({
     } else if (!currentState) {
       dispatch(actionCreators.userModifyOn(currentState));
     }
-  };
-
-  const onChange = (event) => {
-    const {
-      target: { value, name },
-    } = event;
-    if (name === "grade") {
-      setGrade(value);
-    } else if (name === "group") {
-      setGroup(value);
-    } else if (name === "number") {
-      setNumber(value);
-    } else if (name === "mail") {
-      setMail(value);
-    } else if (name === "name") {
-      setName(value);
-    }
-  };
-
-  const userModifyData = {
-    name: name,
-    grade: grade,
-    class: group,
-    number: number,
-    mail: mail,
-  };
-
-  const togglePasswordChange = () => {
-    setIsPasswordChange((prev) => !prev, toggleUserClick());
   };
 
   useEffect(() => {

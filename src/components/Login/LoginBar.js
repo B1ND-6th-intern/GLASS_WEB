@@ -1,51 +1,12 @@
-import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import SeePwType from "../../assets/img/SeePwType.svg";
 import ClosePwType from "../../assets/img/ClosePwType.svg";
 import Logo from "../../assets/img/Logo.svg";
 import "./LoginBar.css";
+import useLogin from "../../Hooks/useLogin";
 
 const LoginBar = () => {
-  const [mail, setMail] = useState("");
-  const [pw, setPw] = useState("");
-  const [pwType, setPwType] = useState(false);
-  const onChange = (event) => {
-    const {
-      target: { value, name },
-    } = event;
-
-    if (name === "mail") {
-      setMail(value);
-    } else if (name === "pw") {
-      setPw(value);
-    }
-  };
-
-  const loginUserData = {
-    mail: mail,
-    pw: pw,
-  };
-
-  const validateEmail = (mail) => {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
-      return true;
-    }
-    alert("메일 형식을 확인해 주세요!");
-    setMail("");
-    return false;
-  };
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-    const loginIsTrue = validateEmail(mail);
-    if (loginIsTrue) {
-      console.log(loginUserData);
-    }
-    setMail("");
-    setPw("");
-  };
-
-  const togglePwType = () => setPwType((prev) => !prev);
+  const { mail, pw, pwType, onChange, onSubmit, togglePwType } = useLogin();
 
   return (
     <div id="loginBar-container">
