@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { SERVER } from "../config/config.json";
 
@@ -18,8 +19,8 @@ const useLogin = () => {
   };
 
   const loginUserData = {
-    mail: mail,
-    pw: pw,
+    email: mail,
+    password: pw,
   };
 
   const validateEmail = (mail) => {
@@ -31,11 +32,26 @@ const useLogin = () => {
     return false;
   };
 
-  const onSubmit = (event) => {
+  const sendLoginData = async () => {
+    const url = `${SERVER}/login`;
+    try {
+      const { data } = await axios.post(url, loginUserData);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const onSubmit = async (event) => {
     event.preventDefault();
     const loginIsTrue = validateEmail(mail);
     if (loginIsTrue) {
-      console.log(loginUserData);
+      const LoginPass = await sendLoginData();
+      const { status, message } = LoginPass;
+      if (status === 200) {
+        window.alert(message);
+        console.log("메인 페이지로 이동");
+      }
     }
     setMail("");
     setPw("");

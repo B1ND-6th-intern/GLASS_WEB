@@ -25,11 +25,6 @@ const CertificationForm = () => {
     onSubmit,
     reSend,
   } = useCertification();
-  const [msg, setMessage] = useState("");
-
-  useEffect(() => {
-    console.log(msg);
-  }, [msg]);
 
   const timeOutCertification = async () => {
     const url = `${SERVER}/user/email-auth`;

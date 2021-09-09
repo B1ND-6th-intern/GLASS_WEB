@@ -9,7 +9,7 @@ const useCertification = () => {
   const [second, setSecond] = useState(0);
   const [alert, setAlert] = useState("");
   const [isTimeOver, setIsTimeOver] = useState(false);
-  const time = useRef(10);
+  const time = useRef(299);
   const timerId = useRef(null);
   const reSendId = useRef();
   const history = useHistory();
@@ -45,7 +45,7 @@ const useCertification = () => {
       history.push("/signup");
     } else {
       if (status === 200) {
-        time.current = 20;
+        time.current = 299;
         setIsTimeOver(false);
         setAlert(message);
       } else if (status === 400) {
@@ -73,6 +73,7 @@ const useCertification = () => {
     const certificationPass = await sendCertificationNumber();
     const { error, failedCount, status } = certificationPass;
     if (status === 200) {
+      window.alert("인증에 성공했습니다. 로그인 페이지로 이동합니다.");
       history.push("/");
     } else if (status === 400) {
       console.log(error);
