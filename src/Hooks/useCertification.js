@@ -8,7 +8,8 @@ const useCertification = () => {
   const [minute, setMinute] = useState(0);
   const [second, setSecond] = useState(0);
   const [alert, setAlert] = useState("");
-  const time = useRef(299);
+  const [isTimeOver, setIsTimeOver] = useState(false);
+  const time = useRef(10);
   const timerId = useRef(null);
   const reSendId = useRef();
   const history = useHistory();
@@ -37,11 +38,15 @@ const useCertification = () => {
     const certificationData = await sendCertification();
     const { status, message, sendCount, error } = certificationData;
     console.log(sendCount);
-    if (sendCount >= 6) {
+    if (sendCount < 0) {
+      if (status === 400) {
+        window.alert(error);
+      }
       history.push("/signup");
     } else {
       if (status === 200) {
-        time.current = 299;
+        time.current = 20;
+        setIsTimeOver(false);
         setAlert(message);
       } else if (status === 400) {
         setAlert(error);
@@ -52,7 +57,10 @@ const useCertification = () => {
   const sendCertificationNumber = async () => {
     const url = `${SERVER}/user/email-auth`;
     try {
-      const { data } = await axios.post(url, number);
+      console.log(number);
+      const { data } = await axios.post(url, {
+        confirmation: number,
+      });
       return data;
     } catch (error) {
       const { data } = error.response;
@@ -63,11 +71,11 @@ const useCertification = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     const certificationPass = await sendCertificationNumber();
-    console.log(certificationPass);
     const { error, failedCount, status } = certificationPass;
     if (status === 200) {
       history.push("/");
     } else if (status === 400) {
+      console.log(error);
       if (failedCount >= 4) {
         history.push("/signup");
       } else {
@@ -85,6 +93,8 @@ const useCertification = () => {
     time,
     timerId,
     reSendId,
+    isTimeOver,
+    setIsTimeOver,
     reSend,
     setAlert,
     setMinute,
