@@ -4,7 +4,7 @@ const MenuForm = ({ menuIsClcik, toggleMenuClick }) => {
   const MenuItems = [];
   return (
     <>
-      {menuIsClcik ? (
+      {menuIsClcik && (
         <div className="MenuForm-container">
           {MenuItems.map((item, index) => (
             <div key={index} className="menuItem-item-wrap">
@@ -13,7 +13,7 @@ const MenuForm = ({ menuIsClcik, toggleMenuClick }) => {
             </div>
           ))}
         </div>
-      ) : null}
+      )}
     </>
   );
 };

@@ -6,7 +6,7 @@ import "./LoginBar.css";
 import useLogin from "../../Hooks/useLogin";
 
 const LoginBar = () => {
-  const { mail, pw, pwType, onChange, onSubmit, togglePwType } = useLogin();
+  const { loginData, pwType, onChange, onSubmit, togglePwType } = useLogin();
 
   return (
     <div id="loginBar-container">
@@ -22,18 +22,17 @@ const LoginBar = () => {
             className="loginbar-mail-input"
             placeholder="메일"
             onChange={onChange}
-            value={mail}
+            value={loginData.mail}
           />
 
           <div id="loginBar-pwWrap">
             <input
               name="pw"
-              // ref={element}
               type={pwType ? "text" : "password"}
               className="loginbar-pw-input"
               placeholder="비밀번호"
               onChange={onChange}
-              value={pw}
+              value={loginData.pw}
             />
             <button
               id="loginbar-pwtype-btn"

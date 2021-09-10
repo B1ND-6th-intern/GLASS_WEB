@@ -2,15 +2,20 @@ import PostExitImg from "../../assets/img/PostExit.svg";
 import { useEffect } from "react";
 import "./PostForm.css";
 import ImgAdd from "../../assets/img/PostImgAdd.svg";
-import { useState } from "react";
+import usePost from "../../Hooks/PostForm/usePost";
 
 const PostForm = ({ postIsClick, togglePostClick }) => {
-  const [content, setContent] = useState("");
-  const [hashTag, setHashTag] = useState("");
-  const [attachment, setAttachment] = useState([]);
+  const {
+    onChange,
+    onDeleteImg,
+    onFileChange,
+    onSubmit,
+    postData,
+    attachment,
+  } = usePost();
 
   useEffect(() => {
-    if (postIsClick === true) {
+    if (postIsClick) {
       document.body.style.cssText = `
         position : fixed;
         top : -${window.scrollY}px
@@ -23,71 +28,6 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
       };
     }
   }, [postIsClick]);
-
-  const onChange = (event) => {
-    const {
-      target: { name, value },
-    } = event;
-
-    if (name === "content") {
-      setContent(value);
-    } else if (name === "hashtag") {
-      setHashTag(value);
-    }
-  };
-
-  var hashTagData = hashTag.split(",");
-
-  const postData = {
-    content: content,
-    hashTag: hashTagData,
-    imgs: attachment,
-  };
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-    console.log(postData);
-    setContent("");
-    setHashTag("");
-    togglePostClick();
-    setAttachment([]);
-  };
-
-  const onFileChange = (event) => {
-    const {
-      target: { files },
-    } = event;
-
-    let file;
-    let filesLength = files.length > 10 ? 10 : files.length;
-
-    if (files.length > 10) {
-      window.alert("사진은 최대 10장 업로드 할 수 있습니다");
-    }
-    for (let i = 0; i < filesLength; i++) {
-      file = files[i];
-
-      let reader = new FileReader();
-      reader.onload = () => {
-        let fileURLs = { img: reader.result, id: i };
-        setAttachment((prevState) => [...prevState, fileURLs]);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const onDeleteImg = (event) => {
-    event.preventDefault();
-    const {
-      target: { name },
-    } = event;
-
-    setAttachment(
-      attachment.filter((data) => {
-        return data.id !== parseInt(name);
-      })
-    );
-  };
 
   return (
     <>
@@ -114,7 +54,7 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
                 <textarea
                   name="content"
                   onChange={onChange}
-                  value={content}
+                  value={postData.content}
                   className="navigation-item-post-form-content-input"
                   placeholder="내용을 적어주세요"
                 />
@@ -148,17 +88,10 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
                 <input
                   name="hashtag"
                   onChange={onChange}
-                  value={hashTag}
+                  value={postData.hashTag}
                   className="navigation-item-post-form-hashtag-input"
                   placeholder="추억 태그 (쉼표로 구분해주세요)"
                 />
-                {/* <button className="navigation-item-post-form-hashtag-add-button">
-                  <img
-                    className="navigation-item-post-form-hashtag-add-button-img"
-                    src={PostImg}
-                    title="해쉬태그 추가"
-                  />
-                </button> */}
                 <label
                   id="navigation-item-post-form-img-input-label"
                   htmlFor="navigation-item-post-form-img-input"

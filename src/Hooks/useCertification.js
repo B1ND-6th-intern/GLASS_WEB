@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { SERVER } from "../config/config.json";
 
@@ -23,6 +23,10 @@ const useCertification = () => {
     }
   };
 
+  useEffect(() => {
+    console.log(number);
+  }, [number]);
+
   const sendCertification = async () => {
     const url = `${SERVER}/user/email-auth`;
     try {
@@ -37,7 +41,6 @@ const useCertification = () => {
   const reSend = async () => {
     const certificationData = await sendCertification();
     const { status, message, sendCount, error } = certificationData;
-    console.log(sendCount);
     if (sendCount < 0) {
       if (status === 400) {
         window.alert(error);

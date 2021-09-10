@@ -1,8 +1,5 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { useRef } from "react";
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
 import useCertification from "../../Hooks/useCertification";
 import { SERVER } from "../../config/config.json";
 import "./CertificationForm.css";
@@ -29,7 +26,6 @@ const CertificationForm = () => {
   const timeOutCertification = async () => {
     const url = `${SERVER}/user/email-auth`;
     try {
-      console.log(isTimeOver);
       const { data } = await axios.post(url, { timeover: isTimeOver });
       return data;
     } catch (error) {
@@ -53,7 +49,6 @@ const CertificationForm = () => {
 
   useEffect(() => {
     if (time.current <= 0) {
-      console.log("rere");
       clearInterval(timerId.current);
       clearInterval(time.current);
       setIsTimeOver(true);

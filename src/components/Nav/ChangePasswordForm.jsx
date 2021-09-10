@@ -1,30 +1,9 @@
 import "./ChangePasswordForm.css";
 import PrevImg from "../../assets/img/Prev.svg";
-import { useState } from "react";
+import usePasswordChange from "../../Hooks/usePasswordChange";
 
 const ChangePasswordForm = ({ togglePasswordChange }) => {
-  const [currentPw, setCurrentPw] = useState("");
-  const [newPw, setNewPw] = useState("");
-  const [checkNewPw, setCheckNewPw] = useState("");
-  const onChange = (event) => {
-    const {
-      target: { value, name },
-    } = event;
-    if (name === "currentPw") {
-      setCurrentPw(value);
-    } else if (name === "newPw") {
-      setNewPw(value);
-    } else if (name === "checkNewPw") {
-      setCheckNewPw(value);
-    }
-  };
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-    setCurrentPw("");
-    setNewPw("");
-    setCheckNewPw("");
-  };
+  const { onSubmit, inputs, onChange } = usePasswordChange();
 
   return (
     <div className="changePassword-formWrap">
@@ -42,7 +21,7 @@ const ChangePasswordForm = ({ togglePasswordChange }) => {
             className="changePassword-input"
             type="password"
             placeholder="현재 비밀번호"
-            value={currentPw}
+            value={inputs.currentPw}
             onChange={onChange}
             required
           />
@@ -51,7 +30,7 @@ const ChangePasswordForm = ({ togglePasswordChange }) => {
             className="changePassword-input"
             type="password"
             placeholder="비밀번호"
-            value={newPw}
+            value={inputs.newPw}
             onChange={onChange}
             required
           />
@@ -60,7 +39,7 @@ const ChangePasswordForm = ({ togglePasswordChange }) => {
             className="changePassword-input"
             type="password"
             placeholder="비밀번호 재확인"
-            value={checkNewPw}
+            value={inputs.checkNewPw}
             onChange={onChange}
             required
           />

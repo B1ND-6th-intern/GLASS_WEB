@@ -1,35 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { SERVER } from "../config/config.json";
 import useCertification from "./useCertification";
+import { validateEmail } from "../Utils/pattern/validationData";
 
 const useSignup = () => {
-  const [pw, setPw] = useState("");
-  const [CheckPw, setCheckPw] = useState("");
-  const [grade, setGrade] = useState(1);
-  const [group, setGroup] = useState(1);
-  const [number, setNumber] = useState(1);
-  const [mail, setMail] = useState("");
-  const [name, setName] = useState("");
-  const [isAgree, setIsAgree] = useState(false);
+  const [signupData, setSignupData] = useState({
+    pw: "",
+    chkPw: "",
+    grade: 1,
+    group: 1,
+    number: 1,
+    mail: "",
+    name: "",
+    isAgree: false,
+  });
+
   const history = useHistory();
 
   const { sendCertification } = useCertification();
+
+  useEffect(() => {
+    console.log(signupData);
+  }, [signupData]);
 
   const onChange = (event) => {
     const {
       target: { value, name },
     } = event;
-    if (name === "pw") {
-      setPw(value);
-    } else if (name === "chkPw") {
-      setCheckPw(value);
-    } else if (name === "name") {
-      setName(value);
-    } else if (name === "mail") {
-      setMail(value);
-    }
+
+    setSignupData({ ...signupData, [name]: value });
   };
 
   const selectOnChange = (event) => {
@@ -37,41 +38,30 @@ const useSignup = () => {
       target: { value, name },
     } = event;
 
-    if (name === "grade") {
-      setGrade(value);
-    } else if (name === "class") {
-      setGroup(value);
-    } else if (name === "number") {
-      setNumber(value);
-    }
+    setSignupData({ ...signupData, [name]: value });
   };
 
-  const userData = {
-    password: pw,
-    password2: CheckPw,
-    grade: parseInt(grade),
-    classNumber: parseInt(group),
-    stuNumber: parseInt(number),
-    email: mail,
-    name: name,
-    isAgree: isAgree,
+  const makeUserData = () => {
+    return {
+      password: signupData.pw,
+      password2: signupData.chkPw,
+      grade: parseInt(signupData.grade),
+      classNumber: parseInt(signupData.group),
+      stuNumber: parseInt(signupData.number),
+      email: signupData.mail,
+      name: signupData.name,
+      isAgree: signupData.isAgree,
+    };
   };
 
-  const validateEmail = (mail) => {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
-      return true;
-    }
-    alert("메일 형식을 확인해 주세요!");
-    setMail("");
-    return false;
+  const agreeToggle = () => {
+    setSignupData({ ...signupData, isAgree: !signupData.isAgree });
   };
-
-  const agreeToggle = () => setIsAgree((prev) => !prev);
 
   const sendSignupData = async () => {
     const url = `${SERVER}/join`;
     try {
-      const { data } = await axios.post(url, userData);
+      const { data } = await axios.post(url, makeUserData());
       return data;
     } catch (error) {
       const { data } = error.response;
@@ -79,39 +69,51 @@ const useSignup = () => {
     }
   };
 
+  const signupDataReset = () => {
+    setSignupData({
+      pw: "",
+      chkPw: "",
+      grade: 1,
+      group: 1,
+      number: 1,
+      mail: "",
+      name: "",
+      isAgree: false,
+    });
+  };
+
   const onSubmit = async (event) => {
     event.preventDefault();
-    const certificationIsTrue = validateEmail(mail);
-    if (certificationIsTrue) {
-      const signupPass = await sendSignupData();
-      const { status, message, error } = signupPass;
-      if (message && status === 200) {
-        const certificationData = await sendCertification();
-        const { status: CertifiationStatus } = certificationData;
-        window.alert(message);
-        if (CertifiationStatus === 200) {
-          history.push("/certification");
-        }
-      } else if (error && status === 400) {
-        window.alert(error);
-      }
+
+    if (!validateEmail(signupData.mail)) {
+      window.alert("메일 형식을 확인해주세요!");
+      setSignupData();
+      return;
     }
-    setPw("");
-    setCheckPw("");
-    setGrade(1);
-    setGroup(1);
-    setNumber(1);
-    setName("");
+
+    const signupPass = await sendSignupData();
+    const { status, message, error } = signupPass;
+
+    if (!message && status !== 200) {
+      window.alert(error);
+      signupDataReset();
+      return;
+    }
+
+    const certificationData = await sendCertification();
+    const { status: CertifiationStatus } = certificationData;
+    window.alert(message);
+    if (CertifiationStatus === 200) {
+      history.push("/certification");
+      return;
+    }
+    window.alert(error);
   };
 
   return {
     onChange,
     selectOnChange,
-    userData,
-    mail,
-    name,
-    pw,
-    CheckPw,
+    signupData,
     validateEmail,
     agreeToggle,
     onSubmit,

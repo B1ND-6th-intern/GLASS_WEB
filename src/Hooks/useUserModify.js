@@ -1,38 +1,30 @@
 import { useState } from "react";
 
 const useUserModify = () => {
-  const [grade, setGrade] = useState("");
-  const [group, setGroup] = useState("");
-  const [number, setNumber] = useState("");
-  const [mail, setMail] = useState("");
-  const [name, setName] = useState("");
+  const [modifyUserData, setModifyUserData] = useState({
+    grade: "",
+    group: "",
+    number: "",
+    mail: "",
+    name: "",
+  });
 
   const onChange = (event) => {
     const {
       target: { value, name },
     } = event;
-    if (name === "grade") {
-      setGrade(value);
-    } else if (name === "group") {
-      setGroup(value);
-    } else if (name === "number") {
-      setNumber(value);
-    } else if (name === "mail") {
-      setMail(value);
-    } else if (name === "name") {
-      setName(value);
-    }
+    setModifyUserData({ ...modifyUserData, [name]: value });
   };
 
   const userModifyData = {
-    name: name,
-    grade: grade,
-    class: group,
-    number: number,
-    mail: mail,
+    name: modifyUserData.name,
+    grade: modifyUserData.grade,
+    class: modifyUserData.group,
+    number: modifyUserData.number,
+    mail: modifyUserData.mail,
   };
 
-  return { grade, group, mail, number, name, onChange, userModifyData };
+  return { modifyUserData, onChange, userModifyData };
 };
 
 export default useUserModify;

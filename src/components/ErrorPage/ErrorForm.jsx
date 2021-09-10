@@ -1,9 +1,7 @@
 import "./ErrorForm.css";
 
 const ErrorForm = () => {
-  const reFresh = () => {
-    console.log("새로고침");
-  };
+  const reFresh = () => {};
 
   return (
     <>

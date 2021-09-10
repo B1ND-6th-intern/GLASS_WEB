@@ -1,35 +1,25 @@
 import axios from "axios";
 import { useState } from "react";
 import { SERVER } from "../config/config.json";
+import { validateEmail } from "../Utils/pattern/validationData";
 
 const useLogin = () => {
-  const [mail, setMail] = useState("");
-  const [pw, setPw] = useState("");
+  const [loginData, setLoginData] = useState({
+    mail: "",
+    pw: "",
+  });
   const [pwType, setPwType] = useState(false);
   const onChange = (event) => {
     const {
       target: { value, name },
     } = event;
 
-    if (name === "mail") {
-      setMail(value);
-    } else if (name === "pw") {
-      setPw(value);
-    }
+    setLoginData({ ...loginData, [name]: value });
   };
 
   const loginUserData = {
-    email: mail,
-    password: pw,
-  };
-
-  const validateEmail = (mail) => {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
-      return true;
-    }
-    alert("메일 형식을 확인해 주세요!");
-    setMail("");
-    return false;
+    email: loginData.mail,
+    password: loginData.pw,
   };
 
   const sendLoginData = async () => {
@@ -44,23 +34,22 @@ const useLogin = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    const loginIsTrue = validateEmail(mail);
-    if (loginIsTrue) {
+    if (validateEmail(loginData.mail)) {
       const LoginPass = await sendLoginData();
-      const { status, message } = LoginPass;
+      const { status, message, token } = LoginPass;
       if (status === 200) {
         window.alert(message);
-        console.log("메인 페이지로 이동");
       }
+
+      setLoginData({ mail: "", pw: "" });
+      return;
     }
-    setMail("");
-    setPw("");
+    window.alert("메일 형식을 확인해주세요");
   };
 
   const togglePwType = () => setPwType((prev) => !prev);
   return {
-    mail,
-    pw,
+    loginData,
     pwType,
     onChange,
     onSubmit,

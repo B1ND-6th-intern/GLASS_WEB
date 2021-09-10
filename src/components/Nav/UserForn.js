@@ -14,8 +14,7 @@ const UserForm = ({
   dispatch,
   isLoggedIn,
 }) => {
-  const { grade, group, mail, name, number, onChange, userModifyData } =
-    useLogin();
+  const { modifyUserData, onChange, userModifyData } = useLogin();
 
   const [isPasswordChange, setIsPasswordChange] = useState(false);
 
@@ -41,9 +40,10 @@ const UserForm = ({
   const editingToggle = () => {
     if (currentState) {
       dispatch(actionCreators.userModifyOff(currentState));
-    } else if (!currentState) {
-      dispatch(actionCreators.userModifyOn(currentState));
+      return;
     }
+
+    dispatch(actionCreators.userModifyOn(currentState));
   };
 
   useEffect(() => {
@@ -95,34 +95,34 @@ const UserForm = ({
                         className="navigation-item-user-form-info-modify-class"
                         placeholder="학년"
                         name="grade"
-                        value={grade}
+                        value={modifyUserData.grade}
                         onChange={onChange}
                       />
                       <input
                         className="navigation-item-user-form-info-modify-group"
                         placeholder="학반"
                         name="group"
-                        value={group}
+                        value={modifyUserData.group}
                         onChange={onChange}
                       />
                       <input
                         className="navigation-item-user-form-info-modify-number"
                         placeholder="번호"
                         name="number"
-                        value={number}
+                        value={modifyUserData.number}
                         onChange={onChange}
                       />
                     </>
                   ) : (
                     <>
                       <p className="navigation-item-user-form-info-class-text">
-                        {grade}학년
+                        {modifyUserData.grade}학년
                       </p>
                       <p className="navigation-item-user-form-info-class-text">
-                        {group}반
+                        {modifyUserData.group}반
                       </p>
                       <p className="navigation-item-user-form-info-class-text">
-                        {number}번
+                        {modifyUserData.number}번
                       </p>
                     </>
                   )}
@@ -132,12 +132,12 @@ const UserForm = ({
                   <input
                     placeholder="메일"
                     name="mail"
-                    value={mail}
+                    value={modifyUserData.mail}
                     onChange={onChange}
                   />
                 ) : (
                   <p className="navigation-item-user-form-info-mail-text">
-                    {mail || "메일 없음"}
+                    {modifyUserData.mail || "메일 없음"}
                   </p>
                 )}
                 <div id="navigation-item-user-form-profile-btnWrap">
@@ -178,11 +178,13 @@ const UserForm = ({
                     id="navigation-item-user-form-info-modify-name"
                     placeholder="이름"
                     name="name"
-                    value={name}
+                    value={modifyUserData.name}
                     onChange={onChange}
                   />
                 ) : (
-                  name || <p id="navigation-item-user-form-name">이름없음</p>
+                  modifyUserData.name || (
+                    <p id="navigation-item-user-form-name">이름없음</p>
+                  )
                 )}
                 <p id="navigation-item-user-form-post-count">게시물 </p>
                 <div id="navigation-item-user-form-post-box">

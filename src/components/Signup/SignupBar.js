@@ -2,17 +2,8 @@ import "./SignupBar.css";
 import useSignup from "../../Hooks/useSignup";
 
 const SignupBar = () => {
-  const {
-    onChange,
-    selectOnChange,
-    userData,
-    mail,
-    name,
-    pw,
-    CheckPw,
-    agreeToggle,
-    onSubmit,
-  } = useSignup();
+  const { onChange, selectOnChange, signupData, agreeToggle, onSubmit } =
+    useSignup();
 
   const Numbers = () => {
     const numbers = [];
@@ -36,7 +27,7 @@ const SignupBar = () => {
               name="mail"
               id="signupBar-mail-input"
               placeholder="e-mail"
-              value={mail}
+              value={signupData.mail}
               onChange={onChange}
             />
           </div>
@@ -47,7 +38,7 @@ const SignupBar = () => {
               onChange={onChange}
               className="signupBar-pw-input"
               placeholder="비밀번호"
-              value={pw}
+              value={signupData.pw}
             />
             <div className="signupBar-pw-input-check-wrap">
               <input
@@ -56,7 +47,7 @@ const SignupBar = () => {
                 type="password"
                 className="signupBar-pw-input-check"
                 placeholder="비밀번호 확인"
-                value={CheckPw}
+                value={signupData.chkPw}
               />
             </div>
           </div>
@@ -106,7 +97,7 @@ const SignupBar = () => {
             name="name"
             className="signupBar-name-input"
             placeholder="이름"
-            value={name}
+            value={signupData.name}
             onChange={onChange}
           />
           <div id="signupBar-agreeBox-wrap">
