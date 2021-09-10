@@ -2,7 +2,7 @@ import PostExitImg from "../../assets/img/PostExit.svg";
 import { useEffect } from "react";
 import "./PostForm.css";
 import ImgAdd from "../../assets/img/PostImgAdd.svg";
-import usePost from "../../Hooks/PostForm/usePost";
+import usePost from "../../Hooks/Nav/PostForm/usePost";
 
 const PostForm = ({ postIsClick, togglePostClick }) => {
   const {
@@ -31,7 +31,7 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
 
   return (
     <>
-      {postIsClick ? (
+      {postIsClick && (
         <div className="nav-item-post-form-wrap">
           <form onSubmit={onSubmit} className="navigation-item-post-form">
             <div className="navigation-item-post-form-container">
@@ -88,7 +88,7 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
                 <input
                   name="hashtag"
                   onChange={onChange}
-                  value={postData.hashTag}
+                  value={postData.hashtag}
                   className="navigation-item-post-form-hashtag-input"
                   placeholder="추억 태그 (쉼표로 구분해주세요)"
                 />
@@ -119,7 +119,7 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
             </div>
           </form>
         </div>
-      ) : null}
+      )}
     </>
   );
 };

@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const usePost = () => {
   const [attachment, setAttachment] = useState([]);
   const [postData, setPostData] = useState({
     content: "",
-    hashTag: "",
+    hashtag: "",
   });
 
   const onChange = (event) => {
@@ -14,21 +14,16 @@ const usePost = () => {
 
     setPostData({ ...postData, [name]: value });
   };
-
-  useEffect(() => {
-    console.log(postData.hashTag, postData.content);
-  }, [postData.content, postData.hashTag]);
-
   const makePostFormData = () => {
     return {
       content: postData.content,
-      hashTag: makeHashTagDatas(postData.hashTag),
+      hashTag: makeHashTagDatas(postData.hashtag),
       imgs: attachment,
     };
   };
 
   const resetPostData = () => {
-    setPostData({ content: "", hashTag: "" });
+    setPostData({ content: "", hashtag: "" });
   };
 
   const onSubmit = (event) => {
@@ -62,9 +57,9 @@ const usePost = () => {
     }
   };
 
-  const makeHashTagDatas = (hashTag) => {
-    hashTag.split(",");
-    return hashTag;
+  const makeHashTagDatas = (hashTags) => {
+    const hashTagData = hashTags.split(",");
+    return hashTagData;
   };
 
   const onDeleteImg = (event) => {

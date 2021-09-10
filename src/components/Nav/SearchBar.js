@@ -1,19 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import ClearImg from "../../assets/img/PostExit.svg";
 import "./SearchBar.css";
+import useSearch from "../../Hooks/Nav/searchForm/useSearch";
 
 const SearchBar = () => {
-  const [isSearchClick, setIsSearchClick] = useState(false);
-  const [keyword, setKeyword] = useState("");
-  const element = useRef();
-
-  const handleCloseBtn = (event) => {
-    if (!element.current || !element.current.contains(event.target)) {
-      setIsSearchClick(false);
-    } else if (element.current || element.current.contains(event.target)) {
-      setIsSearchClick(true);
-    }
-  };
+  const {
+    handleCloseBtn,
+    onChange,
+    onSubmit,
+    onClearKeyword,
+    searchToggleClick,
+    searchData,
+    element,
+  } = useSearch();
 
   useEffect(() => {
     window.addEventListener("click", handleCloseBtn);
@@ -22,42 +21,20 @@ const SearchBar = () => {
     };
   }, []);
 
-  const onChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setKeyword(value);
-  };
-
-  const searchData = {
-    keyword: keyword,
-  };
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-    console.log("i submit");
-    setKeyword("");
-  };
-
-  const onClearKeyword = () => {
-    setKeyword("");
-  };
-
-  const searchToggleClick = () => setIsSearchClick((prev) => !prev);
-
   return (
     <form id="navigation-item-searchBar-box" onSubmit={onSubmit}>
       <input
         className={
-          "navigation-item-searchBar-" + `${isSearchClick ? "on" : "off"}`
+          "navigation-item-searchBar-" +
+          `${searchData.isSearchClick ? "on" : "off"}`
         }
         ref={element}
-        value={keyword}
+        value={searchData.keyword}
         onChange={onChange}
         onClick={searchToggleClick}
-        placeholder={isSearchClick ? "" : "검색어를 입력해주세요"}
+        placeholder={searchData.isSearchClick && "검색어를 입력해주세요"}
       />
-      {isSearchClick ? (
+      {searchData.isSearchClick ? (
         <button
           id="navigation-item-searchBar-clearBtn"
           onClick={onClearKeyword}
