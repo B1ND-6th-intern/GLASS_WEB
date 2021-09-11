@@ -1,27 +1,24 @@
 import { useRef, useState } from "react";
 
 const useSearch = () => {
-  const [keyword, setKeyword] = useState("");
-  const element = useRef();
-
   const [searchData, setSearchData] = useState({
     keyword: "",
     isSearchClick: false,
   });
 
-  const handleCloseBtn = (event) => {
-    if (!element.current || !element.current.contains(event.target)) {
-      setSearchData({ ...searchData, isSearchClick: false });
-    } else if (element.current || element.current.contains(event.target)) {
-      setSearchData({ ...searchData, isSearchClick: true });
-    }
+  const handleOpenBtn = () => {
+    setSearchData({ ...searchData, isSearchClick: true });
+  };
+
+  const handleCloseBtn = () => {
+    setSearchData({ ...searchData, isSearchClick: false });
   };
 
   const onChange = (event) => {
     const {
       target: { value },
     } = event;
-    setSearchData({ ...useSearch, keyword: value });
+    setSearchData({ ...searchData, keyword: value });
   };
 
   const makeSearchData = () => {
@@ -36,12 +33,11 @@ const useSearch = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log("i submit");
     searchDataReset();
   };
 
   const onClearKeyword = () => {
-    setKeyword({ ...searchData, keyword: "" });
+    setSearchData({ ...searchData, keyword: "" });
   };
 
   const searchToggleClick = () => {
@@ -50,13 +46,13 @@ const useSearch = () => {
 
   return {
     handleCloseBtn,
+    handleOpenBtn,
     onChange,
     onSubmit,
     onClearKeyword,
     searchToggleClick,
     makeSearchData,
     searchData,
-    element,
   };
 };
 

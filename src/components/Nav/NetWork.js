@@ -23,7 +23,7 @@ const Network = () => {
     console.log(online ? "온라인" : "오프라인");
   };
   const onLine = UseNetwork(handleNetworkChange);
-  return <>{onLine ? <div className="checknetwork" /> : null}</>;
+  return <>{onLine && <div className="checknetwork" />}</>;
 };
 
 export default Network;

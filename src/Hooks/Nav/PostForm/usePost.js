@@ -29,7 +29,6 @@ const usePost = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     const data = makePostFormData();
-    console.log(data);
     resetPostData();
     // togglePostClick(); recoil 배운후 수정 예정
   };

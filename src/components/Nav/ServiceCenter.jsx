@@ -1,23 +1,13 @@
-import { useState } from "react";
 import "./ServiceCenter.css";
 import ExitServiceCenter from "../../assets/img/ExitServiceCenter.svg";
+import useQuestion from "../../Hooks/ServiceCenter/useQuestion";
 
 const SerViceCenter = ({ isServiceCenter, toggleSCClick }) => {
-  const [questionValue, setQuestionValue] = useState("");
-  const onChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setQuestionValue(value);
-  };
+  const { questionValue, onChange, onSubmit } = useQuestion();
 
-  const onSubmit = (event) => {
-    event.preventDefault();
-    setQuestionValue("");
-  };
   return (
     <>
-      {isServiceCenter ? (
+      {isServiceCenter && (
         <form id="serviceCenter-form" onSubmit={onSubmit}>
           <div id="serviceCenter-headerWrap">
             <button id="serviceCenter-prev-btn" onClick={toggleSCClick}>
@@ -40,7 +30,7 @@ const SerViceCenter = ({ isServiceCenter, toggleSCClick }) => {
             <input id="serviceCenter-submitBtn" type="submit" value="제출" />
           </div>
         </form>
-      ) : null}
+      )}
     </>
   );
 };

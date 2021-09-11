@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import "./UserForm.css";
 import { actionCreators } from "../../Store";
 import ChangePasswordForm from "./ChangePasswordForm";
-import useLogin from "../../Hooks/useLogin";
+import useUserModify from "../../Hooks/UserForm/useUserModify";
 
 const UserForm = ({
   userIsClcik,
@@ -14,13 +14,8 @@ const UserForm = ({
   dispatch,
   isLoggedIn,
 }) => {
-  const { modifyUserData, onChange, userModifyData } = useLogin();
-
-  const [isPasswordChange, setIsPasswordChange] = useState(false);
-
-  const togglePasswordChange = () => {
-    setIsPasswordChange((prev) => !prev, toggleUserClick());
-  };
+  const { changeUserData, onChange, userModifyData, togglePasswordChange } =
+    useUserModify();
 
   useEffect(() => {
     if (userIsClcik === true) {
@@ -42,13 +37,8 @@ const UserForm = ({
       dispatch(actionCreators.userModifyOff(currentState));
       return;
     }
-
     dispatch(actionCreators.userModifyOn(currentState));
   };
-
-  useEffect(() => {
-    console.log(isLoggedIn);
-  }, [isLoggedIn]);
 
   const logOut = (state) => {
     state = false;
@@ -56,7 +46,6 @@ const UserForm = ({
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log({ userModifyData });
     editingToggle();
   };
 
@@ -95,34 +84,34 @@ const UserForm = ({
                         className="navigation-item-user-form-info-modify-class"
                         placeholder="학년"
                         name="grade"
-                        value={modifyUserData.grade}
+                        value={changeUserData.grade}
                         onChange={onChange}
                       />
                       <input
                         className="navigation-item-user-form-info-modify-group"
                         placeholder="학반"
                         name="group"
-                        value={modifyUserData.group}
+                        value={changeUserData.group}
                         onChange={onChange}
                       />
                       <input
                         className="navigation-item-user-form-info-modify-number"
                         placeholder="번호"
                         name="number"
-                        value={modifyUserData.number}
+                        value={changeUserData.number}
                         onChange={onChange}
                       />
                     </>
                   ) : (
                     <>
                       <p className="navigation-item-user-form-info-class-text">
-                        {modifyUserData.grade}학년
+                        {changeUserData.grade}학년
                       </p>
                       <p className="navigation-item-user-form-info-class-text">
-                        {modifyUserData.group}반
+                        {changeUserData.group}반
                       </p>
                       <p className="navigation-item-user-form-info-class-text">
-                        {modifyUserData.number}번
+                        {changeUserData.number}번
                       </p>
                     </>
                   )}
@@ -132,12 +121,12 @@ const UserForm = ({
                   <input
                     placeholder="메일"
                     name="mail"
-                    value={modifyUserData.mail}
+                    value={changeUserData.mail}
                     onChange={onChange}
                   />
                 ) : (
                   <p className="navigation-item-user-form-info-mail-text">
-                    {modifyUserData.mail || "메일 없음"}
+                    {changeUserData.mail || "메일 없음"}
                   </p>
                 )}
                 <div id="navigation-item-user-form-profile-btnWrap">
@@ -178,11 +167,11 @@ const UserForm = ({
                     id="navigation-item-user-form-info-modify-name"
                     placeholder="이름"
                     name="name"
-                    value={modifyUserData.name}
+                    value={changeUserData.name}
                     onChange={onChange}
                   />
                 ) : (
-                  modifyUserData.name || (
+                  changeUserData.name || (
                     <p id="navigation-item-user-form-name">이름없음</p>
                   )
                 )}
@@ -196,7 +185,7 @@ const UserForm = ({
           </form>
         </div>
       ) : null}
-      {isPasswordChange ? (
+      {changeUserData.isPasswordChange ? (
         <ChangePasswordForm togglePasswordChange={togglePasswordChange} />
       ) : null}
     </>

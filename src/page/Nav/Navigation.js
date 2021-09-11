@@ -13,31 +13,17 @@ import ServiceCenter from "../../components/Nav/ServiceCenter";
 import SerViceCenterImg from "../../assets/img/ServiceCenter.svg";
 import DarkMode from "../../components/Nav/DarkMode";
 import { connect } from "react-redux";
-import { actionCreators } from "../../Store";
+import useControlButton from "../../Hooks/Nav/Buttons/useControlButton";
 
 const Navigation = ({ dispatch, isLoggedIn }) => {
-  const [postClick, setPostClick] = useState(false);
-  const [userClick, setUserClick] = useState(false);
-  const [menuClick, setMenuClick] = useState(false);
-  const [isServiceCenter, setIsServiceCenter] = useState(false);
+  const {
+    toggleUserClick,
+    buttonStates,
+    togglePostClick,
+    toggleMenuClick,
+    toggleSCClick,
+  } = useControlButton(dispatch);
 
-  const togglePostClick = () =>
-    setPostClick(
-      (prev) => !prev,
-      setMenuClick(false),
-      setIsServiceCenter(false)
-    );
-  const toggleUserClick = () =>
-    setUserClick(
-      (prev) => !prev,
-      setMenuClick(false),
-      setIsServiceCenter(false),
-      dispatch(actionCreators.userModifyOff(true))
-    );
-  const toggleMenuClick = () => setMenuClick((prev) => !prev);
-  const toggleSCClick = () => {
-    setIsServiceCenter((prev) => !prev);
-  };
   return (
     <>
       <header id="Navigation">
@@ -69,7 +55,7 @@ const Navigation = ({ dispatch, isLoggedIn }) => {
               <Network />
             </button>
 
-            {isServiceCenter ? null : (
+            {!buttonStates.serviceCenterClick && (
               <button id="serviceCenter-btn" onClick={toggleSCClick}>
                 <img id="serviceCenter-img" src={SerViceCenterImg} />
                 <p id="serviceCenter-text">고객센터</p>
@@ -79,19 +65,25 @@ const Navigation = ({ dispatch, isLoggedIn }) => {
         </div>
       </header>
 
-      <DarkMode isServiceCenter={isServiceCenter} />
+      <DarkMode isServiceCenter={buttonStates.serviceCenterClick} />
 
       <ServiceCenter
-        isServiceCenter={isServiceCenter}
+        isServiceCenter={buttonStates.serviceCenterClick}
         toggleSCClick={toggleSCClick}
       />
 
-      <PostForm postIsClick={postClick} togglePostClick={togglePostClick} />
+      <PostForm
+        postIsClick={buttonStates.postClick}
+        togglePostClick={togglePostClick}
+      />
 
-      <MenuForm menuIsClcik={menuClick} toggleMenuClick={toggleMenuClick} />
+      <MenuForm
+        menuIsClcik={buttonStates.menuClick}
+        toggleMenuClick={toggleMenuClick}
+      />
 
       <UserForm
-        userIsClcik={userClick}
+        userIsClcik={buttonStates.userClick}
         toggleUserClick={toggleUserClick}
         isLoggedIn={isLoggedIn}
       />

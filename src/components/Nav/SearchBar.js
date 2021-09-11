@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import ClearImg from "../../assets/img/PostExit.svg";
 import "./SearchBar.css";
 import useSearch from "../../Hooks/Nav/searchForm/useSearch";
@@ -9,17 +8,9 @@ const SearchBar = () => {
     onChange,
     onSubmit,
     onClearKeyword,
-    searchToggleClick,
+    handleOpenBtn,
     searchData,
-    element,
   } = useSearch();
-
-  useEffect(() => {
-    window.addEventListener("click", handleCloseBtn);
-    return () => {
-      window.removeEventListener("click", handleCloseBtn);
-    };
-  }, []);
 
   return (
     <form id="navigation-item-searchBar-box" onSubmit={onSubmit}>
@@ -28,21 +19,21 @@ const SearchBar = () => {
           "navigation-item-searchBar-" +
           `${searchData.isSearchClick ? "on" : "off"}`
         }
-        ref={element}
         value={searchData.keyword}
-        onChange={onChange}
-        onClick={searchToggleClick}
+        onChange={(e) => onChange(e)}
         placeholder={searchData.isSearchClick && "검색어를 입력해주세요"}
+        onFocus={() => handleOpenBtn()}
+        onBlur={() => handleCloseBtn()}
       />
-      {searchData.isSearchClick ? (
+      {searchData.isSearchClick && (
         <button
           id="navigation-item-searchBar-clearBtn"
-          onClick={onClearKeyword}
+          onFocus={() => onClearKeyword()}
           type="button"
         >
           <img id="navigation-item-searchBar-clearBtn-img" src={ClearImg} />
         </button>
-      ) : null}
+      )}
     </form>
   );
 };

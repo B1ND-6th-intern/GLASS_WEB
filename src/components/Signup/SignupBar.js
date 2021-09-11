@@ -1,21 +1,10 @@
 import "./SignupBar.css";
 import useSignup from "../../Hooks/useSignup";
+import { Numbers } from "../../Utils/numberOptionUtil";
 
 const SignupBar = () => {
   const { onChange, selectOnChange, signupData, agreeToggle, onSubmit } =
     useSignup();
-
-  const Numbers = () => {
-    const numbers = [];
-    for (var i = 1; i <= 20; i++) {
-      numbers.push(
-        <option value={i} className="signupBar-number-select">
-          {i + "번"}
-        </option>
-      );
-    }
-    return numbers;
-  };
 
   return (
     <div id="signupBar-container">
@@ -90,7 +79,7 @@ const SignupBar = () => {
               className="signupBar-numbers-select"
               placeholder="번호"
             >
-              {Numbers()}
+              {Numbers(20, "signupBar-number-select")}
             </select>
           </div>
           <input
