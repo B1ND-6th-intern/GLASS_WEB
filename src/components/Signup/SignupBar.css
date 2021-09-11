@@ -1,0 +1,200 @@
+#signupBar-container {
+  width: 980px;
+  height: 660px;
+  display: flex;
+  box-shadow: 0 2px 5px -1px rgba(108, 108, 146, 0.25),
+    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation-name: signupFadeInUp;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes signupFadeInUp {
+  from {
+    transform: translate3d(324px, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.signupBar-input-container {
+  width: 490px;
+  height: 660px;
+  background-color: white;
+  border: 1px solid var(--main-border-color);
+  flex-direction: column;
+  display: flex;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: 0px;
+  align-items: center;
+  justify-content: center;
+}
+
+#signupBar-inputWrap {
+  width: 440px;
+  height: 540px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signupBar-title {
+  font-size: 40px;
+  font-weight: 300;
+  margin: 20px;
+  display: flex;
+}
+
+.signupBar-img1 {
+  width: 100px;
+  position: relative;
+  top: 45%;
+  left: 38%;
+}
+
+:is(.signupBar-id-input, .signupBar-pw-input, .signupBar-pw-input-check, .signupBar-grades-select, .signupBar-classes-select, .signupBar-numbers-select, .signupBar-name-input, .signupBar-pw-wrap, .signupBar-id-wrap) {
+  width: 90%;
+  height: 48px;
+  margin: 10px auto;
+  box-sizing: border-box;
+  display: flex;
+}
+
+:is(.signupBar-id-input, .signupBar-pw-input, .signupBar-pw-input-check, .signupBar-grades-select, .signupBar-classes-select, .signupBar-numbers-select, .signupBar-name-input) {
+  border: 1px solid var(--main-border-color);
+  outline: none;
+  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.signupBar-id-input,
+.signpbar-id-input-check,
+.signupBar-pw-input {
+  margin: 0px 0px;
+  width: 100%;
+  padding-left: 10px;
+}
+
+.signpbar-id-input-check {
+  cursor: pointer;
+  width: 13%;
+  height: 100%;
+  margin-left: auto;
+  border: 1px solid grey;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+}
+
+.signpbar-id-input-check:active {
+  transition: 1s;
+  background-color: var(--main_color);
+  color: white;
+}
+
+:is(.signupBar-pw-input, .signupBar-pw-input-check-wrap) {
+  width: 49%;
+  margin: 0px 0px;
+}
+
+.signupBar-pw-input-check-wrap {
+  margin-left: auto;
+}
+
+.signupBar-pw-input-check {
+  width: 100%;
+  margin-left: auto;
+  margin: 0px;
+}
+
+.signupBar-pw-input-check-alert {
+  font-size: 12px;
+  font-weight: 300;
+  margin: 0px;
+}
+
+#signupBar-selects-wrap {
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+  gap: 0px 25px;
+}
+
+:is(.signupBar-grades-select, .signupBar-classes-select, .signupBar-numbers-select) {
+  width: 30%;
+  margin: 0px;
+}
+option {
+  border: 1px solid var(--main_color);
+  border-radius: 5px;
+}
+
+#signupBar-mail-inputWrap {
+  width: 90%;
+  height: 50px;
+  margin: 10px auto;
+  box-sizing: border-box;
+  display: flex;
+}
+
+#signupBar-mail-input {
+  width: 100%;
+  height: 48px;
+  border: 1px solid var(--main-border-color);
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  outline: none;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+#signupBar-agreeBox-wrap {
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+  align-content: center;
+  justify-content: start;
+}
+
+#signupBar-agreeBox-input {
+  margin: 0px;
+  height: 16px;
+}
+
+#signupBar-agreeBox-text {
+  font-size: 12px;
+  margin: 0px;
+  font-weight: 300;
+}
+
+.signupBar-confirm-btn {
+  width: 180px;
+  height: 50px;
+  margin: 0px auto;
+  margin-top: auto;
+  margin-bottom: 30px;
+  background-color: var(--main_color);
+  border: 1px solid var(--main-border-color);
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#signupBar-asideContainer {
+  width: 490px;
+  height: 660px;
+  border: 1px solid var(--main-border-color);
+  border-left: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

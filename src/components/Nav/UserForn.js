@@ -1,0 +1,203 @@
+import { useState } from "react";
+import { useEffect } from "react";
+import PostExitImg from "../../assets/img/PostExit.svg";
+import { connect } from "react-redux";
+import "./UserForm.css";
+import { actionCreators } from "../../Store";
+import ChangePasswordForm from "./ChangePasswordForm";
+import useUserModify from "../../Hooks/UserForm/useUserModify";
+
+const UserForm = ({
+  userIsClcik,
+  toggleUserClick,
+  currentState,
+  dispatch,
+  isLoggedIn,
+}) => {
+  const { changeUserData, onChange, userModifyData, togglePasswordChange } =
+    useUserModify();
+
+  useEffect(() => {
+    if (userIsClcik === true) {
+      document.body.style.cssText = `
+        position : fixed;
+        top : -${window.scrollY}px
+        overflow-y : scroll;
+        width : 100%`;
+      return () => {
+        const scrollY = document.body.style.top;
+        document.body.style.cssText = "";
+        window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+      };
+    }
+  }, [userIsClcik]);
+
+  const editingToggle = () => {
+    if (currentState) {
+      dispatch(actionCreators.userModifyOff(currentState));
+      return;
+    }
+    dispatch(actionCreators.userModifyOn(currentState));
+  };
+
+  const logOut = (state) => {
+    state = false;
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    editingToggle();
+  };
+
+  return (
+    <>
+      {userIsClcik ? (
+        <div className="nav-item-user-form-wrap">
+          <form onSubmit={onSubmit} id="navigation-item-user-form">
+            <div id="navigation-item-user-form-headerWrap">
+              <p id="navagation-item-user-form-headerTitle">프로필</p>
+              <button
+                className="navigation-item-user-form-exit"
+                onClick={toggleUserClick}
+              >
+                <img
+                  src={PostExitImg}
+                  title="취소"
+                  id="navigation-item-user-form-exit-img"
+                />
+              </button>
+            </div>
+            <div id="navigation-item-user-form-contentWrap">
+              <div id="navigation-item-user-form-profileWrap">
+                <img className="navigation-item-user-form-profileImg" />
+                <div id="navigation-item-user-form-profileLine-wrap">
+                  <p id="navigation-item-user-form-profile-title">계정정보</p>
+                  <hr className="navigation-item-user-form-profileLine" />
+                </div>
+                <h5 id="navigation-item-user-form-profile-class-title">
+                  학급정보
+                </h5>
+                <div id="navigation-item-user-form-profile-classWrap">
+                  {currentState ? (
+                    <>
+                      <input
+                        className="navigation-item-user-form-info-modify-class"
+                        placeholder="학년"
+                        name="grade"
+                        value={changeUserData.grade}
+                        onChange={onChange}
+                      />
+                      <input
+                        className="navigation-item-user-form-info-modify-group"
+                        placeholder="학반"
+                        name="group"
+                        value={changeUserData.group}
+                        onChange={onChange}
+                      />
+                      <input
+                        className="navigation-item-user-form-info-modify-number"
+                        placeholder="번호"
+                        name="number"
+                        value={changeUserData.number}
+                        onChange={onChange}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <p className="navigation-item-user-form-info-class-text">
+                        {changeUserData.grade}학년
+                      </p>
+                      <p className="navigation-item-user-form-info-class-text">
+                        {changeUserData.group}반
+                      </p>
+                      <p className="navigation-item-user-form-info-class-text">
+                        {changeUserData.number}번
+                      </p>
+                    </>
+                  )}
+                </div>
+                <h5 id="navigation-item-user-form-profile-mail-title">메일</h5>
+                {currentState ? (
+                  <input
+                    placeholder="메일"
+                    name="mail"
+                    value={changeUserData.mail}
+                    onChange={onChange}
+                  />
+                ) : (
+                  <p className="navigation-item-user-form-info-mail-text">
+                    {changeUserData.mail || "메일 없음"}
+                  </p>
+                )}
+                <div id="navigation-item-user-form-profile-btnWrap">
+                  <button
+                    type="button"
+                    className="navigation-item-user-form-passwordChange"
+                    onClick={togglePasswordChange}
+                  >
+                    비밀번호 변경
+                  </button>
+                  {currentState ? (
+                    <button
+                      className="navigation-item-user-form-modifyProfile"
+                      type="submit"
+                    >
+                      수정완료
+                    </button>
+                  ) : (
+                    <div
+                      className="navigation-item-user-form-modifyProfile"
+                      onClick={editingToggle}
+                    >
+                      프로필 수정
+                    </div>
+                  )}
+                  <button
+                    type="button"
+                    className="navigation-item-user-form-logOut"
+                    onClick={logOut(isLoggedIn)}
+                  >
+                    로그아웃
+                  </button>
+                </div>
+              </div>
+              <div id="navigation-item-user-form-postWrap">
+                {currentState ? (
+                  <input
+                    id="navigation-item-user-form-info-modify-name"
+                    placeholder="이름"
+                    name="name"
+                    value={changeUserData.name}
+                    onChange={onChange}
+                  />
+                ) : (
+                  changeUserData.name || (
+                    <p id="navigation-item-user-form-name">이름없음</p>
+                  )
+                )}
+                <p id="navigation-item-user-form-post-count">게시물 </p>
+                <div id="navigation-item-user-form-post-box">
+                  <div className="navigation-item-user-form-post"></div>
+                  <div className="navigation-item-user-form-post"></div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      ) : null}
+      {changeUserData.isPasswordChange ? (
+        <ChangePasswordForm togglePasswordChange={togglePasswordChange} />
+      ) : null}
+    </>
+  );
+};
+
+const getCurrentState = (state) => {
+  return { currentState: state };
+};
+
+const dispatchCurrentState = (dispatch) => {
+  return { dispatch };
+};
+
+export default connect(getCurrentState, dispatchCurrentState)(UserForm);

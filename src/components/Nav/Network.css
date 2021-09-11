@@ -1,0 +1,9 @@
+.checknetwork {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  border-radius: 50px;
+  background-color: #32e032;
+  top: 40%;
+  left: 40%;
+}

@@ -1,0 +1,24 @@
+#error-mainMessage {
+  font-size: 30px;
+  margin: 0px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#error-subWrap {
+  display: flex;
+  margin: 6px auto;
+}
+
+#error-subMessage {
+  font-size: 20px;
+  margin: 0px;
+  margin-right: 5px;
+}
+
+#error-refreshText {
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  margin: 0px;
+}

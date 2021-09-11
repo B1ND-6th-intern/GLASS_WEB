@@ -1,0 +1,69 @@
+.MenuForm-container {
+  width: 20%;
+  height: 50%;
+  background-color: #ffffff;
+  padding: 10px;
+  border: 0.5px solid var(--main-border-color);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  position: fixed;
+  right: 380px;
+  z-index: 9999;
+  gap: 10px;
+  display: flex;
+}
+
+.MenuForm-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.MenuForm-container::-webkit-scrollbar-thumb {
+  background-color: var(--main_color);
+  border-radius: 20px;
+}
+
+.MenuForm-container::-webkit-scrollbar-track {
+  background: none;
+}
+
+.menuItem-item-wrap {
+  width: 80px;
+  height: 100px;
+  margin: 0px;
+}
+
+.menuItem-item {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuItem-name {
+  height: 20%;
+  margin: 0px;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* darkmode */
+.dark-mode .MenuForm-container {
+  background-color: var(--sub-dark-color) !important;
+  border: 1px solid var(--dark-border-color);
+}
+
+.dark-mode .MenuForm-container::-webkit-scrollbar-thumb {
+  background-color: var(--dark-color);
+}
+
+.dark-mode .menuItem-name {
+  color: white;
+}
+
+/* darkmode */
