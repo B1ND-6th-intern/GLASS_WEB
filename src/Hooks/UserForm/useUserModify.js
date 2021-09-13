@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { modifyUserDataState } from "../../Store";
 
 const useUserModify = () => {
+  const [isModify, setIsModify] = useRecoilState(modifyUserDataState);
+
   const [changeUserData, setChangeUserData] = useState({
     grade: "",
     group: "",
@@ -24,6 +28,10 @@ const useUserModify = () => {
     setChangeUserData({ ...changeUserData, [name]: value });
   };
 
+  const editingToggle = () => {
+    setIsModify((prev) => !prev);
+  };
+
   const userModifyData = {
     name: changeUserData.name,
     grade: parseInt(changeUserData.grade),
@@ -32,7 +40,14 @@ const useUserModify = () => {
     mail: changeUserData.mail,
   };
 
-  return { changeUserData, onChange, userModifyData, togglePasswordChange };
+  return {
+    changeUserData,
+    onChange,
+    userModifyData,
+    togglePasswordChange,
+    isModify,
+    editingToggle,
+  };
 };
 
 export default useUserModify;

@@ -1,27 +1,16 @@
-import { createReducer } from "@reduxjs/toolkit";
-import { configureStore } from "@reduxjs/toolkit";
-import { createAction } from "@reduxjs/toolkit";
+import { atom } from "recoil";
 
-const userModifyOn = createAction("USERMODIFYON");
-const userModifyOff = createAction("USERMODIFYOFF");
-
-const formStateModifier = createReducer(false, {
-  [userModifyOn]: (state, action) => {
-    state = action.payload;
-    return !state;
-  },
-
-  [userModifyOff]: (state, action) => {
-    state = action.payload;
-    return !state;
-  },
+export const modifyUserDataState = atom({
+  key: "modifyUserDataState",
+  default: false,
 });
 
-const formStateStore = configureStore({ reducer: formStateModifier });
-
-export const actionCreators = {
-  userModifyOn,
-  userModifyOff,
-};
-
-export default formStateStore;
+export const buttonState = atom({
+  key: "buttonStates",
+  default: {
+    isMenuClick: false,
+    isPostClick: false,
+    isUserClick: false,
+    isServiceCenterClick: false,
+  },
+});

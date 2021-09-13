@@ -1,5 +1,4 @@
 import "./Navigation.scss";
-import { useState } from "react";
 import Logo from "../../assets/img/Logo.svg";
 import WhiteLogo from "../../assets/img/WhiteLogo.svg";
 import PostImg from "../../assets/img/Post.svg";
@@ -12,17 +11,16 @@ import MenuForm from "../../components/Nav/MenuForm";
 import ServiceCenter from "../../components/Nav/ServiceCenter";
 import SerViceCenterImg from "../../assets/img/ServiceCenter.svg";
 import DarkMode from "../../components/Nav/DarkMode";
-import { connect } from "react-redux";
-import useControlButton from "../../Hooks/Nav/Buttons/useControlButton";
+import useControlButton from "../../Hooks/Nav/Buttons/useControllButton";
 
-const Navigation = ({ dispatch, isLoggedIn }) => {
+const Navigation = ({ isLoggedIn }) => {
   const {
     toggleUserClick,
     buttonStates,
     togglePostClick,
     toggleMenuClick,
     toggleSCClick,
-  } = useControlButton(dispatch);
+  } = useControlButton();
 
   return (
     <>
@@ -55,7 +53,7 @@ const Navigation = ({ dispatch, isLoggedIn }) => {
               <Network />
             </button>
 
-            {!buttonStates.serviceCenterClick && (
+            {!buttonStates.isServiceCenterClick && (
               <button id="serviceCenter-btn" onClick={toggleSCClick}>
                 <img id="serviceCenter-img" src={SerViceCenterImg} />
                 <p id="serviceCenter-text">고객센터</p>
@@ -65,25 +63,25 @@ const Navigation = ({ dispatch, isLoggedIn }) => {
         </div>
       </header>
 
-      <DarkMode isServiceCenter={buttonStates.serviceCenterClick} />
+      <DarkMode isServiceCenter={buttonStates.isServiceCenterClick} />
 
       <ServiceCenter
-        isServiceCenter={buttonStates.serviceCenterClick}
+        isServiceCenter={buttonStates.isServiceCenterClick}
         toggleSCClick={toggleSCClick}
       />
 
       <PostForm
-        postIsClick={buttonStates.postClick}
+        postIsClick={buttonStates.isPostClick}
         togglePostClick={togglePostClick}
       />
 
       <MenuForm
-        menuIsClcik={buttonStates.menuClick}
+        menuIsClcik={buttonStates.isMenuClick}
         toggleMenuClick={toggleMenuClick}
       />
 
       <UserForm
-        userIsClcik={buttonStates.userClick}
+        userIsClcik={buttonStates.isUserClick}
         toggleUserClick={toggleUserClick}
         isLoggedIn={isLoggedIn}
       />
@@ -91,12 +89,4 @@ const Navigation = ({ dispatch, isLoggedIn }) => {
   );
 };
 
-const getCurrentState = (state) => {
-  return { currentState: state };
-};
-
-const dispatchCurrentState = (dispatch) => {
-  return { dispatch };
-};
-
-export default connect(getCurrentState, dispatchCurrentState)(Navigation);
+export default Navigation;

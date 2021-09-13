@@ -21,7 +21,7 @@ const SearchBar = () => {
         }
         value={searchData.keyword}
         onChange={(e) => onChange(e)}
-        placeholder={searchData.isSearchClick && "검색어를 입력해주세요"}
+        placeholder={searchData.isSearchClick ? "" : "검색어를 입력해주세요"}
         onFocus={() => handleOpenBtn()}
         onBlur={() => handleCloseBtn()}
       />
