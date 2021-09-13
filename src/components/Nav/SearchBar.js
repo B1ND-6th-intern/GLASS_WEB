@@ -9,7 +9,7 @@ const SearchBar = () => {
     onSubmit,
     onClearKeyword,
     handleOpenBtn,
-    searchData,
+    searchDatas,
   } = useSearch();
 
   return (
@@ -17,15 +17,15 @@ const SearchBar = () => {
       <input
         className={
           "navigation-item-searchBar-" +
-          `${searchData.isSearchClick ? "on" : "off"}`
+          `${searchDatas.isSearchClick ? "on" : "off"}`
         }
-        value={searchData.keyword}
+        value={searchDatas.keyword}
         onChange={(e) => onChange(e)}
-        placeholder={searchData.isSearchClick ? "" : "검색어를 입력해주세요"}
+        placeholder={searchDatas.isSearchClick ? "" : "검색어를 입력해주세요"}
         onFocus={() => handleOpenBtn()}
         onBlur={() => handleCloseBtn()}
       />
-      {searchData.isSearchClick && (
+      {searchDatas.isSearchClick && (
         <button
           id="navigation-item-searchBar-clearBtn"
           onFocus={() => onClearKeyword()}

@@ -1,29 +1,28 @@
 import { useRef, useState } from "react";
+import { searchData } from "../../../Store";
 
 const useSearch = () => {
-  const [searchData, setSearchData] = useState({
-    keyword: "",
-    isSearchClick: false,
-  });
+  const [searchDatas, setSearchData] = useState(searchData);
 
   const handleOpenBtn = () => {
-    setSearchData({ ...searchData, isSearchClick: true });
+    setSearchData({ ...searchDatas, isSearchClick: true });
   };
 
   const handleCloseBtn = () => {
-    setSearchData({ ...searchData, isSearchClick: false });
+    console.log("SDadad");
+    setSearchData({ ...searchDatas, isSearchClick: false });
   };
 
   const onChange = (event) => {
     const {
       target: { value },
     } = event;
-    setSearchData({ ...searchData, keyword: value });
+    setSearchData({ ...searchDatas, keyword: value });
   };
 
   const makeSearchData = () => {
     return {
-      keyword: searchData.keyword,
+      keyword: searchDatas.keyword,
     };
   };
 
@@ -37,11 +36,14 @@ const useSearch = () => {
   };
 
   const onClearKeyword = () => {
-    setSearchData({ ...searchData, keyword: "" });
+    setSearchData({ ...searchDatas, keyword: "" });
   };
 
   const searchToggleClick = () => {
-    setSearchData({ ...searchData, isSearchClick: !searchData.isSearchClick });
+    setSearchData({
+      ...searchDatas,
+      isSearchClick: !searchDatas.isSearchClick,
+    });
   };
 
   return {
@@ -52,7 +54,7 @@ const useSearch = () => {
     onClearKeyword,
     searchToggleClick,
     makeSearchData,
-    searchData,
+    searchDatas,
   };
 };
 

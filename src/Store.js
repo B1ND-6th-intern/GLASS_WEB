@@ -14,3 +14,11 @@ export const buttonState = atom({
     isServiceCenterClick: false,
   },
 });
+
+export const searchData = atom({
+  key: "searchData",
+  default: {
+    keyword: "",
+    isSearchClick: false,
+  },
+});
