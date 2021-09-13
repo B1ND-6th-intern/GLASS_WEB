@@ -9,7 +9,6 @@ const useSearch = () => {
   };
 
   const handleCloseBtn = () => {
-    console.log("SDadad");
     setSearchData({ ...searchDatas, isSearchClick: false });
   };
 

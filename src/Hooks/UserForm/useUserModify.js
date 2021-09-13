@@ -32,12 +32,14 @@ const useUserModify = () => {
     setIsModify((prev) => !prev);
   };
 
-  const userModifyData = {
-    name: changeUserData.name,
-    grade: parseInt(changeUserData.grade),
-    class: parseInt(changeUserData.group),
-    number: parseInt(changeUserData.number),
-    mail: changeUserData.mail,
+  const userModifyData = () => {
+    return {
+      name: changeUserData.name,
+      grade: parseInt(changeUserData.grade),
+      class: parseInt(changeUserData.group),
+      number: parseInt(changeUserData.number),
+      mail: changeUserData.mail,
+    };
   };
 
   return {
