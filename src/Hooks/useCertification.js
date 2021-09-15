@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { SERVER } from "../config/config.json";
 
@@ -22,10 +22,6 @@ const useCertification = () => {
       setNumber(value);
     }
   };
-
-  useEffect(() => {
-    console.log(number);
-  }, [number]);
 
   const sendCertification = async () => {
     const url = `${SERVER}/user/email-auth`;
