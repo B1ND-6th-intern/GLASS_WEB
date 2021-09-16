@@ -1,21 +1,18 @@
-import { useState } from "react";
 import { useEffect } from "react";
 import PostExitImg from "../../assets/img/PostExit.svg";
-import { connect } from "react-redux";
 import "./UserForm.css";
-import { actionCreators } from "../../Store";
 import ChangePasswordForm from "./ChangePasswordForm";
 import useUserModify from "../../Hooks/UserForm/useUserModify";
 
-const UserForm = ({
-  userIsClcik,
-  toggleUserClick,
-  currentState,
-  dispatch,
-  isLoggedIn,
-}) => {
-  const { changeUserData, onChange, userModifyData, togglePasswordChange } =
-    useUserModify();
+const UserForm = ({ userIsClcik, toggleUserClick, isLoggedIn }) => {
+  const {
+    changeUserData,
+    onChange,
+    userModifyData,
+    togglePasswordChange,
+    isModify,
+    editingToggle,
+  } = useUserModify();
 
   useEffect(() => {
     if (userIsClcik === true) {
@@ -31,14 +28,6 @@ const UserForm = ({
       };
     }
   }, [userIsClcik]);
-
-  const editingToggle = () => {
-    if (currentState) {
-      dispatch(actionCreators.userModifyOff(currentState));
-      return;
-    }
-    dispatch(actionCreators.userModifyOn(currentState));
-  };
 
   const logOut = (state) => {
     state = false;
@@ -78,7 +67,7 @@ const UserForm = ({
                   학급정보
                 </h5>
                 <div id="navigation-item-user-form-profile-classWrap">
-                  {currentState ? (
+                  {isModify ? (
                     <>
                       <input
                         className="navigation-item-user-form-info-modify-class"
@@ -117,7 +106,7 @@ const UserForm = ({
                   )}
                 </div>
                 <h5 id="navigation-item-user-form-profile-mail-title">메일</h5>
-                {currentState ? (
+                {isModify ? (
                   <input
                     placeholder="메일"
                     name="mail"
@@ -137,7 +126,7 @@ const UserForm = ({
                   >
                     비밀번호 변경
                   </button>
-                  {currentState ? (
+                  {isModify ? (
                     <button
                       className="navigation-item-user-form-modifyProfile"
                       type="submit"
@@ -162,7 +151,7 @@ const UserForm = ({
                 </div>
               </div>
               <div id="navigation-item-user-form-postWrap">
-                {currentState ? (
+                {isModify ? (
                   <input
                     id="navigation-item-user-form-info-modify-name"
                     placeholder="이름"
@@ -192,12 +181,4 @@ const UserForm = ({
   );
 };
 
-const getCurrentState = (state) => {
-  return { currentState: state };
-};
-
-const dispatchCurrentState = (dispatch) => {
-  return { dispatch };
-};
-
-export default connect(getCurrentState, dispatchCurrentState)(UserForm);
+export default UserForm;

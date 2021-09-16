@@ -6,14 +6,29 @@ import Navigation from "./page/Nav/Navigation";
 import CertificationPage from "./page/Certification/CertificationPage";
 import ErrorPage from "./page/ErrorPage/ErrorPage";
 import Footer from "./page/Footer/Footer";
+import { isUserData } from "./Store";
+import { useRecoilState } from "recoil";
+import { useEffect } from "react";
 
-const AppRouter = ({ isLoggedIn }) => {
+const AppRouter = () => {
+  const [isUser, setIsUser] = useRecoilState(isUserData);
+
+  useEffect(() => {
+    const isToken = localStorage.getItem("Token");
+    if (!isToken) {
+      setIsUser(false);
+      window.location.href = "http://localhost:3001/#/";
+      return;
+    }
+    setIsUser(true);
+  }, []);
+
   return (
     <Router>
       <Switch>
-        {isLoggedIn ? (
+        {isUser ? (
           <Router>
-            {isLoggedIn && <Navigation isLoggedIn={isLoggedIn} />}
+            {isUser && <Navigation isLoggedIn={isUser} />}
             <Route exact path="/">
               <MainPage />
             </Route>
