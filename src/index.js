@@ -10,14 +10,11 @@ import {
   useRecoilState,
   useRecoilValue,
 } from "recoil";
-import { CookiesProvider } from "react-cookie";
 
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
-      <CookiesProvider>
-        <App />
-      </CookiesProvider>
+      <App />
     </RecoilRoot>
   </React.StrictMode>,
   document.getElementById("root")

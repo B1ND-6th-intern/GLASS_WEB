@@ -56,7 +56,6 @@ const useCertification = () => {
   const sendCertificationNumber = async () => {
     const url = `${SERVER}/user/email-auth`;
     try {
-      console.log(number);
       const { data } = await axios.post(url, {
         confirmation: number,
       });

@@ -9,27 +9,22 @@ const useLogin = () => {
   const [isUser, setIsUser] = useRecoilState(isUserData);
 
   const [loginData, setLoginData] = useState({
-    mail: "",
-    pw: "",
+    email: "",
+    password: "",
   });
   const [pwType, setPwType] = useState(false);
+
   const onChange = (event) => {
     const {
       target: { value, name },
     } = event;
-
     setLoginData({ ...loginData, [name]: value });
-  };
-
-  const loginUserData = {
-    email: loginData.mail,
-    password: loginData.pw,
   };
 
   const sendLoginData = async () => {
     const url = `${SERVER}/login`;
     try {
-      const { data } = await axios.post(url, loginUserData);
+      const { data } = await axios.post(url, loginData);
       return data;
     } catch (error) {
       const { data } = error.response;
@@ -39,21 +34,20 @@ const useLogin = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    if (validateEmail(loginData.mail)) {
+    if (validateEmail(loginData.email)) {
       const LoginPass = await sendLoginData();
       const { status, message, error, token } = LoginPass;
       if (status === 200) {
         window.alert(message);
         if (token) {
           localStorage.setItem("Token", token);
-          if (localStorage.getItem("Token")) {
-            setIsUser(true);
-          }
+          setIsUser(true);
           return;
         }
+        return;
       }
       window.alert(error);
-      setLoginData({ mail: "", pw: "" });
+      setLoginData({ email: "", password: "" });
       return;
     }
     window.alert("메일 형식을 확인해주세요");

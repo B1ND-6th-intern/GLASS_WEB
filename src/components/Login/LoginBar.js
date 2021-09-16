@@ -18,21 +18,21 @@ const LoginBar = () => {
         <div id="loginBar-inputWrap">
           <div className="loginbar-title">로그인</div>
           <input
-            name="mail"
+            name="email"
             className="loginbar-mail-input"
             placeholder="메일"
             onChange={onChange}
-            value={loginData.mail}
+            value={loginData.email}
           />
 
           <div id="loginBar-pwWrap">
             <input
-              name="pw"
+              name="password"
               type={pwType ? "text" : "password"}
               className="loginbar-pw-input"
               placeholder="비밀번호"
               onChange={onChange}
-              value={loginData.pw}
+              value={loginData.password}
             />
             <button
               id="loginbar-pwtype-btn"
