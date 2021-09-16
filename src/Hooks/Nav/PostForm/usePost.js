@@ -1,4 +1,8 @@
 import { useState } from "react";
+import useControllButton from "../Buttons/useControllButton";
+import { SERVER } from "../../../config/config.json";
+import axios from "axios";
+import { useEffect } from "react";
 
 const usePost = () => {
   const [attachment, setAttachment] = useState([]);
@@ -6,6 +10,8 @@ const usePost = () => {
     content: "",
     hashtag: "",
   });
+
+  // const { togglePostClick } = useControllButton();
 
   const onChange = (event) => {
     const {
@@ -26,14 +32,38 @@ const usePost = () => {
     setPostData({ content: "", hashtag: "" });
   };
 
-  const onSubmit = (event) => {
+  const sendPostData = async () => {
+    const url = `${SERVER}/writing/uproad`;
+    try {
+      const { data } = await axios.post(url, makePostFormData());
+      return data;
+    } catch (error) {
+      const { data } = error.response;
+      return data;
+    }
+  };
+
+  useEffect(() => {
+    console.log(attachment);
+  }, [attachment]);
+
+  const onSubmit = async (event) => {
     event.preventDefault();
-    const data = makePostFormData();
-    resetPostData();
-    // togglePostClick(); recoil 배운후 수정 예정
+
+    // const postResponse = await setPostData();
+    // const { status, error, message } = postResponse;
+
+    // if (status !== 200) {
+    //   window.alert(error);
+    //   resetPostData();
+    //   return;
+    // }
+
+    // window.alert(message);
   };
 
   const onFileChange = (event) => {
+    setAttachment([]);
     const {
       target: { files },
     } = event;
@@ -79,6 +109,7 @@ const usePost = () => {
     onFileChange,
     onSubmit,
     makePostFormData,
+    resetPostData,
     postData,
     attachment,
   };

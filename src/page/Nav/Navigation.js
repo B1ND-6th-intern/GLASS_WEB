@@ -70,21 +70,14 @@ const Navigation = ({ isLoggedIn }) => {
         toggleSCClick={toggleSCClick}
       />
 
-      <PostForm
-        postIsClick={buttonStates.isPostClick}
-        togglePostClick={togglePostClick}
-      />
+      <PostForm />
 
       <MenuForm
         menuIsClcik={buttonStates.isMenuClick}
         toggleMenuClick={toggleMenuClick}
       />
 
-      <UserForm
-        userIsClcik={buttonStates.isUserClick}
-        toggleUserClick={toggleUserClick}
-        isLoggedIn={isLoggedIn}
-      />
+      <UserForm />
     </>
   );
 };

@@ -2,9 +2,11 @@ import { useEffect } from "react";
 import PostExitImg from "../../assets/img/PostExit.svg";
 import "./UserForm.css";
 import ChangePasswordForm from "./ChangePasswordForm";
-import useUserModify from "../../Hooks/UserForm/useUserModify";
+import useUserModify from "../../Hooks/Nav/UserForm/useUserModify";
+import useLogOut from "../../Hooks/Nav/UserForm/useLogOut";
+import useControllButton from "../../Hooks/Nav/Buttons/useControllButton";
 
-const UserForm = ({ userIsClcik, toggleUserClick, isLoggedIn }) => {
+const UserForm = () => {
   const {
     changeUserData,
     onChange,
@@ -14,8 +16,12 @@ const UserForm = ({ userIsClcik, toggleUserClick, isLoggedIn }) => {
     editingToggle,
   } = useUserModify();
 
+  const { buttonStates, toggleUserClick } = useControllButton();
+
+  const { onClickLogOut } = useLogOut();
+
   useEffect(() => {
-    if (userIsClcik === true) {
+    if (buttonStates.isUserClick === true) {
       document.body.style.cssText = `
         position : fixed;
         top : -${window.scrollY}px
@@ -27,11 +33,7 @@ const UserForm = ({ userIsClcik, toggleUserClick, isLoggedIn }) => {
         window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
       };
     }
-  }, [userIsClcik]);
-
-  const logOut = (state) => {
-    state = false;
-  };
+  }, [buttonStates.isUserClick]);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -40,7 +42,7 @@ const UserForm = ({ userIsClcik, toggleUserClick, isLoggedIn }) => {
 
   return (
     <>
-      {userIsClcik ? (
+      {buttonStates.isUserClick ? (
         <div className="nav-item-user-form-wrap">
           <form onSubmit={onSubmit} id="navigation-item-user-form">
             <div id="navigation-item-user-form-headerWrap">
@@ -144,7 +146,7 @@ const UserForm = ({ userIsClcik, toggleUserClick, isLoggedIn }) => {
                   <button
                     type="button"
                     className="navigation-item-user-form-logOut"
-                    onClick={logOut(isLoggedIn)}
+                    onClick={onClickLogOut}
                   >
                     로그아웃
                   </button>
