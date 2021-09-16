@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { SERVER } from "../config/config.json";
@@ -20,10 +20,6 @@ const useSignup = () => {
   const history = useHistory();
 
   const { sendCertification } = useCertification();
-
-  useEffect(() => {
-    console.log(signupData);
-  }, [signupData]);
 
   const onChange = (event) => {
     const {

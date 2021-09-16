@@ -22,3 +22,8 @@ export const searchData = atom({
     isSearchClick: false,
   },
 });
+
+export const isUserData = atom({
+  key: "isUserData",
+  default: false,
+});
