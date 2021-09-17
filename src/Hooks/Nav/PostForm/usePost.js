@@ -63,16 +63,18 @@ const usePost = () => {
   };
 
   const onFileChange = (event) => {
+    const maxFileSize = 10;
+
     setAttachment([]);
     const {
       target: { files },
     } = event;
 
     let file;
-    let filesLength = files.length > 10 ? 10 : files.length;
+    let filesLength = files.length > maxFileSize ? maxFileSize : files.length;
 
-    if (files.length > 10) {
-      window.alert("사진은 최대 10장 업로드 할 수 있습니다");
+    if (files.length > maxFileSize) {
+      window.alert(`사진은 최대 ${maxFileSize}장 업로드 할 수 있습니다`);
     }
     for (let i = 0; i < filesLength; i++) {
       file = files[i];

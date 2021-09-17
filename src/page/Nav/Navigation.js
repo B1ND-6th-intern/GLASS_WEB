@@ -13,7 +13,7 @@ import SerViceCenterImg from "../../assets/img/ServiceCenter.svg";
 import DarkMode from "../../components/Nav/DarkMode";
 import useControlButton from "../../Hooks/Nav/Buttons/useControllButton";
 
-const Navigation = ({ isLoggedIn }) => {
+const Navigation = () => {
   const {
     toggleUserClick,
     buttonStates,
@@ -63,19 +63,13 @@ const Navigation = ({ isLoggedIn }) => {
         </div>
       </header>
 
-      <DarkMode isServiceCenter={buttonStates.isServiceCenterClick} />
+      <DarkMode />
 
-      <ServiceCenter
-        isServiceCenter={buttonStates.isServiceCenterClick}
-        toggleSCClick={toggleSCClick}
-      />
+      <ServiceCenter />
 
       <PostForm />
 
-      <MenuForm
-        menuIsClcik={buttonStates.isMenuClick}
-        toggleMenuClick={toggleMenuClick}
-      />
+      <MenuForm />
 
       <UserForm />
     </>

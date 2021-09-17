@@ -1,13 +1,14 @@
 import "./ServiceCenter.css";
 import ExitServiceCenter from "../../assets/img/ExitServiceCenter.svg";
 import useQuestion from "../../Hooks/ServiceCenter/useQuestion";
+import useControllButton from "../../Hooks/Nav/Buttons/useControllButton";
 
-const SerViceCenter = ({ isServiceCenter, toggleSCClick }) => {
+const SerViceCenter = () => {
   const { questionValue, onChange, onSubmit } = useQuestion();
-
+  const { buttonStates, toggleSCClick } = useControllButton();
   return (
     <>
-      {isServiceCenter && (
+      {buttonStates.isServiceCenterClick && (
         <form id="serviceCenter-form" onSubmit={onSubmit}>
           <div id="serviceCenter-headerWrap">
             <button id="serviceCenter-prev-btn" onClick={toggleSCClick}>
