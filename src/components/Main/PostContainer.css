@@ -7,7 +7,7 @@
   background-color: white;
 }
 
-.post-name {
+.post-profileWrap {
   width: 100%;
   height: 56px;
   background-color: white;
@@ -45,6 +45,13 @@
   width: 28px;
   height: 28px;
   padding: 0px;
+  border: 0px;
+  background: none;
+  cursor: pointer;
+}
+
+.post-likeBtn-img {
+  width: 100%;
 }
 
 .post-explainWrap-middle {
@@ -53,13 +60,49 @@
   box-sizing: border-box;
   padding: 8px;
   padding-top: 0px;
+  border-bottom: 1px solid var(--main-border-color);
 }
 
 .post-explainWrap-text {
   margin: 0px;
   font-size: 15px;
+  word-break: break-all;
+  overflow-x: hidden;
 }
 
 .post-explainWrap-hashTag {
   margin: 8px 0px;
+}
+
+.post-commentWrap {
+  width: 100%;
+  height: 58px;
+  padding: 8px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.post-commentInput {
+  width: 585px;
+  height: auto;
+  min-height: 42px;
+  box-sizing: border-box;
+  word-break: break-all;
+  overflow-x: visible;
+  border: 0px;
+  margin-left: auto;
+  outline: none;
+  font-size: 16px;
+}
+
+.post-submitComment {
+  width: 45px;
+  height: 100%;
+  color: var(--main_color);
+  font-weight: bold;
+  background: none;
+  border: 0px;
+  outline: none;
+  cursor: pointer;
 }
