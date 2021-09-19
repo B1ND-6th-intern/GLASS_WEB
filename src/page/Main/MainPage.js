@@ -5,7 +5,10 @@ const MainPage = () => {
   return (
     <section id="content">
       <div className="content-container">
-        <PostContainer />
+        <PostContainer
+          name="do0ng_hyun"
+          explainText="asasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasdsasasds"
+        />
       </div>
     </section>
   );
