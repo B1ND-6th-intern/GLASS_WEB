@@ -4,4 +4,7 @@
   height: auto;
   width: 1140px;
   min-height: 714px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
 }

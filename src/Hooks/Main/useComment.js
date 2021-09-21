@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const useComment = () => {
   const [commentData, setCommentData] = useState("");
-  const [isSummary, setIsSummary] = useState(true);
+  const [isSummary, setIsSummary] = useState(false);
   const commentText = useRef();
 
   const onChange = (event) => {
