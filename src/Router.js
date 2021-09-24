@@ -13,14 +13,16 @@ import { useEffect } from "react";
 const AppRouter = () => {
   const [isUser, setIsUser] = useRecoilState(isUserData);
 
-  useEffect(() => {
-    const isToken = localStorage.getItem("Token");
-    if (!isToken) {
-      setIsUser(false);
-      return;
-    }
-    setIsUser(true);
-  }, []);
+  // useEffect(() => {
+  //   const isToken = localStorage.getItem("Token");
+  //   if (!isToken) {
+  //     setIsUser(false);
+  //     return;
+  //   }
+  //   setIsUser(true);
+  // }, []);
+
+  setIsUser(true);
 
   return (
     <Router>

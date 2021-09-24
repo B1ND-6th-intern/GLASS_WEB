@@ -1,5 +1,4 @@
 import { useState } from "react";
-import useControllButton from "../Buttons/useControllButton";
 import { SERVER } from "../../../config/config.json";
 import axios from "axios";
 import { useEffect } from "react";
@@ -10,8 +9,6 @@ const usePost = () => {
     content: "",
     hashtag: "",
   });
-
-  // const { togglePostClick } = useControllButton();
 
   const onChange = (event) => {
     const {
@@ -43,23 +40,8 @@ const usePost = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(attachment);
-  }, [attachment]);
-
   const onSubmit = async (event) => {
     event.preventDefault();
-
-    // const postResponse = await setPostData();
-    // const { status, error, message } = postResponse;
-
-    // if (status !== 200) {
-    //   window.alert(error);
-    //   resetPostData();
-    //   return;
-    // }
-
-    // window.alert(message);
   };
 
   const onFileChange = (event) => {
