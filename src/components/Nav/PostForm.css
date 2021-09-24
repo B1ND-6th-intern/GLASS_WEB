@@ -14,8 +14,8 @@
   top: 50%;
   left: 50%;
   display: inline-block;
-  width: 510px;
-  height: 570px;
+  width: 650px;
+  height: 665px;
   background-color: white;
   border-radius: 5px;
   align-items: center;
@@ -72,14 +72,15 @@
 
 #navigation-item-post-form-inputWrap {
   width: 100%;
-  height: 370px;
+  height: auto;
   display: flex;
+  flex-direction: column;
   margin-top: 15px;
 }
 
 .navigation-item-post-form-content-input {
-  width: 78%;
-  height: 100%;
+  width: 100%;
+  height: 375px;
   font-size: 20px;
   vertical-align: top;
   box-sizing: border-box;
@@ -103,19 +104,20 @@
 }
 
 #navigation-item-post-form-preview-imgWrap {
-  width: 20%;
-  height: 369px;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  height: 80px;
   border: 1px solid var(--main-border-color);
   background-color: white;
-  overflow-y: scroll;
-  row-gap: 10px;
+  overflow-x: scroll;
   margin-left: auto;
+  box-sizing: border-box;
+  margin-top: 20px;
+  display: flex;
+  column-gap: 10px;
 }
 
 #navigation-item-post-form-preview-imgWrap::-webkit-scrollbar {
-  width: 10px;
+  height: 7px;
 }
 
 #navigation-item-post-form-preview-imgWrap::-webkit-scrollbar-track {
@@ -125,9 +127,11 @@
 #navigation-item-post-form-preview-imgWrap::-webkit-scrollbar-thumb {
   background: var(--main_color);
   border-radius: 20px;
+  column-gap: 10px;
 }
+
 .navigation-item-post-form-preview-box {
-  width: 100%;
+  min-width: 70px;
   position: relative;
   height: auto;
   display: flex;
@@ -136,6 +140,7 @@
 .navigation-item-post-form-preview-img {
   width: 90%;
   margin: 0px auto;
+  object-fit: scale-down;
 }
 
 .navigation-item-post-form-delete-img-btn {
@@ -162,7 +167,7 @@
 }
 
 .navigation-item-post-form-hashtag-wrap {
-  margin: 15px;
+  margin: 20px 15px;
   height: 45px;
   width: 100%;
   align-items: center;
@@ -193,7 +198,7 @@
 }
 
 #navigation-item-post-form-img-input-label-img {
-  width: 50%;
+  width: 40%;
 }
 
 #navigation-item-post-form-img-input {

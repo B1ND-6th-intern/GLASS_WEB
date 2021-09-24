@@ -1,0 +1,17 @@
+.commenWrap {
+  width: auto;
+  margin: 0px;
+}
+
+.comment-name {
+  font-weight: bold;
+  margin: 0px;
+  font-size: 14px;
+}
+
+.comment-text {
+  word-break: break-all;
+  margin: 0px;
+  font-size: 14px;
+  margin-left: 4px;
+}

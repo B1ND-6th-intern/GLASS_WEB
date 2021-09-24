@@ -1,4 +1,4 @@
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginPage from "./page/Login/LoginPage";
 import SignupPage from "./page/Signup/SignupPage";
 import MainPage from "./page/Main/MainPage";
@@ -17,7 +17,6 @@ const AppRouter = () => {
     const isToken = localStorage.getItem("Token");
     if (!isToken) {
       setIsUser(false);
-      window.location.href = "http://localhost:3001/#/";
       return;
     }
     setIsUser(true);
