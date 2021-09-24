@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { modifyUserDataState } from "../../Store";
+import { modifyUserDataState } from "../../../Store";
 
 const useUserModify = () => {
   const [isModify, setIsModify] = useRecoilState(modifyUserDataState);

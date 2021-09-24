@@ -1,10 +1,13 @@
 import "./MenuForm.css";
+import useControllButton from "../../Hooks/Nav/Buttons/useControllButton";
 
-const MenuForm = ({ menuIsClcik, toggleMenuClick }) => {
+const MenuForm = () => {
   const MenuItems = [];
+  const { buttonStates } = useControllButton();
+
   return (
     <>
-      {menuIsClcik && (
+      {buttonStates.isMenuClick && (
         <div className="MenuForm-container">
           {MenuItems.map((item, index) => (
             <div key={index} className="menuItem-item-wrap">

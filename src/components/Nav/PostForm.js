@@ -3,19 +3,23 @@ import { useEffect } from "react";
 import "./PostForm.css";
 import ImgAdd from "../../assets/img/PostImgAdd.svg";
 import usePost from "../../Hooks/Nav/PostForm/usePost";
+import useControllButton from "../../Hooks/Nav/Buttons/useControllButton";
 
-const PostForm = ({ postIsClick, togglePostClick }) => {
+const PostForm = () => {
   const {
     onChange,
     onDeleteImg,
     onFileChange,
     onSubmit,
+    resetPostData,
     postData,
     attachment,
   } = usePost();
 
+  const { buttonStates, togglePostClick } = useControllButton();
+
   useEffect(() => {
-    if (postIsClick) {
+    if (buttonStates.isPostClick) {
       document.body.style.cssText = `
         position : fixed;
         top : -${window.scrollY}px
@@ -27,21 +31,22 @@ const PostForm = ({ postIsClick, togglePostClick }) => {
         window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
       };
     }
-  }, [postIsClick]);
+  }, [buttonStates.isPostClick]);
 
   return (
     <>
-      {postIsClick && (
+      {buttonStates.isPostClick && (
         <div className="nav-item-post-form-wrap">
-          <form onSubmit={onSubmit} className="navigation-item-post-form">
+          <form
+            onSubmit={(onSubmit, resetPostData, togglePostClick)}
+            className="navigation-item-post-form"
+          >
             <div className="navigation-item-post-form-container">
               <div className="navigation-item-post-form-headerWrap">
-                <div className="navigation-item-post-form-title">
-                  게시물 추가
-                </div>
+                <div className="navigation-item-post-form-title">글쓰기</div>
                 <button
                   className="navigation-item-post-form-exit"
-                  onClick={togglePostClick}
+                  onClick={(togglePostClick, resetPostData)}
                 >
                   <img
                     id="navigation-item-post-form-exit-img"
