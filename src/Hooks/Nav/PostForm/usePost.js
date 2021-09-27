@@ -42,6 +42,17 @@ const usePost = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+
+    // const postResponse = await setPostData();
+    // const { status, error, message } = postResponse;
+
+    // if (status !== 200) {
+    //   window.alert(error);
+    //   resetPostData();
+    //   return;
+    // }
+
+    // window.alert(message);
   };
 
   const onFileChange = (event) => {
