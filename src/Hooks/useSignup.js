@@ -4,8 +4,12 @@ import axios from "axios";
 import { SERVER } from "../config/config.json";
 import useCertification from "./useCertification";
 import { validateEmail } from "../Utils/pattern/validationData";
+import { useEffect } from "react";
+import { useRef } from "react";
 
 const useSignup = () => {
+  const [isStudent, setIsStudent] = useState(false);
+
   const [signupData, setSignupData] = useState({
     pw: "",
     chkPw: "",
@@ -14,6 +18,7 @@ const useSignup = () => {
     number: 1,
     mail: "",
     name: "",
+    permission: 0,
     isAgree: false,
   });
 
@@ -27,6 +32,18 @@ const useSignup = () => {
     } = event;
 
     setSignupData({ ...signupData, [name]: value });
+  };
+
+  const permissionChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setSignupData({ ...signupData, permission: value });
+    if (value != 0) {
+      setIsStudent(true);
+      return;
+    }
+    setIsStudent(false);
   };
 
   const selectOnChange = (event) => {
@@ -113,6 +130,8 @@ const useSignup = () => {
     validateEmail,
     agreeToggle,
     onSubmit,
+    permissionChange,
+    isStudent,
   };
 };
 

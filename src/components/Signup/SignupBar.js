@@ -1,16 +1,58 @@
 import "./SignupBar.css";
 import useSignup from "../../Hooks/useSignup";
 import { Numbers } from "../../Utils/numberOptionUtil";
+import { useState } from "react";
 
 const SignupBar = () => {
-  const { onChange, selectOnChange, signupData, agreeToggle, onSubmit } =
-    useSignup();
+  const {
+    onChange,
+    selectOnChange,
+    signupData,
+    agreeToggle,
+    onSubmit,
+    permissionChange,
+    isStudent,
+  } = useSignup();
 
   return (
     <div id="signupBar-container">
       <form className="signupBar-input-container" onSubmit={onSubmit}>
         <div id="signupBar-inputWrap">
-          <div className="signupBar-title">회원가입</div>
+          <div className="signupBar-title">
+            <p id="signupBar-titleText">회원가입</p>
+            <div id="signupBar-checkBoxWrap">
+              <div className="signupBar-checkBoxWrap-box">
+                <p className="signupBar-checkBoxWrap-boxText">학생</p>
+                <input
+                  name="permission"
+                  type="checkbox"
+                  value={0}
+                  className="signupBar-checkBox"
+                  onChange={permissionChange}
+                ></input>
+              </div>
+              <div className="signupBar-checkBoxWrap-box">
+                <p className="signupBar-checkBoxWrap-boxText">부모님</p>
+                <input
+                  name="permission"
+                  type="checkbox"
+                  value={1}
+                  className="signupBar-checkBox"
+                  onChange={permissionChange}
+                ></input>
+              </div>
+              <div className="signupBar-checkBoxWrap-box">
+                <p className="signupBar-checkBoxWrap-boxText">선생님</p>
+                <input
+                  name="permission"
+                  type="checkbox"
+                  value={2}
+                  className="signupBar-checkBox"
+                  onChange={permissionChange}
+                ></input>
+              </div>
+            </div>
+          </div>
           <div id="signupBar-mail-inputWrap">
             <input
               name="mail"
