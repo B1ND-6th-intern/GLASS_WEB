@@ -15,11 +15,7 @@ const AppRouter = () => {
 
   useEffect(() => {
     const isToken = localStorage.getItem("Token");
-    if (!isToken) {
-      setIsUser(false);
-      return;
-    }
-    setIsUser(true);
+    setIsUser(!isToken ? false : true);
   }, []);
 
   return (

@@ -38,11 +38,6 @@ const useSignup = () => {
       target: { value },
     } = event;
     setSignupData({ ...signupData, permission: value });
-    if (value != 0) {
-      setIsStudent(true);
-      return;
-    }
-    setIsStudent(false);
   };
 
   const selectOnChange = (event) => {
@@ -51,19 +46,24 @@ const useSignup = () => {
     } = event;
 
     setSignupData({ ...signupData, [name]: value });
+    let data = makeUserData();
+    console.log(data);
   };
 
   const makeUserData = () => {
+    const { pw, chkPw, grade, group, number, mail, name, isAgree, permission } =
+      signupData;
+
     return {
-      password: signupData.pw,
-      password2: signupData.chkPw,
-      grade: parseInt(signupData.grade),
-      classNumber: parseInt(signupData.group),
-      stuNumber: parseInt(signupData.number),
-      email: signupData.mail,
-      name: signupData.name,
-      isAgree: signupData.isAgree,
-      permission: parseInt(signupData.permission),
+      password: pw,
+      password2: chkPw,
+      grade: parseInt(grade),
+      classNumber: parseInt(group),
+      stuNumber: parseInt(number),
+      email: mail,
+      name: name,
+      isAgree: isAgree,
+      permission: parseInt(permission),
     };
   };
 
@@ -83,9 +83,7 @@ const useSignup = () => {
   };
 
   useEffect(() => {
-    if (signupData.permission != 0) {
-      setIsStudent(true);
-    }
+    setIsStudent(signupData.permission == 0 ? false : true);
   }, [signupData.permission]);
 
   const signupDataReset = () => {
@@ -115,7 +113,7 @@ const useSignup = () => {
 
     if (!validateEmail(signupData.mail)) {
       window.alert("메일 형식을 확인해주세요!");
-      setSignupData();
+      signupDataReset();
       return;
     }
 
