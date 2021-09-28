@@ -74,7 +74,6 @@ const useCertification = () => {
       window.alert("인증에 성공했습니다. 로그인 페이지로 이동합니다.");
       history.push("/");
     } else if (status === 400) {
-      console.log(error);
       if (failedCount >= 4) {
         history.push("/signup");
       } else {

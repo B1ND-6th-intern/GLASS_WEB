@@ -4,8 +4,11 @@ import axios from "axios";
 import { SERVER } from "../config/config.json";
 import useCertification from "./useCertification";
 import { validateEmail } from "../Utils/pattern/validationData";
+import { useEffect } from "react";
 
 const useSignup = () => {
+  const [isStudent, setIsStudent] = useState(false);
+
   const [signupData, setSignupData] = useState({
     pw: "",
     chkPw: "",
@@ -14,6 +17,7 @@ const useSignup = () => {
     number: 1,
     mail: "",
     name: "",
+    permission: 0,
     isAgree: false,
   });
 
@@ -29,24 +33,37 @@ const useSignup = () => {
     setSignupData({ ...signupData, [name]: value });
   };
 
+  const permissionChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setSignupData({ ...signupData, permission: value });
+  };
+
   const selectOnChange = (event) => {
     const {
       target: { value, name },
     } = event;
 
     setSignupData({ ...signupData, [name]: value });
+    let data = makeUserData();
+    console.log(data);
   };
 
   const makeUserData = () => {
+    const { pw, chkPw, grade, group, number, mail, name, isAgree, permission } =
+      signupData;
+
     return {
-      password: signupData.pw,
-      password2: signupData.chkPw,
-      grade: parseInt(signupData.grade),
-      classNumber: parseInt(signupData.group),
-      stuNumber: parseInt(signupData.number),
-      email: signupData.mail,
-      name: signupData.name,
-      isAgree: signupData.isAgree,
+      password: pw,
+      password2: chkPw,
+      grade: parseInt(grade),
+      classNumber: parseInt(group),
+      stuNumber: parseInt(number),
+      email: mail,
+      name: name,
+      isAgree: isAgree,
+      permission: parseInt(permission),
     };
   };
 
@@ -65,6 +82,10 @@ const useSignup = () => {
     }
   };
 
+  useEffect(() => {
+    setIsStudent(signupData.permission == 0 ? false : true);
+  }, [signupData.permission]);
+
   const signupDataReset = () => {
     setSignupData({
       pw: "",
@@ -78,12 +99,21 @@ const useSignup = () => {
     });
   };
 
+  const onlyOneCheck = (chkValue) => {
+    let obj = document.getElementsByName("permission");
+    for (let i = 0; i < obj.length; i++) {
+      if (obj[i].value != chkValue) {
+        obj[i].checked = false;
+      }
+    }
+  };
+
   const onSubmit = async (event) => {
     event.preventDefault();
 
     if (!validateEmail(signupData.mail)) {
       window.alert("메일 형식을 확인해주세요!");
-      setSignupData();
+      signupDataReset();
       return;
     }
 
@@ -113,6 +143,9 @@ const useSignup = () => {
     validateEmail,
     agreeToggle,
     onSubmit,
+    permissionChange,
+    isStudent,
+    onlyOneCheck,
   };
 };
 
