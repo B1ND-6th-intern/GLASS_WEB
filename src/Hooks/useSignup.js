@@ -5,7 +5,6 @@ import { SERVER } from "../config/config.json";
 import useCertification from "./useCertification";
 import { validateEmail } from "../Utils/pattern/validationData";
 import { useEffect } from "react";
-import { useRef } from "react";
 
 const useSignup = () => {
   const [isStudent, setIsStudent] = useState(false);
@@ -64,6 +63,7 @@ const useSignup = () => {
       email: signupData.mail,
       name: signupData.name,
       isAgree: signupData.isAgree,
+      permission: parseInt(signupData.permission),
     };
   };
 
@@ -82,6 +82,12 @@ const useSignup = () => {
     }
   };
 
+  useEffect(() => {
+    if (signupData.permission != 0) {
+      setIsStudent(true);
+    }
+  }, [signupData.permission]);
+
   const signupDataReset = () => {
     setSignupData({
       pw: "",
@@ -93,6 +99,15 @@ const useSignup = () => {
       name: "",
       isAgree: false,
     });
+  };
+
+  const onlyOneCheck = (chkValue) => {
+    let obj = document.getElementsByName("permission");
+    for (let i = 0; i < obj.length; i++) {
+      if (obj[i].value != chkValue) {
+        obj[i].checked = false;
+      }
+    }
   };
 
   const onSubmit = async (event) => {
@@ -132,6 +147,7 @@ const useSignup = () => {
     onSubmit,
     permissionChange,
     isStudent,
+    onlyOneCheck,
   };
 };
 
