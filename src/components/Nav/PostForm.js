@@ -38,6 +38,7 @@ const PostForm = () => {
       {buttonStates.isPostClick && (
         <div className="nav-item-post-form-wrap">
           <form
+            enctype="multipart/form-data"
             onSubmit={(onSubmit, resetPostData, togglePostClick)}
             className="navigation-item-post-form"
           >

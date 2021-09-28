@@ -50,6 +50,34 @@
   display: flex;
 }
 
+#signupBar-titleText {
+  margin: 0px;
+  align-items: center;
+}
+
+#signupBar-checkBoxWrap {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  column-gap: 5px;
+}
+
+.signupBar-checkBoxWrap-box {
+  display: flex;
+  margin-top: auto;
+}
+
+.signupBar-checkBoxWrap-boxText {
+  font-size: 16px;
+  margin: 0px;
+}
+
+.signupBar-checkBox {
+  width: 16px;
+  height: 16px;
+  margin: auto 0px;
+}
+
 .signupBar-img1 {
   width: 100px;
   position: relative;
