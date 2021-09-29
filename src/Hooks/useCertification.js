@@ -74,7 +74,9 @@ const useCertification = () => {
       window.alert("인증에 성공했습니다. 로그인 페이지로 이동합니다.");
       history.push("/");
     } else if (status === 400) {
-      if (failedCount >= 4) {
+      if (
+        error === "이메일 인증 번호가 5번 틀렸습니다. 다시 회원가입 해주세요."
+      ) {
         history.push("/signup");
       } else {
         setAlert(error);

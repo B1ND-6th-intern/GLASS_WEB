@@ -97,6 +97,7 @@ const SignupBar = () => {
           <div id="signupBar-agreeBox-wrap">
             <input
               onClick={agreeToggle}
+              checked={signupData.isAgree ? true : false}
               id="signupBar-agreeBox-input"
               type="checkbox"
             />

@@ -1,10 +1,7 @@
 import { useRecoilState } from "recoil";
 import { buttonState, modifyUserDataState } from "../../../Store";
-import usePost from "../PostForm/usePost";
 
 const useControllButton = () => {
-  const { resetPostData } = usePost();
-
   const [isModify, setIsModify] = useRecoilState(modifyUserDataState);
 
   const [buttonStates, setButtonStates] = useRecoilState(buttonState);

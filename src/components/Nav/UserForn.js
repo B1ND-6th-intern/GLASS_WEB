@@ -10,7 +10,6 @@ const UserForm = () => {
   const {
     changeUserData,
     onChange,
-    userModifyData,
     togglePasswordChange,
     isModify,
     editingToggle,

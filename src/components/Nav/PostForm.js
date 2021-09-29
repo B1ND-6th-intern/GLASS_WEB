@@ -33,21 +33,22 @@ const PostForm = () => {
     }
   }, [buttonStates.isPostClick]);
 
+  const resetForm = () => {
+    resetPostData();
+    togglePostClick();
+  };
+
   return (
     <>
       {buttonStates.isPostClick && (
         <div className="nav-item-post-form-wrap">
-          <form
-            enctype="multipart/form-data"
-            onSubmit={(onSubmit, resetPostData, togglePostClick)}
-            className="navigation-item-post-form"
-          >
+          <form className="navigation-item-post-form">
             <div className="navigation-item-post-form-container">
               <div className="navigation-item-post-form-headerWrap">
                 <div className="navigation-item-post-form-title">글쓰기</div>
                 <button
                   className="navigation-item-post-form-exit"
-                  onClick={(togglePostClick, resetPostData)}
+                  onClick={resetForm}
                 >
                   <img
                     id="navigation-item-post-form-exit-img"
@@ -117,9 +118,12 @@ const PostForm = () => {
               </div>
               <div className="navigation-item-post-form-footerWrap">
                 <input
-                  type="submit"
                   className="navigation-item-post-form-footerWrap-Btn"
                   value="게시"
+                  onClick={(event) => {
+                    onSubmit(event);
+                    resetForm();
+                  }}
                 />
               </div>
             </div>

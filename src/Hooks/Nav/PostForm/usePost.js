@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { SERVER } from "../../../config/config.json";
 import axios from "axios";
-import { useEffect } from "react";
 
 const usePost = () => {
   const [attachment, setAttachment] = useState([]);
@@ -17,10 +16,11 @@ const usePost = () => {
 
     setPostData({ ...postData, [name]: value });
   };
+
   const makePostFormData = () => {
     return {
-      content: postData.content,
-      hashTag: makeHashTagDatas(postData.hashtag),
+      text: postData.content,
+      hashtags: makeHashTagDatas(postData.hashtag),
       imgs: attachment,
     };
   };
@@ -30,7 +30,7 @@ const usePost = () => {
   };
 
   const sendPostData = async () => {
-    const url = `${SERVER}/writing/uproad`;
+    const url = `${SERVER}/writing/upload`;
     try {
       const { data } = await axios.post(url, makePostFormData());
       return data;
@@ -43,12 +43,12 @@ const usePost = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    const postResponse = await setPostData();
+    const postResponse = await sendPostData();
     const { status, error, message } = postResponse;
 
+    resetPostData();
     if (status !== 200) {
       window.alert(error);
-      resetPostData();
       return;
     }
 

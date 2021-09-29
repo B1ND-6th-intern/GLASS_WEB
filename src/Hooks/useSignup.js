@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { SERVER } from "../config/config.json";
 import useCertification from "./useCertification";
 import { validateEmail } from "../Utils/pattern/validationData";
 import { useEffect } from "react";
+import { atom, useRecoilState } from "recoil";
 
-const useSignup = () => {
-  const [isStudent, setIsStudent] = useState(false);
-
-  const [signupData, setSignupData] = useState({
+const DataAtom = atom({
+  key: "testAtom",
+  default: {
     pw: "",
     chkPw: "",
     grade: 1,
@@ -17,9 +17,14 @@ const useSignup = () => {
     number: 1,
     mail: "",
     name: "",
-    permission: 0,
+    permission: "0",
     isAgree: false,
-  });
+  },
+});
+
+const useSignup = () => {
+  const [isStudent, setIsStudent] = useState(false);
+  const [signupData, setSignupData] = useRecoilState(DataAtom);
 
   const history = useHistory();
 
@@ -46,8 +51,6 @@ const useSignup = () => {
     } = event;
 
     setSignupData({ ...signupData, [name]: value });
-    let data = makeUserData();
-    console.log(data);
   };
 
   const makeUserData = () => {
@@ -96,6 +99,7 @@ const useSignup = () => {
       mail: "",
       name: "",
       isAgree: false,
+      permission: 0,
     });
   };
 
@@ -107,6 +111,10 @@ const useSignup = () => {
       }
     }
   };
+
+  useEffect(() => {
+    console.log(signupData);
+  }, [signupData]);
 
   const onSubmit = async (event) => {
     event.preventDefault();
