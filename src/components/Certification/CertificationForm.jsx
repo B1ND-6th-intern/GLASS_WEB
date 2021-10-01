@@ -52,12 +52,6 @@ const CertificationForm = () => {
       clearInterval(timerId.current);
       clearInterval(time.current);
       setIsTimeOver(true);
-      // const certificationTimeOver = timeOutCertification();
-      // const { status, error } = certificationTimeOver;
-      // console.log(certificationTimeOver);
-      // if (status === 400) {
-      //   window.alert(error);
-      // }
     }
   }, [time.current]);
 

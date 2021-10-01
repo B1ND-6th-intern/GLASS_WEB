@@ -27,3 +27,8 @@ export const isUserData = atom({
   key: "isUserData",
   default: false,
 });
+
+export const saveImgData = atom({
+  key: "saveImgData",
+  default: [],
+});

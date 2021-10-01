@@ -3,7 +3,6 @@ import { SERVER } from "../../../config/config.json";
 import axios from "axios";
 
 const usePost = () => {
-  const [attachment, setAttachment] = useState([]);
   const [postData, setPostData] = useState({
     content: "",
     hashtag: "",
@@ -21,7 +20,6 @@ const usePost = () => {
     return {
       text: postData.content,
       hashtags: makeHashTagDatas(postData.hashtag),
-      imgs: attachment,
     };
   };
 
@@ -43,6 +41,8 @@ const usePost = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
+    console.log(makePostFormData());
+
     const postResponse = await sendPostData();
     const { status, error, message } = postResponse;
 
@@ -55,29 +55,35 @@ const usePost = () => {
     window.alert(message);
   };
 
-  const onFileChange = (event) => {
+  const sendImgsData = async (imgs) => {
+    const url = `${SERVER}/writing/upload/imgs`;
+    try {
+      const { data } = await axios.post(url, imgs);
+      return data;
+    } catch (error) {
+      const { data } = error.response;
+      return data;
+    }
+  };
+
+  const onFileChange = async (event) => {
     const maxFileSize = 10;
 
-    setAttachment([]);
-    const {
-      target: { files },
+    let {
+      target: { files, value },
     } = event;
+    if (files) {
+      if (files.length > maxFileSize) {
+        window.alert(`사진은 최대 ${maxFileSize}장 업로드 할 수 있습니다`);
+        return;
+      }
+      const formData = new FormData();
 
-    let file;
-    let filesLength = files.length > maxFileSize ? maxFileSize : files.length;
-
-    if (files.length > maxFileSize) {
-      window.alert(`사진은 최대 ${maxFileSize}장 업로드 할 수 있습니다`);
-    }
-    for (let i = 0; i < filesLength; i++) {
-      file = files[i];
-
-      let reader = new FileReader();
-      reader.onload = () => {
-        let fileURLs = { img: reader.result, id: i };
-        setAttachment((prevState) => [...prevState, fileURLs]);
-      };
-      reader.readAsDataURL(file);
+      for (const file of Array.from(files)) {
+        formData.append("files", file);
+      }
+      value = "";
+      const imgData = await sendImgsData(formData);
     }
   };
 
@@ -91,12 +97,6 @@ const usePost = () => {
     const {
       target: { name },
     } = event;
-
-    setAttachment(
-      attachment.filter((data) => {
-        return data.id !== parseInt(name);
-      })
-    );
   };
   return {
     onChange,
@@ -106,7 +106,6 @@ const usePost = () => {
     makePostFormData,
     resetPostData,
     postData,
-    attachment,
   };
 };
 

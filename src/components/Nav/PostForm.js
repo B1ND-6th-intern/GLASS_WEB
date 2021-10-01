@@ -13,7 +13,6 @@ const PostForm = () => {
     onSubmit,
     resetPostData,
     postData,
-    attachment,
   } = usePost();
 
   const { buttonStates, togglePostClick } = useControllButton();
@@ -67,7 +66,7 @@ const PostForm = () => {
                 />
                 <div id="navigation-item-post-form-preview-imgWrap">
                   <>
-                    {attachment &&
+                    {/* {attachment &&
                       attachment.map((img, index) => {
                         return (
                           <div
@@ -87,7 +86,7 @@ const PostForm = () => {
                             />
                           </div>
                         );
-                      })}
+                      })} */}
                   </>
                 </div>
               </div>
