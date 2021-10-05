@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SERVER } from "../../../config/config.json";
 import axios from "axios";
+import { useRecoilState } from "recoil";
+import { saveImgData } from "../../../Store";
 
 const usePost = () => {
+  const [imgData, setImgData] = useRecoilState(saveImgData);
   const [postData, setPostData] = useState({
     content: "",
     hashtag: "",
@@ -55,10 +58,10 @@ const usePost = () => {
     window.alert(message);
   };
 
-  const sendImgsData = async (imgs) => {
+  const sendImgsData = async (imgData) => {
     const url = `${SERVER}/writing/upload/imgs`;
     try {
-      const { data } = await axios.post(url, imgs);
+      const { data } = await axios.post(url, imgData);
       return data;
     } catch (error) {
       const { data } = error.response;
@@ -72,6 +75,7 @@ const usePost = () => {
     let {
       target: { files, value },
     } = event;
+
     if (files) {
       if (files.length > maxFileSize) {
         window.alert(`사진은 최대 ${maxFileSize}장 업로드 할 수 있습니다`);
@@ -80,10 +84,19 @@ const usePost = () => {
       const formData = new FormData();
 
       for (const file of Array.from(files)) {
-        formData.append("files", file);
+        formData.append("img", file);
       }
+
       value = "";
-      const imgData = await sendImgsData(formData);
+      const imgStatus = await sendImgsData(formData);
+      const { status, jsonUrl } = imgStatus;
+      if (status === 200) {
+        setImgData([]);
+        for (let i = 0; i < jsonUrl.length; i++) {
+          setImgData((imgData) => [...imgData, jsonUrl[i]]);
+        }
+        return;
+      }
     }
   };
 
@@ -97,6 +110,12 @@ const usePost = () => {
     const {
       target: { name },
     } = event;
+
+    setImgData(
+      imgData.filter((img, index) => {
+        return index !== parseInt(name);
+      })
+    );
   };
   return {
     onChange,

@@ -1,11 +1,11 @@
-import "./PostContainer.css";
+import "./FeedContainer.css";
 import Logo from "../../assets/img/practice.jpg";
 import LikeImg from "../../assets/img/Like.svg";
 import useComment from "../../Hooks/Main/useComment";
-import Comment from "../Main/Comment";
+import Comment from "./Comment";
 import { useEffect } from "react";
 
-const PostContainer = ({ name, explainText }) => {
+const FeedContainer = ({ name, explainText }) => {
   const {
     onChange,
     commentData,
@@ -23,28 +23,28 @@ const PostContainer = ({ name, explainText }) => {
   }, [commentText]);
 
   return (
-    <form className="post-container" onSubmit={onSubmit}>
-      <div className="post-profileWrap">
-        <img className="post-profileImg" src={Logo} />
-        <span className="post-name">{name}</span>
+    <form className="feed-container" onSubmit={onSubmit}>
+      <div className="feed-profileWrap">
+        <img className="feed-profileImg" src={Logo} />
+        <span className="feed-name">{name}</span>
       </div>
-      <div className="post-imgWrap">
-        <img src={Logo} className="post-img" />
+      <div className="feed-imgWrap">
+        <img src={Logo} className="feed-img" />
       </div>
-      <div className="post-explainWrap">
-        <div className="post-explainWrap-header">
-          <button className="post-likeBtn">
-            <img className="post-likeBtn-img" src={LikeImg} />
+      <div className="feed-explainWrap">
+        <div className="feed-explainWrap-header">
+          <button className="feed-likeBtn">
+            <img className="feed-likeBtn-img" src={LikeImg} />
           </button>
         </div>
-        <div className="post-explainWrap-middle">
-          <p className="post-explainWrap-textWrap" ref={commentText}>
-            <b className="post-explainWrap-name">{name}</b>
-            <span className="post-explainWrap-text">
+        <div className="feed-explainWrap-middle">
+          <p className="feed-explainWrap-textWrap" ref={commentText}>
+            <b className="feed-explainWrap-name">{name}</b>
+            <span className="feed-explainWrap-text">
               {isSummary ? explainText.slice(0, 25) + "  ..." : explainText}
               {isSummary ? (
                 <button
-                  className="post-explainWrap-fullText-Btn"
+                  className="feed-explainWrap-fullText-Btn"
                   onClick={fullTextClick}
                 >
                   더 보기
@@ -53,11 +53,11 @@ const PostContainer = ({ name, explainText }) => {
             </span>
           </p>
           {isSummary ? null : (
-            <p className="post-explainWrap-hashTag">
+            <p className="feed-explainWrap-hashTag">
               #asddaasd #asdad #asdadad #asdasd
             </p>
           )}
-          <div className="post-explainWrap-commentWrap">
+          <div className="feed-explainWrap-commentWrap">
             <Comment name="do0ng_hyun" comment="네 안녕하세요" />
             <Comment
               name="do0ng_hyun"
@@ -66,14 +66,14 @@ const PostContainer = ({ name, explainText }) => {
           </div>
         </div>
       </div>
-      <div className="post-commentWrap">
+      <div className="feed-commentWrap">
         <input
-          className="post-commentInput"
+          className="feed-commentInput"
           onChange={onChange}
           placeholder="댓글 달기"
           value={commentData}
         />
-        <button type="submit" className="post-submitComment">
+        <button type="submit" className="feed-submitComment">
           게시
         </button>
       </div>
@@ -81,4 +81,4 @@ const PostContainer = ({ name, explainText }) => {
   );
 };
 
-export default PostContainer;
+export default FeedContainer;

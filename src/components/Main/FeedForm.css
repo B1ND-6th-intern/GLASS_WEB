@@ -1,0 +1,6 @@
+#content-postContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  min-height: 714px;
+}

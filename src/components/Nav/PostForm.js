@@ -4,6 +4,9 @@ import "./PostForm.css";
 import ImgAdd from "../../assets/img/PostImgAdd.svg";
 import usePost from "../../Hooks/Nav/PostForm/usePost";
 import useControllButton from "../../Hooks/Nav/Buttons/useControllButton";
+import { saveImgData } from "../../Store";
+import { useRecoilState } from "recoil";
+import { SERVER } from "../../config/config.json";
 
 const PostForm = () => {
   const {
@@ -16,6 +19,8 @@ const PostForm = () => {
   } = usePost();
 
   const { buttonStates, togglePostClick } = useControllButton();
+
+  const [imgData, setImgData] = useRecoilState(saveImgData);
 
   useEffect(() => {
     if (buttonStates.isPostClick) {
@@ -66,8 +71,8 @@ const PostForm = () => {
                 />
                 <div id="navigation-item-post-form-preview-imgWrap">
                   <>
-                    {/* {attachment &&
-                      attachment.map((img, index) => {
+                    {imgData &&
+                      imgData.map((img, index) => {
                         return (
                           <div
                             className="navigation-item-post-form-preview-box"
@@ -75,18 +80,18 @@ const PostForm = () => {
                           >
                             <img
                               className="navigation-item-post-form-preview-img"
-                              src={img.img}
+                              src={SERVER + "/uploads" + img}
                               alt="사진"
                               key={index}
-                            ></img>
+                            />
                             <button
-                              name={img.id}
+                              name={index}
                               className="navigation-item-post-form-delete-img-btn"
                               onClick={onDeleteImg}
                             />
                           </div>
                         );
-                      })} */}
+                      })}
                   </>
                 </div>
               </div>
@@ -110,6 +115,7 @@ const PostForm = () => {
                 <input
                   id="navigation-item-post-form-img-input"
                   type="file"
+                  name="img"
                   accept="image/jpg,image/png,image/jpeg,image/gif"
                   onChange={onFileChange}
                   multiple

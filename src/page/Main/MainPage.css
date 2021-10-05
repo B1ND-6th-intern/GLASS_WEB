@@ -2,9 +2,6 @@
   margin: 0px auto;
   margin-top: 95px;
   height: auto;
-  width: 1140px;
-  min-height: 714px;
+  width: 970px;
   display: flex;
-  flex-direction: column;
-  row-gap: 30px;
 }
