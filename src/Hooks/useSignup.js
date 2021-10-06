@@ -112,10 +112,6 @@ const useSignup = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(signupData);
-  }, [signupData]);
-
   const onSubmit = async (event) => {
     event.preventDefault();
 

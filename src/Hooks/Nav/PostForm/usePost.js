@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SERVER } from "../../../config/config.json";
 import axios from "axios";
 import { useRecoilState } from "recoil";
-import { saveImgData } from "../../../Store";
+import { saveImgData } from "../../../recoil/postImgAtom";
 
 const usePost = () => {
   const [imgData, setImgData] = useRecoilState(saveImgData);

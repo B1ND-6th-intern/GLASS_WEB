@@ -29,7 +29,7 @@ const ChangePasswordForm = ({ togglePasswordChange }) => {
             name="newPw"
             className="changePassword-input"
             type="password"
-            placeholder="비밀번호"
+            placeholder="새 비밀번호"
             value={inputs.newPw}
             onChange={onChange}
             required
@@ -38,7 +38,7 @@ const ChangePasswordForm = ({ togglePasswordChange }) => {
             name="checkNewPw"
             className="changePassword-input"
             type="password"
-            placeholder="비밀번호 재확인"
+            placeholder="새 비밀번호 재확인"
             value={inputs.checkNewPw}
             onChange={onChange}
             required

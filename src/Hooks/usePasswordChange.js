@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
+import { getToken } from "../Utils/getToken";
 import { SERVER } from "../config/config.json";
+import useUserModify from "./Nav/UserForm/useUserModify";
 
 const usePasswordChange = () => {
   const [inputs, setInputs] = useState({
@@ -25,12 +27,15 @@ const usePasswordChange = () => {
     };
   };
 
-  const sendNewPassword = () => {
-    const url = `${SERVER}/user/change-password`;
+  const sendNewPassword = async () => {
+    const url = `${SERVER}/users/change-password`;
     try {
-      const { data } = axios.post(url, makeChangePasswordData());
+      const { data } = await axios.post(url, makeChangePasswordData(), {
+        headers: { Authorization: `Bearer ${getToken()}` },
+      });
       return data;
     } catch (error) {
+      console.log("에러남");
       const { data } = error.response;
       return data;
     }
@@ -42,8 +47,8 @@ const usePasswordChange = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    const data = await sendNewPassword();
-    const { status, message, error } = data;
+    const res = await sendNewPassword();
+    const { status, error, message } = res;
     if (status === 200) {
       window.alert(message);
       return;

@@ -24,7 +24,7 @@ const useCertification = () => {
   };
 
   const sendCertification = async () => {
-    const url = `${SERVER}/user/email-auth`;
+    const url = `${SERVER}/users/email-auth`;
     try {
       const { data } = await axios.get(url);
       return data;
@@ -54,7 +54,7 @@ const useCertification = () => {
   };
 
   const sendCertificationNumber = async () => {
-    const url = `${SERVER}/user/email-auth`;
+    const url = `${SERVER}/users/email-auth`;
     try {
       const { data } = await axios.post(url, {
         confirmation: number,

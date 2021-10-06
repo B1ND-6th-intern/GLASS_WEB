@@ -4,9 +4,9 @@ import "./PostForm.css";
 import ImgAdd from "../../assets/img/PostImgAdd.svg";
 import usePost from "../../Hooks/Nav/PostForm/usePost";
 import useControllButton from "../../Hooks/Nav/Buttons/useControllButton";
-import { saveImgData } from "../../Store";
 import { useRecoilState } from "recoil";
 import { SERVER } from "../../config/config.json";
+import { saveImgData } from "../../recoil/postImgAtom";
 
 const PostForm = () => {
   const {

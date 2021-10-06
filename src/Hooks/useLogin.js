@@ -39,11 +39,10 @@ const useLogin = () => {
       const { status, message, error, token } = LoginPass;
       if (status === 200) {
         window.alert(message);
-        if (token) {
-          localStorage.setItem("Token", token);
-          setIsUser(true);
-          return;
-        }
+      }
+      if (token) {
+        localStorage.setItem("Token", token);
+        setIsUser(true);
         return;
       }
       window.alert(error);
