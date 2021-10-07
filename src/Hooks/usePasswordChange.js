@@ -35,7 +35,6 @@ const usePasswordChange = () => {
       });
       return data;
     } catch (error) {
-      console.log("에러남");
       const { data } = error.response;
       return data;
     }

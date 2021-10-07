@@ -12,7 +12,6 @@ import { useEffect } from "react";
 
 const AppRouter = () => {
   const [isUser, setIsUser] = useRecoilState(isUserData);
-
   useEffect(() => {
     const isToken = localStorage.getItem("Token");
     setIsUser(!isToken ? false : true);

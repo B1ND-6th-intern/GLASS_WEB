@@ -4,8 +4,10 @@ import LikeImg from "../../assets/img/Like.svg";
 import useComment from "../../Hooks/Main/useComment";
 import Comment from "./Comment";
 import { useEffect } from "react";
+import useShowPosts from "../../Hooks/Main/useShowPosts";
+import { SERVER } from "../../config/config.json";
 
-const FeedContainer = ({ name, explainText }) => {
+const FeedContainer = ({ name, explainText, hashTags, imgs }) => {
   const {
     onChange,
     commentData,
@@ -22,6 +24,8 @@ const FeedContainer = ({ name, explainText }) => {
     }
   }, [commentText]);
 
+  console.log(imgs);
+
   return (
     <form className="feed-container" onSubmit={onSubmit}>
       <div className="feed-profileWrap">
@@ -29,7 +33,7 @@ const FeedContainer = ({ name, explainText }) => {
         <span className="feed-name">{name}</span>
       </div>
       <div className="feed-imgWrap">
-        <img src={Logo} className="feed-img" />
+        <img src={SERVER + "/uploads" + imgs} className="feed-img" />
       </div>
       <div className="feed-explainWrap">
         <div className="feed-explainWrap-header">
@@ -54,7 +58,7 @@ const FeedContainer = ({ name, explainText }) => {
           </p>
           {isSummary ? null : (
             <p className="feed-explainWrap-hashTag">
-              #asddaasd #asdad #asdadad #asdasd
+              {hashTags.map((hashtag) => hashtag)}
             </p>
           )}
           <div className="feed-explainWrap-commentWrap">

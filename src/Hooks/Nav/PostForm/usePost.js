@@ -3,6 +3,7 @@ import { SERVER } from "../../../config/config.json";
 import axios from "axios";
 import { useRecoilState } from "recoil";
 import { saveImgData } from "../../../recoil/postImgAtom";
+import { getToken } from "../../../Utils/getToken";
 
 const usePost = () => {
   const [imgData, setImgData] = useRecoilState(saveImgData);
@@ -23,6 +24,7 @@ const usePost = () => {
     return {
       text: postData.content,
       hashtags: makeHashTagDatas(postData.hashtag),
+      imgs: imgData,
     };
   };
 
@@ -31,9 +33,13 @@ const usePost = () => {
   };
 
   const sendPostData = async () => {
-    const url = `${SERVER}/writing/upload`;
+    const url = `${SERVER}/writings/upload`;
     try {
-      const { data } = await axios.post(url, makePostFormData());
+      const { data } = await axios.post(url, makePostFormData(), {
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      });
       return data;
     } catch (error) {
       const { data } = error.response;
@@ -43,8 +49,6 @@ const usePost = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-
-    console.log(makePostFormData());
 
     const postResponse = await sendPostData();
     const { status, error, message } = postResponse;
@@ -59,7 +63,7 @@ const usePost = () => {
   };
 
   const sendImgsData = async (imgData) => {
-    const url = `${SERVER}/writing/upload/imgs`;
+    const url = `${SERVER}/writings/upload/imgs`;
     try {
       const { data } = await axios.post(url, imgData);
       return data;
