@@ -6,6 +6,7 @@ import Comment from "./Comment";
 import { useEffect } from "react";
 import useShowPosts from "../../Hooks/Main/useShowPosts";
 import { SERVER } from "../../config/config.json";
+import { useState } from "react";
 
 const FeedContainer = ({ name, explainText, hashTags, imgs, id, comments }) => {
   const {
@@ -17,6 +18,26 @@ const FeedContainer = ({ name, explainText, hashTags, imgs, id, comments }) => {
     isSummary,
     fullTextClick,
   } = useComment();
+
+  const [currentImgIndex, setCurrentFeedIndex] = useState(0);
+
+  const clickChangeFeedIndex = (event) => {
+    const {
+      target: { name },
+    } = event;
+
+    if (name === "prev") {
+      setCurrentFeedIndex((prev) => prev - 1);
+      if (currentImgIndex <= 0) {
+        setCurrentFeedIndex(0);
+      }
+    } else if (name === "next") {
+      setCurrentFeedIndex((prev) => prev + 1);
+      if (currentImgIndex >= 3) {
+        setCurrentFeedIndex(3);
+      }
+    }
+  };
 
   useEffect(() => {
     if (commentText.current.clientHeight > 20) {
@@ -31,7 +52,26 @@ const FeedContainer = ({ name, explainText, hashTags, imgs, id, comments }) => {
         <span className="feed-name">{name}</span>
       </div>
       <div className="feed-imgWrap">
-        <img src={SERVER + "/uploads" + imgs} className="feed-img" />
+        <img
+          src={SERVER + "/uploads" + imgs[currentImgIndex]}
+          className="feed-img"
+        />
+        {imgs.length == 1 ? null : (
+          <div className="feed-slideBtn-wrap">
+            <button
+              name="prev"
+              type="button"
+              className="feed-slidePrev-Btn"
+              onClick={clickChangeFeedIndex}
+            ></button>
+            <button
+              name="next"
+              type="button"
+              className="feed-slideNext-Btn"
+              onClick={clickChangeFeedIndex}
+            ></button>
+          </div>
+        )}
       </div>
       <div className="feed-explainWrap">
         <div className="feed-explainWrap-header">
@@ -62,13 +102,13 @@ const FeedContainer = ({ name, explainText, hashTags, imgs, id, comments }) => {
             </p>
           )}
           <div className="feed-explainWrap-commentWrap">
-            {comments.map((comment) => {
+            {/* {comments.map((comment) => {
               const {
                 text,
                 owner: { name },
               } = comment;
               return <Comment name={name} comment={text} />;
-            })}
+            })} */}
           </div>
         </div>
       </div>

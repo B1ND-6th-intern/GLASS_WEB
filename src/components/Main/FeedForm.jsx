@@ -23,7 +23,7 @@ const FeedForm = () => {
             name={name}
             explainText={text}
             hashTags={hashtags}
-            imgs={imgs[0]}
+            imgs={imgs}
             key={index}
             id={_id}
             comment={comments}
