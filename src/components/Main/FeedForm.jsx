@@ -13,8 +13,11 @@ const FeedForm = () => {
           hashtags,
           imgs,
           text,
+          _id,
+          comments,
           owner: { name },
         } = post;
+        console.log(comments);
         return (
           <FeedContainer
             name={name}
@@ -22,6 +25,8 @@ const FeedForm = () => {
             hashTags={hashtags}
             imgs={imgs[0]}
             key={index}
+            id={_id}
+            comment={comments}
           />
         );
       })}

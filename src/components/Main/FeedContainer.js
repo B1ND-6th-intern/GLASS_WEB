@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import useShowPosts from "../../Hooks/Main/useShowPosts";
 import { SERVER } from "../../config/config.json";
 
-const FeedContainer = ({ name, explainText, hashTags, imgs }) => {
+const FeedContainer = ({ name, explainText, hashTags, imgs, id, comments }) => {
   const {
     onChange,
     commentData,
@@ -24,10 +24,8 @@ const FeedContainer = ({ name, explainText, hashTags, imgs }) => {
     }
   }, [commentText]);
 
-  console.log(imgs);
-
   return (
-    <form className="feed-container" onSubmit={onSubmit}>
+    <form name={id} className="feed-container" onSubmit={onSubmit}>
       <div className="feed-profileWrap">
         <img className="feed-profileImg" src={Logo} />
         <span className="feed-name">{name}</span>
@@ -57,16 +55,20 @@ const FeedContainer = ({ name, explainText, hashTags, imgs }) => {
             </span>
           </p>
           {isSummary ? null : (
-            <p className="feed-explainWrap-hashTag">
-              {hashTags.map((hashtag) => hashtag)}
+            <p className="feed-explainWrap-hashTagWrap">
+              {hashTags.map((hashtag) => (
+                <p className="feed-explainWrap-hashTag">{hashtag}</p>
+              ))}
             </p>
           )}
           <div className="feed-explainWrap-commentWrap">
-            <Comment name="do0ng_hyun" comment="네 안녕하세요" />
-            <Comment
-              name="do0ng_hyun"
-              comment="zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
-            />
+            {comments.map((comment) => {
+              const {
+                text,
+                owner: { name },
+              } = comment;
+              return <Comment name={name} comment={text} />;
+            })}
           </div>
         </div>
       </div>

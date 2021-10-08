@@ -103,9 +103,16 @@
   font-size: 15px;
 }
 
-.feed-explainWrap-hashTag {
+.feed-explainWrap-hashTagWrap {
   margin: 8px 0px;
+  display: flex;
+  column-gap: 5px;
+}
+
+.feed-explainWrap-hashTag {
+  font-size: 15px;
   color: #3f729b;
+  margin: 0px;
 }
 
 .feed-commentWrap {
