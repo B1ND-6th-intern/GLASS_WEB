@@ -3,12 +3,12 @@ import FeedContainer from "./FeedContainer";
 import useShowPosts from "../../Hooks/Main/useShowPosts";
 
 const FeedForm = () => {
-  const { feeds } = useShowPosts();
-  console.log(feeds);
+  // const { feeds } = useShowPosts();
+  // console.log(feeds);
 
   return (
     <div id="content-postContainer">
-      {feeds.map((post, index) => {
+      {/* {feeds.map((post, index) => {
         const {
           hashtags,
           imgs,
@@ -29,7 +29,7 @@ const FeedForm = () => {
             comment={comments}
           />
         );
-      })}
+      })} */}
     </div>
   );
 };

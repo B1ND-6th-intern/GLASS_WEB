@@ -4,9 +4,10 @@ import LikeImg from "../../assets/img/Like.svg";
 import useComment from "../../Hooks/Main/useComment";
 import Comment from "./Comment";
 import { useEffect } from "react";
-import useShowPosts from "../../Hooks/Main/useShowPosts";
 import { SERVER } from "../../config/config.json";
 import { useState } from "react";
+import FeedImgNext from "../../assets/img/FeedImgNext.svg";
+import FeedImgPrev from "../../assets/img/FeedImgPrev.svg";
 
 const FeedContainer = ({ name, explainText, hashTags, imgs, id, comments }) => {
   const {
@@ -51,27 +52,33 @@ const FeedContainer = ({ name, explainText, hashTags, imgs, id, comments }) => {
         <img className="feed-profileImg" src={Logo} />
         <span className="feed-name">{name}</span>
       </div>
-      <div className="feed-imgWrap">
-        <img
-          src={SERVER + "/uploads" + imgs[currentImgIndex]}
-          className="feed-img"
-        />
-        {imgs.length == 1 ? null : (
-          <div className="feed-slideBtn-wrap">
-            <button
-              name="prev"
-              type="button"
-              className="feed-slidePrev-Btn"
-              onClick={clickChangeFeedIndex}
-            ></button>
-            <button
-              name="next"
-              type="button"
-              className="feed-slideNext-Btn"
-              onClick={clickChangeFeedIndex}
-            ></button>
-          </div>
-        )}
+      <div className="feed-imgsWrap">
+        <div className="feed-imgWrap">
+          <img
+            src={SERVER + "/uploads" + imgs[currentImgIndex]}
+            className="feed-img"
+          />
+          {imgs.length == 1 ? null : (
+            <div className="feed-slideBtn-wrap">
+              <button
+                name="prev"
+                type="button"
+                className="feed-slidePrev-btn"
+                onClick={clickChangeFeedIndex}
+              >
+                <img className="feed-slidePrev-btnImg" src={FeedImgPrev} />
+              </button>
+              <button
+                name="next"
+                type="button"
+                className="feed-slideNext-btn"
+                onClick={clickChangeFeedIndex}
+              >
+                <img className="feed-slidePrev-btnImg" src={FeedImgNext} />
+              </button>
+            </div>
+          )}
+        </div>
       </div>
       <div className="feed-explainWrap">
         <div className="feed-explainWrap-header">

@@ -1,0 +1,10 @@
+#profile-container {
+  width: 970px;
+  height: auto;
+  min-height: 714px;
+  margin: 0px auto;
+  margin-top: 95px;
+  padding: 0px 20px;
+  box-sizing: border-box;
+  padding-bottom: 30px;
+}

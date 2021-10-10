@@ -12,6 +12,7 @@ import ServiceCenter from "../../components/Nav/ServiceCenter";
 import SerViceCenterImg from "../../assets/img/ServiceCenter.svg";
 import DarkMode from "../../components/Nav/DarkMode";
 import useControlButton from "../../Hooks/Nav/Buttons/useControllButton";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   const {
@@ -48,10 +49,12 @@ const Navigation = () => {
               <img className="navigation-item-menu-img" src={MenuImg} />
             </button>
 
-            <button className="navigation-item-user" onClick={toggleUserClick}>
-              <img className="navigation-item-user-img" />
-              <Network />
-            </button>
+            <Link path="/profile">
+              <button className="navigation-item-user">
+                <img className="navigation-item-user-img" />
+                <Network />
+              </button>
+            </Link>
 
             {!buttonStates.isServiceCenterClick && (
               <button id="serviceCenter-btn" onClick={toggleSCClick}>

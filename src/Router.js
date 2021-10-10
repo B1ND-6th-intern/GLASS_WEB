@@ -9,13 +9,16 @@ import Footer from "./page/Footer/Footer";
 import { isUserData } from "./Store";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
+import ProfilePage from "./page/Profile/ProfilePage";
 
 const AppRouter = () => {
   const [isUser, setIsUser] = useRecoilState(isUserData);
-  useEffect(() => {
-    const isToken = localStorage.getItem("Token");
-    setIsUser(!isToken ? false : true);
-  }, []);
+  // useEffect(() => {
+  //   const isToken = localStorage.getItem("Token");
+  //   setIsUser(!isToken ? false : true);
+  // }, []);
+
+  setIsUser(true);
 
   return (
     <Router>
@@ -25,6 +28,9 @@ const AppRouter = () => {
             {isUser && <Navigation isLoggedIn={isUser} />}
             <Route exact path="/">
               <MainPage />
+            </Route>
+            <Route path path="/profile">
+              <ProfilePage />
             </Route>
           </Router>
         ) : (

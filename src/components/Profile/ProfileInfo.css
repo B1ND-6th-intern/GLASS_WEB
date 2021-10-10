@@ -1,0 +1,24 @@
+#profileInfo-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+
+#profileInfo-imgWrap {
+  min-width: 291px;
+  height: 184px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#profileInfo-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 100px;
+  border: 1px solid black;
+}
+
+#profileInfo-infoWrap {
+  width: 100%;
+}
