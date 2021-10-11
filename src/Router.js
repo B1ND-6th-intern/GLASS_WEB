@@ -29,7 +29,7 @@ const AppRouter = () => {
             <Route exact path="/">
               <MainPage />
             </Route>
-            <Route path path="/profile">
+            <Route path="/profile">
               <ProfilePage />
             </Route>
           </Router>

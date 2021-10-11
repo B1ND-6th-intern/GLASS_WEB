@@ -15,7 +15,7 @@
   width: 160px;
   height: 160px;
   border-radius: 100px;
-  border: 1px solid black;
+  border: 1px solid var(--main-border-color);
 }
 
 #profileInfo-infoWrap {
@@ -34,7 +34,7 @@
 #profileInfo-name {
   font-size: 24px;
   white-space: nowrap;
-  font-weight: 300;
+  font-weight: bold;
   margin: 0px;
 }
 
@@ -49,5 +49,6 @@
 }
 
 #profileInfo-intro {
+  width: 550px;
   word-break: break-all;
 }

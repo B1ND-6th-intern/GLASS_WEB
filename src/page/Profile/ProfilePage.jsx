@@ -1,4 +1,5 @@
 import ProfileInfo from "../../components/Profile/ProfileInfo";
+import ProfilePosts from "../../components/Profile/ProfilePosts";
 import "./ProfilePage.css";
 
 const ProfilePage = () => {
@@ -10,8 +11,10 @@ const ProfilePage = () => {
           grade="1"
           group="1"
           number="18"
-          introdution="안녕하세요 :) sakdajdiadjlkawdjisakdadiwajdiajwdklsjiajdiwldjlisadliajdladijdsaildjaldjawidjaldjaiofjaofjaiojowjiwioadjwoaijdiawdjlsakdajdiadjlkawdjisakdadiwajdiajwdklsjiajdiwldjlisadliajdladijdsaildjaldjawidjaldjaiofjaofjaiojowjiwioadjwoaijdiawdjlsakdajdiadjlkawdjisakdadiwajdiajwdklsjiajdiwldjlisadliajdladijdsaildjaldjawidjaldjaiofjaofjaiojowjiwioadjwoaijdiawdjlsakdajdiadjlkawdjisakdadiwajdiajwdklsjiajdiwldjlisadliajdladijdsaildjaldjawidjaldjaiofjaofjaiojowjiwioadjwoaijdiawdjl"
+          introdution="안녕하세요 :) "
         />
+        <hr id="porfile-line" />
+        <ProfilePosts posts={[]} />
       </div>
     </section>
   );

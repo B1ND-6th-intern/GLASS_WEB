@@ -28,11 +28,13 @@ const Navigation = () => {
       <header id="Navigation">
         <div className="navigation-container">
           <nav className="navigation-item-container">
-            <img
-              className="navigation-item-logo-img"
-              src={Logo}
-              alt="Logo"
-            ></img>
+            <Link to="/">
+              <img
+                className="navigation-item-logo-img"
+                src={Logo}
+                alt="Logo"
+              ></img>
+            </Link>
             <img
               className="navigation-item-logo-whiteimg"
               src={WhiteLogo}
@@ -49,12 +51,12 @@ const Navigation = () => {
               <img className="navigation-item-menu-img" src={MenuImg} />
             </button>
 
-            <Link path="/profile">
-              <button className="navigation-item-user">
+            <button className="navigation-item-user">
+              <Network />
+              <Link className="navigation-item-Link" to="/profile">
                 <img className="navigation-item-user-img" />
-                <Network />
-              </button>
-            </Link>
+              </Link>
+            </button>
 
             {!buttonStates.isServiceCenterClick && (
               <button id="serviceCenter-btn" onClick={toggleSCClick}>
