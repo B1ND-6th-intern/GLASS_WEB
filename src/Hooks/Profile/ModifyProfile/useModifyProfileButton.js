@@ -1,7 +1,7 @@
 import { useRecoilState } from "recoil";
 import { modifyProfileFormState } from "../../../recoil/modifyProfileAtom";
 
-const useModifyProfile = () => {
+const useModifyProfileButton = () => {
   const [modifyProfileStates, setModifyProfileStates] = useRecoilState(
     modifyProfileFormState
   );
@@ -23,4 +23,4 @@ const useModifyProfile = () => {
   return { onModifyProfileClick, onPasswordChangeClick };
 };
 
-export default useModifyProfile;
+export default useModifyProfileButton;

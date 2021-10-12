@@ -34,8 +34,8 @@ const FeedContainer = ({ name, explainText, hashTags, imgs, id, comments }) => {
       }
     } else if (name === "next") {
       setCurrentFeedIndex((prev) => prev + 1);
-      if (currentImgIndex >= 3) {
-        setCurrentFeedIndex(3);
+      if (currentImgIndex >= imgs.length) {
+        setCurrentFeedIndex(imgs.length);
       }
     }
   };

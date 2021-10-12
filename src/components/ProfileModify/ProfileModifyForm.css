@@ -46,6 +46,7 @@
 .profileModify-imgInputLabel {
   color: var(--main_color);
   font-weight: bold;
+  cursor: pointer;
 }
 
 #profileModifyForm-imgInput {
@@ -69,22 +70,6 @@
 }
 
 .profileModifyForm-nameInput {
-  width: 333px;
-  height: 30px;
-  border: 1px solid var(--main-border-color);
-  border-radius: 3px;
-}
-
-.profileModifyForm-mailWrap {
-  font-size: 20px;
-  min-width: 194px;
-  padding: 0px 32px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-}
-
-.profileModifyForm-mailInputWrap {
   width: 333px;
   height: 30px;
   border: 1px solid var(--main-border-color);

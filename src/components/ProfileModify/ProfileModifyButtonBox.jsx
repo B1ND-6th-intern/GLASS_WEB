@@ -1,8 +1,9 @@
-import useModifyProfile from "../../Hooks/Profile/ModifyProfile/useModifyProfile";
+import useModifyProfileButton from "../../Hooks/Profile/ModifyProfile/useModifyProfileButton";
 import "./ProfileModifyButtonBox.css";
 
 const ProfileModifyButtonBox = () => {
-  const { onModifyProfileClick, onPasswordChangeClick } = useModifyProfile();
+  const { onModifyProfileClick, onPasswordChangeClick } =
+    useModifyProfileButton();
 
   return (
     <div id="profileModifyButtonBox-container">

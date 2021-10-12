@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import PostExitImg from "../../assets/img/PostExit.svg";
 import "./UserForm.css";
-import ChangePasswordForm from "./ChangePasswordForm";
 import useUserModify from "../../Hooks/Nav/UserForm/useUserModify";
 import useLogOut from "../../Hooks/Nav/UserForm/useLogOut";
 import useControllButton from "../../Hooks/Nav/Buttons/useControllButton";

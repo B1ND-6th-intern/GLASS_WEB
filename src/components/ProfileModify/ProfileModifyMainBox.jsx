@@ -1,5 +1,6 @@
 import { useRecoilState } from "recoil";
 import { modifyProfileFormState } from "../../recoil/modifyProfileAtom";
+import ChangePasswordForm from "./ChangePasswordForm";
 import ProfileModifyForm from "./ProfileModifyForm";
 import "./ProfileModifyMainBox.css";
 
@@ -11,7 +12,7 @@ const ProfileModifyMainBox = () => {
   return (
     <div id="ProfileModifyMainBox-container">
       {modifyProfileStates.isModifyProfile && <ProfileModifyForm />}
-      {modifyProfileStates.isChangePassword && <div>gg 비밀번호 바꿔요</div>}
+      {modifyProfileStates.isChangePassword && <ChangePasswordForm />}
     </div>
   );
 };

@@ -6,12 +6,9 @@ const useUserModify = () => {
   const [isModify, setIsModify] = useRecoilState(modifyUserDataState);
 
   const [changeUserData, setChangeUserData] = useState({
-    grade: "",
-    group: "",
-    number: "",
     mail: "",
     name: "",
-    isPasswordChange: false,
+    intro: "",
   });
 
   const togglePasswordChange = () => {
