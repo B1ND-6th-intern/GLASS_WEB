@@ -10,15 +10,16 @@ import { isUserData } from "./Store";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import ProfilePage from "./page/Profile/ProfilePage";
+import ProfileModifyPage from "./page/ProfileModify/ProfileModifyPage";
 
 const AppRouter = () => {
   const [isUser, setIsUser] = useRecoilState(isUserData);
-  // useEffect(() => {
-  //   const isToken = localStorage.getItem("Token");
-  //   setIsUser(!isToken ? false : true);
-  // }, []);
+  useEffect(() => {
+    const isToken = localStorage.getItem("Token");
+    setIsUser(!isToken ? false : true);
+  }, []);
 
-  setIsUser(true);
+  // setIsUser(true);
 
   return (
     <Router>
@@ -31,6 +32,9 @@ const AppRouter = () => {
             </Route>
             <Route path="/profile">
               <ProfilePage />
+            </Route>
+            <Route path="/modifyInfo">
+              <ProfileModifyPage />
             </Route>
           </Router>
         ) : (

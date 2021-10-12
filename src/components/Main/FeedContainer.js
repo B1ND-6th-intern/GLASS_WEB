@@ -66,7 +66,12 @@ const FeedContainer = ({ name, explainText, hashTags, imgs, id, comments }) => {
                 className="feed-slidePrev-btn"
                 onClick={clickChangeFeedIndex}
               >
-                <img className="feed-slidePrev-btnImg" src={FeedImgPrev} />
+                <img
+                  name="prev"
+                  className="feed-slidePrev-btnImg"
+                  src={FeedImgPrev}
+                  onClick={clickChangeFeedIndex}
+                />
               </button>
               <button
                 name="next"
@@ -74,7 +79,12 @@ const FeedContainer = ({ name, explainText, hashTags, imgs, id, comments }) => {
                 className="feed-slideNext-btn"
                 onClick={clickChangeFeedIndex}
               >
-                <img className="feed-slidePrev-btnImg" src={FeedImgNext} />
+                <img
+                  name="next"
+                  className="feed-slidePrev-btnImg"
+                  src={FeedImgNext}
+                  onClick={clickChangeFeedIndex}
+                />
               </button>
             </div>
           )}

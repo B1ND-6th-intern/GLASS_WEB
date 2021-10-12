@@ -29,6 +29,7 @@
   height: 50px;
   align-items: center;
   display: flex;
+  column-gap: 20px;
 }
 
 #profileInfo-name {
@@ -36,6 +37,20 @@
   white-space: nowrap;
   font-weight: bold;
   margin: 0px;
+}
+
+#profile-modifyBtn {
+  width: 95px;
+  height: 32px;
+  font-weight: bold;
+  border: 1px solid var(--main-border-color);
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+}
+
+#profile-modifyBtn:active {
+  color: rgb(172, 170, 170);
 }
 
 #profileInfo-schoolInfoWrap {

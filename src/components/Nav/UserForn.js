@@ -175,9 +175,6 @@ const UserForm = () => {
           </form>
         </div>
       ) : null}
-      {changeUserData.isPasswordChange ? (
-        <ChangePasswordForm togglePasswordChange={togglePasswordChange} />
-      ) : null}
     </>
   );
 };

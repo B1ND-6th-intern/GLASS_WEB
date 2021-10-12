@@ -13,6 +13,7 @@ import SerViceCenterImg from "../../assets/img/ServiceCenter.svg";
 import DarkMode from "../../components/Nav/DarkMode";
 import useControlButton from "../../Hooks/Nav/Buttons/useControllButton";
 import { Link } from "react-router-dom";
+import ProfileDropDown from "../../components/Profile/ProfileDropDown";
 
 const Navigation = () => {
   const {
@@ -51,11 +52,10 @@ const Navigation = () => {
               <img className="navigation-item-menu-img" src={MenuImg} />
             </button>
 
-            <button className="navigation-item-user">
+            <button className="navigation-item-user" onClick={toggleUserClick}>
               <Network />
-              <Link className="navigation-item-Link" to="/profile">
-                <img className="navigation-item-user-img" />
-              </Link>
+              <img className="navigation-item-user-img" />
+              <ProfileDropDown />
             </button>
 
             {!buttonStates.isServiceCenterClick && (
@@ -75,8 +75,6 @@ const Navigation = () => {
       <PostForm />
 
       <MenuForm />
-
-      <UserForm />
     </>
   );
 };

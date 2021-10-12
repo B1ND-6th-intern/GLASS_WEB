@@ -1,0 +1,24 @@
+#profileModifyButtonBox-container {
+  min-width: 236px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--main-border-color);
+  background-color: white;
+}
+
+.profileModifyButtonBox-button {
+  width: 100%;
+  height: 52px;
+  padding: 16px;
+  padding-left: 30px;
+  display: flex;
+  border: 0px;
+  font-size: 15px;
+  background: none;
+  cursor: pointer;
+}
+
+.profileModifyButtonBox-button:hover {
+  background-color: rgb(247, 244, 244);
+}
