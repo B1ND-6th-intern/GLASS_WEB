@@ -28,17 +28,26 @@ const FeedContainer = ({ name, explainText, hashTags, imgs, id, comments }) => {
     } = event;
 
     if (name === "prev") {
-      setCurrentFeedIndex((prev) => prev - 1);
-      if (currentImgIndex <= 0) {
+      let currentIndex = currentImgIndex;
+      if (currentIndex <= 0) {
         setCurrentFeedIndex(0);
+      } else {
+        setCurrentFeedIndex((prev) => prev - 1);
       }
     } else if (name === "next") {
-      setCurrentFeedIndex((prev) => prev + 1);
-      if (currentImgIndex >= imgs.length) {
-        setCurrentFeedIndex(imgs.length);
+      let currentIndex = currentImgIndex;
+      if (currentIndex >= imgs.length - 1) {
+        setCurrentFeedIndex(imgs.length - 1);
+        return;
+      } else {
+        setCurrentFeedIndex((prev) => prev + 1);
       }
     }
   };
+
+  useEffect(() => {
+    console.log(currentImgIndex);
+  }, [currentImgIndex]);
 
   useEffect(() => {
     if (commentText.current.clientHeight > 20) {
@@ -70,7 +79,6 @@ const FeedContainer = ({ name, explainText, hashTags, imgs, id, comments }) => {
                   name="prev"
                   className="feed-slidePrev-btnImg"
                   src={FeedImgPrev}
-                  onClick={clickChangeFeedIndex}
                 />
               </button>
               <button
@@ -83,7 +91,6 @@ const FeedContainer = ({ name, explainText, hashTags, imgs, id, comments }) => {
                   name="next"
                   className="feed-slidePrev-btnImg"
                   src={FeedImgNext}
-                  onClick={clickChangeFeedIndex}
                 />
               </button>
             </div>

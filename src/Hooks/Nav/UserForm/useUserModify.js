@@ -18,13 +18,6 @@ const useUserModify = () => {
     });
   };
 
-  const onChange = (event) => {
-    const {
-      target: { value, name },
-    } = event;
-    setChangeUserData({ ...changeUserData, [name]: value });
-  };
-
   const editingToggle = () => {
     setIsModify((prev) => !prev);
   };
@@ -41,7 +34,6 @@ const useUserModify = () => {
 
   return {
     changeUserData,
-    onChange,
     userModifyData,
     togglePasswordChange,
     isModify,

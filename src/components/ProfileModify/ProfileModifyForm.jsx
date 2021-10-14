@@ -1,8 +1,12 @@
-import useUserModify from "../../Hooks/Nav/UserForm/useUserModify";
+import { useRecoilState } from "recoil";
+import useModifyProfileData from "../../Hooks/Profile/ModifyProfile/useModifyProfileData";
+import { modifyUserDataState } from "../../recoil/profileAtom";
 import "./ProfileModifyForm.css";
 
 const ProfileModifyForm = () => {
-  const { onChange } = useUserModify();
+  const [userData, setUserData] = useRecoilState(modifyUserDataState);
+  const { onChange, modifyUserData, onSubmit, onFileChange } =
+    useModifyProfileData();
 
   return (
     <div className="profileModifyForm-container">
@@ -11,7 +15,7 @@ const ProfileModifyForm = () => {
           <div className="profileModifyForm-img"></div>
         </div>
         <div className="profileModifyForm-nameWrap">
-          <p className="profileModifyForm-name">임동현</p>
+          <p className="profileModifyForm-name">{userData.name}</p>
           <label
             className="profileModify-imgInputLabel"
             htmlFor="profileModifyForm-imgInput"
@@ -22,6 +26,7 @@ const ProfileModifyForm = () => {
             id="profileModifyForm-imgInput"
             type="file"
             accept="image/jpg,image/png,image/jpeg,image/gif"
+            onChange={onFileChange}
           />
         </div>
       </div>
@@ -32,6 +37,7 @@ const ProfileModifyForm = () => {
         <input
           className="profileModifyForm-nameInput"
           name="name"
+          value={modifyUserData.name}
           onChange={onChange}
         />
       </div>
@@ -42,11 +48,12 @@ const ProfileModifyForm = () => {
         </div>
         <textarea
           className="profileModifyForm-introInputWrap"
-          name="intro"
+          name="introduction"
+          value={modifyUserData.introduction}
           onChange={onChange}
         />
       </div>
-      <button id="profileModifyForm-submitBtn" type="button">
+      <button id="profileModifyForm-submitBtn" type="button" onClick={onSubmit}>
         제출
       </button>
     </div>

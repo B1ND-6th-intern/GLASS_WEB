@@ -1,10 +1,14 @@
 import "./FeedForm.css";
 import FeedContainer from "./FeedContainer";
 import useShowPosts from "../../Hooks/Main/useShowPosts";
+import useGetUserId from "../../Hooks/Main/useGetUserId";
+import { feedData } from "../../recoil/postDataAtom";
+import { useRecoilState } from "recoil";
 
 const FeedForm = () => {
-  const { feeds } = useShowPosts();
-  console.log(feeds);
+  const [feeds, setFeeds] = useRecoilState(feedData);
+
+  const { userId } = useGetUserId();
 
   return (
     <div id="content-postContainer">
@@ -17,7 +21,7 @@ const FeedForm = () => {
           comments,
           owner: { name },
         } = post;
-        console.log(comments);
+        // console.log(comments);
         return (
           <FeedContainer
             name={name}

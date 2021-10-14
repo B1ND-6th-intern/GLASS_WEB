@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
+import useGetUserData from "../../Hooks/Main/useGetUserData";
 import useUserModify from "../../Hooks/Nav/UserForm/useUserModify";
 import "./ProfileInfo.css";
 
 const ProfileInfo = ({ name, grade, group, number, introdution }) => {
   const { changeUserData, ChangePasswordForm, togglePasswordChange } =
     useUserModify();
+
+  const { userData } = useGetUserData();
 
   return (
     <>
@@ -14,7 +17,7 @@ const ProfileInfo = ({ name, grade, group, number, introdution }) => {
         </div>
         <div id="profileInfo-infoWrap">
           <div id="profileInfo-nameWrap">
-            <p id="profileInfo-name">{name}</p>
+            <p id="profileInfo-name">{userData.name}</p>
             <Link to="/modifyInfo">
               <button type="button" id="profile-modifyBtn">
                 프로필 편집
@@ -22,11 +25,11 @@ const ProfileInfo = ({ name, grade, group, number, introdution }) => {
             </Link>
           </div>
           <div id="profileInfo-schoolInfoWrap">
-            <p>{grade}학년</p>
-            <p>{group}반</p>
-            <p>{number}번</p>
+            <p>{userData.grade}학년</p>
+            <p>{userData.classNumber}반</p>
+            <p>{userData.stuNumber}번</p>
           </div>
-          <div id="profileInfo-intro">{introdution}</div>
+          <div id="profileInfo-intro">{userData.introduction}</div>
         </div>
       </div>
       {changeUserData.isPasswordChange ? (

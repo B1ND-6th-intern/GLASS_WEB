@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { atom } from "recoil";
 
 export const modifyUserDataState = atom({
@@ -5,10 +6,15 @@ export const modifyUserDataState = atom({
   default: {
     name: "",
     grade: 1,
-    group: 1,
-    number: 1,
-    mail: "",
+    classNumber: 1,
+    stuNumber: 1,
+    email: "",
     introduction: "",
-    profileImg: "",
+    img: "",
   },
+});
+
+export const userIdData = atom({
+  key: "userIdData",
+  default: "",
 });

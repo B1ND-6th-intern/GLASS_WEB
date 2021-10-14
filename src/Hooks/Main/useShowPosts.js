@@ -8,6 +8,7 @@ import { feedData } from "../../recoil/postDataAtom";
 const useShowPosts = () => {
   const [isUser, setIsUser] = useRecoilState(isUserData);
   const [feeds, setFeeds] = useRecoilState(feedData);
+  console.log(feeds);
 
   const loadPost = async () => {
     const url = `${SERVER}/posts`;
@@ -25,9 +26,7 @@ const useShowPosts = () => {
     loadPost();
   }, []);
 
-  return {
-    feeds,
-  };
+  return { feeds };
 };
 
 export default useShowPosts;
