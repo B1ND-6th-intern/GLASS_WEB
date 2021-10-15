@@ -3,9 +3,16 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { SERVER } from "../config/config.json";
 import useCertification from "./useCertification";
-import { validateEmail } from "../Utils/pattern/validationData";
+import {
+  validateEmail,
+  validatePassword,
+} from "../Utils/pattern/validationData";
 import { useEffect } from "react";
 import { atom, useRecoilState } from "recoil";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const DataAtom = atom({
   key: "testAtom",
@@ -117,7 +124,6 @@ const useSignup = () => {
 
     if (!validateEmail(signupData.mail)) {
       window.alert("메일 형식을 확인해주세요!");
-      signupDataReset();
       return;
     }
 
@@ -125,19 +131,35 @@ const useSignup = () => {
     const { status, message, error } = signupPass;
 
     if (!message && status !== 200) {
-      window.alert(error);
-      signupDataReset();
+      MySwal.fire({
+        position: "middle",
+        icon: "error",
+        title: `${error}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
       return;
     }
-
     const certificationData = await sendCertification();
     const { status: CertifiationStatus } = certificationData;
-    window.alert(message);
+    MySwal.fire({
+      position: "middle",
+      icon: "success",
+      title: `${message}`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
     if (CertifiationStatus === 200) {
       history.push("/certification");
       return;
     }
-    window.alert(error);
+    MySwal.fire({
+      position: "middle",
+      icon: "error",
+      title: `${error}`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   return {

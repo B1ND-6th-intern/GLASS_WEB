@@ -6,7 +6,6 @@ import { SERVER } from "../../config/config.json";
 import { feedData } from "../../recoil/postDataAtom";
 
 const useShowPosts = () => {
-  const [isUser, setIsUser] = useRecoilState(isUserData);
   const [feeds, setFeeds] = useRecoilState(feedData);
   console.log(feeds);
 

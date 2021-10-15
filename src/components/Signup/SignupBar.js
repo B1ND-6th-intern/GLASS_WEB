@@ -74,6 +74,7 @@ const SignupBar = () => {
               className="signupBar-pw-input"
               placeholder="비밀번호"
               value={signupData.pw}
+              pattern="^[a-zA-Z0-9]+$"
             />
             <div className="signupBar-pw-input-check-wrap">
               <input
@@ -83,6 +84,7 @@ const SignupBar = () => {
                 className="signupBar-pw-input-check"
                 placeholder="비밀번호 확인"
                 value={signupData.chkPw}
+                pattern="^[a-zA-Z0-9]+$"
               />
             </div>
           </div>

@@ -7,12 +7,12 @@ import { useRecoilState } from "recoil";
 
 const FeedForm = () => {
   const [feeds, setFeeds] = useRecoilState(feedData);
-
+  const { feeds: test } = useShowPosts();
   const { userId } = useGetUserId();
 
   return (
     <div id="content-postContainer">
-      {feeds.map((post, index) => {
+      {test.map((post, index) => {
         const {
           hashtags,
           imgs,

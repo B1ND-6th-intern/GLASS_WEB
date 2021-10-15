@@ -2,7 +2,10 @@ import axios from "axios";
 import { useState } from "react";
 import { getToken } from "../Utils/getToken";
 import { SERVER } from "../config/config.json";
-import useUserModify from "./Nav/UserForm/useUserModify";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const usePasswordChange = () => {
   const [inputs, setInputs] = useState({
@@ -46,13 +49,26 @@ const usePasswordChange = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+
     const res = await sendNewPassword();
     const { status, error, message } = res;
     if (status === 200) {
-      window.alert(message);
+      MySwal.fire({
+        position: "middle",
+        icon: "success",
+        title: `${message}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
       return;
     }
-    window.alert(error);
+    MySwal.fire({
+      position: "middle",
+      icon: "error",
+      title: `${error}`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
     resetPasswordChange();
   };
 

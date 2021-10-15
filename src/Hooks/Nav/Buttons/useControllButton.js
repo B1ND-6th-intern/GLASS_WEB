@@ -1,10 +1,7 @@
 import { useRecoilState } from "recoil";
 import { buttonState } from "../../../recoil/modalAtom";
-import { modifyUserDataState } from "../../../recoil/profileAtom";
 
 const useControllButton = () => {
-  const [isModify, setIsModify] = useRecoilState(modifyUserDataState);
-
   const [buttonStates, setButtonStates] = useRecoilState(buttonState);
 
   const togglePostClick = () => {
@@ -22,7 +19,6 @@ const useControllButton = () => {
       menuClick: false,
       isServiceCenterClick: false,
     });
-    setIsModify(false);
   };
 
   const toggleMenuClick = () => {

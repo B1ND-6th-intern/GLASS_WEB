@@ -26,8 +26,6 @@ const Navigation = () => {
     toggleSCClick,
   } = useControlButton();
 
-  const { feeds } = useShowPosts();
-
   const { userData } = useGetUserData();
 
   return (

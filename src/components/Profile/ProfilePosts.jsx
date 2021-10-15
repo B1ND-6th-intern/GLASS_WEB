@@ -7,11 +7,11 @@ import "./ProfilePosts.css";
 
 const ProfilePosts = () => {
   const [userData, setUserData] = useRecoilState(modifyUserDataState);
-  console.log(userData.writings);
+  console.log(userData);
 
   return (
     <div id="profilePosts-container">
-      {userData.writings.length !== 0 ? (
+      {userData.writings && userData.writings.length !== 0 ? (
         <div id="profilePosts-postsWrap">
           {userData.writings.map((post) => (
             <ProfilePostBox img={SERVER + "/uploads" + post.imgs[0]} />

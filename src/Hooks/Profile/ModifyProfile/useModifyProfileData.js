@@ -4,6 +4,10 @@ import { useRecoilState } from "recoil";
 import { SERVER } from "../../../config/config.json";
 import { modifyUserDataState } from "../../../recoil/profileAtom";
 import { getToken } from "../../../Utils/getToken";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const useModifyProfileData = () => {
   const [userData, setUserData] = useRecoilState(modifyUserDataState);
@@ -83,7 +87,13 @@ const useModifyProfileData = () => {
     const res = await sendModifyUserData();
     const { message, status, name, introduction } = res;
     if (status === 200) {
-      window.alert(message);
+      MySwal.fire({
+        position: "middle",
+        icon: "success",
+        title: `${message}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
       setUserData({ ...userData, name, introduction });
     }
   };

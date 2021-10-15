@@ -4,6 +4,10 @@ import axios from "axios";
 import { useRecoilState } from "recoil";
 import { saveImgData } from "../../../recoil/postImgAtom";
 import { getToken } from "../../../Utils/getToken";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const usePost = () => {
   const [imgData, setImgData] = useRecoilState(saveImgData);
@@ -55,11 +59,23 @@ const usePost = () => {
 
     resetPostData();
     if (status !== 200) {
-      window.alert(error);
+      MySwal.fire({
+        position: "middle",
+        icon: "error",
+        title: `${error}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
       return;
     }
 
-    window.alert(message);
+    MySwal.fire({
+      position: "middle",
+      icon: "success",
+      title: `${message}`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   const sendImgsData = async (imgData) => {
