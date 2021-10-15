@@ -25,6 +25,7 @@ const ProfileModifyForm = () => {
           <input
             id="profileModifyForm-imgInput"
             type="file"
+            name="img"
             accept="image/jpg,image/png,image/jpeg,image/gif"
             onChange={onFileChange}
           />

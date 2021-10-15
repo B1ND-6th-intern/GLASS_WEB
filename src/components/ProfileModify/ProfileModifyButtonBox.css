@@ -17,9 +17,11 @@
   font-size: 15px;
   background: none;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .profileModifyButtonBox-button:hover {
   background-color: rgb(247, 244, 244);
   border-left: 3px solid var(--main_color);
+  box-sizing: border-box;
 }

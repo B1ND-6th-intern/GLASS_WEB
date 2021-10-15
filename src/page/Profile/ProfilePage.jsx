@@ -14,7 +14,7 @@ const ProfilePage = () => {
           introdution="안녕하세요 :) "
         />
         <hr id="porfile-line" />
-        <ProfilePosts posts={[]} />
+        <ProfilePosts />
       </div>
     </section>
   );

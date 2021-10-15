@@ -14,13 +14,15 @@ const useGetUserData = () => {
       const { data } = await axios.get(url);
       const { user } = data;
       console.log(user);
-      const { name, grade, classNumber, stuNumber, introduction } = user;
+      const { name, grade, classNumber, stuNumber, introduction, writings } =
+        user;
       setUserData({
         name,
         grade,
         classNumber,
         stuNumber,
         introduction,
+        writings,
       });
     } catch (error) {
       const { data } = error.response;
@@ -31,10 +33,6 @@ const useGetUserData = () => {
   useEffect(() => {
     getUserData();
   }, []);
-
-  useEffect(() => {
-    console.log(userData);
-  }, [userData]);
 
   return { userData };
 };

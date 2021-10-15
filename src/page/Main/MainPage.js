@@ -6,10 +6,6 @@ import useGetUserData from "../../Hooks/Main/useGetUserData";
 import { userIdData } from "../../recoil/profileAtom";
 
 const MainPage = () => {
-  const { feeds } = useShowPosts();
-
-  const { userData } = useGetUserData();
-
   return (
     <section id="content">
       <div className="content-container">

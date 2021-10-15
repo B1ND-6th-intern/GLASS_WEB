@@ -7,11 +7,18 @@ import { getToken } from "../../../Utils/getToken";
 
 const useModifyProfileData = () => {
   const [userData, setUserData] = useRecoilState(modifyUserDataState);
-  console.log(userData);
+
   const [modifyUserData, setModifyUserData] = useState({
     name: userData.name,
     introduction: userData.introduction,
   });
+
+  useEffect(() => {
+    setModifyUserData({
+      name: userData.name,
+      introduction: userData.introduction,
+    });
+  }, []);
 
   const onChange = (event) => {
     const {
@@ -74,15 +81,12 @@ const useModifyProfileData = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     const res = await sendModifyUserData();
-    const { message, status } = res;
+    const { message, status, name, introduction } = res;
     if (status === 200) {
       window.alert(message);
+      setUserData({ ...userData, name, introduction });
     }
   };
-
-  useEffect(() => {
-    console.log(modifyUserData.name, modifyUserData.introduction);
-  }, [modifyUserData.name, modifyUserData.introduction]);
 
   return {
     onChange,

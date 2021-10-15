@@ -14,6 +14,8 @@ import DarkMode from "../../components/Nav/DarkMode";
 import useControlButton from "../../Hooks/Nav/Buttons/useControllButton";
 import { Link } from "react-router-dom";
 import ProfileDropDown from "../../components/Profile/ProfileDropDown";
+import useShowPosts from "../../Hooks/Main/useShowPosts";
+import useGetUserData from "../../Hooks/Main/useGetUserData";
 
 const Navigation = () => {
   const {
@@ -23,6 +25,10 @@ const Navigation = () => {
     toggleMenuClick,
     toggleSCClick,
   } = useControlButton();
+
+  const { feeds } = useShowPosts();
+
+  const { userData } = useGetUserData();
 
   return (
     <>

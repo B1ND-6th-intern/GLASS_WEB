@@ -1,14 +1,20 @@
+import { useRecoilState } from "recoil";
+import { modifyUserDataState } from "../../recoil/profileAtom";
 import ProfileNonePosts from "./ProfileNonePosts";
 import ProfilePostBox from "./ProfilePostBox";
+import { SERVER } from "../../config/config.json";
 import "./ProfilePosts.css";
 
-const ProfilePosts = ({ posts }) => {
+const ProfilePosts = () => {
+  const [userData, setUserData] = useRecoilState(modifyUserDataState);
+  console.log(userData.writings);
+
   return (
     <div id="profilePosts-container">
-      {posts.length ? (
+      {userData.writings.length !== 0 ? (
         <div id="profilePosts-postsWrap">
-          {posts.map((post) => (
-            <ProfilePostBox img={post} />
+          {userData.writings.map((post) => (
+            <ProfilePostBox img={SERVER + "/uploads" + post.imgs[0]} />
           ))}
         </div>
       ) : (
