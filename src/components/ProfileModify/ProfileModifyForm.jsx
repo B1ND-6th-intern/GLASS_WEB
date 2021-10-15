@@ -2,6 +2,8 @@ import { useRecoilState } from "recoil";
 import useModifyProfileData from "../../Hooks/Profile/ModifyProfile/useModifyProfileData";
 import { modifyUserDataState } from "../../recoil/profileAtom";
 import "./ProfileModifyForm.css";
+import { SERVER } from "../../config/config.json";
+import DefaultUserImg from "../../assets/img/DefaultUserImg.svg";
 
 const ProfileModifyForm = () => {
   const [userData, setUserData] = useRecoilState(modifyUserDataState);
@@ -11,8 +13,17 @@ const ProfileModifyForm = () => {
   return (
     <div className="profileModifyForm-container">
       <div className="modifyWrap">
-        <div className="profileModifyForm-imgWrap">
-          <div className="profileModifyForm-img"></div>
+        <div className="profileModifyForm-imgBox">
+          <div className="profileModifyForm-imgWrap">
+            <img
+              className="profileModifyForm-img"
+              src={
+                userData.avatar === ""
+                  ? DefaultUserImg
+                  : `${SERVER}/uploads${userData.avatar}`
+              }
+            />
+          </div>
         </div>
         <div className="profileModifyForm-nameWrap">
           <p className="profileModifyForm-name">{userData.name}</p>

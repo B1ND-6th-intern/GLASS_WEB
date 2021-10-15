@@ -14,8 +14,9 @@ import DarkMode from "../../components/Nav/DarkMode";
 import useControlButton from "../../Hooks/Nav/Buttons/useControllButton";
 import { Link } from "react-router-dom";
 import ProfileDropDown from "../../components/Profile/ProfileDropDown";
-import useShowPosts from "../../Hooks/Main/useShowPosts";
 import useGetUserData from "../../Hooks/Main/useGetUserData";
+import { SERVER } from "../../config/config.json";
+import DefaultUserImg from "../../assets/img/DefaultUserImg.svg";
 
 const Navigation = () => {
   const {
@@ -58,7 +59,14 @@ const Navigation = () => {
 
             <button className="navigation-item-user" onClick={toggleUserClick}>
               <Network />
-              <img className="navigation-item-user-img" />
+              <img
+                className="navigation-item-user-img"
+                src={
+                  userData.avatar === ""
+                    ? DefaultUserImg
+                    : `${SERVER}/uploads${userData.avatar}`
+                }
+              />
               <ProfileDropDown />
             </button>
 

@@ -10,7 +10,7 @@ export const modifyUserDataState = atom({
     stuNumber: 1,
     email: "",
     introduction: "",
-    img: "",
+    avatar: "",
     writings: [],
   },
 });

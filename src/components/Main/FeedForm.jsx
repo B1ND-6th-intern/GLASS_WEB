@@ -7,19 +7,20 @@ import { useRecoilState } from "recoil";
 
 const FeedForm = () => {
   const [feeds, setFeeds] = useRecoilState(feedData);
-  const { feeds: test } = useShowPosts();
+  const { feeds: posts } = useShowPosts();
   const { userId } = useGetUserId();
 
   return (
     <div id="content-postContainer">
-      {test.map((post, index) => {
+      {posts.map((post, index) => {
+        console.log(post);
         const {
           hashtags,
           imgs,
           text,
           _id,
           comments,
-          owner: { name },
+          owner: { name, avatar },
         } = post;
         // console.log(comments);
         return (
@@ -31,6 +32,7 @@ const FeedForm = () => {
             key={index}
             id={_id}
             comment={comments}
+            avatar={avatar}
           />
         );
       })}

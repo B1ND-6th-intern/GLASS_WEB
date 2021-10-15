@@ -8,8 +8,17 @@ import { SERVER } from "../../config/config.json";
 import { useState } from "react";
 import FeedImgNext from "../../assets/img/FeedImgNext.svg";
 import FeedImgPrev from "../../assets/img/FeedImgPrev.svg";
+import DefaultUserImg from "../../assets/img/DefaultUserImg.svg";
 
-const FeedContainer = ({ name, explainText, hashTags, imgs, id, comments }) => {
+const FeedContainer = ({
+  name,
+  explainText,
+  hashTags,
+  imgs,
+  id,
+  comments,
+  avatar,
+}) => {
   const {
     onChange,
     commentData,
@@ -46,19 +55,20 @@ const FeedContainer = ({ name, explainText, hashTags, imgs, id, comments }) => {
   };
 
   useEffect(() => {
-    console.log(currentImgIndex);
-  }, [currentImgIndex]);
-
-  useEffect(() => {
     if (commentText.current.clientHeight > 20) {
       setIsSummary(true);
     }
   }, [commentText]);
 
+  console.log(avatar);
+
   return (
     <form name={id} className="feed-container" onSubmit={onSubmit}>
       <div className="feed-profileWrap">
-        <img className="feed-profileImg" src={Logo} />
+        <img
+          className="feed-profileImg"
+          src={avatar === "" ? DefaultUserImg : `${SERVER}/uploads${avatar}`}
+        />
         <span className="feed-name">{name}</span>
       </div>
       <div className="feed-imgsWrap">

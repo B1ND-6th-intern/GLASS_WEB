@@ -1,19 +1,33 @@
 import { Link } from "react-router-dom";
+import { useRecoilState } from "recoil";
 import useGetUserData from "../../Hooks/Main/useGetUserData";
 import useUserModify from "../../Hooks/Nav/UserForm/useUserModify";
+import { modifyUserDataState } from "../../recoil/profileAtom";
 import "./ProfileInfo.css";
+import { SERVER } from "../../config/config.json";
+import DefaultUserImg from "../../assets/img/DefaultUserImg.svg";
 
 const ProfileInfo = ({ name, grade, group, number, introdution }) => {
   const { changeUserData, ChangePasswordForm, togglePasswordChange } =
     useUserModify();
 
-  const { userData } = useGetUserData();
+  const [userData, setUserData] = useRecoilState(modifyUserDataState);
+  console.log(userData.avatar);
 
   return (
     <>
       <div id="profileInfo-container">
-        <div id="profileInfo-imgWrap">
-          <div id="profileInfo-img"></div>
+        <div id="profileInfo-imgBox">
+          <div id="profileInfo-imgWrap">
+            <img
+              id="profileInfo-img"
+              src={
+                userData.avatar === ""
+                  ? DefaultUserImg
+                  : `${SERVER}/uploads${userData.avatar}`
+              }
+            />
+          </div>
         </div>
         <div id="profileInfo-infoWrap">
           <div id="profileInfo-nameWrap">

@@ -12,7 +12,7 @@
   row-gap: 22px;
 }
 
-.profileModifyForm-imgWrap {
+.profileModifyForm-imgBox {
   height: auto;
   margin-top: 32px;
   align-items: center;
@@ -22,12 +22,19 @@
   display: flex;
 }
 
-.profileModifyForm-img {
+.profileModifyForm-imgWrap {
   width: 38px;
   height: 38px;
   margin-left: auto;
   border: 1px solid black;
   border-radius: 100px;
+}
+
+.profileModifyForm-img {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  border-radius: 50px;
 }
 
 .profileModifyForm-nameWrap {

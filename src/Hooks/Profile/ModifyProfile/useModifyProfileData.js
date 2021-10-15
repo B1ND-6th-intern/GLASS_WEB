@@ -78,7 +78,28 @@ const useModifyProfileData = () => {
       formData.append("img", files[0]);
       value = "";
       const res = await sendImgData(formData);
-      console.log(res);
+      const { newavatar, status, error, message } = res;
+      if (status === 200) {
+        setUserData({
+          ...userData,
+          avatar: newavatar,
+        });
+        MySwal.fire({
+          position: "middle",
+          icon: "success",
+          title: `${message}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        return;
+      }
+      MySwal.fire({
+        position: "middle",
+        icon: "error",
+        title: `${error}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
 

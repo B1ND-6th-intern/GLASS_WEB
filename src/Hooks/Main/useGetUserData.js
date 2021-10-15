@@ -14,8 +14,15 @@ const useGetUserData = () => {
       const { data } = await axios.get(url);
       const { user } = data;
       console.log(user);
-      const { name, grade, classNumber, stuNumber, introduction, writings } =
-        user;
+      const {
+        name,
+        grade,
+        classNumber,
+        stuNumber,
+        introduction,
+        writings,
+        avatar,
+      } = user;
       setUserData({
         name,
         grade,
@@ -23,6 +30,7 @@ const useGetUserData = () => {
         stuNumber,
         introduction,
         writings,
+        avatar,
       });
     } catch (error) {
       const { data } = error.response;
