@@ -1,12 +1,9 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { SERVER } from "../config/config.json";
 import useCertification from "./useCertification";
-import {
-  validateEmail,
-  validatePassword,
-} from "../Utils/pattern/validationData";
+import { validateEmail } from "../Utils/pattern/validationData";
 import { useEffect } from "react";
 import { atom, useRecoilState } from "recoil";
 import Swal from "sweetalert2";

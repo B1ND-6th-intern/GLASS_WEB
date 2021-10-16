@@ -1,5 +1,4 @@
 import "./FeedContainer.css";
-import Logo from "../../assets/img/practice.jpg";
 import LikeImg from "../../assets/img/Like.svg";
 import useComment from "../../Hooks/Main/useComment";
 import Comment from "./Comment";
@@ -18,6 +17,7 @@ const FeedContainer = ({
   id,
   comments,
   avatar,
+  key,
 }) => {
   const {
     onChange,
@@ -60,10 +60,8 @@ const FeedContainer = ({
     }
   }, [commentText]);
 
-  console.log(avatar);
-
   return (
-    <form name={id} className="feed-container" onSubmit={onSubmit}>
+    <form name={id} className="feed-container">
       <div className="feed-profileWrap">
         <img
           className="feed-profileImg"
@@ -136,13 +134,14 @@ const FeedContainer = ({
             </p>
           )}
           <div className="feed-explainWrap-commentWrap">
-            {/* {comments.map((comment) => {
-              const {
-                text,
-                owner: { name },
-              } = comment;
-              return <Comment name={name} comment={text} />;
-            })} */}
+            {comments &&
+              comments.map((comment) => {
+                const {
+                  text,
+                  owner: { name },
+                } = comment;
+                return <Comment name={name} comment={text} />;
+              })}
           </div>
         </div>
       </div>
@@ -153,7 +152,7 @@ const FeedContainer = ({
           placeholder="댓글 달기"
           value={commentData}
         />
-        <button type="submit" className="feed-submitComment">
+        <button onClick={onSubmit} className="feed-submitComment">
           게시
         </button>
       </div>
