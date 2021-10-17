@@ -23,10 +23,14 @@ const FeedContainer = ({
     onChange,
     commentData,
     onSubmit,
-    commentText,
+    summaryWrap,
     setIsSummary,
     isSummary,
     fullTextClick,
+    allComment,
+    allCommentClick,
+    commentWrap,
+    setAllComment,
   } = useComment();
 
   const [currentImgIndex, setCurrentFeedIndex] = useState(0);
@@ -55,13 +59,19 @@ const FeedContainer = ({
   };
 
   useEffect(() => {
-    if (commentText.current.clientHeight > 20) {
+    if (summaryWrap.current.clientHeight > 20) {
       setIsSummary(true);
     }
-  }, [commentText]);
+  }, [summaryWrap]);
+
+  useEffect(() => {
+    if (commentWrap.current.clientHeight > 54) {
+      setAllComment(true);
+    }
+  }, [commentWrap]);
 
   return (
-    <form name={id} className="feed-container">
+    <form name={id} className="feed-container" onSubmit={onSubmit}>
       <div className="feed-profileWrap">
         <img
           className="feed-profileImg"
@@ -112,7 +122,7 @@ const FeedContainer = ({
           </button>
         </div>
         <div className="feed-explainWrap-middle">
-          <p className="feed-explainWrap-textWrap" ref={commentText}>
+          <p className="feed-explainWrap-textWrap" ref={summaryWrap}>
             <b className="feed-explainWrap-name">{name}</b>
             <span className="feed-explainWrap-text">
               {isSummary ? explainText.slice(0, 25) + "  ..." : explainText}
@@ -127,21 +137,33 @@ const FeedContainer = ({
             </span>
           </p>
           {isSummary ? null : (
-            <p className="feed-explainWrap-hashTagWrap">
+            <p className="feed-explainWrap-hashTagWrap ">
               {hashTags.map((hashtag) => (
                 <p className="feed-explainWrap-hashTag">{hashtag}</p>
               ))}
             </p>
           )}
-          <div className="feed-explainWrap-commentWrap">
+          <div className="feed-explainWrap-commentWrap" ref={commentWrap}>
             {comments &&
-              comments.map((comment) => {
+              comments.map((comment, index) => {
                 const {
                   text,
                   owner: { name },
                 } = comment;
-                return <Comment name={name} comment={text} />;
+                if (allComment && index < 3) {
+                  return <Comment name={name} comment={text} />;
+                } else if (!allComment) {
+                  return <Comment name={name} comment={text} />;
+                }
               })}
+            {allComment && (
+              <button
+                className="feed-explainWrap-fullText-Btn"
+                onClick={allCommentClick}
+              >
+                더 보기
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -152,7 +174,7 @@ const FeedContainer = ({
           placeholder="댓글 달기"
           value={commentData}
         />
-        <button onClick={onSubmit} className="feed-submitComment">
+        <button type="submit" className="feed-submitComment">
           게시
         </button>
       </div>

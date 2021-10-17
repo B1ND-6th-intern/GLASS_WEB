@@ -3,11 +3,17 @@ import { useRef } from "react";
 import { useState } from "react";
 import { SERVER } from "../../config/config.json";
 import { getToken } from "../../Utils/getToken";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const useComment = () => {
   const [commentData, setCommentData] = useState("");
   const [isSummary, setIsSummary] = useState(false);
-  const commentText = useRef();
+  const [allComment, setAllComment] = useState(false);
+  const commentWrap = useRef();
+  const summaryWrap = useRef();
 
   const onChange = (event) => {
     const {
@@ -21,13 +27,21 @@ const useComment = () => {
     setIsSummary(false);
   };
 
+  const allCommentClick = () => {
+    setAllComment(false);
+  };
+
   const sendCommentData = async (name) => {
     const url = `${SERVER}/comments/upload`;
     try {
       const { data } = await axios.post(
         url,
         { text: commentData, writingId: name },
-        { headers: { Authorization: `Bearer ${getToken()}` } }
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`,
+          },
+        }
       );
       return data;
     } catch (error) {
@@ -42,18 +56,33 @@ const useComment = () => {
       target: { name },
     } = event;
     const res = await sendCommentData(name);
-    console.log(res);
-    setCommentData("");
+    const { status, message, error } = res;
+    if (status === 200) {
+      MySwal.fire({
+        position: "middle",
+        title: `${message}`,
+      });
+      setCommentData("");
+      return;
+    }
+    MySwal.fire({
+      position: "middle",
+      title: `${error}`,
+    });
   };
 
   return {
     onChange,
     commentData,
     onSubmit,
-    commentText,
+    summaryWrap,
     setIsSummary,
     isSummary,
     fullTextClick,
+    allComment,
+    allCommentClick,
+    commentWrap,
+    setAllComment,
   };
 };
 

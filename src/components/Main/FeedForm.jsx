@@ -22,7 +22,7 @@ const FeedForm = () => {
           comments,
           owner: { name, avatar },
         } = post;
-        // console.log(comments);
+        console.log(comments);
         return (
           <FeedContainer
             name={name}
@@ -31,7 +31,7 @@ const FeedForm = () => {
             imgs={imgs}
             key={index}
             id={_id}
-            comment={comments}
+            comments={comments}
             avatar={avatar}
           />
         );
