@@ -7,7 +7,7 @@ import "./ProfileInfo.css";
 import { SERVER } from "../../config/config.json";
 import DefaultUserImg from "../../assets/img/DefaultUserImg.svg";
 
-const ProfileInfo = ({ name, grade, group, number, introdution }) => {
+const ProfileInfo = () => {
   const { changeUserData, ChangePasswordForm, togglePasswordChange } =
     useUserModify();
 
@@ -39,9 +39,11 @@ const ProfileInfo = ({ name, grade, group, number, introdution }) => {
             </Link>
           </div>
           <div id="profileInfo-schoolInfoWrap">
-            <p>{userData.grade}학년</p>
-            <p>{userData.classNumber}반</p>
-            <p>{userData.stuNumber}번</p>
+            <p>{userData.permission == 0 ? `${userData.grade}학년` : null}</p>
+            <p>
+              {userData.permission == 0 ? `${userData.classNumber}반` : null}
+            </p>
+            <p>{userData.permission == 0 ? `${userData.stuNumber}번` : null}</p>
           </div>
           <div id="profileInfo-intro">{userData.introduction}</div>
         </div>

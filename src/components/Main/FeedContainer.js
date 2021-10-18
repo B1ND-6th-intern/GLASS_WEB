@@ -8,6 +8,10 @@ import { useState } from "react";
 import FeedImgNext from "../../assets/img/FeedImgNext.svg";
 import FeedImgPrev from "../../assets/img/FeedImgPrev.svg";
 import DefaultUserImg from "../../assets/img/DefaultUserImg.svg";
+import StudentBadge from "./ClassBadges/StudentBadge";
+import ParentBadge from "./ClassBadges/ParentBadge";
+import TeacherBadge from "./ClassBadges/TeacherBadge";
+import { HashTagNullCheck } from "../../Utils/hashTagNullCheck";
 
 const FeedContainer = ({
   name,
@@ -17,6 +21,10 @@ const FeedContainer = ({
   id,
   comments,
   avatar,
+  stuNumber,
+  classNumber,
+  grade,
+  permission,
   key,
 }) => {
   const {
@@ -70,6 +78,8 @@ const FeedContainer = ({
     }
   }, [commentWrap]);
 
+  const hashTagIsNull = HashTagNullCheck(hashTags);
+
   return (
     <form name={id} className="feed-container" onSubmit={onSubmit}>
       <div className="feed-profileWrap">
@@ -77,7 +87,13 @@ const FeedContainer = ({
           className="feed-profileImg"
           src={avatar === "" ? DefaultUserImg : `${SERVER}/uploads${avatar}`}
         />
-        <span className="feed-name">{name}</span>
+        <span className="feed-name">
+          {!permission && `${grade}${classNumber}${stuNumber} `}
+          {name}
+          {permission == 0 ? <StudentBadge /> : null}
+          {permission == 1 ? <ParentBadge /> : null}
+          {permission == 2 ? <TeacherBadge /> : null}
+        </span>
       </div>
       <div className="feed-imgsWrap">
         <div className="feed-imgWrap">
@@ -117,7 +133,7 @@ const FeedContainer = ({
       </div>
       <div className="feed-explainWrap">
         <div className="feed-explainWrap-header">
-          <button className="feed-likeBtn">
+          <button className="feed-likeBtn" type="button">
             <img className="feed-likeBtn-img" src={LikeImg} />
           </button>
         </div>
@@ -139,7 +155,9 @@ const FeedContainer = ({
           {isSummary ? null : (
             <p className="feed-explainWrap-hashTagWrap ">
               {hashTags.map((hashtag) => (
-                <p className="feed-explainWrap-hashTag">{hashtag}</p>
+                <p className="feed-explainWrap-hashTag">
+                  {hashTagIsNull && "#" + hashtag}
+                </p>
               ))}
             </p>
           )}

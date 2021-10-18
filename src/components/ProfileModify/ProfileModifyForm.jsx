@@ -4,6 +4,7 @@ import { modifyUserDataState } from "../../recoil/profileAtom";
 import "./ProfileModifyForm.css";
 import { SERVER } from "../../config/config.json";
 import DefaultUserImg from "../../assets/img/DefaultUserImg.svg";
+import { useEffect, useState } from "react";
 
 const ProfileModifyForm = () => {
   const [userData, setUserData] = useRecoilState(modifyUserDataState);

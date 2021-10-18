@@ -12,6 +12,7 @@ export const modifyUserDataState = atom({
     introduction: "",
     avatar: "",
     writings: [],
+    permission: 0,
   },
 });
 

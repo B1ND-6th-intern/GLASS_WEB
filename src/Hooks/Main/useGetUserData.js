@@ -22,6 +22,7 @@ const useGetUserData = () => {
         introduction,
         writings,
         avatar,
+        permission,
       } = user;
       setUserData({
         name,
@@ -31,6 +32,7 @@ const useGetUserData = () => {
         introduction,
         writings,
         avatar,
+        permission,
       });
     } catch (error) {
       const { data } = error.response;

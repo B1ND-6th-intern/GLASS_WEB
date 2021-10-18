@@ -20,9 +20,9 @@ const FeedForm = () => {
           text,
           _id,
           comments,
-          owner: { name, avatar },
+          owner: { name, avatar, stuNumber, classNumber, grade, permission },
         } = post;
-        console.log(comments);
+        console.log(post);
         return (
           <FeedContainer
             name={name}
@@ -33,6 +33,10 @@ const FeedForm = () => {
             id={_id}
             comments={comments}
             avatar={avatar}
+            stuNumber={stuNumber}
+            classNumber={classNumber}
+            grade={grade}
+            permission={permission}
           />
         );
       })}

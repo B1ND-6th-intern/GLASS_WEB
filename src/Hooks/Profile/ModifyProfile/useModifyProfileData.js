@@ -13,8 +13,8 @@ const useModifyProfileData = () => {
   const [userData, setUserData] = useRecoilState(modifyUserDataState);
 
   const [modifyUserData, setModifyUserData] = useState({
-    name: userData.name,
-    introduction: userData.introduction,
+    name: "",
+    introduction: "",
   });
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const useModifyProfileData = () => {
       name: userData.name,
       introduction: userData.introduction,
     });
-  }, []);
+  }, [userData]);
 
   const onChange = (event) => {
     const {
