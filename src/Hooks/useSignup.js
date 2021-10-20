@@ -147,6 +147,7 @@ const useSignup = () => {
       timer: 1500,
     });
     if (CertifiationStatus === 200) {
+      signupDataReset();
       history.push("/certification");
       return;
     }

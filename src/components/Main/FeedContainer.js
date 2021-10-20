@@ -12,6 +12,7 @@ import StudentBadge from "./ClassBadges/StudentBadge";
 import ParentBadge from "./ClassBadges/ParentBadge";
 import TeacherBadge from "./ClassBadges/TeacherBadge";
 import { HashTagNullCheck } from "../../Utils/hashTagNullCheck";
+import useLike from "../../Hooks/Main/useLike";
 
 const FeedContainer = ({
   name,
@@ -40,6 +41,8 @@ const FeedContainer = ({
     commentWrap,
     setAllComment,
   } = useComment();
+
+  const { onLikeClick, like } = useLike();
 
   const [currentImgIndex, setCurrentFeedIndex] = useState(0);
 
@@ -133,8 +136,13 @@ const FeedContainer = ({
       </div>
       <div className="feed-explainWrap">
         <div className="feed-explainWrap-header">
-          <button className="feed-likeBtn" type="button">
-            <img className="feed-likeBtn-img" src={LikeImg} />
+          <button
+            className="feed-likeBtn"
+            type="button"
+            name={id}
+            onClick={onLikeClick}
+          >
+            <img className="feed-likeBtn-img" src={LikeImg} name={id} />
           </button>
         </div>
         <div className="feed-explainWrap-middle">

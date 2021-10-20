@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 import { isUserData } from "../../Store";
 import { SERVER } from "../../config/config.json";
 import { feedData } from "../../recoil/postDataAtom";
+import { getToken } from "../../Utils/getToken";
 
 const useShowPosts = () => {
   const [feeds, setFeeds] = useRecoilState(feedData);
@@ -12,7 +13,9 @@ const useShowPosts = () => {
   const loadPost = async () => {
     const url = `${SERVER}/posts`;
     try {
-      const { data } = await axios.get(url);
+      const { data } = await axios.get(url, {
+        headers: { Authorization: `Bearer ${getToken()}` },
+      });
       const { writings } = data;
       setFeeds(writings);
     } catch (error) {

@@ -81,7 +81,11 @@ const usePost = () => {
   const sendImgsData = async (imgData) => {
     const url = `${SERVER}/writings/upload/imgs`;
     try {
-      const { data } = await axios.post(url, imgData);
+      const { data } = await axios.post(url, imgData, {
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      });
       return data;
     } catch (error) {
       const { data } = error.response;
