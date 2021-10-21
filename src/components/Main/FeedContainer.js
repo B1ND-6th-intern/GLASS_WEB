@@ -1,5 +1,6 @@
 import "./FeedContainer.css";
 import LikeImg from "../../assets/img/Like.svg";
+import FillLikeImg from "../../assets/img/FillLike.svg";
 import useComment from "../../Hooks/Main/useComment";
 import Comment from "./Comment";
 import { useEffect } from "react";
@@ -26,7 +27,7 @@ const FeedContainer = ({
   classNumber,
   grade,
   permission,
-  key,
+  test,
 }) => {
   const {
     onChange,
@@ -84,7 +85,7 @@ const FeedContainer = ({
   const hashTagIsNull = HashTagNullCheck(hashTags);
 
   return (
-    <form name={id} className="feed-container" onSubmit={onSubmit}>
+    <form name={id} className="feed-container" onSubmit={onSubmit} ref={test}>
       <div className="feed-profileWrap">
         <img
           className="feed-profileImg"
@@ -142,7 +143,11 @@ const FeedContainer = ({
             name={id}
             onClick={onLikeClick}
           >
-            <img className="feed-likeBtn-img" src={LikeImg} name={id} />
+            <img
+              className="feed-likeBtn-img"
+              src={like ? FillLikeImg : LikeImg}
+              name={id}
+            />
           </button>
         </div>
         <div className="feed-explainWrap-middle">
@@ -162,8 +167,8 @@ const FeedContainer = ({
           </p>
           {isSummary ? null : (
             <p className="feed-explainWrap-hashTagWrap ">
-              {hashTags.map((hashtag) => (
-                <p className="feed-explainWrap-hashTag">
+              {hashTags.map((hashtag, index) => (
+                <p className="feed-explainWrap-hashTag" key={index}>
                   {hashTagIsNull && "#" + hashtag}
                 </p>
               ))}
@@ -177,9 +182,9 @@ const FeedContainer = ({
                   owner: { name },
                 } = comment;
                 if (allComment && index < 3) {
-                  return <Comment name={name} comment={text} />;
+                  return <Comment name={name} comment={text} key={index} />;
                 } else if (!allComment) {
-                  return <Comment name={name} comment={text} />;
+                  return <Comment name={name} comment={text} key={index} />;
                 }
               })}
             {allComment && (
