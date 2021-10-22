@@ -14,6 +14,10 @@ import ParentBadge from "./ClassBadges/ParentBadge";
 import TeacherBadge from "./ClassBadges/TeacherBadge";
 import { HashTagNullCheck } from "../../Utils/hashTagNullCheck";
 import useLike from "../../Hooks/Main/useLike";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const FeedContainer = ({
   name,
@@ -28,6 +32,8 @@ const FeedContainer = ({
   grade,
   permission,
   test,
+  isLike,
+  likeCount,
 }) => {
   const {
     onChange,
@@ -43,7 +49,35 @@ const FeedContainer = ({
     setAllComment,
   } = useComment();
 
-  const { onLikeClick, like } = useLike();
+  const { onSendLikeData } = useLike();
+
+  const [like, setLike] = useState(isLike);
+  const [currentLikeCount, setCurrentLikeCount] = useState(likeCount);
+
+  const onLikeClick = async (event) => {
+    const {
+      target: { name },
+    } = event;
+    const res = await onSendLikeData(name);
+    const { status, message, error } = res;
+    if (status === 200) {
+      if (like) {
+        setCurrentLikeCount((prev) => prev - 1);
+      } else if (!like) {
+        setCurrentLikeCount((prev) => prev + 1);
+      }
+      setLike((prev) => !prev);
+      console.log(message);
+      return;
+    }
+    MySwal.fire({
+      position: "middle",
+      icon: "error",
+      title: `${error}`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
 
   const [currentImgIndex, setCurrentFeedIndex] = useState(0);
 
@@ -149,6 +183,7 @@ const FeedContainer = ({
               name={id}
             />
           </button>
+          <p className="feed-likeCount">{`${currentLikeCount}명이 좋아합니다.`}</p>
         </div>
         <div className="feed-explainWrap-middle">
           <p className="feed-explainWrap-textWrap" ref={summaryWrap}>

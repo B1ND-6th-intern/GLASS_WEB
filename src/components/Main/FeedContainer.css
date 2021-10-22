@@ -118,10 +118,19 @@
   border: 0px;
   background: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .feed-likeBtn-img {
   width: 100%;
+}
+
+.feed-likeCount {
+  font-size: 15px;
+  margin: 0px;
+  margin-left: 5px;
 }
 
 .feed-explainWrap-middle {

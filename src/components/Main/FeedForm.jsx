@@ -47,6 +47,7 @@ const FeedForm = () => {
     <div id="content-postContainer">
       {feeds.map((post, index) => {
         if (post !== undefined) {
+          console.log(post);
           const {
             hashtags,
             imgs,
@@ -54,6 +55,8 @@ const FeedForm = () => {
             _id,
             comments,
             owner: { name, avatar, stuNumber, classNumber, grade, permission },
+            isLike,
+            likeCount,
           } = post;
 
           return feeds.length - 1 == index ? (
@@ -71,6 +74,8 @@ const FeedForm = () => {
               grade={grade}
               permission={permission}
               test={ref}
+              isLike={isLike}
+              likeCount={likeCount}
             />
           ) : (
             <FeedContainer
@@ -86,6 +91,8 @@ const FeedForm = () => {
               classNumber={classNumber}
               grade={grade}
               permission={permission}
+              isLike={isLike}
+              likeCount={likeCount}
             />
           );
         }
