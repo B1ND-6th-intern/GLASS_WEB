@@ -1,0 +1,20 @@
+.hotPost-container {
+  width: 276px;
+  height: 165px;
+  border: 1px solid var(--main-border-color);
+  background-color: white;
+  margin: 0px auto;
+  display: flex;
+}
+
+.hotPost-imgWrap {
+  width: 174px;
+  height: 100%;
+  border-right: 1px solid var(--main-border-color);
+}
+
+.hotPost-img {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+}

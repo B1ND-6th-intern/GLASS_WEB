@@ -4,3 +4,10 @@ export const validateEmail = (mail) => {
   }
   return false;
 };
+
+export const validatePassword = (pw) => {
+  if (/(?=.*\d{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/.test(pw)) {
+    return true;
+  }
+  return false;
+};

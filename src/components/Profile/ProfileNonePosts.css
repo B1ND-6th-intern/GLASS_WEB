@@ -1,0 +1,26 @@
+#profileNonePosts-container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#profileNonePosts-imgWrap {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  border-radius: 100px;
+  border: 2px solid black;
+}
+
+#profileNonePosts-img {
+  width: 30px;
+}
+
+#profileNonePosts-text {
+  margin-top: 20px;
+  font-size: 28px;
+  font-weight: 300;
+}

@@ -5,13 +5,17 @@ import PostImg from "../../assets/img/Post.svg";
 import MenuImg from "../../assets/img/Menu.svg";
 import Network from "../../components/Nav/NetWork";
 import PostForm from "../../components/Nav/PostForm";
-import UserForm from "../../components/Nav/UserForn";
 import SearchBar from "../../components/Nav/SearchBar";
 import MenuForm from "../../components/Nav/MenuForm";
 import ServiceCenter from "../../components/Nav/ServiceCenter";
 import SerViceCenterImg from "../../assets/img/ServiceCenter.svg";
 import DarkMode from "../../components/Nav/DarkMode";
 import useControlButton from "../../Hooks/Nav/Buttons/useControllButton";
+import { Link } from "react-router-dom";
+import ProfileDropDown from "../../components/Profile/ProfileDropDown";
+import useGetUserData from "../../Hooks/Main/useGetUserData";
+import { SERVER } from "../../config/config.json";
+import DefaultUserImg from "../../assets/img/DefaultUserImg.svg";
 
 const Navigation = () => {
   const {
@@ -22,16 +26,16 @@ const Navigation = () => {
     toggleSCClick,
   } = useControlButton();
 
+  const { userData } = useGetUserData();
+
   return (
     <>
       <header id="Navigation">
         <div className="navigation-container">
           <nav className="navigation-item-container">
-            <img
-              className="navigation-item-logo-img"
-              src={Logo}
-              alt="Logo"
-            ></img>
+            <Link to="/">
+              <img className="navigation-item-logo-img" src={Logo} alt="Logo" />
+            </Link>
             <img
               className="navigation-item-logo-whiteimg"
               src={WhiteLogo}
@@ -49,8 +53,16 @@ const Navigation = () => {
             </button>
 
             <button className="navigation-item-user" onClick={toggleUserClick}>
-              <img className="navigation-item-user-img" />
               <Network />
+              <img
+                className="navigation-item-user-img"
+                src={
+                  userData.avatar === ""
+                    ? DefaultUserImg
+                    : `${SERVER}/uploads${userData.avatar}`
+                }
+              />
+              <ProfileDropDown />
             </button>
 
             {!buttonStates.isServiceCenterClick && (
@@ -70,8 +82,6 @@ const Navigation = () => {
       <PostForm />
 
       <MenuForm />
-
-      <UserForm />
     </>
   );
 };

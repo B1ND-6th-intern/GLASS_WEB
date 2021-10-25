@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { SERVER } from "../config/config.json";
+import { alertError, certificationAlertSuccess } from "../lib/sweetAlert2";
 
 const useCertification = () => {
   const [number, setNumber] = useState("");
@@ -24,7 +25,7 @@ const useCertification = () => {
   };
 
   const sendCertification = async () => {
-    const url = `${SERVER}/user/email-auth`;
+    const url = `${SERVER}/users/email-auth`;
     try {
       const { data } = await axios.get(url);
       return data;
@@ -39,7 +40,7 @@ const useCertification = () => {
     const { status, message, sendCount, error } = certificationData;
     if (sendCount < 0) {
       if (status === 400) {
-        window.alert(error);
+        alertError(error);
       }
       history.push("/signup");
     } else {
@@ -54,7 +55,7 @@ const useCertification = () => {
   };
 
   const sendCertificationNumber = async () => {
-    const url = `${SERVER}/user/email-auth`;
+    const url = `${SERVER}/users/email-auth`;
     try {
       const { data } = await axios.post(url, {
         confirmation: number,
@@ -71,10 +72,12 @@ const useCertification = () => {
     const certificationPass = await sendCertificationNumber();
     const { error, failedCount, status } = certificationPass;
     if (status === 200) {
-      window.alert("인증에 성공했습니다. 로그인 페이지로 이동합니다.");
+      certificationAlertSuccess();
       history.push("/");
     } else if (status === 400) {
-      if (failedCount >= 4) {
+      if (
+        error === "이메일 인증 번호가 5번 틀렸습니다. 다시 회원가입 해주세요."
+      ) {
         history.push("/signup");
       } else {
         setAlert(error);

@@ -1,0 +1,120 @@
+.modifyWrap {
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+
+.profileModifyForm-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 22px;
+}
+
+.profileModifyForm-imgBox {
+  height: auto;
+  margin-top: 32px;
+  align-items: center;
+  min-width: 194px;
+  padding: 0px 32px;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.profileModifyForm-imgWrap {
+  width: 38px;
+  height: 38px;
+  margin-left: auto;
+  border: 1px solid black;
+  border-radius: 100px;
+}
+
+.profileModifyForm-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+.profileModifyForm-nameWrap {
+  width: 100%;
+  margin-top: 32px;
+  height: 42px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profileModifyForm-name {
+  font-size: 20px;
+  margin: 0px;
+}
+
+.profileModify-imgInputLabel {
+  color: var(--main_color);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#profileModifyForm-imgInput {
+  display: none;
+}
+
+.profileModifyForm-modifyNameWrap {
+  font-size: 20px;
+  min-width: 194px;
+  padding: 0px 32px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.profileModifyForm-title {
+  margin: 0px;
+  margin-left: auto;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.profileModifyForm-nameInput {
+  width: 333px;
+  height: 30px;
+  border: 1px solid var(--main-border-color);
+  border-radius: 3px;
+}
+
+.profleModifyForm-introWrap {
+  font-size: 20px;
+  min-width: 194px;
+  padding: 0px 32px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.profileModifyForm-introInputWrap {
+  width: 333px;
+  height: 30px;
+  border: 1px solid var(--main-border-color);
+  border-radius: 3px;
+  resize: vertical;
+  min-height: 48px;
+  max-height: 280px;
+}
+
+#profileModifyForm-submitBtn {
+  width: 28px;
+  height: 18px;
+  padding: 5px 9px;
+  box-sizing: content-box;
+  color: white;
+  background-color: var(--main_color);
+  border-radius: 4px;
+  border: 1px solid var(--main-border-color);
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0px auto;
+  margin-top: auto;
+  margin-bottom: 20px;
+  cursor: pointer;
+}

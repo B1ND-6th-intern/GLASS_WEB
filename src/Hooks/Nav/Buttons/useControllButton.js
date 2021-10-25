@@ -1,12 +1,7 @@
 import { useRecoilState } from "recoil";
-import { buttonState, modifyUserDataState } from "../../../Store";
-import usePost from "../PostForm/usePost";
+import { buttonState } from "../../../recoil/modalAtom";
 
 const useControllButton = () => {
-  const { resetPostData } = usePost();
-
-  const [isModify, setIsModify] = useRecoilState(modifyUserDataState);
-
   const [buttonStates, setButtonStates] = useRecoilState(buttonState);
 
   const togglePostClick = () => {
@@ -24,7 +19,6 @@ const useControllButton = () => {
       menuClick: false,
       isServiceCenterClick: false,
     });
-    setIsModify(false);
   };
 
   const toggleMenuClick = () => {
@@ -44,7 +38,6 @@ const useControllButton = () => {
   return {
     toggleUserClick,
     buttonStates,
-    isModify,
     togglePostClick,
     toggleMenuClick,
     toggleSCClick,
