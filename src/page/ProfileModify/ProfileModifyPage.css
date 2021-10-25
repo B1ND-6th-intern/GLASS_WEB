@@ -1,0 +1,8 @@
+#modifyProfile-container {
+  width: 935px;
+  height: 828px;
+  margin: 0px auto;
+  margin-top: 95px;
+  border: 1px solid var(--main-border-color);
+  display: flex;
+}

@@ -4,6 +4,9 @@ import "./PostForm.css";
 import ImgAdd from "../../assets/img/PostImgAdd.svg";
 import usePost from "../../Hooks/Nav/PostForm/usePost";
 import useControllButton from "../../Hooks/Nav/Buttons/useControllButton";
+import { useRecoilState } from "recoil";
+import { SERVER } from "../../config/config.json";
+import { saveImgData } from "../../recoil/postImgAtom";
 
 const PostForm = () => {
   const {
@@ -13,10 +16,11 @@ const PostForm = () => {
     onSubmit,
     resetPostData,
     postData,
-    attachment,
   } = usePost();
 
   const { buttonStates, togglePostClick } = useControllButton();
+
+  const [imgData, setImgData] = useRecoilState(saveImgData);
 
   useEffect(() => {
     if (buttonStates.isPostClick) {
@@ -33,21 +37,22 @@ const PostForm = () => {
     }
   }, [buttonStates.isPostClick]);
 
+  const resetForm = () => {
+    resetPostData();
+    togglePostClick();
+  };
+
   return (
     <>
       {buttonStates.isPostClick && (
         <div className="nav-item-post-form-wrap">
-          <form
-            enctype="multipart/form-data"
-            onSubmit={(onSubmit, resetPostData, togglePostClick)}
-            className="navigation-item-post-form"
-          >
+          <form className="navigation-item-post-form">
             <div className="navigation-item-post-form-container">
               <div className="navigation-item-post-form-headerWrap">
                 <div className="navigation-item-post-form-title">글쓰기</div>
                 <button
                   className="navigation-item-post-form-exit"
-                  onClick={(togglePostClick, resetPostData)}
+                  onClick={resetForm}
                 >
                   <img
                     id="navigation-item-post-form-exit-img"
@@ -66,8 +71,8 @@ const PostForm = () => {
                 />
                 <div id="navigation-item-post-form-preview-imgWrap">
                   <>
-                    {attachment &&
-                      attachment.map((img, index) => {
+                    {imgData &&
+                      imgData.map((img, index) => {
                         return (
                           <div
                             className="navigation-item-post-form-preview-box"
@@ -75,12 +80,12 @@ const PostForm = () => {
                           >
                             <img
                               className="navigation-item-post-form-preview-img"
-                              src={img.img}
+                              src={SERVER + "/uploads" + img}
                               alt="사진"
                               key={index}
-                            ></img>
+                            />
                             <button
-                              name={img.id}
+                              name={index}
                               className="navigation-item-post-form-delete-img-btn"
                               onClick={onDeleteImg}
                             />
@@ -110,6 +115,7 @@ const PostForm = () => {
                 <input
                   id="navigation-item-post-form-img-input"
                   type="file"
+                  name="img"
                   accept="image/jpg,image/png,image/jpeg,image/gif"
                   onChange={onFileChange}
                   multiple
@@ -117,9 +123,12 @@ const PostForm = () => {
               </div>
               <div className="navigation-item-post-form-footerWrap">
                 <input
-                  type="submit"
                   className="navigation-item-post-form-footerWrap-Btn"
                   value="게시"
+                  onClick={(event) => {
+                    onSubmit(event);
+                    resetForm();
+                  }}
                 />
               </div>
             </div>

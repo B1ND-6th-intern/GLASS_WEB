@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { searchData } from "../../../Store";
+import { useRecoilState } from "recoil";
+import { searchData } from "../../../recoil/searchAtom";
 
 const useSearch = () => {
-  const [searchDatas, setSearchData] = useState(searchData);
+  const [searchDatas, setSearchData] = useRecoilState(searchData);
 
   const handleOpenBtn = () => {
     setSearchData({ ...searchDatas, isSearchClick: true });

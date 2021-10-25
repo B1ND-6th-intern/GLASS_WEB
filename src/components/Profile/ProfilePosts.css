@@ -1,0 +1,14 @@
+#profilePosts-container {
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+}
+
+#profilePosts-postsWrap {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto 0px;
+  column-gap: 30px;
+  row-gap: 30px;
+}

@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 import { SERVER } from "../config/config.json";
 import { isUserData } from "../Store";
 import { validateEmail } from "../Utils/pattern/validationData";
+import { alertError, alertSuccess } from "../lib/sweetAlert2";
 
 const useLogin = () => {
   const [isUser, setIsUser] = useRecoilState(isUserData);
@@ -38,15 +39,14 @@ const useLogin = () => {
       const LoginPass = await sendLoginData();
       const { status, message, error, token } = LoginPass;
       if (status === 200) {
-        window.alert(message);
-        if (token) {
-          localStorage.setItem("Token", token);
-          setIsUser(true);
-          return;
-        }
+        alertSuccess(message);
+      }
+      if (token) {
+        localStorage.setItem("Token", token);
+        setIsUser(true);
         return;
       }
-      window.alert(error);
+      alertError(error);
       setLoginData({ email: "", password: "" });
       return;
     }

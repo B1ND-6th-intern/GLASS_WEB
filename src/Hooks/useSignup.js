@@ -5,11 +5,12 @@ import { SERVER } from "../config/config.json";
 import useCertification from "./useCertification";
 import { validateEmail } from "../Utils/pattern/validationData";
 import { useEffect } from "react";
+import { atom, useRecoilState } from "recoil";
+import { alertError, alertSuccess } from "../lib/sweetAlert2";
 
-const useSignup = () => {
-  const [isStudent, setIsStudent] = useState(false);
-
-  const [signupData, setSignupData] = useState({
+const DataAtom = atom({
+  key: "testAtom",
+  default: {
     pw: "",
     chkPw: "",
     grade: 1,
@@ -17,9 +18,14 @@ const useSignup = () => {
     number: 1,
     mail: "",
     name: "",
-    permission: 0,
+    permission: "0",
     isAgree: false,
-  });
+  },
+});
+
+const useSignup = () => {
+  const [isStudent, setIsStudent] = useState(false);
+  const [signupData, setSignupData] = useRecoilState(DataAtom);
 
   const history = useHistory();
 
@@ -46,8 +52,6 @@ const useSignup = () => {
     } = event;
 
     setSignupData({ ...signupData, [name]: value });
-    let data = makeUserData();
-    console.log(data);
   };
 
   const makeUserData = () => {
@@ -96,6 +100,7 @@ const useSignup = () => {
       mail: "",
       name: "",
       isAgree: false,
+      permission: 0,
     });
   };
 
@@ -113,7 +118,6 @@ const useSignup = () => {
 
     if (!validateEmail(signupData.mail)) {
       window.alert("메일 형식을 확인해주세요!");
-      signupDataReset();
       return;
     }
 
@@ -121,19 +125,18 @@ const useSignup = () => {
     const { status, message, error } = signupPass;
 
     if (!message && status !== 200) {
-      window.alert(error);
-      signupDataReset();
+      alertError(error);
       return;
     }
-
     const certificationData = await sendCertification();
     const { status: CertifiationStatus } = certificationData;
-    window.alert(message);
+    alertSuccess(message);
     if (CertifiationStatus === 200) {
+      signupDataReset();
       history.push("/certification");
       return;
     }
-    window.alert(error);
+    alertError(error);
   };
 
   return {

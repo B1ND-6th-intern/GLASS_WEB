@@ -223,6 +223,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  text-align: center;
   background-color: var(--main_color);
   color: white;
 }

@@ -1,0 +1,36 @@
+#teacherBadges-box {
+  width: 40px;
+  height: 16px;
+  border: 1px solid #ec8c8c;
+  background-color: #ec8c8c;
+  color: white;
+
+  border-radius: 5px;
+  font-size: 13px;
+  margin: 0px;
+  margin-left: 3px;
+}
+
+#studentBadges-box {
+  width: 40px;
+  height: 18px;
+  border: 1px solid #86dcff;
+  background-color: #86dcff;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 13px;
+  margin: 0px;
+  margin-left: 3px;
+}
+
+#parentBadges-box {
+  width: 40px;
+  height: 18px;
+  border: 1px solid #b3e59f;
+  color: white;
+
+  border-radius: 5px;
+  font-size: 13px;
+  margin: 0px;
+}
