@@ -3,8 +3,11 @@ import "./HotPostForm.css";
 import prac1 from "../../assets/img/Logo.svg";
 import prac2 from "../../assets/img/Post.svg";
 import prac3 from "../../assets/img/practice.jpg";
+import useShowHotPosts from "../../Hooks/Main/useShowHotPosts";
 
 const HotPostForm = () => {
+  const { hotFeeds } = useShowHotPosts();
+
   return (
     <div id="content-hotPostContainer">
       <div id="content-titleWrap">
