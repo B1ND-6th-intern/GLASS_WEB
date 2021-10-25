@@ -1,5 +1,6 @@
 import "./ChangePasswordForm.css";
 import usePasswordChange from "../../Hooks/usePasswordChange";
+import ChangePasswordFormInput from "./ChangePasswordFormInput";
 
 const ChangePasswordForm = () => {
   const { onSubmit, inputs, onChange } = usePasswordChange();
@@ -7,32 +8,20 @@ const ChangePasswordForm = () => {
   return (
     <form id="changePassword-form" onSubmit={onSubmit}>
       <div id="chagnePassword-inputWrap">
-        <input
+        <ChangePasswordFormInput
           name="currentPw"
-          className="changePassword-input"
-          type="password"
-          placeholder="현재 비밀번호"
-          value={inputs.currentPw}
-          onChange={onChange}
-          required
+          onChangevalue={inputs.currentPw}
+          onChnageFunc={onChange}
         />
-        <input
+        <ChangePasswordFormInput
           name="newPw"
-          className="changePassword-input"
-          type="password"
-          placeholder="새 비밀번호"
-          value={inputs.newPw}
-          onChange={onChange}
-          required
+          onChangevalue={inputs.newPw}
+          onChnageFunc={onChange}
         />
-        <input
+        <ChangePasswordFormInput
           name="checkNewPw"
-          className="changePassword-input"
-          type="password"
-          placeholder="새 비밀번호 재확인"
-          value={inputs.checkNewPw}
-          onChange={onChange}
-          required
+          onChangevalue={inputs.checkNewPw}
+          onChnageFunc={onChange}
         />
         <button id="changePassword-submitBtn" type="submit">
           변경

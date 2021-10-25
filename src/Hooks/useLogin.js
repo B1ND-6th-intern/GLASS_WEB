@@ -4,10 +4,7 @@ import { useRecoilState } from "recoil";
 import { SERVER } from "../config/config.json";
 import { isUserData } from "../Store";
 import { validateEmail } from "../Utils/pattern/validationData";
-import withReactContent from "sweetalert2-react-content";
-import Swal from "sweetalert2";
-
-const MySwal = withReactContent(Swal);
+import { alertError, alertSuccess } from "../lib/sweetAlert2";
 
 const useLogin = () => {
   const [isUser, setIsUser] = useRecoilState(isUserData);
@@ -42,26 +39,14 @@ const useLogin = () => {
       const LoginPass = await sendLoginData();
       const { status, message, error, token } = LoginPass;
       if (status === 200) {
-        MySwal.fire({
-          position: "middle",
-          icon: "success",
-          title: `${message}`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        alertSuccess(message);
       }
       if (token) {
         localStorage.setItem("Token", token);
         setIsUser(true);
         return;
       }
-      MySwal.fire({
-        position: "middle",
-        icon: "error",
-        title: `${error}`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      alertError(error);
       setLoginData({ email: "", password: "" });
       return;
     }

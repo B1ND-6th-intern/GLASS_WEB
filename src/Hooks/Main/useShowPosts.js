@@ -11,19 +11,19 @@ const useShowPosts = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(0);
   const [feeds, setFeeds] = useRecoilState(feedData);
-
   const [ref, inView] = useInView();
 
   const loadPost = useCallback(async () => {
     setIsLoading(true);
     const url = `${SERVER}/posts/${page}`;
     try {
-      const { data : {writing} } = await axios.get(url, {
+      const {
+        data: { writing },
+      } = await axios.get(url, {
         headers: { Authorization: `Bearer ${getToken()}` },
       });
       setFeeds((prevWriting) => [...prevWriting, writing]);
       setIsLoading(false);
-      
     } catch (error) {
       const { data } = error.response;
       return data;
@@ -40,11 +40,7 @@ const useShowPosts = () => {
     }
   }, [inView, isLoading]);
 
-  useEffect(() => {
-    console.log(page);
-  }, [page]);
-
-  return { feeds, ref };
+  return { feeds, ref, loadPost };
 };
 
 export default useShowPosts;

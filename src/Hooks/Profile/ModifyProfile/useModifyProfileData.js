@@ -2,12 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { SERVER } from "../../../config/config.json";
+import { alertError, alertSuccess } from "../../../lib/sweetAlert2";
 import { modifyUserDataState } from "../../../recoil/profileAtom";
 import { getToken } from "../../../Utils/getToken";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-
-const MySwal = withReactContent(Swal);
 
 const useModifyProfileData = () => {
   const [userData, setUserData] = useRecoilState(modifyUserDataState);
@@ -84,22 +81,10 @@ const useModifyProfileData = () => {
           ...userData,
           avatar: newavatar,
         });
-        MySwal.fire({
-          position: "middle",
-          icon: "success",
-          title: `${message}`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        alertSuccess(message);
         return;
       }
-      MySwal.fire({
-        position: "middle",
-        icon: "error",
-        title: `${error}`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      alertError(error);
     }
   };
 
@@ -108,13 +93,7 @@ const useModifyProfileData = () => {
     const res = await sendModifyUserData();
     const { message, status, name, introduction } = res;
     if (status === 200) {
-      MySwal.fire({
-        position: "middle",
-        icon: "success",
-        title: `${message}`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      alertSuccess(message);
       setUserData({ ...userData, name, introduction });
     }
   };

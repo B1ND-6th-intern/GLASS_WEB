@@ -34,11 +34,7 @@ const Navigation = () => {
         <div className="navigation-container">
           <nav className="navigation-item-container">
             <Link to="/">
-              <img
-                className="navigation-item-logo-img"
-                src={Logo}
-                alt="Logo"
-              ></img>
+              <img className="navigation-item-logo-img" src={Logo} alt="Logo" />
             </Link>
             <img
               className="navigation-item-logo-whiteimg"

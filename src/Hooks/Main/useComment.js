@@ -2,11 +2,8 @@ import axios from "axios";
 import { useRef } from "react";
 import { useState } from "react";
 import { SERVER } from "../../config/config.json";
+import { commentAlertError, commentAlertSuccess } from "../../lib/sweetAlert2";
 import { getToken } from "../../Utils/getToken";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-
-const MySwal = withReactContent(Swal);
 
 const useComment = () => {
   const [commentData, setCommentData] = useState("");
@@ -58,17 +55,11 @@ const useComment = () => {
     const res = await sendCommentData(name);
     const { status, message, error } = res;
     if (status === 200) {
-      MySwal.fire({
-        position: "middle",
-        title: `${message}`,
-      });
+      commentAlertSuccess(message);
       setCommentData("");
       return;
     }
-    MySwal.fire({
-      position: "middle",
-      title: `${error}`,
-    });
+    commentAlertError(error);
   };
 
   return {

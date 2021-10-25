@@ -4,10 +4,8 @@ import axios from "axios";
 import { useRecoilState } from "recoil";
 import { saveImgData } from "../../../recoil/postImgAtom";
 import { getToken } from "../../../Utils/getToken";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-
-const MySwal = withReactContent(Swal);
+import { alertError, alertSuccess } from "../../../lib/sweetAlert2";
+import { maxFileSize } from "../../../constants/constants";
 
 const usePost = () => {
   const [imgData, setImgData] = useRecoilState(saveImgData);
@@ -59,23 +57,10 @@ const usePost = () => {
 
     resetPostData();
     if (status !== 200) {
-      MySwal.fire({
-        position: "middle",
-        icon: "error",
-        title: `${error}`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      alertError(error);
       return;
     }
-
-    MySwal.fire({
-      position: "middle",
-      icon: "success",
-      title: `${message}`,
-      showConfirmButton: false,
-      timer: 1500,
-    });
+    alertSuccess(message);
   };
 
   const sendImgsData = async (imgData) => {
@@ -94,8 +79,6 @@ const usePost = () => {
   };
 
   const onFileChange = async (event) => {
-    const maxFileSize = 10;
-
     let {
       target: { files, value },
     } = event;

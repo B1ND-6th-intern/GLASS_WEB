@@ -1,4 +1,5 @@
 import useModifyProfileButton from "../../Hooks/Profile/ModifyProfile/useModifyProfileButton";
+import ProfileModifyButton from "./ProfileModifyButton";
 import "./ProfileModifyButtonBox.css";
 
 const ProfileModifyButtonBox = () => {
@@ -7,18 +8,14 @@ const ProfileModifyButtonBox = () => {
 
   return (
     <div id="profileModifyButtonBox-container">
-      <button
-        className="profileModifyButtonBox-button"
-        onClick={onModifyProfileClick}
-      >
-        프로필 편집
-      </button>
-      <button
-        className="profileModifyButtonBox-button"
-        onClick={onPasswordChangeClick}
-      >
-        비밀번호 변경
-      </button>
+      <ProfileModifyButton
+        title="프로필 편집"
+        onClickFunc={onModifyProfileClick}
+      />
+      <ProfileModifyButton
+        title="비밀번호 변경"
+        onClickFunc={onPasswordChangeClick}
+      />
     </div>
   );
 };

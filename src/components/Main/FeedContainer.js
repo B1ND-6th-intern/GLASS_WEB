@@ -14,27 +14,23 @@ import ParentBadge from "./ClassBadges/ParentBadge";
 import TeacherBadge from "./ClassBadges/TeacherBadge";
 import { HashTagNullCheck } from "../../Utils/hashTagNullCheck";
 import useLike from "../../Hooks/Main/useLike";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+import { alertError } from "../../lib/sweetAlert2";
 
-const MySwal = withReactContent(Swal);
+const FeedContainer = ({ postData, feedRef }) => {
+  const {
+    hashtags: hashTags,
+    imgs,
+    text: explainText,
+    _id: id,
+    comments,
+    owner: { name, avatar, stuNumber, classNumber, grade, permission },
+    isLike,
+    likeCount,
+  } = postData;
 
-const FeedContainer = ({
-  name,
-  explainText,
-  hashTags,
-  imgs,
-  id,
-  comments,
-  avatar,
-  stuNumber,
-  classNumber,
-  grade,
-  permission,
-  test,
-  isLike,
-  likeCount,
-}) => {
+  const [like, setLike] = useState(isLike);
+  const [currentLikeCount, setCurrentLikeCount] = useState(likeCount);
+
   const {
     onChange,
     commentData,
@@ -51,9 +47,6 @@ const FeedContainer = ({
 
   const { onSendLikeData } = useLike();
 
-  const [like, setLike] = useState(isLike);
-  const [currentLikeCount, setCurrentLikeCount] = useState(likeCount);
-
   const onLikeClick = async (event) => {
     const {
       target: { name },
@@ -69,13 +62,7 @@ const FeedContainer = ({
       setLike((prev) => !prev);
       return;
     }
-    MySwal.fire({
-      position: "middle",
-      icon: "error",
-      title: `${error}`,
-      showConfirmButton: false,
-      timer: 1500,
-    });
+    alertError(error);
   };
 
   const [currentImgIndex, setCurrentFeedIndex] = useState(0);
@@ -118,7 +105,12 @@ const FeedContainer = ({
   const hashTagIsNull = HashTagNullCheck(hashTags);
 
   return (
-    <form name={id} className="feed-container" onSubmit={onSubmit} ref={test}>
+    <form
+      name={id}
+      className="feed-container"
+      onSubmit={onSubmit}
+      ref={feedRef}
+    >
       <div className="feed-profileWrap">
         <img
           className="feed-profileImg"
@@ -138,7 +130,7 @@ const FeedContainer = ({
             src={SERVER + "/uploads" + imgs[currentImgIndex]}
             className="feed-img"
           />
-          {imgs.length == 1 && (
+          {imgs.length != 1 && (
             <div className="feed-slideBtn-wrap">
               <button
                 name="prev"

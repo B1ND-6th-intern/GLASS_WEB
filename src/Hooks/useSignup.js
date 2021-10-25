@@ -6,10 +6,7 @@ import useCertification from "./useCertification";
 import { validateEmail } from "../Utils/pattern/validationData";
 import { useEffect } from "react";
 import { atom, useRecoilState } from "recoil";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-
-const MySwal = withReactContent(Swal);
+import { alertError, alertSuccess } from "../lib/sweetAlert2";
 
 const DataAtom = atom({
   key: "testAtom",
@@ -128,36 +125,18 @@ const useSignup = () => {
     const { status, message, error } = signupPass;
 
     if (!message && status !== 200) {
-      MySwal.fire({
-        position: "middle",
-        icon: "error",
-        title: `${error}`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      alertError(error);
       return;
     }
     const certificationData = await sendCertification();
     const { status: CertifiationStatus } = certificationData;
-    MySwal.fire({
-      position: "middle",
-      icon: "success",
-      title: `${message}`,
-      showConfirmButton: false,
-      timer: 1500,
-    });
+    alertSuccess(message);
     if (CertifiationStatus === 200) {
       signupDataReset();
       history.push("/certification");
       return;
     }
-    MySwal.fire({
-      position: "middle",
-      icon: "error",
-      title: `${error}`,
-      showConfirmButton: false,
-      timer: 1500,
-    });
+    alertError(error);
   };
 
   return {

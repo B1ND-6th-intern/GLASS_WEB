@@ -2,9 +2,7 @@ import axios from "axios";
 import { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { SERVER } from "../config/config.json";
-import sweetalert2 from "../lib/sweetAlert2";
-
-const { MySwal } = sweetalert2();
+import { alertError, certificationAlertSuccess } from "../lib/sweetAlert2";
 
 const useCertification = () => {
   const [number, setNumber] = useState("");
@@ -42,13 +40,7 @@ const useCertification = () => {
     const { status, message, sendCount, error } = certificationData;
     if (sendCount < 0) {
       if (status === 400) {
-        MySwal.fire({
-          position: "middle",
-          icon: "error",
-          title: `${error}`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        alertError(error);
       }
       history.push("/signup");
     } else {
@@ -80,13 +72,7 @@ const useCertification = () => {
     const certificationPass = await sendCertificationNumber();
     const { error, failedCount, status } = certificationPass;
     if (status === 200) {
-      MySwal.fire({
-        position: "middle",
-        icon: "success",
-        title: "인증에 성공했습니다. 로그인 페이지로 이동합니다.",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      certificationAlertSuccess();
       history.push("/");
     } else if (status === 400) {
       if (
