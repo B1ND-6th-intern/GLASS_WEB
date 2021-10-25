@@ -7,7 +7,6 @@ import "./ProfilePosts.css";
 
 const ProfilePosts = () => {
   const [userData, setUserData] = useRecoilState(modifyUserDataState);
-  console.log(userData);
 
   return (
     <div id="profilePosts-container">

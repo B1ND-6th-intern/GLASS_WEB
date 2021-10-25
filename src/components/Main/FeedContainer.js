@@ -67,7 +67,6 @@ const FeedContainer = ({
         setCurrentLikeCount((prev) => prev + 1);
       }
       setLike((prev) => !prev);
-      console.log(message);
       return;
     }
     MySwal.fire({
@@ -128,9 +127,9 @@ const FeedContainer = ({
         <span className="feed-name">
           {!permission && `${grade}${classNumber}${stuNumber} `}
           {name}
-          {permission == 0 ? <StudentBadge /> : null}
-          {permission == 1 ? <ParentBadge /> : null}
-          {permission == 2 ? <TeacherBadge /> : null}
+          {permission == 0 && <StudentBadge />}
+          {permission == 1 && <ParentBadge />}
+          {permission == 2 && <TeacherBadge />}
         </span>
       </div>
       <div className="feed-imgsWrap">
@@ -139,7 +138,7 @@ const FeedContainer = ({
             src={SERVER + "/uploads" + imgs[currentImgIndex]}
             className="feed-img"
           />
-          {imgs.length == 1 ? null : (
+          {imgs.length == 1 && (
             <div className="feed-slideBtn-wrap">
               <button
                 name="prev"
@@ -190,17 +189,17 @@ const FeedContainer = ({
             <b className="feed-explainWrap-name">{name}</b>
             <span className="feed-explainWrap-text">
               {isSummary ? explainText.slice(0, 25) + "  ..." : explainText}
-              {isSummary ? (
+              {isSummary && (
                 <button
                   className="feed-explainWrap-fullText-Btn"
                   onClick={fullTextClick}
                 >
                   더 보기
                 </button>
-              ) : null}
+              )}
             </span>
           </p>
-          {isSummary ? null : (
+          {!isSummary && (
             <p className="feed-explainWrap-hashTagWrap ">
               {hashTags.map((hashtag, index) => (
                 <p className="feed-explainWrap-hashTag" key={index}>

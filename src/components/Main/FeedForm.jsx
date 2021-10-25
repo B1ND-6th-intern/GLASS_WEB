@@ -47,7 +47,6 @@ const FeedForm = () => {
     <div id="content-postContainer">
       {feeds.map((post, index) => {
         if (post !== undefined) {
-          console.log(post);
           const {
             hashtags,
             imgs,

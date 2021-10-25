@@ -12,18 +12,18 @@ const useGetUserData = () => {
     const url = `${SERVER}/users/${getId()}`;
     try {
       const { data } = await axios.get(url);
-      const { user } = data;
-      console.log(user);
       const {
-        name,
-        grade,
-        classNumber,
-        stuNumber,
-        introduction,
-        writings,
-        avatar,
-        permission,
-      } = user;
+        user: {
+          name,
+          grade,
+          classNumber,
+          stuNumber,
+          introduction,
+          writings,
+          avatar,
+          permission,
+        },
+      } = data;
       setUserData({
         name,
         grade,

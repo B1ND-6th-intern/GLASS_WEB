@@ -2,10 +2,9 @@ import axios from "axios";
 import { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { SERVER } from "../config/config.json";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+import sweetalert2 from "../lib/sweetAlert2";
 
-const MySwal = withReactContent(Swal);
+const { MySwal } = sweetalert2();
 
 const useCertification = () => {
   const [number, setNumber] = useState("");

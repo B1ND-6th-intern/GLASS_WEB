@@ -11,7 +11,6 @@ const useShowPosts = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(0);
   const [feeds, setFeeds] = useRecoilState(feedData);
-  console.log(feeds);
 
   const [ref, inView] = useInView();
 
@@ -19,14 +18,12 @@ const useShowPosts = () => {
     setIsLoading(true);
     const url = `${SERVER}/posts/${page}`;
     try {
-      const { data } = await axios.get(url, {
+      const { data : {writing} } = await axios.get(url, {
         headers: { Authorization: `Bearer ${getToken()}` },
       });
-      const { writing } = data;
-      console.log(writing);
       setFeeds((prevWriting) => [...prevWriting, writing]);
-      console.log(feeds);
       setIsLoading(false);
+      
     } catch (error) {
       const { data } = error.response;
       return data;
@@ -39,7 +36,6 @@ const useShowPosts = () => {
 
   useEffect(() => {
     if (inView && !isLoading) {
-      console.log("ASdada");
       setPage((prev) => prev + 1);
     }
   }, [inView, isLoading]);

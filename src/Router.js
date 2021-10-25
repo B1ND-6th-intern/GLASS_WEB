@@ -19,8 +19,6 @@ const AppRouter = () => {
     setIsUser(!isToken ? false : true);
   }, []);
 
-  // setIsUser(true);
-
   return (
     <Router>
       <Switch>
