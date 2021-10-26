@@ -24,6 +24,7 @@ const useGetUserData = () => {
           permission,
         },
       } = data;
+      writings.reverse();
       setUserData({
         name,
         grade,

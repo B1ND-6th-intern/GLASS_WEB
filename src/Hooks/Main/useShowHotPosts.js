@@ -21,10 +21,14 @@ const useShowHotPosts = () => {
 
   const loadHotPosts = async () => {
     const res = await sendHotPostsData();
-    console.log(res);
+    const { status, writings } = res;
+    if (status === 200) {
+      setHotFeeds(writings);
+    }
   };
 
   useEffect(() => {
+    setHotFeeds([]);
     loadHotPosts();
   }, []);
 
