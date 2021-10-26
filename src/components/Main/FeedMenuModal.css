@@ -1,0 +1,66 @@
+.feedMenuModal-formWrap {
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+  top: 0px;
+  left: 0px;
+  z-index: 9998;
+}
+
+.feedMenuModal-box {
+  width: 403px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  border-radius: 12px;
+}
+
+.feedMenuModal-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 9999;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.feedMenuModal-Btn {
+  width: 100%;
+  height: 50px;
+  border: 1px solid var(--main-border-color);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.feedMenuModal-Btn:active {
+  background-color: rgb(216, 215, 215);
+}
+
+.feedMenuModal-exitBtn {
+  width: 25px;
+  height: 25px;
+  background: none;
+  border: 0px;
+  outline: none;
+  position: absolute;
+  cursor: pointer;
+  top: -26px;
+  right: 4px;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+}
+
+.feedMenuModal-exitBtn-img {
+  width: 98%;
+}

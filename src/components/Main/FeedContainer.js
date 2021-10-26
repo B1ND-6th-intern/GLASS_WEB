@@ -16,6 +16,9 @@ import { HashTagNullCheck } from "../../Utils/hashTagNullCheck";
 import useLike from "../../Hooks/Main/useLike";
 import { alertError } from "../../lib/sweetAlert2";
 import { commentAlertError, commentAlertSuccess } from "../../lib/sweetAlert2";
+import PostMenuImg from "../../assets/img/PostMenu.svg";
+import useDelete from "../../Hooks/Nav/PostForm/useFeedMenu";
+import FeedMenuModal from "./FeedMenuModal";
 
 const FeedContainer = ({ postData, feedRef }) => {
   const {
@@ -27,6 +30,7 @@ const FeedContainer = ({ postData, feedRef }) => {
     owner: { name, avatar, stuNumber, classNumber, grade, permission },
     isLike,
     likeCount,
+    isOwner,
   } = postData;
 
   const [currentComments, setCurrentComments] = useState(comments);
@@ -49,6 +53,23 @@ const FeedContainer = ({ postData, feedRef }) => {
   } = useComment();
 
   const { onSendLikeData } = useLike();
+
+  const { isMenu, toggleFeedMenuClick } = useDelete();
+
+  useEffect(() => {
+    if (isMenu) {
+      document.body.style.cssText = `
+        position : fixed;
+        top : -${window.scrollY}px
+        overflow-y : scroll;
+        width : 100%`;
+      return () => {
+        const scrollY = document.body.style.top;
+        document.body.style.cssText = "";
+        window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+      };
+    }
+  }, [isMenu]);
 
   const onLikeClick = async (event) => {
     const {
@@ -125,139 +146,155 @@ const FeedContainer = ({ postData, feedRef }) => {
   const hashTagIsNull = HashTagNullCheck(hashTags);
 
   return (
-    <form
-      name={id}
-      className="feed-container"
-      onSubmit={onSubmit}
-      ref={feedRef}
-    >
-      <div className="feed-profileWrap">
-        <img
-          className="feed-profileImg"
-          src={avatar === "" ? DefaultUserImg : `${SERVER}/uploads${avatar}`}
-        />
-        <span className="feed-name">
-          {!permission && `${grade}${classNumber}${stuNumber} `}
-          {name}
-          {permission == 0 && <StudentBadge />}
-          {permission == 1 && <ParentBadge />}
-          {permission == 2 && <TeacherBadge />}
-        </span>
-      </div>
-      <div className="feed-imgsWrap">
-        <div className="feed-imgWrap">
+    <>
+      <form
+        name={id}
+        className="feed-container"
+        onSubmit={onSubmit}
+        ref={feedRef}
+      >
+        <div className="feed-profileWrap">
           <img
-            src={SERVER + "/uploads" + imgs[currentImgIndex]}
-            className="feed-img"
+            className="feed-profileImg"
+            src={avatar === "" ? DefaultUserImg : `${SERVER}/uploads${avatar}`}
           />
-          {imgs.length != 1 && (
-            <div className="feed-slideBtn-wrap">
-              <button
-                name="prev"
-                type="button"
-                className="feed-slidePrev-btn"
-                onClick={clickChangeFeedIndex}
-              >
-                <img
-                  name="prev"
-                  className="feed-slidePrev-btnImg"
-                  src={FeedImgPrev}
-                />
-              </button>
-              <button
-                name="next"
-                type="button"
-                className="feed-slideNext-btn"
-                onClick={clickChangeFeedIndex}
-              >
-                <img
-                  name="next"
-                  className="feed-slidePrev-btnImg"
-                  src={FeedImgNext}
-                />
-              </button>
-            </div>
+          <span className="feed-name">
+            {!permission && `${grade}${classNumber}${stuNumber} `}
+            {name}
+            {permission == 0 && <StudentBadge />}
+            {permission == 1 && <ParentBadge />}
+            {permission == 2 && <TeacherBadge />}
+          </span>
+          {isOwner && (
+            <button
+              className="feed-postMenuBtn"
+              type="button"
+              onClick={toggleFeedMenuClick}
+            >
+              <img src={PostMenuImg} className="feed-postMenuImg" />
+            </button>
           )}
         </div>
-      </div>
-      <div className="feed-explainWrap">
-        <div className="feed-explainWrap-header">
-          <button
-            className="feed-likeBtn"
-            type="button"
-            name={id}
-            onClick={onLikeClick}
-          >
+        <div className="feed-imgsWrap">
+          <div className="feed-imgWrap">
             <img
-              className="feed-likeBtn-img"
-              src={like ? FillLikeImg : LikeImg}
-              name={id}
+              src={SERVER + "/uploads" + imgs[currentImgIndex]}
+              className="feed-img"
             />
-          </button>
-          <p className="feed-likeCount">{`${currentLikeCount}명이 좋아합니다.`}</p>
+            {imgs.length != 1 && (
+              <div className="feed-slideBtn-wrap">
+                <button
+                  name="prev"
+                  type="button"
+                  className="feed-slidePrev-btn"
+                  onClick={clickChangeFeedIndex}
+                >
+                  <img
+                    name="prev"
+                    className="feed-slidePrev-btnImg"
+                    src={FeedImgPrev}
+                  />
+                </button>
+                <button
+                  name="next"
+                  type="button"
+                  className="feed-slideNext-btn"
+                  onClick={clickChangeFeedIndex}
+                >
+                  <img
+                    name="next"
+                    className="feed-slidePrev-btnImg"
+                    src={FeedImgNext}
+                  />
+                </button>
+              </div>
+            )}
+          </div>
         </div>
-        <div className="feed-explainWrap-middle">
-          <p className="feed-explainWrap-textWrap" ref={summaryWrap}>
-            <b className="feed-explainWrap-name">{name}</b>
-            <span className="feed-explainWrap-text">
-              {isSummary ? explainText.slice(0, 25) + "  ..." : explainText}
-              {isSummary && (
+        <div className="feed-explainWrap">
+          <div className="feed-explainWrap-header">
+            <button
+              className="feed-likeBtn"
+              type="button"
+              name={id}
+              onClick={onLikeClick}
+            >
+              <img
+                className="feed-likeBtn-img"
+                src={like ? FillLikeImg : LikeImg}
+                name={id}
+              />
+            </button>
+            <p className="feed-likeCount">{`${currentLikeCount}명이 좋아합니다.`}</p>
+          </div>
+          <div className="feed-explainWrap-middle">
+            <p className="feed-explainWrap-textWrap" ref={summaryWrap}>
+              <b className="feed-explainWrap-name">{name}</b>
+              <span className="feed-explainWrap-text">
+                {isSummary ? explainText.slice(0, 25) + "  ..." : explainText}
+                {isSummary && (
+                  <button
+                    className="feed-explainWrap-fullText-Btn"
+                    onClick={fullTextClick}
+                    type="button"
+                  >
+                    더 보기
+                  </button>
+                )}
+              </span>
+            </p>
+            {!isSummary && (
+              <p className="feed-explainWrap-hashTagWrap ">
+                {hashTags.map((hashtag, index) => (
+                  <p className="feed-explainWrap-hashTag" key={index}>
+                    {hashTagIsNull && "#" + hashtag}
+                  </p>
+                ))}
+              </p>
+            )}
+            <div className="feed-explainWrap-commentWrap" ref={commentWrap}>
+              {currentComments &&
+                currentComments.map((comment, index) => {
+                  const {
+                    text,
+                    owner: { name },
+                  } = comment;
+                  if (allComment && index < 3) {
+                    return <Comment name={name} comment={text} key={index} />;
+                  } else if (!allComment) {
+                    return <Comment name={name} comment={text} key={index} />;
+                  }
+                })}
+              {allComment && (
                 <button
                   className="feed-explainWrap-fullText-Btn"
-                  onClick={fullTextClick}
+                  onClick={allCommentClick}
                   type="button"
                 >
                   더 보기
                 </button>
               )}
-            </span>
-          </p>
-          {!isSummary && (
-            <p className="feed-explainWrap-hashTagWrap ">
-              {hashTags.map((hashtag, index) => (
-                <p className="feed-explainWrap-hashTag" key={index}>
-                  {hashTagIsNull && "#" + hashtag}
-                </p>
-              ))}
-            </p>
-          )}
-          <div className="feed-explainWrap-commentWrap" ref={commentWrap}>
-            {currentComments &&
-              currentComments.map((comment, index) => {
-                const {
-                  text,
-                  owner: { name },
-                } = comment;
-                if (allComment && index < 3) {
-                  return <Comment name={name} comment={text} key={index} />;
-                } else if (!allComment) {
-                  return <Comment name={name} comment={text} key={index} />;
-                }
-              })}
-            {allComment && (
-              <button
-                className="feed-explainWrap-fullText-Btn"
-                onClick={allCommentClick}
-                type="button"
-              >
-                더 보기
-              </button>
-            )}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="feed-commentWrap">
-        <input
-          className="feed-commentInput"
-          onChange={onChange}
-          placeholder="댓글 달기"
-          value={commentData}
-        />
-        <button type="submit" className="feed-submitComment">
-          게시
-        </button>
-      </div>
-    </form>
+        <div className="feed-commentWrap">
+          <input
+            className="feed-commentInput"
+            onChange={onChange}
+            placeholder="댓글 달기"
+            value={commentData}
+          />
+          <button type="submit" className="feed-submitComment">
+            게시
+          </button>
+        </div>
+      </form>
+      <FeedMenuModal
+        id={id}
+        toggleFeedMenuClick={toggleFeedMenuClick}
+        isMenu={isMenu}
+      />
+    </>
   );
 };
 
