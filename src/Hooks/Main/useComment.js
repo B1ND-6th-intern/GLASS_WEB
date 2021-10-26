@@ -2,7 +2,6 @@ import axios from "axios";
 import { useRef } from "react";
 import { useState } from "react";
 import { SERVER } from "../../config/config.json";
-import { commentAlertError, commentAlertSuccess } from "../../lib/sweetAlert2";
 import { getToken } from "../../Utils/getToken";
 
 const useComment = () => {
@@ -47,25 +46,9 @@ const useComment = () => {
     }
   };
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    const {
-      target: { name },
-    } = event;
-    const res = await sendCommentData(name);
-    const { status, message, error } = res;
-    if (status === 200) {
-      commentAlertSuccess(message);
-      setCommentData("");
-      return;
-    }
-    commentAlertError(error);
-  };
-
   return {
     onChange,
     commentData,
-    onSubmit,
     summaryWrap,
     setIsSummary,
     isSummary,
@@ -74,6 +57,8 @@ const useComment = () => {
     allCommentClick,
     commentWrap,
     setAllComment,
+    sendCommentData,
+    setCommentData,
   };
 };
 

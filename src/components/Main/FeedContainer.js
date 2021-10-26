@@ -15,6 +15,7 @@ import TeacherBadge from "./ClassBadges/TeacherBadge";
 import { HashTagNullCheck } from "../../Utils/hashTagNullCheck";
 import useLike from "../../Hooks/Main/useLike";
 import { alertError } from "../../lib/sweetAlert2";
+import { commentAlertError, commentAlertSuccess } from "../../lib/sweetAlert2";
 
 const FeedContainer = ({ postData, feedRef }) => {
   const {
@@ -28,13 +29,13 @@ const FeedContainer = ({ postData, feedRef }) => {
     likeCount,
   } = postData;
 
+  const [currentComments, setCurrentComments] = useState(comments);
   const [like, setLike] = useState(isLike);
   const [currentLikeCount, setCurrentLikeCount] = useState(likeCount);
 
   const {
     onChange,
     commentData,
-    onSubmit,
     summaryWrap,
     setIsSummary,
     isSummary,
@@ -43,6 +44,8 @@ const FeedContainer = ({ postData, feedRef }) => {
     allCommentClick,
     commentWrap,
     setAllComment,
+    sendCommentData,
+    setCommentData,
   } = useComment();
 
   const { onSendLikeData } = useLike();
@@ -63,6 +66,23 @@ const FeedContainer = ({ postData, feedRef }) => {
       return;
     }
     alertError(error);
+  };
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    const {
+      target: { name },
+    } = event;
+    const res = await sendCommentData(name);
+    console.log(res);
+    const { status, message, error, comment } = res;
+    if (status === 200) {
+      commentAlertSuccess(message);
+      setCommentData("");
+      setCurrentComments((prevComments) => [...prevComments, comment]);
+      return;
+    }
+    commentAlertError(error);
   };
 
   const [currentImgIndex, setCurrentFeedIndex] = useState(0);
@@ -185,6 +205,7 @@ const FeedContainer = ({ postData, feedRef }) => {
                 <button
                   className="feed-explainWrap-fullText-Btn"
                   onClick={fullTextClick}
+                  type="button"
                 >
                   더 보기
                 </button>
@@ -201,8 +222,8 @@ const FeedContainer = ({ postData, feedRef }) => {
             </p>
           )}
           <div className="feed-explainWrap-commentWrap" ref={commentWrap}>
-            {comments &&
-              comments.map((comment, index) => {
+            {currentComments &&
+              currentComments.map((comment, index) => {
                 const {
                   text,
                   owner: { name },
@@ -217,6 +238,7 @@ const FeedContainer = ({ postData, feedRef }) => {
               <button
                 className="feed-explainWrap-fullText-Btn"
                 onClick={allCommentClick}
+                type="button"
               >
                 더 보기
               </button>
