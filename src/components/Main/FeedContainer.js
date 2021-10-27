@@ -17,8 +17,8 @@ import useLike from "../../Hooks/Main/useLike";
 import { alertError } from "../../lib/sweetAlert2";
 import { commentAlertError, commentAlertSuccess } from "../../lib/sweetAlert2";
 import PostMenuImg from "../../assets/img/PostMenu.svg";
-import useDelete from "../../Hooks/Nav/PostForm/useFeedMenu";
 import FeedMenuModal from "./FeedMenuModal";
+import useFeedMenu from "../../Hooks/Main/useFeedMenu";
 
 const FeedContainer = ({ postData, feedRef }) => {
   const {
@@ -54,7 +54,7 @@ const FeedContainer = ({ postData, feedRef }) => {
 
   const { onSendLikeData } = useLike();
 
-  const { isMenu, toggleFeedMenuClick } = useDelete();
+  const { isMenu, toggleFeedMenuClick } = useFeedMenu();
 
   useEffect(() => {
     if (isMenu) {
@@ -258,11 +258,29 @@ const FeedContainer = ({ postData, feedRef }) => {
                   const {
                     text,
                     owner: { name },
+                    _id: id,
+                    isOwner,
                   } = comment;
                   if (allComment && index < 3) {
-                    return <Comment name={name} comment={text} key={index} />;
+                    return (
+                      <Comment
+                        name={name}
+                        comment={text}
+                        key={index}
+                        id={id}
+                        isOwner={isOwner}
+                      />
+                    );
                   } else if (!allComment) {
-                    return <Comment name={name} comment={text} key={index} />;
+                    return (
+                      <Comment
+                        name={name}
+                        comment={text}
+                        key={index}
+                        id={id}
+                        isOwner={isOwner}
+                      />
+                    );
                   }
                 })}
               {allComment && (

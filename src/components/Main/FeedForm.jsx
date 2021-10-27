@@ -13,16 +13,20 @@ const FeedForm = () => {
 
   return (
     <div id="content-postContainer">
-      {feeds.map((post, index) => {
-        let isUndefined = undefinedCheck(post);
-        if (isUndefined) {
-          return feeds.length - 1 == index ? (
-            <FeedContainer postData={post} feedRef={ref} />
-          ) : (
-            <FeedContainer postData={post} />
-          );
-        }
-      })}
+      {feeds ? (
+        feeds.map((post, index) => {
+          let isUndefined = undefinedCheck(post);
+          if (isUndefined) {
+            return feeds.length - 1 == index ? (
+              <FeedContainer postData={post} feedRef={ref} />
+            ) : (
+              <FeedContainer postData={post} />
+            );
+          }
+        })
+      ) : (
+        <ErrorForm />
+      )}
     </div>
   );
 };
