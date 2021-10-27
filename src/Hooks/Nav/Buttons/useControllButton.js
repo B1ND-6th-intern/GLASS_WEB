@@ -1,10 +1,13 @@
 import { useRecoilState } from "recoil";
 import { buttonState } from "../../../recoil/modalAtom";
+import { saveImgData } from "../../../recoil/postImgAtom";
 
 const useControllButton = () => {
+  const [imgData, setImgData] = useRecoilState(saveImgData);
   const [buttonStates, setButtonStates] = useRecoilState(buttonState);
 
   const togglePostClick = () => {
+    setImgData([]);
     setButtonStates({
       ...buttonStates,
       isPostClick: !buttonStates.isPostClick,
