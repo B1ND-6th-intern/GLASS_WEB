@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SERVER } from "../../../config/config.json";
 import { getToken } from "../../../Utils/getToken";
 
@@ -23,12 +23,7 @@ const useDelete = () => {
     }
   };
 
-  const deleteFeed = async (id) => {
-    const res = await sentDeleteFeedData(id);
-    console.log(res);
-  };
-
-  return { isMenu, toggleFeedMenuClick, deleteFeed };
+  return { isMenu, toggleFeedMenuClick, sentDeleteFeedData };
 };
 
 export default useDelete;

@@ -1,9 +1,22 @@
 import "./FeedMenuModal.css";
 import FeedMenuExitiImg from "../../assets/img/ExitServiceCenter.svg";
 import useDelete from "../../Hooks/Nav/PostForm/useFeedMenu";
+import sweetalert2, { alertError, alertSuccess } from "../../lib/sweetAlert2";
 
 const FeedMenuModal = ({ toggleFeedMenuClick, isMenu, id }) => {
-  const { deleteFeed } = useDelete();
+  const { sentDeleteFeedData } = useDelete();
+
+  const deleteFeed = async (id) => {
+    const res = await sentDeleteFeedData(id);
+    const { status, error, message } = res;
+    if (status === 200) {
+      alertSuccess(message);
+      toggleFeedMenuClick();
+      return;
+    }
+    alertError(error);
+    toggleFeedMenuClick();
+  };
 
   return (
     <>
