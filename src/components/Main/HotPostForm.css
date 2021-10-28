@@ -1,8 +1,8 @@
 #content-hotPostContainer {
-  width: 300px;
+  width: 30%;
   height: 874px;
   position: fixed;
-  left: 1120px;
+  left: 668px;
   display: flex;
   flex-direction: column;
 }

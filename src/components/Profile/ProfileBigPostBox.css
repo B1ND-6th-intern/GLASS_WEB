@@ -1,0 +1,76 @@
+.profilePostBox-containerWrap {
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+  top: 0px;
+  left: 0px;
+  z-index: 3;
+}
+
+.profileBigPostBox-container {
+  width: 1200px;
+  height: 890px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  display: flex;
+}
+
+.profileBigPostBox-imgsWrap {
+  width: 60%;
+  height: 100%;
+  background-color: black;
+}
+
+.profileBigPostBox-img {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+}
+
+.profileBigPostBox-infoWrap {
+  width: 40%;
+  height: 100%;
+}
+
+.profileBigPostBox-ProfileInfoWrap {
+  border-bottom: 1px solid var(--main-border-color);
+  height: 65px;
+  padding: 14px 16px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.profileBigPostBox-profileImg {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 100px;
+}
+
+.profileBigPostBox-name {
+  height: 20px;
+  margin-left: 14px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.profileBigPostBox-CommentWrap {
+  height: 680px;
+  width: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  box-sizing: border-box;
+}
+.profileBigPostBox-CommentWrap::-webkit-scrollbar {
+  display: none;
+}

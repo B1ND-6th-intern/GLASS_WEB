@@ -14,12 +14,17 @@ const ProfilePosts = () => {
       {userData.writings && userData.writings.length !== 0 ? (
         <div id="profilePosts-postsWrap">
           {userData.writings.map((post) => {
-            const { likeCount, comments } = post;
+            console.log(post);
+            const { likeCount, comments, imgs, text, hashtags, _id } = post;
             return (
               <ProfilePostBox
                 img={SERVER + "/uploads" + post.imgs[0]}
                 likeCount={likeCount}
                 commentCount={comments.length}
+                imgs={imgs}
+                text={text}
+                hashtags={hashtags}
+                id={_id}
               />
             );
           })}

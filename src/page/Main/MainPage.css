@@ -4,4 +4,5 @@
   height: auto;
   width: 970px;
   display: flex;
+  position: relative;
 }
