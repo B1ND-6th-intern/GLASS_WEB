@@ -6,12 +6,15 @@ import { HashTagNullCheck } from "../../Utils/hashTagNullCheck";
 import ProfileBigPostComment from "./ProfileBigPostComment";
 import WhiteDeleteBtn from "../../assets/img/WhiteDeleteBtn.svg";
 import useBigPostBox from "../../Hooks/Profile/useBigPostBox";
+import FillLikeImg from "../../assets/img/FillLike.svg";
+import LikeImg from "../../assets/img/Like.svg";
 import { useEffect, useState } from "react";
 
 const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
   const [userData, setUserData] = useRecoilState(modifyUserDataState);
   const [postData, setPostData] = useState();
   const { sendPostData } = useBigPostBox(id);
+  const [currentImgIndex, setCurrentFeedIndex] = useState(0);
 
   const getPostData = async () => {
     try {
@@ -19,6 +22,29 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
       setPostData(data);
     } catch (e) {
       const data = e.response;
+    }
+  };
+
+  const clickChangeFeedIndex = (event) => {
+    const {
+      target: { name },
+    } = event;
+
+    if (name === "prev") {
+      let currentIndex = currentImgIndex;
+      if (currentIndex <= 0) {
+        setCurrentFeedIndex(0);
+      } else {
+        setCurrentFeedIndex((prev) => prev - 1);
+      }
+    } else if (name === "next") {
+      let currentIndex = currentImgIndex;
+      if (currentIndex >= postData.imgs.length - 1) {
+        setCurrentFeedIndex(postData.imgs.length - 1);
+        return;
+      } else {
+        setCurrentFeedIndex((prev) => prev + 1);
+      }
     }
   };
 
@@ -35,8 +61,24 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
               <div className="profileBigPostBox-imgsWrap">
                 <img
                   className="profileBigPostBox-img"
-                  src={`${SERVER}/uploads/${postData.imgs[0]}`}
+                  src={`${SERVER}/uploads/${postData.imgs[currentImgIndex]}`}
                 />
+                {postData.imgs.length != 1 && (
+                  <div className="profileBigPostBox-slideBtnWrap">
+                    <button
+                      name="prev"
+                      type="button"
+                      className="profileBigPostBox-prevBtn"
+                      onClick={clickChangeFeedIndex}
+                    ></button>
+                    <button
+                      name="next"
+                      type="button"
+                      className="profileBigPostBox-nextBtn"
+                      onClick={clickChangeFeedIndex}
+                    ></button>
+                  </div>
+                )}
               </div>
               <div className="profileBigPostBox-infoWrap">
                 <div className="profileBigPostBox-ProfileInfoWrap">
@@ -67,7 +109,8 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
                                 className="profileBigPostBox-myCommentHashTag"
                                 key={index}
                               >
-                                {HashTagNullCheck(v) && `#` + v}
+                                {HashTagNullCheck(postData?.hashtags) &&
+                                  `#` + v}
                               </p>
                             );
                           })}
@@ -82,6 +125,21 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
                       />
                     );
                   })}
+                </div>
+                <div className="profileBigPostBox-interactionWrap">
+                  <div className="profileBigPostBox-likeWrap">
+                    <button type="button" className="profileBigPostBox-likeBtn">
+                      <img
+                        className="profileBigPostBox-likeBtnImg"
+                        src={LikeImg}
+                      />
+                    </button>
+                  </div>
+                  <div className="profileBigPostBox-likeCountWrap">
+                    <p className="profileBigPostBox-likeCount">
+                      {postData.likeCount}명이 좋아합니다
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
