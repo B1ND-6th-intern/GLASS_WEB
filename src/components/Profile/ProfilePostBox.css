@@ -1,10 +1,67 @@
 .profilePostBox-container {
   width: 288px;
   height: 288px;
+  position: relative;
+}
+
+.profilePostBox-infoWrap {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.profilePostBox-likeCountWrap {
+  color: white;
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  align-items: center;
+}
+
+.profilePostBox-likeCountImg {
+  width: 25px;
+  margin-right: 3px;
+}
+
+.poriflePostBox-commentCountWrap {
+  color: white;
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  align-items: center;
+}
+
+.poriflePostBox-commentCountImg {
+  width: 25px;
+  margin-right: 3px;
 }
 
 .profilePostBox-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.profilePostBox-container:hover .profilePostBox-infoWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 25px;
+}
+
+.profilePostBox-container:hover .profilePostBox-blind {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.profilePostBox-blind {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
 }

@@ -23,7 +23,6 @@ const useShowPosts = () => {
         headers: { Authorization: `Bearer ${getToken()}` },
       });
       setFeeds((prevWriting) => [...prevWriting, writing]);
-      console.log(feeds);
       setIsLoading(false);
     } catch (error) {
       const { data } = error.response;
