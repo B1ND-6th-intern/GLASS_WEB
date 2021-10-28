@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useResetRecoilState } from "recoil";
 import { isUserData } from "../../Store";
 import { SERVER } from "../../config/config.json";
 import { feedData } from "../../recoil/postDataAtom";
@@ -11,6 +11,7 @@ const useShowPosts = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(0);
   const [feeds, setFeeds] = useRecoilState(feedData);
+  const resetFeeds = useResetRecoilState(feedData);
   const [ref, inView] = useInView();
 
   const loadPost = useCallback(async () => {
@@ -33,6 +34,10 @@ const useShowPosts = () => {
   useEffect(() => {
     loadPost();
   }, [loadPost]);
+
+  useEffect(() => {
+    resetFeeds();
+  }, []);
 
   useEffect(() => {
     if (inView && !isLoading) {

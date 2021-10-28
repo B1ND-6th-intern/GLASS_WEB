@@ -6,9 +6,10 @@ import useBigPostBox from "../../Hooks/Profile/useBigPostBox";
 import ProfileBigPostBox from "./ProfileBigPostBox";
 
 const ProfilePostBox = ({ img, likeCount, commentCount, imgs, id }) => {
-  const { toggleClickBigPost, isBig, sendPostData } = useBigPostBox();
-
-  const [postData, setPostData] = useState();
+  const [isBig, setIsBig] = useState(false);
+  const toggleClickBigPost = () => {
+    setIsBig((prev) => !prev);
+  };
 
   useEffect(() => {
     if (isBig) {
@@ -25,21 +26,13 @@ const ProfilePostBox = ({ img, likeCount, commentCount, imgs, id }) => {
     }
   }, [isBig]);
 
-  const getPostData = async (id) => {
-    const res = await sendPostData(id);
-    toggleClickBigPost();
-    console.log(res);
-    const { writing } = res;
-    setPostData(writing);
-  };
-
   return (
     <>
       <div className="profilePostBox-container">
         <button
           className="profilePostBox-infoWrap"
           type="button"
-          onClick={() => getPostData(id)}
+          onClick={toggleClickBigPost}
         >
           <div className="profilePostBox-likeCountWrap">
             <img src={WhiteFillLike} className="profilePostBox-likeCountImg" />
@@ -56,7 +49,9 @@ const ProfilePostBox = ({ img, likeCount, commentCount, imgs, id }) => {
         <img className="profilePostBox-img" src={img} />
         <div className="profilePostBox-blind"></div>
       </div>
-      {postData && <ProfileBigPostBox postData={postData} isBig={isBig} />}
+      {isBig && (
+        <ProfileBigPostBox id={id} toggleClickBigPost={toggleClickBigPost} />
+      )}
     </>
   );
 };

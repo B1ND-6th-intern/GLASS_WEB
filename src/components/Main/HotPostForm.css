@@ -1,10 +1,14 @@
 #content-hotPostContainer {
-  width: 30%;
+  width: 300px;
   height: 874px;
-  position: fixed;
-  left: 668px;
+  /* position: fixed;
+  left: 57%;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; */
+  position: -webkit-sticky;
+  position: sticky;
+  top: 95px;
+  margin-left: 1%;
 }
 
 #content-titleWrap {

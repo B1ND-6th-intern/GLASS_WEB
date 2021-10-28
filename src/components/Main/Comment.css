@@ -8,6 +8,7 @@
   font-weight: bold;
   margin: 0px;
   font-size: 14px;
+  min-width: 46px;
 }
 
 .comment-text {

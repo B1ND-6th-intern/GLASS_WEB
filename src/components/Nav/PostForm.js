@@ -128,6 +128,7 @@ const PostForm = () => {
                   onClick={(event) => {
                     onSubmit(event);
                     resetForm();
+                    
                   }}
                 />
               </div>
