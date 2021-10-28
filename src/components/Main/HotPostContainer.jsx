@@ -4,7 +4,6 @@ import DefaultUserImg from "../../assets/img/DefaultUserImg.svg";
 import FillLikeImg from "../../assets/img/FillLike.svg";
 
 const HotPostContainer = ({ img, name, likeCount, text, avatar }) => {
-  console.log(avatar);
   return (
     <div className="hotPost-container">
       <div className="hotPost-imgWrap">
