@@ -86,8 +86,10 @@ const PostForm = () => {
                             />
                             <button
                               name={index}
+                              id={img}
                               className="navigation-item-post-form-delete-img-btn"
                               onClick={onDeleteImg}
+                              type="button"
                             />
                           </div>
                         );

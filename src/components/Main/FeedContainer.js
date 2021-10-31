@@ -213,19 +213,21 @@ const FeedContainer = ({ postData, feedRef }) => {
         </div>
         <div className="feed-explainWrap">
           <div className="feed-explainWrap-header">
-            <button
-              className="feed-likeBtn"
-              type="button"
-              name={id}
-              onClick={onLikeClick}
-            >
-              <img
-                className="feed-likeBtn-img"
-                src={like ? FillLikeImg : LikeImg}
+            <div className="feed-explainWrap-headerWrap">
+              <button
+                className="feed-likeBtn"
+                type="button"
                 name={id}
-              />
-            </button>
-            <p className="feed-likeCount">{`${currentLikeCount}명이 좋아합니다.`}</p>
+                onClick={onLikeClick}
+              >
+                <img
+                  className="feed-likeBtn-img"
+                  src={like ? FillLikeImg : LikeImg}
+                  name={id}
+                />
+              </button>
+              <p className="feed-likeCount">{`${currentLikeCount}명이 좋아합니다.`}</p>
+            </div>
           </div>
           <div className="feed-explainWrap-middle">
             <p className="feed-explainWrap-textWrap" ref={summaryWrap}>
