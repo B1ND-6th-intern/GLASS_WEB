@@ -10,6 +10,8 @@ import FillLikeImg from "../../assets/img/FillLike.svg";
 import LikeImg from "../../assets/img/Like.svg";
 import { useEffect, useState } from "react";
 import DefaultUserImg from "../../assets/img/DefaultUserImg.svg";
+import FeedImgNext from "../../assets/img/FeedImgNext.svg";
+import FeedImgPrev from "../../assets/img/FeedImgPrev.svg";
 
 const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
   const [userData, setUserData] = useRecoilState(modifyUserDataState);
@@ -71,13 +73,25 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
                       type="button"
                       className="profileBigPostBox-prevBtn"
                       onClick={clickChangeFeedIndex}
-                    ></button>
+                    >
+                      <img
+                        name="prev"
+                        src={FeedImgPrev}
+                        className="profileBigPostBox-prevBtnImg"
+                      />
+                    </button>
                     <button
                       name="next"
                       type="button"
                       className="profileBigPostBox-nextBtn"
                       onClick={clickChangeFeedIndex}
-                    ></button>
+                    >
+                      <img
+                        name="next"
+                        src={FeedImgNext}
+                        className="profileBigPostBox-nextBtnImg"
+                      />
+                    </button>
                   </div>
                 )}
               </div>
