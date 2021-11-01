@@ -5,9 +5,11 @@ import { SERVER } from "../config/config.json";
 import { isUserData } from "../Store";
 import { validateEmail } from "../Utils/pattern/validationData";
 import { alertError, alertSuccess } from "../lib/sweetAlert2";
+import { useHistory } from "react-router";
 
 const useLogin = () => {
   const [isUser, setIsUser] = useRecoilState(isUserData);
+  const history = useHistory();
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -29,6 +31,7 @@ const useLogin = () => {
       return data;
     } catch (error) {
       const { data } = error.response;
+
       return data;
     }
   };

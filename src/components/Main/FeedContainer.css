@@ -1,5 +1,5 @@
 .feed-container {
-  width: 650px;
+  width: 758px;
   height: auto;
   box-sizing: border-box;
   border: 1px solid var(--main-border-color);
@@ -22,6 +22,7 @@
   height: 35px;
   border-radius: 40px;
   object-fit: cover;
+  border: 1px solid var(--main-border-color);
 }
 
 .feed-name {
@@ -49,7 +50,7 @@
 }
 
 .feed-imgsWrap {
-  height: 648px;
+  height: 758px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -160,7 +161,7 @@
   box-sizing: border-box;
   padding: 16px;
   padding-top: 0px;
-  padding-bottom: 10px;
+  padding-bottom: 16px;
 }
 
 .feed-explainWrap-textWrap {
@@ -168,10 +169,11 @@
   font-size: 15px;
   word-break: break-all;
   overflow-x: hidden;
+  height: auto;
 }
 
 .feed-explainWrap-name {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .feed-explainWrap-text {
@@ -202,7 +204,7 @@
 .feed-commentWrap {
   width: 100%;
   height: 58px;
-  padding: 8px;
+  padding: 8px 16px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -226,7 +228,6 @@
   word-break: break-all;
   overflow-x: visible;
   border: 0px;
-  margin-left: auto;
   outline: none;
   font-size: 16px;
 }
@@ -240,4 +241,5 @@
   border: 0px;
   outline: none;
   cursor: pointer;
+  margin-left: auto;
 }

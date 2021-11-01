@@ -19,10 +19,10 @@ const HotPostForm = () => {
             return (
               <HotPostContainer
                 img={hotFeed.imgs[0]}
-                name={hotFeed.owner.name}
+                name={hotFeed.owner?.name}
                 likeCount={hotFeed.likeCount}
                 text={hotFeed.text}
-                avatar={hotFeed.owner.avatar}
+                avatar={hotFeed.owner?.avatar}
               />
             );
           })}

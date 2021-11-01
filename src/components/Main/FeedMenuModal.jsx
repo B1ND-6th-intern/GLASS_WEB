@@ -31,11 +31,7 @@ const FeedMenuModal = ({ toggleFeedMenuClick, isMenu, id }) => {
               >
                 삭제
               </button>
-              <button
-                className="feedMenuModal-Btn"
-                type="button"
-                onClick={() => console.log("수정")}
-              >
+              <button className="feedMenuModal-Btn" type="button">
                 수정
               </button>
             </div>

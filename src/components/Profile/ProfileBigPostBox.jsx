@@ -9,6 +9,7 @@ import useBigPostBox from "../../Hooks/Profile/useBigPostBox";
 import FillLikeImg from "../../assets/img/FillLike.svg";
 import LikeImg from "../../assets/img/Like.svg";
 import { useEffect, useState } from "react";
+import DefaultUserImg from "../../assets/img/DefaultUserImg.svg";
 
 const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
   const [userData, setUserData] = useRecoilState(modifyUserDataState);
@@ -84,14 +85,22 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
                 <div className="profileBigPostBox-ProfileInfoWrap">
                   <img
                     className="profileBigPostBox-profileImg"
-                    src={`${SERVER}/uploads/${userData.avatar}`}
+                    src={
+                      userData.avatar === ""
+                        ? DefaultUserImg
+                        : `${SERVER}/uploads${userData.avatar}`
+                    }
                   />
                   <div className="profileBigPostBox-name">{userData.name}</div>
                 </div>
                 <div className="profileBigPostBox-CommentWrap">
                   <div className="profileBigPostBox-myCommentWrap">
                     <img
-                      src={`${SERVER}/uploads/${userData.avatar}`}
+                      src={
+                        userData.avatar === ""
+                          ? DefaultUserImg
+                          : `${SERVER}/uploads${userData.avatar}`
+                      }
                       className="profileBigPostBox-myCommentImg"
                     />
                     <div className="profileBigPostBox-myCommentTextWrap">

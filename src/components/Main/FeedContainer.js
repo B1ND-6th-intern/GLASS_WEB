@@ -95,7 +95,6 @@ const FeedContainer = ({ postData, feedRef }) => {
       target: { name },
     } = event;
     const res = await sendCommentData(name);
-    console.log(res);
     const { status, message, error, comment } = res;
     if (status === 200) {
       commentAlertSuccess(message);
@@ -132,7 +131,7 @@ const FeedContainer = ({ postData, feedRef }) => {
   };
 
   useEffect(() => {
-    if (summaryWrap.current.clientHeight > 20) {
+    if (summaryWrap.current.clientHeight > 21) {
       setIsSummary(true);
     }
   }, [summaryWrap]);
@@ -233,7 +232,7 @@ const FeedContainer = ({ postData, feedRef }) => {
             <p className="feed-explainWrap-textWrap" ref={summaryWrap}>
               <b className="feed-explainWrap-name">{name}</b>
               <span className="feed-explainWrap-text">
-                {isSummary ? explainText.slice(0, 25) + "  ..." : explainText}
+                {isSummary ? explainText.slice(0, 30) + "  ..." : explainText}
                 {isSummary && (
                   <button
                     className="feed-explainWrap-fullText-Btn"
