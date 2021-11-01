@@ -18,6 +18,7 @@
   background: none;
   cursor: pointer;
   box-sizing: border-box;
+  outline: none;
 }
 
 .profileModifyButtonBox-button:hover {

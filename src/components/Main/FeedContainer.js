@@ -225,7 +225,7 @@ const FeedContainer = ({ postData, feedRef }) => {
                   name={id}
                 />
               </button>
-              <p className="feed-likeCount">{`${currentLikeCount}명이 좋아합니다.`}</p>
+              <p className="feed-likeCount">{`${currentLikeCount}명이 좋아합니다`}</p>
             </div>
           </div>
           <div className="feed-explainWrap-middle">

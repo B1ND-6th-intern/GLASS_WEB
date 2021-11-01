@@ -66,6 +66,10 @@
   justify-content: center;
 }
 
+.profileBigPostBox-prevBtnImg {
+  width: 50%;
+}
+
 .profileBigPostBox-nextBtn {
   width: 30px;
   height: 30px;
@@ -80,6 +84,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.profileBigPostBox-nextBtnImg {
+  width: 50%;
 }
 
 .profileBigPostBox-ProfileInfoWrap {
