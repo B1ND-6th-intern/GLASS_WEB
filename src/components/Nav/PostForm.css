@@ -114,6 +114,7 @@
   margin-top: 20px;
   display: flex;
   column-gap: 10px;
+  align-items: center;
 }
 
 #navigation-item-post-form-preview-imgWrap::-webkit-scrollbar {
@@ -132,22 +133,22 @@
 
 .navigation-item-post-form-preview-box {
   min-width: 70px;
+  max-width: 70px;
   position: relative;
-  height: auto;
+  min-height: 70px;
   display: flex;
 }
 
 .navigation-item-post-form-preview-img {
-  width: 90%;
-  margin: 0px auto;
-  object-fit: scale-down;
+  width: 100%;
+  object-fit: cover;
 }
 
 .navigation-item-post-form-delete-img-btn {
   left: 50%;
   transform: translate(-50%, 0%);
   position: absolute;
-  width: 90%;
+  width: 100%;
   height: 100%;
   padding: 0px;
   border: 0px;

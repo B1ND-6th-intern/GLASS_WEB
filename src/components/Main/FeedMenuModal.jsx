@@ -1,6 +1,6 @@
 import "./FeedMenuModal.css";
 import FeedMenuExitiImg from "../../assets/img/ExitServiceCenter.svg";
-import useDelete from "../../Hooks/Nav/PostForm/useFeedMenu";
+import useDelete from "../../Hooks/Main/useFeedMenu";
 import sweetalert2, { alertError, alertSuccess } from "../../lib/sweetAlert2";
 
 const FeedMenuModal = ({ toggleFeedMenuClick, isMenu, id }) => {
@@ -31,11 +31,7 @@ const FeedMenuModal = ({ toggleFeedMenuClick, isMenu, id }) => {
               >
                 삭제
               </button>
-              <button
-                className="feedMenuModal-Btn"
-                type="button"
-                onClick={() => console.log("수정")}
-              >
+              <button className="feedMenuModal-Btn" type="button">
                 수정
               </button>
             </div>

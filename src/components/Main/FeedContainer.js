@@ -17,8 +17,8 @@ import useLike from "../../Hooks/Main/useLike";
 import { alertError } from "../../lib/sweetAlert2";
 import { commentAlertError, commentAlertSuccess } from "../../lib/sweetAlert2";
 import PostMenuImg from "../../assets/img/PostMenu.svg";
-import useDelete from "../../Hooks/Nav/PostForm/useFeedMenu";
 import FeedMenuModal from "./FeedMenuModal";
+import useFeedMenu from "../../Hooks/Main/useFeedMenu";
 
 const FeedContainer = ({ postData, feedRef }) => {
   const {
@@ -54,7 +54,7 @@ const FeedContainer = ({ postData, feedRef }) => {
 
   const { onSendLikeData } = useLike();
 
-  const { isMenu, toggleFeedMenuClick } = useDelete();
+  const { isMenu, toggleFeedMenuClick } = useFeedMenu();
 
   useEffect(() => {
     if (isMenu) {
@@ -95,7 +95,6 @@ const FeedContainer = ({ postData, feedRef }) => {
       target: { name },
     } = event;
     const res = await sendCommentData(name);
-    console.log(res);
     const { status, message, error, comment } = res;
     if (status === 200) {
       commentAlertSuccess(message);
@@ -132,7 +131,7 @@ const FeedContainer = ({ postData, feedRef }) => {
   };
 
   useEffect(() => {
-    if (summaryWrap.current.clientHeight > 20) {
+    if (summaryWrap.current.clientHeight > 21) {
       setIsSummary(true);
     }
   }, [summaryWrap]);
@@ -213,25 +212,27 @@ const FeedContainer = ({ postData, feedRef }) => {
         </div>
         <div className="feed-explainWrap">
           <div className="feed-explainWrap-header">
-            <button
-              className="feed-likeBtn"
-              type="button"
-              name={id}
-              onClick={onLikeClick}
-            >
-              <img
-                className="feed-likeBtn-img"
-                src={like ? FillLikeImg : LikeImg}
+            <div className="feed-explainWrap-headerWrap">
+              <button
+                className="feed-likeBtn"
+                type="button"
                 name={id}
-              />
-            </button>
-            <p className="feed-likeCount">{`${currentLikeCount}명이 좋아합니다.`}</p>
+                onClick={onLikeClick}
+              >
+                <img
+                  className="feed-likeBtn-img"
+                  src={like ? FillLikeImg : LikeImg}
+                  name={id}
+                />
+              </button>
+              <p className="feed-likeCount">{`${currentLikeCount}명이 좋아합니다.`}</p>
+            </div>
           </div>
           <div className="feed-explainWrap-middle">
             <p className="feed-explainWrap-textWrap" ref={summaryWrap}>
               <b className="feed-explainWrap-name">{name}</b>
               <span className="feed-explainWrap-text">
-                {isSummary ? explainText.slice(0, 25) + "  ..." : explainText}
+                {isSummary ? explainText.slice(0, 30) + "  ..." : explainText}
                 {isSummary && (
                   <button
                     className="feed-explainWrap-fullText-Btn"
@@ -258,11 +259,29 @@ const FeedContainer = ({ postData, feedRef }) => {
                   const {
                     text,
                     owner: { name },
+                    _id: id,
+                    isOwner,
                   } = comment;
                   if (allComment && index < 3) {
-                    return <Comment name={name} comment={text} key={index} />;
+                    return (
+                      <Comment
+                        name={name}
+                        comment={text}
+                        key={index}
+                        id={id}
+                        isOwner={isOwner}
+                      />
+                    );
                   } else if (!allComment) {
-                    return <Comment name={name} comment={text} key={index} />;
+                    return (
+                      <Comment
+                        name={name}
+                        comment={text}
+                        key={index}
+                        id={id}
+                        isOwner={isOwner}
+                      />
+                    );
                   }
                 })}
               {allComment && (

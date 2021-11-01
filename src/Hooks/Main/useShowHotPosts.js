@@ -3,7 +3,6 @@ import { useRecoilState } from "recoil";
 import { hotFeedData } from "../../recoil/hotPostDataAtom";
 import { SERVER } from "../../config/config.json";
 import axios from "axios";
-import useShowPosts from "./useShowPosts";
 
 const useShowHotPosts = () => {
   const [hotFeeds, setHotFeeds] = useRecoilState(hotFeedData);

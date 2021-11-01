@@ -112,18 +112,35 @@ const usePost = () => {
     return hashTagData;
   };
 
-  const onDeleteImg = (event) => {
+  const sendDeleteImg = async (img) => {
+    const url = `${SERVER}/writings/delete/img`;
+    try {
+      const { data } = await axios.post(url, { img });
+      return data;
+    } catch (error) {
+      const { data } = error.response;
+      return data;
+    }
+  };
+
+  const onDeleteImg = async (event) => {
     event.preventDefault();
     const {
-      target: { name },
+      target: { name, id },
     } = event;
-
-    setImgData(
-      imgData.filter((img, index) => {
-        return index !== parseInt(name);
-      })
-    );
+    const res = await sendDeleteImg(id);
+    const { status, error } = res;
+    if (status === 200) {
+      setImgData(
+        imgData.filter((img, index) => {
+          return index !== parseInt(name);
+        })
+      );
+      return;
+    }
+    alertError(error);
   };
+
   return {
     onChange,
     onDeleteImg,

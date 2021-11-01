@@ -1,12 +1,14 @@
 .commentWrap {
   width: auto;
   margin: 0px;
+  display: flex;
 }
 
 .comment-name {
   font-weight: bold;
   margin: 0px;
   font-size: 14px;
+  min-width: 46px;
 }
 
 .comment-text {
@@ -14,4 +16,32 @@
   margin: 0px;
   font-size: 14px;
   margin-left: 4px;
+}
+
+.comment-deleteBtn {
+  width: 18px;
+  height: 18px;
+  margin-left: auto;
+  display: none;
+  border: 0px;
+  background: none;
+  cursor: pointer;
+}
+
+.comment-deleteBtn-img {
+  width: 16px;
+}
+
+.commentWrap:hover {
+  background-color: var(--main-exit-hover-background-color);
+}
+
+.commentWrap:hover .comment-deleteBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.commentHidden {
+  display: none;
 }

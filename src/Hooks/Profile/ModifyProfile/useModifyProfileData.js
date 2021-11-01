@@ -91,11 +91,13 @@ const useModifyProfileData = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     const res = await sendModifyUserData();
-    const { message, status, name, introduction } = res;
+    const { message, error, status, name, introduction } = res;
     if (status === 200) {
       alertSuccess(message);
       setUserData({ ...userData, name, introduction });
+      return;
     }
+    alertError(error);
   };
 
   return {

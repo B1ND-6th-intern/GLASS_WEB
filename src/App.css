@@ -32,8 +32,8 @@ body {
   transition: background-color 0.3s ease;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap");
 
 * {
-  font-family: "Source Sans Pro";
+  font-family: "Noto Sans KR", sans-serif;
 }
