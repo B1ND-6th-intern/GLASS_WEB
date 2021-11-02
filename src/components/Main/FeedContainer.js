@@ -145,12 +145,17 @@ const FeedContainer = ({ postData, feedRef }) => {
   }, [commentWrap]);
 
   useEffect(() => {
-    if (currentImgIndex != 0) {
+    if (currentImgIndex == 0) {
+      setIsFinal(false);
+      setIsFirst(true);
+      return;
+    } else if (currentImgIndex == imgs.length - 1) {
       setIsFirst(false);
-    }
-    if (currentImgIndex == imgs.length - 1) {
       setIsFinal(true);
+      return;
     }
+    setIsFirst(false);
+    setIsFinal(false);
   }, [currentImgIndex]);
 
   const hashTagIsNull = HashTagNullCheck(hashTags);
