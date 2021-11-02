@@ -36,6 +36,8 @@ const FeedContainer = ({ postData, feedRef }) => {
   const [currentComments, setCurrentComments] = useState(comments);
   const [like, setLike] = useState(isLike);
   const [currentLikeCount, setCurrentLikeCount] = useState(likeCount);
+  const [isFirst, setIsFirst] = useState(true);
+  const [isFinal, setIsFinal] = useState(false);
 
   const {
     onChange,
@@ -142,6 +144,15 @@ const FeedContainer = ({ postData, feedRef }) => {
     }
   }, [commentWrap]);
 
+  useEffect(() => {
+    if (currentImgIndex != 0) {
+      setIsFirst(false);
+    }
+    if (currentImgIndex == imgs.length - 1) {
+      setIsFinal(true);
+    }
+  }, [currentImgIndex]);
+
   const hashTagIsNull = HashTagNullCheck(hashTags);
 
   return (
@@ -185,7 +196,9 @@ const FeedContainer = ({ postData, feedRef }) => {
                 <button
                   name="prev"
                   type="button"
-                  className="feed-slidePrev-btn"
+                  className={`feed-slidePrev-btn ${
+                    isFirst && `feed-slideBtn-hide`
+                  }`}
                   onClick={clickChangeFeedIndex}
                 >
                   <img
@@ -197,7 +210,9 @@ const FeedContainer = ({ postData, feedRef }) => {
                 <button
                   name="next"
                   type="button"
-                  className="feed-slideNext-btn"
+                  className={`feed-slideNext-btn ${
+                    isFinal && `feed-slideBtn-hide`
+                  }`}
                   onClick={clickChangeFeedIndex}
                 >
                   <img

@@ -18,9 +18,9 @@ const FeedForm = () => {
           let isUndefined = undefinedCheck(post);
           if (isUndefined) {
             return feeds.length - 1 == index ? (
-              <FeedContainer postData={post} feedRef={ref} />
+              <FeedContainer postData={post} feedRef={ref} key={index} />
             ) : (
-              <FeedContainer postData={post} />
+              <FeedContainer postData={post} key={index} />
             );
           }
         })
