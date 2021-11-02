@@ -90,6 +90,10 @@
   width: 50%;
 }
 
+.profileBigPostBox-btnHide {
+  display: none;
+}
+
 .profileBigPostBox-ProfileInfoWrap {
   border-bottom: 1px solid var(--main-border-color);
   height: 65px;

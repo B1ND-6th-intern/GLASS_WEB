@@ -115,6 +115,10 @@
   width: 50%;
 }
 
+.feed-slideBtn-hide {
+  display: none;
+}
+
 .feed-explainWrap {
   width: 100%;
   height: auto;
@@ -143,6 +147,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  outline: none;
 }
 
 .feed-likeBtn-img {

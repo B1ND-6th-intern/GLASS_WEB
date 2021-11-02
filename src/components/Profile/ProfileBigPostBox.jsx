@@ -18,6 +18,8 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
   const [postData, setPostData] = useState();
   const { sendPostData } = useBigPostBox(id);
   const [currentImgIndex, setCurrentFeedIndex] = useState(0);
+  const [isFirst, setIsFirst] = useState(true);
+  const [isFinal, setIsFinal] = useState(false);
 
   const getPostData = async () => {
     try {
@@ -55,6 +57,21 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
     getPostData();
   }, [id]);
 
+  useEffect(() => {
+    if (currentImgIndex == 0) {
+      setIsFinal(false);
+      setIsFirst(true);
+      return;
+    }
+    if (currentImgIndex == postData?.imgs.length - 1) {
+      setIsFirst(false);
+      setIsFinal(true);
+      return;
+    }
+    setIsFirst(false);
+    setIsFinal(false);
+  }, [currentImgIndex]);
+
   return (
     <>
       {postData && (
@@ -71,7 +88,9 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
                     <button
                       name="prev"
                       type="button"
-                      className="profileBigPostBox-prevBtn"
+                      className={`profileBigPostBox-prevBtn ${
+                        isFirst && `profileBigPostBox-btnHide`
+                      }`}
                       onClick={clickChangeFeedIndex}
                     >
                       <img
@@ -83,7 +102,9 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
                     <button
                       name="next"
                       type="button"
-                      className="profileBigPostBox-nextBtn"
+                      className={`profileBigPostBox-nextBtn ${
+                        isFinal && `profileBigPostBox-btnHide`
+                      }`}
                       onClick={clickChangeFeedIndex}
                     >
                       <img

@@ -2,19 +2,19 @@
   width: auto;
   margin: 0px;
   display: flex;
+  align-items: center;
 }
 
 .comment-name {
   font-weight: bold;
   margin: 0px;
-  font-size: 14px;
-  min-width: 46px;
+  font-size: 15px;
 }
 
 .comment-text {
   word-break: break-all;
   margin: 0px;
-  font-size: 14px;
+  font-size: 15px;
   margin-left: 4px;
 }
 
