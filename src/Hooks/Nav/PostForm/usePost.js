@@ -96,7 +96,7 @@ const usePost = () => {
 
       value = "";
       const imgStatus = await sendImgsData(formData);
-      const { status, jsonUrl } = imgStatus;
+      const { status, jsonUrl, error } = imgStatus;
       if (status === 200) {
         setImgData([]);
         for (let i = 0; i < jsonUrl.length; i++) {
@@ -104,6 +104,8 @@ const usePost = () => {
         }
         return;
       }
+      window.alert(error);
+      setImgData([]);
     }
   };
 
