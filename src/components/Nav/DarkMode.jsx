@@ -13,7 +13,11 @@ const DarkMode = () => {
     <>
       {!buttonStates.isServiceCenterClick && (
         <button id="darkMode-btn" type="button" onClick={currentMode.toggle}>
-          <img id="darkMode-img" src={modeValue ? DarkModeImg : LightModeImg} />
+          <img
+            id="darkMode-img"
+            src={modeValue ? DarkModeImg : LightModeImg}
+            alt="darkMode"
+          />
           <p id="darkMode-text">{modeValue ? "다크모드" : "라이트모드"}</p>
         </button>
       )}

@@ -1,0 +1,51 @@
+#agreeDetailForm-header {
+  width: 100%;
+  height: 170px;
+  background-color: var(--main_color);
+  display: flex;
+}
+
+#agreeDetailForm-logo {
+  width: 200px;
+  margin-left: 50px;
+}
+
+#agreeDetailForm-textWrap {
+  min-width: 700px;
+  max-width: 700px;
+  margin: 0px auto;
+  margin-top: 50px;
+}
+#agreeDetailForm-textWrap p {
+  margin: 0px;
+}
+
+.agreeDetailForm-title {
+  margin: 30px 0px;
+}
+
+#agreeDetail-Btn {
+  position: fixed;
+  width: 105px;
+  height: 40px;
+  background: none;
+  border-radius: 100px;
+  border: 3px solid var(--main_color);
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+  animation-name: fadeInUp;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}

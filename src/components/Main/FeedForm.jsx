@@ -1,5 +1,4 @@
 import "./FeedForm.css";
-import axios from "axios";
 import FeedContainer from "./FeedContainer";
 import useShowPosts from "../../Hooks/Main/useShowPosts";
 import useGetUserId from "../../Hooks/Main/useGetUserId";

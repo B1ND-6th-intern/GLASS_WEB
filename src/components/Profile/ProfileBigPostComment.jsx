@@ -13,6 +13,7 @@ const ProfileBigPostComment = ({ commentData }) => {
       <img
         src={avatar === "" ? DefaultUserImg : `${SERVER}/uploads${avatar}`}
         className="profileBigPostBox-commentImg"
+        alt="profile"
       />
       <div className="profileBigPostBox-commentTextWrap">
         <span className="profileBigPostBox-commentName">{name}</span>

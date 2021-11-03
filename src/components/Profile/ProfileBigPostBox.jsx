@@ -6,7 +6,7 @@ import { HashTagNullCheck } from "../../Utils/hashTagNullCheck";
 import ProfileBigPostComment from "./ProfileBigPostComment";
 import WhiteDeleteBtn from "../../assets/img/WhiteDeleteBtn.svg";
 import useBigPostBox from "../../Hooks/Profile/useBigPostBox";
-import FillLikeImg from "../../assets/img/FillLike.svg";
+// import FillLikeImg from "../../assets/img/FillLike.svg";
 import LikeImg from "../../assets/img/Like.svg";
 import { useEffect, useState } from "react";
 import DefaultUserImg from "../../assets/img/DefaultUserImg.svg";
@@ -27,6 +27,7 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
       setPostData(data);
     } catch (e) {
       const data = e.response;
+      return data;
     }
   };
 
@@ -82,6 +83,7 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
                 <img
                   className="profileBigPostBox-img"
                   src={`${SERVER}/uploads/${postData.imgs[currentImgIndex]}`}
+                  alt="profile"
                 />
                 {postData.imgs.length != 1 && (
                   <div className="profileBigPostBox-slideBtnWrap">
@@ -97,6 +99,7 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
                         name="prev"
                         src={FeedImgPrev}
                         className="profileBigPostBox-prevBtnImg"
+                        alt="slidePrevImg"
                       />
                     </button>
                     <button
@@ -111,6 +114,7 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
                         name="next"
                         src={FeedImgNext}
                         className="profileBigPostBox-nextBtnImg"
+                        alt="slideNextImg"
                       />
                     </button>
                   </div>
@@ -125,6 +129,7 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
                         ? DefaultUserImg
                         : `${SERVER}/uploads${userData.avatar}`
                     }
+                    alt="profile"
                   />
                   <div className="profileBigPostBox-name">{userData.name}</div>
                 </div>
@@ -136,6 +141,7 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
                           ? DefaultUserImg
                           : `${SERVER}/uploads${userData.avatar}`
                       }
+                      alt="profile"
                       className="profileBigPostBox-myCommentImg"
                     />
                     <div className="profileBigPostBox-myCommentTextWrap">
@@ -176,6 +182,7 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
                       <img
                         className="profileBigPostBox-likeBtnImg"
                         src={LikeImg}
+                        alt="like"
                       />
                     </button>
                   </div>
@@ -196,6 +203,7 @@ const ProfileBigPostBox = ({ id, toggleClickBigPost }) => {
             <img
               className="profileBigPostBox-exitBtnImg"
               src={WhiteDeleteBtn}
+              alt="bigPostExit"
             />
           </button>
         </>

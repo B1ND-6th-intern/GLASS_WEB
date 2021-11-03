@@ -78,7 +78,7 @@ const FeedContainer = ({ postData, feedRef }) => {
       target: { name },
     } = event;
     const res = await onSendLikeData(name);
-    const { status, message, error } = res;
+    const { status, error } = res;
     if (status === 200) {
       if (like) {
         setCurrentLikeCount((prev) => prev - 1);
@@ -172,6 +172,7 @@ const FeedContainer = ({ postData, feedRef }) => {
           <img
             className="feed-profileImg"
             src={avatar === "" ? DefaultUserImg : `${SERVER}/uploads${avatar}`}
+            alt="avatar"
           />
           <span className="feed-name">
             {!permission && `${grade}${classNumber}${stuNumber} `}
@@ -186,7 +187,11 @@ const FeedContainer = ({ postData, feedRef }) => {
               type="button"
               onClick={toggleFeedMenuClick}
             >
-              <img src={PostMenuImg} className="feed-postMenuImg" />
+              <img
+                src={PostMenuImg}
+                className="feed-postMenuImg"
+                alt="feedMenuBtn"
+              />
             </button>
           )}
         </div>
@@ -195,6 +200,7 @@ const FeedContainer = ({ postData, feedRef }) => {
             <img
               src={SERVER + "/uploads" + imgs[currentImgIndex]}
               className="feed-img"
+              alt="feedImg"
             />
             {imgs.length != 1 && (
               <div className="feed-slideBtn-wrap">
@@ -210,6 +216,7 @@ const FeedContainer = ({ postData, feedRef }) => {
                     name="prev"
                     className="feed-slidePrev-btnImg"
                     src={FeedImgPrev}
+                    alt="feedSlidePrevBtn"
                   />
                 </button>
                 <button
@@ -224,6 +231,7 @@ const FeedContainer = ({ postData, feedRef }) => {
                     name="next"
                     className="feed-slidePrev-btnImg"
                     src={FeedImgNext}
+                    alt="feedSlideNextBtn"
                   />
                 </button>
               </div>
@@ -243,6 +251,7 @@ const FeedContainer = ({ postData, feedRef }) => {
                   className="feed-likeBtn-img"
                   src={like ? FillLikeImg : LikeImg}
                   name={id}
+                  alt="likeImg"
                 />
               </button>
               <p className="feed-likeCount">{`${currentLikeCount}명이 좋아합니다`}</p>

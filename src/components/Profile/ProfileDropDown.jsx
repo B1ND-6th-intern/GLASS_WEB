@@ -5,7 +5,7 @@ import UserImg from "../../assets/img/User.svg";
 import useLogOut from "../../Hooks/Nav/UserForm/useLogOut";
 
 const ProfileDropDown = () => {
-  const { buttonStates, toggleUserClick } = useControllButton();
+  const { buttonStates } = useControllButton();
   const { onClickLogOut } = useLogOut();
 
   return (
@@ -17,7 +17,11 @@ const ProfileDropDown = () => {
             <div id="profileDropDown-wrap">
               <Link to="/profile">
                 <div className="profileDropDown-item">
-                  <img className="profileDropDown-itemImg" src={UserImg} />
+                  <img
+                    className="profileDropDown-itemImg"
+                    src={UserImg}
+                    alt="profile"
+                  />
                   프로필
                 </div>
               </Link>

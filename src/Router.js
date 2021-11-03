@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import ProfilePage from "./page/Profile/ProfilePage";
 import ProfileModifyPage from "./page/ProfileModify/ProfileModifyPage";
 import { getToken } from "./Utils/getToken";
+import AgreeDetailPage from "./page/AgreeDetail/AgreeDetailPage";
 
 const AppRouter = () => {
   const [isUser, setIsUser] = useRecoilState(isUserData);
@@ -46,6 +47,9 @@ const AppRouter = () => {
             </Route>
             <Route path="/certification">
               <CertificationPage />
+            </Route>
+            <Route path="/agreeDetail">
+              <AgreeDetailPage />
             </Route>
           </Router>
         )}

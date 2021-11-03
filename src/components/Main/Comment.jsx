@@ -33,6 +33,7 @@ const Comment = ({ name, comment, id, isOwner }) => {
         <img
           className="comment-deleteBtn-img"
           src={isOwner && CommentDeleteImg}
+          alt="commentDelete"
         />
       </button>
     </p>

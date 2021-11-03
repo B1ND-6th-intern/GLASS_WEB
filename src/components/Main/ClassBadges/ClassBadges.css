@@ -3,11 +3,11 @@
   height: 16px;
   border: 1px solid #ec8c8c;
   background-color: #ec8c8c;
-  color: white;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 5px;
   font-size: 13px;
-  margin: 0px;
   margin-left: 3px;
 }
 
@@ -16,11 +16,11 @@
   height: 18px;
   border: 1px solid #86dcff;
   background-color: #86dcff;
-  color: white;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 5px;
   font-size: 13px;
-  margin: 0px;
   margin-left: 3px;
 }
 
@@ -28,9 +28,17 @@
   width: 40px;
   height: 18px;
   border: 1px solid #b3e59f;
-  color: white;
-
+  background-color: #b3e59f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 5px;
   font-size: 13px;
+  margin-left: 3px;
+}
+
+#badges-text {
   margin: 0px;
+  color: white;
+  font-size: 13px;
 }

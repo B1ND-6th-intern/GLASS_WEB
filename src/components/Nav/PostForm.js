@@ -58,6 +58,7 @@ const PostForm = () => {
                     id="navigation-item-post-form-exit-img"
                     src={PostExitImg}
                     title="취소"
+                    alt="postCancel"
                   />
                 </button>
               </div>
@@ -112,6 +113,7 @@ const PostForm = () => {
                   <img
                     id="navigation-item-post-form-img-input-label-img"
                     src={ImgAdd}
+                    alt="imgAddImg"
                   />
                 </label>
                 <input

@@ -31,7 +31,11 @@ const SearchBar = () => {
           onFocus={() => onClearKeyword()}
           type="button"
         >
-          <img id="navigation-item-searchBar-clearBtn-img" src={ClearImg} />
+          <img
+            id="navigation-item-searchBar-clearBtn-img"
+            src={ClearImg}
+            alt="searchImg"
+          />
         </button>
       )}
     </form>
