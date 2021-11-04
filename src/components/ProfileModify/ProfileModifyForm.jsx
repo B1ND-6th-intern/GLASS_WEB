@@ -4,7 +4,6 @@ import { modifyUserDataState } from "../../recoil/profileAtom";
 import "./ProfileModifyForm.css";
 import { SERVER } from "../../config/config.json";
 import DefaultUserImg from "../../assets/img/DefaultUserImg.svg";
-import { useEffect, useRef, useState } from "react";
 
 const ProfileModifyForm = () => {
   const [userData, setUserData] = useRecoilState(modifyUserDataState);
@@ -24,6 +23,7 @@ const ProfileModifyForm = () => {
                     ? DefaultUserImg
                     : `${SERVER}/uploads${userData.avatar}`
                 }
+                alt="profile"
               />
             </div>
           </div>
@@ -41,6 +41,7 @@ const ProfileModifyForm = () => {
               name="img"
               accept="image/jpg,image/png,image/jpeg,image/gif"
               onChange={onFileChange}
+              alt="changeImg"
             />
           </div>
         </div>

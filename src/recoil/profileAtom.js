@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { atom } from "recoil";
 
 export const modifyUserDataState = atom({

@@ -77,3 +77,15 @@
   width: 550px;
   word-break: break-all;
 }
+
+/* darkmode */
+
+.dark-mode #profileInfo-infoWrap {
+  color: var(--dark-white-color);
+}
+
+.dark-mode #profile-modifyBtn {
+  color: var(--dark-white-color);
+  background-color: var(--sub-dark-color);
+  border: 1px solid var(--dark-border-color);
+}

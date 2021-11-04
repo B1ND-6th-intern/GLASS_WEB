@@ -17,13 +17,18 @@ const HotPostContainer = ({ img, name, likeCount, text, avatar }) => {
   return (
     <div className="hotPost-container">
       <div className="hotPost-imgWrap">
-        <img className="hotPost-img" src={`${SERVER}/uploads${img}`} />
+        <img
+          className="hotPost-img"
+          src={`${SERVER}/uploads${img}`}
+          alt="hotPostImg"
+        />
       </div>
       <div className="hotPost-textWrap">
         <div className="hotPost-userInfoWrap">
           <img
             className="hotPost-avatar"
             src={avatar === "" ? DefaultUserImg : `${SERVER}/uploads${avatar}`}
+            alt="avatar"
           />
           <div className="hotPost-name">{name}</div>
         </div>
@@ -31,7 +36,11 @@ const HotPostContainer = ({ img, name, likeCount, text, avatar }) => {
           {summary ? text.slice(0, 60) + " ..." : text}
         </p>
         <div className="hotPost-likeCountWrap">
-          <img className="hotPost-likeCountImg" src={FillLikeImg} />
+          <img
+            className="hotPost-likeCountImg"
+            src={FillLikeImg}
+            alt="likeCount"
+          />
           <div className="hotPost-likeCount">{likeCount}</div>
         </div>
       </div>

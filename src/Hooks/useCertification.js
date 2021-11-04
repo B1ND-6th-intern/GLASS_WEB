@@ -70,7 +70,7 @@ const useCertification = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     const certificationPass = await sendCertificationNumber();
-    const { error, failedCount, status } = certificationPass;
+    const { error, status } = certificationPass;
     if (status === 200) {
       certificationAlertSuccess();
       history.push("/");

@@ -45,3 +45,8 @@
 .commentHidden {
   display: none;
 }
+
+/* darkmode */
+.dark-mode .commentWrap:hover {
+  color: black;
+}

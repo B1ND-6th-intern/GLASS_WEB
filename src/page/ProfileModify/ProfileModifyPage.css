@@ -6,3 +6,9 @@
   border: 1px solid var(--main-border-color);
   display: flex;
 }
+
+/* dark-mode */
+
+.dark-mode #modifyProfile-container {
+  border: 1px solid var(--dark-border-color);
+}

@@ -2,7 +2,6 @@ import "./ProfilePostBox.css";
 import SpeechBubble from "../../assets/img/FillSpeechBubble.svg";
 import WhiteFillLike from "../../assets/img/WhiteFillLike.svg";
 import { useEffect, useState } from "react";
-import useBigPostBox from "../../Hooks/Profile/useBigPostBox";
 import ProfileBigPostBox from "./ProfileBigPostBox";
 
 const ProfilePostBox = ({ img, likeCount, commentCount, imgs, id }) => {
@@ -35,18 +34,23 @@ const ProfilePostBox = ({ img, likeCount, commentCount, imgs, id }) => {
           onClick={toggleClickBigPost}
         >
           <div className="profilePostBox-likeCountWrap">
-            <img src={WhiteFillLike} className="profilePostBox-likeCountImg" />
+            <img
+              src={WhiteFillLike}
+              className="profilePostBox-likeCountImg"
+              alt="like"
+            />
             {likeCount}
           </div>
           <div className="poriflePostBox-commentCountWrap">
             <img
               src={SpeechBubble}
               className="poriflePostBox-commentCountImg"
+              alt="like"
             />
             {commentCount}
           </div>
         </button>
-        <img className="profilePostBox-img" src={img} />
+        <img className="profilePostBox-img" src={img} alt="postImg" />
         <div className="profilePostBox-blind"></div>
       </div>
       {isBig && (

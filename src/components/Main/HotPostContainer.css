@@ -69,3 +69,14 @@
   font-size: 14px;
   margin-left: 3px;
 }
+
+/* darkmode */
+.dark-mode .hotPost-container {
+  background-color: var(--sub-dark-color);
+  color: white;
+  border: 1px solid var(--dark-border-color);
+}
+
+.dark-mode .hotPost-imgWrap {
+  border-right: 1px solid var(--dark-border-color);
+}

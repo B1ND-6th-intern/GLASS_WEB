@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import useGetUserData from "../../Hooks/Main/useGetUserData";
 import { modifyUserDataState } from "../../recoil/profileAtom";
 import "./ProfileInfo.css";
 import { SERVER } from "../../config/config.json";
@@ -22,6 +21,7 @@ const ProfileInfo = () => {
                     ? DefaultUserImg
                     : `${SERVER}/uploads${userData.avatar}`
                 }
+                alt="profileImg"
               />
             </div>
           </div>

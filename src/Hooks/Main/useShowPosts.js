@@ -44,7 +44,7 @@ const useShowPosts = () => {
     }
   }, [inView, isLoading]);
 
-  return { feeds, ref, loadPost };
+  return { feeds, ref, loadPost, isLoading };
 };
 
 export default useShowPosts;

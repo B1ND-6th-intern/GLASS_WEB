@@ -12,7 +12,11 @@ const SerViceCenter = () => {
         <form id="serviceCenter-form">
           <div id="serviceCenter-headerWrap">
             <button id="serviceCenter-prev-btn" onClick={toggleSCClick}>
-              <img id="serviceCenter-prev-btn-img" src={ExitServiceCenter} />
+              <img
+                id="serviceCenter-prev-btn-img"
+                src={ExitServiceCenter}
+                alt="serviceCenterPrev"
+              />
             </button>
             <p id="serviceCenter-title">
               혹시 문제가

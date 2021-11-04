@@ -35,21 +35,29 @@ const Navigation = () => {
           <nav className="navigation-item-container">
             <Link to="/">
               <img className="navigation-item-logo-img" src={Logo} alt="Logo" />
+              <img
+                className="navigation-item-logo-whiteimg"
+                src={WhiteLogo}
+                alt="Logo"
+              />
             </Link>
-            <img
-              className="navigation-item-logo-whiteimg"
-              src={WhiteLogo}
-              alt="Logo"
-            />
 
             <SearchBar />
 
             <button className="navigation-item-post" onClick={togglePostClick}>
-              <img className="navigation-item-post-img" src={PostImg} />
+              <img
+                className="navigation-item-post-img"
+                src={PostImg}
+                alt="post"
+              />
             </button>
 
             <button className="navigation-item-menu" onClick={toggleMenuClick}>
-              <img className="navigation-item-menu-img" src={MenuImg} />
+              <img
+                className="navigation-item-menu-img"
+                src={MenuImg}
+                alt="menu"
+              />
             </button>
 
             <button className="navigation-item-user" onClick={toggleUserClick}>
@@ -61,13 +69,18 @@ const Navigation = () => {
                     ? DefaultUserImg
                     : `${SERVER}/uploads${userData.avatar}`
                 }
+                alt="profileImg"
               />
               <ProfileDropDown />
             </button>
 
             {!buttonStates.isServiceCenterClick && (
               <button id="serviceCenter-btn" onClick={toggleSCClick}>
-                <img id="serviceCenter-img" src={SerViceCenterImg} />
+                <img
+                  id="serviceCenter-img"
+                  src={SerViceCenterImg}
+                  alt="serviceCenter"
+                />
                 <p id="serviceCenter-text">고객센터</p>
               </button>
             )}

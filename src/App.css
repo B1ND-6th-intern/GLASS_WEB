@@ -16,10 +16,11 @@ body {
   --main-exit-hover-background-color: #e7e7e7;
   --main-background-color: #fafafa;
   --dark-color: #222222;
-  --sub-dark-color: #464646;
+  --sub-dark-color: #353535;
   --dark-post-color: #c4c4c4;
-  --dark-border-color: #646464;
+  --dark-border-color: #464646;
   --dark-opacity-color: rgba(23, 23, 23, 0.9);
+  --dark-white-color: #e6e6e6;
 }
 
 .light-mode {
