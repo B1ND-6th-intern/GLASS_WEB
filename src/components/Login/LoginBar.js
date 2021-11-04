@@ -11,7 +11,7 @@ const LoginBar = () => {
   return (
     <div id="loginBar-container">
       <div id="loginBar-asideContainer">
-        <img id="loginBar-logo" src={Logo} />
+        <img id="loginBar-logo" src={Logo} alt="logo" />
         <p id="loginBar-logo-title">매일매일을 투명하게.</p>
       </div>
       <form onSubmit={onSubmit} className="loginbar-loginContainer">
@@ -42,6 +42,7 @@ const LoginBar = () => {
               <img
                 id="loginbar-pwtype-btn-img"
                 src={pwType ? SeePwType : ClosePwType}
+                alt="pwType"
               />
             </button>
           </div>

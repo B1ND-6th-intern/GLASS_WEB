@@ -1,14 +1,10 @@
 #content-hotPostContainer {
-  width: 300px;
+  width: 350px;
   height: 874px;
-  /* position: fixed;
-  left: 57%;
-  display: flex;
-  flex-direction: column; */
   position: -webkit-sticky;
   position: sticky;
   top: 95px;
-  margin-left: 1%;
+  margin-left: 30px;
 }
 
 #content-titleWrap {
@@ -18,7 +14,6 @@
   justify-content: start;
   font-weight: bold;
   box-sizing: border-box;
-  padding: 0px 10px;
 }
 
 #content-title {
@@ -30,5 +25,10 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  row-gap: 30px;
+}
+
+/* darkmode */
+.dark-mode #content-title {
+  color: white;
 }

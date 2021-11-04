@@ -2,6 +2,7 @@ import "./SignupBar.css";
 import useSignup from "../../Hooks/useSignup";
 import { useEffect } from "react";
 import GradeDataForm from "./SignupGradeDataForm";
+import { Link } from "react-router-dom";
 
 const SignupBar = () => {
   const {
@@ -74,7 +75,6 @@ const SignupBar = () => {
               className="signupBar-pw-input"
               placeholder="비밀번호"
               value={signupData.pw}
-              pattern="^[a-zA-Z0-9]+$"
             />
             <div className="signupBar-pw-input-check-wrap">
               <input
@@ -84,7 +84,6 @@ const SignupBar = () => {
                 className="signupBar-pw-input-check"
                 placeholder="비밀번호 확인"
                 value={signupData.chkPw}
-                pattern="^[a-zA-Z0-9]+$"
               />
             </div>
           </div>
@@ -106,6 +105,11 @@ const SignupBar = () => {
             <h5 id="signupBar-agreeBox-text">
               위 개인정보를 <strong>저장,수집,활용</strong> 하는것에 동의합니다
             </h5>
+            <Link to="/agreeDetail" id="signupBar-link">
+              <button id="signupBar-agreeDetailBtn" type="button">
+                <p id="signupBar-agreeDetailBtn-text">전문보기</p>
+              </button>
+            </Link>
           </div>
           <input
             type="submit"

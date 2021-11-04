@@ -61,4 +61,30 @@ export const certificationAlertSuccess = () => {
   });
 };
 
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 2500,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener("mouseenter", Swal.stopTimer);
+    toast.addEventListener("mouseleave", Swal.resumeTimer);
+  },
+});
+
+export const serviceCenterAlertSuccess = (message) => {
+  Toast.fire({
+    icon: "success",
+    title: `${message}`,
+  });
+};
+
+export const serviceCenterAlertError = (error) => {
+  Toast.fire({
+    icon: "error",
+    title: `${error}`,
+  });
+};
+
 export default sweetalert2;

@@ -9,10 +9,14 @@ const SerViceCenter = () => {
   return (
     <>
       {buttonStates.isServiceCenterClick && (
-        <form id="serviceCenter-form" onSubmit={onSubmit}>
+        <form id="serviceCenter-form">
           <div id="serviceCenter-headerWrap">
             <button id="serviceCenter-prev-btn" onClick={toggleSCClick}>
-              <img id="serviceCenter-prev-btn-img" src={ExitServiceCenter} />
+              <img
+                id="serviceCenter-prev-btn-img"
+                src={ExitServiceCenter}
+                alt="serviceCenterPrev"
+              />
             </button>
             <p id="serviceCenter-title">
               혹시 문제가
@@ -28,7 +32,12 @@ const SerViceCenter = () => {
               value={questionValue}
               placeholder="건의 할 문의를 세세하게 적어주세요."
             />
-            <input id="serviceCenter-submitBtn" type="submit" value="제출" />
+            <input
+              id="serviceCenter-submitBtn"
+              type="submit"
+              value="제출"
+              onClick={onSubmit}
+            />
           </div>
         </form>
       )}

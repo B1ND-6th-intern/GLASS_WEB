@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { useRecoilState, useResetRecoilState } from "recoil";
-import { isUserData } from "../../Store";
 import { SERVER } from "../../config/config.json";
 import { feedData } from "../../recoil/postDataAtom";
 import { getToken } from "../../Utils/getToken";
@@ -45,7 +44,7 @@ const useShowPosts = () => {
     }
   }, [inView, isLoading]);
 
-  return { feeds, ref, loadPost };
+  return { feeds, ref, loadPost, isLoading };
 };
 
 export default useShowPosts;

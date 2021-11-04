@@ -19,6 +19,7 @@ import { commentAlertError, commentAlertSuccess } from "../../lib/sweetAlert2";
 import PostMenuImg from "../../assets/img/PostMenu.svg";
 import FeedMenuModal from "./FeedMenuModal";
 import useFeedMenu from "../../Hooks/Main/useFeedMenu";
+import WhitePostMenu from "../../assets/img/BlackPostMenu.svg";
 
 const FeedContainer = ({ postData, feedRef }) => {
   const {
@@ -36,6 +37,8 @@ const FeedContainer = ({ postData, feedRef }) => {
   const [currentComments, setCurrentComments] = useState(comments);
   const [like, setLike] = useState(isLike);
   const [currentLikeCount, setCurrentLikeCount] = useState(likeCount);
+  const [isFirst, setIsFirst] = useState(true);
+  const [isFinal, setIsFinal] = useState(false);
 
   const {
     onChange,
@@ -76,7 +79,7 @@ const FeedContainer = ({ postData, feedRef }) => {
       target: { name },
     } = event;
     const res = await onSendLikeData(name);
-    const { status, message, error } = res;
+    const { status, error } = res;
     if (status === 200) {
       if (like) {
         setCurrentLikeCount((prev) => prev - 1);
@@ -95,7 +98,6 @@ const FeedContainer = ({ postData, feedRef }) => {
       target: { name },
     } = event;
     const res = await sendCommentData(name);
-    console.log(res);
     const { status, message, error, comment } = res;
     if (status === 200) {
       commentAlertSuccess(message);
@@ -132,7 +134,7 @@ const FeedContainer = ({ postData, feedRef }) => {
   };
 
   useEffect(() => {
-    if (summaryWrap.current.clientHeight > 20) {
+    if (summaryWrap.current.clientHeight > 21) {
       setIsSummary(true);
     }
   }, [summaryWrap]);
@@ -142,6 +144,20 @@ const FeedContainer = ({ postData, feedRef }) => {
       setAllComment(true);
     }
   }, [commentWrap]);
+
+  useEffect(() => {
+    if (currentImgIndex == 0) {
+      setIsFinal(false);
+      setIsFirst(true);
+      return;
+    } else if (currentImgIndex == imgs.length - 1) {
+      setIsFirst(false);
+      setIsFinal(true);
+      return;
+    }
+    setIsFirst(false);
+    setIsFinal(false);
+  }, [currentImgIndex]);
 
   const hashTagIsNull = HashTagNullCheck(hashTags);
 
@@ -157,6 +173,7 @@ const FeedContainer = ({ postData, feedRef }) => {
           <img
             className="feed-profileImg"
             src={avatar === "" ? DefaultUserImg : `${SERVER}/uploads${avatar}`}
+            alt="avatar"
           />
           <span className="feed-name">
             {!permission && `${grade}${classNumber}${stuNumber} `}
@@ -171,7 +188,16 @@ const FeedContainer = ({ postData, feedRef }) => {
               type="button"
               onClick={toggleFeedMenuClick}
             >
-              <img src={PostMenuImg} className="feed-postMenuImg" />
+              <img
+                src={PostMenuImg}
+                className="feed-postMenuImg"
+                alt="feedMenuBtn"
+              />
+              <img
+                src={WhitePostMenu}
+                className="feed-PostWhiteMenuImg"
+                alt="feedMenuBtn"
+              />
             </button>
           )}
         </div>
@@ -180,31 +206,38 @@ const FeedContainer = ({ postData, feedRef }) => {
             <img
               src={SERVER + "/uploads" + imgs[currentImgIndex]}
               className="feed-img"
+              alt="feedImg"
             />
             {imgs.length != 1 && (
               <div className="feed-slideBtn-wrap">
                 <button
                   name="prev"
                   type="button"
-                  className="feed-slidePrev-btn"
+                  className={`feed-slidePrev-btn ${
+                    isFirst && `feed-slideBtn-hide`
+                  }`}
                   onClick={clickChangeFeedIndex}
                 >
                   <img
                     name="prev"
                     className="feed-slidePrev-btnImg"
                     src={FeedImgPrev}
+                    alt="feedSlidePrevBtn"
                   />
                 </button>
                 <button
                   name="next"
                   type="button"
-                  className="feed-slideNext-btn"
+                  className={`feed-slideNext-btn ${
+                    isFinal && `feed-slideBtn-hide`
+                  }`}
                   onClick={clickChangeFeedIndex}
                 >
                   <img
                     name="next"
                     className="feed-slidePrev-btnImg"
                     src={FeedImgNext}
+                    alt="feedSlideNextBtn"
                   />
                 </button>
               </div>
@@ -213,25 +246,28 @@ const FeedContainer = ({ postData, feedRef }) => {
         </div>
         <div className="feed-explainWrap">
           <div className="feed-explainWrap-header">
-            <button
-              className="feed-likeBtn"
-              type="button"
-              name={id}
-              onClick={onLikeClick}
-            >
-              <img
-                className="feed-likeBtn-img"
-                src={like ? FillLikeImg : LikeImg}
+            <div className="feed-explainWrap-headerWrap">
+              <button
+                className="feed-likeBtn"
+                type="button"
                 name={id}
-              />
-            </button>
-            <p className="feed-likeCount">{`${currentLikeCount}명이 좋아합니다.`}</p>
+                onClick={onLikeClick}
+              >
+                <img
+                  className="feed-likeBtn-img"
+                  src={like ? FillLikeImg : LikeImg}
+                  name={id}
+                  alt="likeImg"
+                />
+              </button>
+              <p className="feed-likeCount">{`${currentLikeCount}명이 좋아합니다`}</p>
+            </div>
           </div>
           <div className="feed-explainWrap-middle">
             <p className="feed-explainWrap-textWrap" ref={summaryWrap}>
               <b className="feed-explainWrap-name">{name}</b>
               <span className="feed-explainWrap-text">
-                {isSummary ? explainText.slice(0, 25) + "  ..." : explainText}
+                {isSummary ? explainText.slice(0, 30) + "  ..." : explainText}
                 {isSummary && (
                   <button
                     className="feed-explainWrap-fullText-Btn"

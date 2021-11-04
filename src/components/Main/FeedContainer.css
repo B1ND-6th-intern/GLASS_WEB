@@ -1,5 +1,5 @@
 .feed-container {
-  width: 650px;
+  width: 758px;
   height: auto;
   box-sizing: border-box;
   border: 1px solid var(--main-border-color);
@@ -22,6 +22,7 @@
   height: 35px;
   border-radius: 40px;
   object-fit: cover;
+  border: 1px solid var(--main-border-color);
 }
 
 .feed-name {
@@ -48,9 +49,13 @@
   width: 100%;
 }
 
+.feed-PostWhiteMenuImg {
+  width: 100%;
+  display: none;
+}
+
 .feed-imgsWrap {
-  height: 612px;
-  min-height: 200px;
+  height: 758px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -68,7 +73,7 @@
 .feed-img {
   width: 100%;
   height: 100%;
-  object-fit: scale-down;
+  object-fit: cover;
 }
 
 .feed-slideBtn-wrap {
@@ -115,6 +120,10 @@
   width: 50%;
 }
 
+.feed-slideBtn-hide {
+  display: none;
+}
+
 .feed-explainWrap {
   width: 100%;
   height: auto;
@@ -122,12 +131,17 @@
 
 .feed-explainWrap-header {
   width: 100%;
-  height: 44px;
-  padding: 0px 16px;
+  height: auto;
+  padding: 10px 16px;
   box-sizing: border-box;
-  display: flex;
-  align-items: center;
 }
+
+.feed-explainWrap-headerWrap {
+  min-height: 40px;
+  align-items: center;
+  display: flex;
+}
+
 .feed-likeBtn {
   width: 24px;
   height: 24px;
@@ -138,6 +152,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  outline: none;
 }
 
 .feed-likeBtn-img {
@@ -147,7 +162,7 @@
 .feed-likeCount {
   font-size: 15px;
   margin: 0px;
-  margin-left: 5px;
+  margin-left: 8px;
 }
 
 .feed-explainWrap-middle {
@@ -156,7 +171,7 @@
   box-sizing: border-box;
   padding: 16px;
   padding-top: 0px;
-  padding-bottom: 8px;
+  padding-bottom: 16px;
 }
 
 .feed-explainWrap-textWrap {
@@ -164,10 +179,11 @@
   font-size: 15px;
   word-break: break-all;
   overflow-x: hidden;
+  height: auto;
 }
 
 .feed-explainWrap-name {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .feed-explainWrap-text {
@@ -198,7 +214,7 @@
 .feed-commentWrap {
   width: 100%;
   height: 58px;
-  padding: 8px;
+  padding: 8px 16px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -222,7 +238,6 @@
   word-break: break-all;
   overflow-x: visible;
   border: 0px;
-  margin-left: auto;
   outline: none;
   font-size: 16px;
 }
@@ -236,4 +251,35 @@
   border: 0px;
   outline: none;
   cursor: pointer;
+  margin-left: auto;
+}
+
+/* darkMode */
+
+.dark-mode .feed-container {
+  background-color: var(--sub-dark-color);
+  color: white;
+  border: 1px solid var(--dark-border-color);
+}
+
+.dark-mode .feed-profileWrap {
+  background-color: var(--sub-dark-color);
+  color: white;
+}
+
+.dark-mode .feed-commentWrap {
+  border-top: 1px solid var(--dark-border-color);
+}
+
+.dark-mode .feed-commentInput {
+  background-color: var(--sub-dark-colors);
+  color: white;
+}
+
+.dark-mode .feed-PostWhiteMenuImg {
+  display: block;
+}
+
+.dark-mode .feed-postMenuImg {
+  display: none;
 }

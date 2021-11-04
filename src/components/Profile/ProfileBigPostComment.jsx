@@ -1,8 +1,8 @@
 import "./ProfileBigPostComment.css";
 import { SERVER } from "../../config/config.json";
+import DefaultUserImg from "../../assets/img/DefaultUserImg.svg";
 
 const ProfileBigPostComment = ({ commentData }) => {
-  console.log(commentData);
   const {
     owner: { name, avatar },
     text,
@@ -11,8 +11,9 @@ const ProfileBigPostComment = ({ commentData }) => {
   return (
     <div className="profileBigPostBox-commentWrap">
       <img
-        src={`${SERVER}/uploads/${avatar}`}
+        src={avatar === "" ? DefaultUserImg : `${SERVER}/uploads${avatar}`}
         className="profileBigPostBox-commentImg"
+        alt="profile"
       />
       <div className="profileBigPostBox-commentTextWrap">
         <span className="profileBigPostBox-commentName">{name}</span>

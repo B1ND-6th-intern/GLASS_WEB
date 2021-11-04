@@ -24,17 +24,20 @@ const Comment = ({ name, comment, id, isOwner }) => {
     <p className={`commentWrap ${!isDelete && `commentHidden`}`}>
       <b className="comment-name">{name}</b>
       <span className="comment-text">{comment}</span>
-      <button
-        className="comment-deleteBtn"
-        type="button"
-        onClick={() => deleteComment(id)}
-        disabled={isOwner ? false : true}
-      >
-        <img
-          className="comment-deleteBtn-img"
-          src={isOwner && CommentDeleteImg}
-        />
-      </button>
+      {isOwner && (
+        <button
+          className="comment-deleteBtn"
+          type="button"
+          onClick={() => deleteComment(id)}
+          disabled={isOwner ? false : true}
+        >
+          <img
+            className="comment-deleteBtn-img"
+            src={CommentDeleteImg}
+            alt="commentDelete"
+          />
+        </button>
+      )}
     </p>
   );
 };

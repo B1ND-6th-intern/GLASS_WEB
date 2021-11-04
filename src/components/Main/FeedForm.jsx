@@ -1,5 +1,4 @@
 import "./FeedForm.css";
-import axios from "axios";
 import FeedContainer from "./FeedContainer";
 import useShowPosts from "../../Hooks/Main/useShowPosts";
 import useGetUserId from "../../Hooks/Main/useGetUserId";
@@ -9,7 +8,7 @@ import ErrorForm from "../ErrorPage/ErrorForm";
 
 const FeedForm = () => {
   const { userId } = useGetUserId();
-  const { feeds, ref } = useShowPosts();
+  const { feeds, ref, isLoading } = useShowPosts();
 
   return (
     <div id="content-postContainer">
@@ -18,15 +17,16 @@ const FeedForm = () => {
           let isUndefined = undefinedCheck(post);
           if (isUndefined) {
             return feeds.length - 1 == index ? (
-              <FeedContainer postData={post} feedRef={ref} />
+              <FeedContainer postData={post} feedRef={ref} key={index} />
             ) : (
-              <FeedContainer postData={post} />
+              <FeedContainer postData={post} key={index} />
             );
           }
         })
       ) : (
         <ErrorForm />
       )}
+      {isLoading && <div id="content-loadingContainer"></div>}
     </div>
   );
 };
