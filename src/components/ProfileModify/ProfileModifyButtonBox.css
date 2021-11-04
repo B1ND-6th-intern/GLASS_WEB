@@ -26,3 +26,17 @@
   border-left: 3px solid var(--main_color);
   box-sizing: border-box;
 }
+
+/* darkmode */
+.dark-mode #profileModifyButtonBox-container {
+  background-color: var(--sub-dark-color);
+  border-right: 1px solid var(--dark-border-color);
+}
+
+.dark-mode .profileModifyButtonBox-button {
+  color: var(--dark-white-color);
+}
+
+.dark-mode .profileModifyButtonBox-button:hover {
+  background-color: var(--dark-border-color);
+}
