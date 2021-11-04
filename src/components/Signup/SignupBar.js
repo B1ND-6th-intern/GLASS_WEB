@@ -3,6 +3,8 @@ import useSignup from "../../Hooks/useSignup";
 import { useEffect } from "react";
 import GradeDataForm from "./SignupGradeDataForm";
 import { Link } from "react-router-dom";
+import SignupBackground from "../../assets/img/SignupBackground.jpg";
+import WhiteLogo from "../../assets/img/WhiteLogo.svg";
 
 const SignupBar = () => {
   const {
@@ -118,7 +120,15 @@ const SignupBar = () => {
           />
         </div>
       </form>
-      <div id="signupBar-asideContainer"></div>
+      <div id="signupBar-asideContainer">
+        <img id="signupBar-logo" src={WhiteLogo} />
+        <h5 id="signupBar-title">소중한 추억을 담아내다.</h5>
+        <img
+          id="signupBar-SignupBackground"
+          src={SignupBackground}
+          alt="SignupBackground"
+        />
+      </div>
     </div>
   );
 };

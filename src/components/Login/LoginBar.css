@@ -29,12 +29,25 @@
   border-right: 0px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  position: relative;
+  overflow: hidden;
 }
 
 #loginBar-logo {
   width: 250px;
   margin-top: 70px;
   margin-left: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+#loginBar-background {
+  width: 102%;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  z-index: 1;
+  filter: brightness(80%);
 }
 
 #loginBar-logo-title {
@@ -42,6 +55,9 @@
   font-weight: 300;
   margin: 0px;
   margin-left: 50px;
+  position: relative;
+  z-index: 2;
+  color: white;
 }
 
 .loginbar-loginContainer {
@@ -90,24 +106,6 @@
   height: 70px;
   border: 3px solid var(--main_color);
 }
-/* .loginbar-img1 {
-  width: 100px;
-  position: relative;
-  top: 50%;
-  left: 38%;
-}
-.loginbar-img2 {
-  position: relative;
-  width: 100px;
-  left: 5%;
-  top: 2%;
-}
-.loginbar-img3 {
-  width: 80px;
-  position: relative;
-  left: 52%;
-  top: 10%;
-} */
 
 #loginBar-pwWrap {
   display: flex;
@@ -172,4 +170,23 @@
   border-radius: 5px;
   font-size: 15px;
   cursor: pointer;
+}
+
+/* darkmode */
+
+.dark-mode #loginBar-asideContainer {
+  border: 1px solid var(--dark-border-color);
+}
+
+.dark-mode .loginbar-title {
+  color: var(--dark-white-color);
+}
+
+.dark-mode .loginbar-loginContainer {
+  border: 1px solid var(--dark-border-color);
+  background-color: var(--sub-dark-color);
+}
+
+.dark-mode #loginbar-signup-alert {
+  color: var(--dark-white-color);
 }
