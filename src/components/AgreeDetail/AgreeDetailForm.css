@@ -34,18 +34,10 @@
   right: 20px;
   bottom: 20px;
   cursor: pointer;
-  animation-name: fadeInUp;
-  animation-duration: 1s;
-  animation-fill-mode: both;
 }
 
-@keyframes fadeInUp {
-  from {
-    transform: translate3d(0, 40px, 0);
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
-  }
+#agreeDetail-Btn:hover {
+  transition: 1s;
+  background-color: var(--main_color);
+  color: white;
 }

@@ -19,6 +19,7 @@ import { commentAlertError, commentAlertSuccess } from "../../lib/sweetAlert2";
 import PostMenuImg from "../../assets/img/PostMenu.svg";
 import FeedMenuModal from "./FeedMenuModal";
 import useFeedMenu from "../../Hooks/Main/useFeedMenu";
+import WhitePostMenu from "../../assets/img/BlackPostMenu.svg";
 
 const FeedContainer = ({ postData, feedRef }) => {
   const {
@@ -190,6 +191,11 @@ const FeedContainer = ({ postData, feedRef }) => {
               <img
                 src={PostMenuImg}
                 className="feed-postMenuImg"
+                alt="feedMenuBtn"
+              />
+              <img
+                src={WhitePostMenu}
+                className="feed-PostWhiteMenuImg"
                 alt="feedMenuBtn"
               />
             </button>

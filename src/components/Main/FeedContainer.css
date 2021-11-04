@@ -49,6 +49,11 @@
   width: 100%;
 }
 
+.feed-PostWhiteMenuImg {
+  width: 100%;
+  display: none;
+}
+
 .feed-imgsWrap {
   height: 758px;
   width: 100%;
@@ -247,4 +252,34 @@
   outline: none;
   cursor: pointer;
   margin-left: auto;
+}
+
+/* darkMode */
+
+.dark-mode .feed-container {
+  background-color: var(--sub-dark-color);
+  color: white;
+  border: 1px solid var(--dark-border-color);
+}
+
+.dark-mode .feed-profileWrap {
+  background-color: var(--sub-dark-color);
+  color: white;
+}
+
+.dark-mode .feed-commentWrap {
+  border-top: 1px solid var(--dark-border-color);
+}
+
+.dark-mode .feed-commentInput {
+  background-color: var(--sub-dark-colors);
+  color: white;
+}
+
+.dark-mode .feed-PostWhiteMenuImg {
+  display: block;
+}
+
+.dark-mode .feed-postMenuImg {
+  display: none;
 }

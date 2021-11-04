@@ -27,3 +27,8 @@
   flex-direction: column;
   row-gap: 30px;
 }
+
+/* darkmode */
+.dark-mode #content-title {
+  color: white;
+}

@@ -35,12 +35,12 @@ const Navigation = () => {
           <nav className="navigation-item-container">
             <Link to="/">
               <img className="navigation-item-logo-img" src={Logo} alt="Logo" />
+              <img
+                className="navigation-item-logo-whiteimg"
+                src={WhiteLogo}
+                alt="Logo"
+              />
             </Link>
-            <img
-              className="navigation-item-logo-whiteimg"
-              src={WhiteLogo}
-              alt="Logo"
-            />
 
             <SearchBar />
 

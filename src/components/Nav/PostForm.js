@@ -1,5 +1,5 @@
 import PostExitImg from "../../assets/img/PostExit.svg";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./PostForm.css";
 import ImgAdd from "../../assets/img/PostImgAdd.svg";
 import usePost from "../../Hooks/Nav/PostForm/usePost";
@@ -22,6 +22,8 @@ const PostForm = () => {
 
   const [imgData, setImgData] = useRecoilState(saveImgData);
 
+  const [currentStringCount, setCurrentStringCount] = useState(0);
+
   useEffect(() => {
     if (buttonStates.isPostClick) {
       document.body.style.cssText = `
@@ -36,6 +38,10 @@ const PostForm = () => {
       };
     }
   }, [buttonStates.isPostClick]);
+
+  useEffect(() => {
+    setCurrentStringCount(postData.content.length);
+  }, [postData.content]);
 
   const resetForm = () => {
     resetPostData();
@@ -63,13 +69,16 @@ const PostForm = () => {
                 </button>
               </div>
               <div id="navigation-item-post-form-inputWrap">
-                <textarea
-                  name="content"
-                  onChange={onChange}
-                  value={postData.content}
-                  className="navigation-item-post-form-content-input"
-                  placeholder="내용을 적어주세요"
-                />
+                <div className="postForm-textInputWrap">
+                  <textarea
+                    name="content"
+                    onChange={onChange}
+                    value={postData.content}
+                    className="navigation-item-post-form-content-input"
+                    placeholder="내용을 적어주세요"
+                  ></textarea>
+                  <div className="postForm-currentStringCount">{`${currentStringCount}/65`}</div>
+                </div>
                 <div id="navigation-item-post-form-preview-imgWrap">
                   <>
                     {imgData &&

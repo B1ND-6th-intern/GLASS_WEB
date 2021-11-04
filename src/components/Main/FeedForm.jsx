@@ -8,7 +8,7 @@ import ErrorForm from "../ErrorPage/ErrorForm";
 
 const FeedForm = () => {
   const { userId } = useGetUserId();
-  const { feeds, ref } = useShowPosts();
+  const { feeds, ref, isLoading } = useShowPosts();
 
   return (
     <div id="content-postContainer">
@@ -26,6 +26,7 @@ const FeedForm = () => {
       ) : (
         <ErrorForm />
       )}
+      {isLoading && <div id="content-loadingContainer"></div>}
     </div>
   );
 };

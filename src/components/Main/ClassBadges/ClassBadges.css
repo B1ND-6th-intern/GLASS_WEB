@@ -42,3 +42,8 @@
   color: white;
   font-size: 13px;
 }
+
+/* darkmode */
+.dark-mode #badges-text {
+  color: black;
+}
