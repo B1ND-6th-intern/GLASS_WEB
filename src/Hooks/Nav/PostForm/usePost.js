@@ -61,6 +61,7 @@ const usePost = () => {
       return;
     }
     alertSuccess(message);
+    window.location.reload();
   };
 
   const sendImgsData = async (imgData) => {

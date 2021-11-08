@@ -12,6 +12,7 @@ const FeedMenuModal = ({ toggleFeedMenuClick, isMenu, id }) => {
     if (status === 200) {
       alertSuccess(message);
       toggleFeedMenuClick();
+      window.location.reload();
       return;
     }
     alertError(error);
