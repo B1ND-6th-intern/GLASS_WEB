@@ -29,12 +29,26 @@
   border-right: 0px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+#loginBar-backgroundImg {
+  position: absolute;
+  width: 102%;
+  top: 0px;
+  left: 0px;
+  object-fit: cover;
+  z-index: 1;
 }
 
 #loginBar-logo {
   width: 250px;
   margin-top: 70px;
   margin-left: 50px;
+  position: relative;
+  z-index: 2;
 }
 
 #loginBar-logo-title {
@@ -42,6 +56,9 @@
   font-weight: 300;
   margin: 0px;
   margin-left: 50px;
+  position: relative;
+  z-index: 2;
+  color: white;
 }
 
 .loginbar-loginContainer {

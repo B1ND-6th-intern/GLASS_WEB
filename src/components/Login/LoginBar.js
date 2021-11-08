@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import SeePwType from "../../assets/img/SeePwType.svg";
 import ClosePwType from "../../assets/img/ClosePwType.svg";
-import Logo from "../../assets/img/Logo.svg";
+import WhiteLogo from "../../assets/img/WhiteLogo.svg";
+import LoginBackground from "../../assets/img/LoginBackground.jpg";
 import "./LoginBar.css";
 import useLogin from "../../Hooks/useLogin";
 
@@ -11,7 +12,12 @@ const LoginBar = () => {
   return (
     <div id="loginBar-container">
       <div id="loginBar-asideContainer">
+<<<<<<< Updated upstream
         <img id="loginBar-logo" src={Logo} alt="logo" />
+=======
+        <img id="loginBar-backgroundImg" src={LoginBackground} />
+        <img id="loginBar-logo" src={WhiteLogo} />
+>>>>>>> Stashed changes
         <p id="loginBar-logo-title">매일매일을 투명하게.</p>
       </div>
       <form onSubmit={onSubmit} className="loginbar-loginContainer">
