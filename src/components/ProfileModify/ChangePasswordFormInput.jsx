@@ -1,12 +1,17 @@
 import "./ChangePasswordForm.css";
 
-const ChangePasswordFormInput = ({ name, onChangevalue, onChnageFunc }) => {
+const ChangePasswordFormInput = ({
+  name,
+  onChangevalue,
+  onChnageFunc,
+  placeholderText,
+}) => {
   return (
     <input
       name={name}
       className="changePassword-input"
       type="password"
-      placeholder="현재 비밀번호"
+      placeholder={placeholderText}
       value={onChangevalue}
       onChange={onChnageFunc}
       required

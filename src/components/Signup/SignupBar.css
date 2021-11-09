@@ -203,6 +203,7 @@ option {
   font-size: 12px;
   margin: 0px;
   font-weight: 300;
+  margin-left: 5px;
 }
 
 #signupBar-link {

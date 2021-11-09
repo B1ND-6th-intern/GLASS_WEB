@@ -9,6 +9,7 @@ const useLogOut = () => {
 
   const onClickLogOut = () => {
     localStorage.removeItem("Token");
+    localStorage.removeItem("Id");
     setIsUser(false);
     logoutAlert();
     history.push("/");

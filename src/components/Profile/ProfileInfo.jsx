@@ -4,9 +4,10 @@ import { modifyUserDataState } from "../../recoil/profileAtom";
 import "./ProfileInfo.css";
 import { SERVER } from "../../config/config.json";
 import DefaultUserImg from "../../assets/img/DefaultUserImg.svg";
+import useGetUserData from "../../Hooks/Main/useGetUserData";
 
 const ProfileInfo = () => {
-  const [userData, setUserData] = useRecoilState(modifyUserDataState);
+  const { userData } = useGetUserData();
 
   return (
     <>

@@ -16,6 +16,7 @@ import ProfileDropDown from "../../components/Profile/ProfileDropDown";
 import useGetUserData from "../../Hooks/Main/useGetUserData";
 import { SERVER } from "../../config/config.json";
 import DefaultUserImg from "../../assets/img/DefaultUserImg.svg";
+import useGetUserId from "../../Hooks/Main/useGetUserId";
 
 const Navigation = () => {
   const {
@@ -42,7 +43,7 @@ const Navigation = () => {
               />
             </Link>
 
-            <SearchBar />
+            {/* <SearchBar /> */}
 
             <button className="navigation-item-post" onClick={togglePostClick}>
               <img
